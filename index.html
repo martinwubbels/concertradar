@@ -147,7 +147,7 @@ function drawConcertMap(){
     const eventRows=events.slice(0,22).map(e=>
       '<div style="padding:5px 0;border-bottom:1px solid #e7eceb"><b>'+h(e.date)+'</b> · '+
       '<a href="'+h(e.url)+'" target="_blank" rel="noopener noreferrer">'+h(e.name)+'</a>'+
-      '<div style="font-size:12px">'+h(e.venue)+'</div></div>').join('');
+      '<div style="font-size:12px">'+h(e.venue)+' · <a href="https://www.google.com/maps/search/?api=1&amp;query='+encodeURIComponent(e.venue+' '+e.city)+'" target="_blank" rel="noopener noreferrer">Zoek zaaladres</a></div></div>').join('');
     const popup='<div style="max-height:280px;overflow-y:auto"><strong>'+h(city)+'</strong> · '+events.length+
       ' concert(en)<p style="margin:4px 0;font-size:12px">Marker: plaatscentrum</p>'+eventRows+
       (events.length>22?'<p>En nog '+(events.length-22)+' concerten. Filter op periode voor een kortere lijst.</p>':'')+'</div>';
