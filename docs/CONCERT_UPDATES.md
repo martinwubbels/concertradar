@@ -21,3 +21,6 @@ Handmatig starten: **Actions → ConcertRadar dagelijkse agenda-controle → Run
 De uitkomsten verschijnen in `data/discovery-candidates.json`. Een lege kandidatenlijst kan ook betekenen dat de bron niets heeft prijsgegeven.
 
 De foto's worden dagelijks afzonderlijk gecontroleerd door **ConcertRadar fotocontrole**.
+
+## Gestructureerde controlelijst
+De nieuwe workflow **ConcertRadar gegevens uit kandidaten** leest tot 100 kandidaatlinks per dag, verdeeld over podia. Waar de officiële pagina `schema.org`-gegevens heeft, probeert deze artiest, evenementdatum, zaal, plaats, prijs en beschikbaarheidsveld te verzamelen. Niet-gevonden velden blijven leeg. De output is `data/event-review.json` en heeft altijd `review_required: true`. Een gevonden prijs of status is een bronvermelding, geen live kaartvoorraadgarantie. De workflow verandert `data/concerts.json` niet. Er wordt dus nog niets automatisch toegevoegd aan de app. De drie workflows zijn onafhankelijk; GitHub kan geplande runs vertragen of overslaan.
