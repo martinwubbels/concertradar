@@ -301,7 +301,7 @@ function extractJsonLdEvents(node,result=[]){
  if(Array.isArray(node)){node.forEach(x=>extractJsonLdEvents(x,result));return result;}
  if(!node||typeof node!=='object')return result;
  const types=(Array.isArray(node['@type'])?node['@type']:[node['@type']]).map(x=>String(x||'').split('/').pop());
- if(types.some(t=>['MusicEvent','Event','Festival'].includes(t)))result.push(node);
+ if(types.some(t=>['MusicEvent','Event','Festival','TheaterEvent'].includes(t)))result.push(node);
  if(node['@graph'])extractJsonLdEvents(node['@graph'],result);
  return result;
 }
@@ -344,18 +344,95 @@ function eventFromSchema(obj,sourceUrl){
  if((currency==='EUR'||currency==='€')&&Number.isFinite(Number(candidate))&&candidate!==''&&candidate!=null&&Number(candidate)>=0)price=Number(candidate);
  return {name,date,time,venue,city,price,sourceUrl,url:sourceUrl,source_name:'Officiële pagina (schema.org)',review_required:true};
 }
+
+const NL_MONTHS={jan:1,feb:2,mrt:3,mar:3,apr:4,mei:5,jun:6,jul:7,aug:8,sep:9,okt:10,oct:10,nov:11,dec:12};
+const NL_DAYS={zo:0,ma:1,di:2,wo:3,do:4,vr:5,za:6};
+function inferDutchEventDate(dayText,monthText,weekDay){
+ const day=Number(dayText),month=NL_MONTHS[String(monthText||'').toLowerCase().replace('.','')];
+ if(!month||day<1||day>31)return '';
+ const currentYear=new Date().getFullYear(),now=new Date();
+ const days=[];
+ for(let year=currentYear;year<=currentYear+2;year++){
+   const d=new Date(year,month-1,day,12);
+   if(d.getFullYear()!==year||d.getMonth()!==month-1||d.getDate()!==day)continue;
+   if(d.getTime()<now.getTime()-86400000)continue;
+   if(weekDay&&NL_DAYS[weekDay]!==d.getDay())continue;
+   days.push(d);
+ }
+ if(!days.length)return '';
+ const d=days[0];
+ return d.getFullYear()+'-'+String(month).padStart(2,'0')+'-'+String(day).padStart(2,'0');
+}
+function parseMetropoolVisibleText(content,heading,sourceUrl){
+ // Content is public text from the specific official concert page.
+ if(!/^https:\/\/(www\.)?metropool\.nl\/agenda\//i.test(sourceUrl))return null;
+ const text=String(content||'').replace(/\u00a0/g,' ').slice(0,80000);
+ const name=String(heading||'').replace(/\s+\|\s+Metropool.*$/i,'').trim();
+ const short=text.match(/\b(?:(ma|di|wo|do|vr|za|zo)\s+)?(\d{1,2})\s+(jan|feb|mrt|mar|apr|mei|jun|jul|aug|sep|okt|oct|nov|dec)\b/i);
+ const longDate=text.match(/\b(\d{1,2})\s+(januari|februari|maart|april|mei|juni|juli|augustus|september|oktober|november|december)\s+(20\d{2})\b/i);
+ const longMonths={januari:1,februari:2,maart:3,april:4,mei:5,juni:6,juli:7,augustus:8,september:9,oktober:10,november:11,december:12};
+ let date='',inferred=false;
+ if(longDate){
+   const n=longMonths[longDate[2].toLowerCase()];
+   date=longDate[3]+'-'+String(n).padStart(2,'0')+'-'+String(Number(longDate[1])).padStart(2,'0');
+ }else if(short){
+   date=inferDutchEventDate(short[2],short[3],short[1]?.toLowerCase());
+   inferred=Boolean(date);
+ }
+ // Prefer the main act over door opening / support schedule.
+ const timeMatch=text.match(/Aanvang\s+hoofdact\s*(\d{1,2}:\d{2})/i)
+   ||text.match(/Aanvang\s+(?!voorprogramma)(\d{1,2}:\d{2})/i);
+ const location=text.match(/Locatie[ \t]+([^\n\r]{2,110})/i);
+ let venue='',city='';
+ if(location){
+   let part=location[1].split(/\b(?:Genre|Tijdschema|Bekijk menukaart|Rijd samen|Tickets|Prijs)\b/i)[0].trim();
+   part=part.replace(/\s+(?:Tickets|Prijs|Voorverkoop).*$/i,'');
+   const m=part.match(/^(.{2,65}?),\s*(Hengelo|Enschede|Almelo)\b/i);
+   if(m){venue=m[1].trim();city=m[2];}
+ } 
+ if(!city){
+   const matched=text.match(/\b(?:Hengelo|Enschede|Almelo)\b/);
+   if(matched)city=matched[0];
+ }
+ if(!venue)venue='Metropool';
+ const priceMatch=text.match(/Voorverkoop\s*€\s*(\d{1,4}(?:[,.]\d{1,2})?)/i);
+ const price=priceMatch?Number(priceMatch[1].replace(',','.')):null;
+ const genreMatch=text.match(/Genre[ \t]+([^\n\r]{3,60})/i);
+ const genre=genreMatch?genreMatch[1].split(/\b(?:Bekijk menukaart|Tijdschema|Locatie|Tickets)\b/i)[0].trim():'';
+ if(!name&&!date)return null;
+ return {name,date,time:timeMatch?.[1]||'',venue,city,price:Number.isFinite(price)?price:null,
+   genre,sourceUrl,url:sourceUrl,source_name:'Metropool (concertpagina)',review_required:true,
+   date_inferred:inferred};
+}
+
 async function importConcertFromUrl(url){
  const parsed=new URL(url);
  if(parsed.protocol!=='https:'||!parsed.hostname||parsed.username||parsed.password||!parsed.hostname.includes('.'))throw Error('Gebruik een geldige openbare HTTPS-link.');
  if(['localhost','127.0.0.1','0.0.0.0'].includes(parsed.hostname)||parsed.hostname.endsWith('.local'))throw Error('Deze link is geen openbare concertpagina.');
  if(/(?:^|[?&])(?:token|auth|access_token|ticket_id|order_id|booking|session|secret|key)=/i.test(parsed.search))throw Error('Verwijder persoonlijke parameters of gebruik de openbare evenementpagina.');
  const canonical=parsed.origin+parsed.pathname+parsed.search;
+ // Published cache: verified public event information, not the user's bookings.
+ try{
+   const cached=await fetch('./data/link-imports.json',{cache:'no-store',signal:AbortSignal.timeout(6500)});
+   if(cached.ok){
+     const data=await cached.json();
+     const event=Array.isArray(data.events)?data.events.find(e=>e.sourceUrl===canonical):null;
+     if(event)return {candidates:[event],metadataOnly:false};
+   }
+ }catch(e){/* A missing cache must not block live extraction. */}
+
  const known=[...all(),...discoveryEvents].filter(e=>String(e.sourceUrl||e.url||'').replace(/\/$/,'')===canonical.replace(/\/$/,''));
  if(known.length)return {candidates:known.map(e=>({...e,sourceUrl:canonical,url:canonical,source_name:'ConcertRadar',review_required:true})),metadataOnly:false};
  const api=new URL('https://api.microlink.io/');
  api.searchParams.set('url',canonical);
  api.searchParams.set('data.structured.selectorAll','script[type="application/ld+json"]');
  api.searchParams.set('data.structured.attr','text');
+ api.searchParams.set('data.pageText.selector','main');
+ api.searchParams.set('data.pageText.attr','text');
+ api.searchParams.set('data.bodyText.selector','body');
+ api.searchParams.set('data.bodyText.attr','text');
+ api.searchParams.set('data.headline.selector','h1');
+ api.searchParams.set('data.headline.attr','text');
  const response=await fetch(api.toString(),{mode:'cors',cache:'no-store',signal:AbortSignal.timeout(18000)});
  if(!response.ok)throw Error('Metadatadienst reageert niet (HTTP '+response.status+').');
  const body=await response.json();
@@ -363,20 +440,33 @@ async function importConcertFromUrl(url){
  const data=body.data;
  const nodes=parseSchemaFromMicrolink(data.structured);
  const candidates=nodes.map(node=>eventFromSchema(node,canonical)).filter(e=>e.name&&e.date);
- if(candidates.length){
-   return {candidates:candidates.slice(0,8),metadataOnly:false};
+ const pageText=String(data.pageText||data.bodyText||'');
+ const headline=String(data.headline||data.title||'');
+ const metropool=parseMetropoolVisibleText(pageText,headline,canonical);
+ // The source text can contain extra detail absent from embedded metadata.
+ if(metropool&&metropool.date){
+   const same=candidates.find(x=>x.date===metropool.date);
+   const combined={...(same||{}),...metropool,
+      name:metropool.name||same?.name||'',
+      time:metropool.time||same?.time||'',
+      venue:metropool.venue||same?.venue||'',
+      city:metropool.city||same?.city||'',
+      price:metropool.price??same?.price??null,
+      genre:metropool.genre||same?.genre||''};
+   return {candidates:[combined],metadataOnly:false};
  }
- const title=String(data.title||'').replace(/\s+[|\-–]\s+[^|\-–]+$/,'').trim();
+ if(candidates.length)return {candidates:candidates.slice(0,8),metadataOnly:false};
+ const title=String(data.headline||data.title||'').replace(/\s+[|\-–]\s+[^|\-–]+$/,'').trim();
  return {candidates:[{name:title,date:'',venue:'',city:'',price:null,sourceUrl:canonical,url:canonical,source_name:'Alleen paginatitel, niet gecontroleerd',review_required:true}],metadataOnly:true};
 }
 function fillFromLinkedConcert(form,event){
  const field=(name,val)=>{if(form.elements[name]&&val!==undefined&&val!==null&&val!=='')form.elements[name].value=String(val)};
  field('name',event.name);field('date',event.date);field('time',event.time);
- field('venue',event.venue);field('city',event.city);
+ field('venue',event.venue);field('city',event.city);field('genre',event.genre);
  if(event.price!==null&&event.price!==undefined)field('price',event.price);
  field('url',event.sourceUrl);
  const box=document.getElementById('urlImportResults');
- if(box)box.innerHTML='<p class="notice">Beschikbare gegevens zijn ingevuld. Controleer ontbrekende velden, aanvangstijd en ticketprijs op de officiële concertpagina vóór opslaan.</p>';
+ if(box)box.innerHTML='<p class="notice">Beschikbare gegevens zijn ingevuld. Controleer ontbrekende velden, aanvangstijd en ticketprijs op de officiële concertpagina vóór opslaan. Is geen jaartal op de pagina gevonden, dan is het jaar afgeleid en moet je dat extra controleren.</p>';
 }
 
 function personalAddMarkup(){
