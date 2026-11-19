@@ -1,0 +1,31 @@
+name: ConcertRadar controle van bekende concerten
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "35 8 * * *"
+permissions:
+  contents: write
+concurrency:
+  group: concertradar-change-check
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Vergelijk bekende optredens met officiële eventmetadata
+        run: python scripts/check_concert_changes.py
+      - name: Bewaar wijzigingsvoorstellen
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/changes.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Controle openbare wijzigingen bij bekende concerten"
+            git pull --rebase
+            git push
+          fi

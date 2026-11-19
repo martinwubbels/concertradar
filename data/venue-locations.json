@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-19",
+  "origin": {
+    "label": "Klazienaveen (centrum)",
+    "lat": 52.7254,
+    "lng": 6.9852
+  },
+  "venues": {
+    "oosterpoort-groningen": {
+      "names": [
+        "De Oosterpoort"
+      ],
+      "city": "Groningen",
+      "address": "Trompsingel 27, 9724 DA Groningen, Nederland",
+      "lat": 53.214641,
+      "lng": 6.575985,
+      "source": "https://www.spotgroningen.nl/de-oosterpoort"
+    },
+    "hedon-zwolle": {
+      "names": [
+        "Hedon"
+      ],
+      "city": "Zwolle",
+      "address": "Burgemeester Drijbersingel 7, Zwolle, Nederland",
+      "lat": 52.517006,
+      "lng": 6.094429,
+      "source": "https://www.hedon-zwolle.nl/"
+    },
+    "metropool-hengelo": {
+      "names": [
+        "Metropool",
+        "Bud Stage",
+        "Jack Daniel's Stage",
+        "Leffe Stage"
+      ],
+      "city": "Hengelo",
+      "address": "Industrieplein 10, 7553 LL Hengelo, Nederland",
+      "lat": 52.26122,
+      "lng": 6.79453,
+      "source": "https://metropool.nl/podia/metropool-hengelo"
+    },
+    "metropool-enschede": {
+      "names": [
+        "Metropool",
+        "Saxion Stage"
+      ],
+      "city": "Enschede",
+      "address": "Willem Wilminkplein 2, 7511 PG Enschede, Nederland",
+      "source": "https://metropool.nl/podia/metropool-enschede"
+    },
+    "amer-amen": {
+      "names": [
+        "De Amer"
+      ],
+      "city": "Amen",
+      "address": "Amen 20, Amen, Nederland",
+      "source": "https://www.deamer.nl/"
+    }
+  }
+}
