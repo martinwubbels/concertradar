@@ -106,3 +106,28 @@ De import probeert nu daarnaast `main` en `body` als tekst te lezen via Microlin
 Een beperkte openbare broncache `data/link-imports.json` bevat reeds afzonderlijk gecontroleerde eventgegevens om deze URL direct betrouwbaar te kunnen invullen. Voor Steve 'n' Seagulls: 3 december 2026, Bud Stage Hengelo, hoofdact 21:30, voorverkoop €28, PK Keränen als support, volgens de op 19 november 2026 geraadpleegde officiële Metropoolpagina. Bij elke wijziging op de bron moet deze cache apart geactualiseerd worden; het is geen live prijs- of aanvanggarantie.
 
 Andere sites zijn afhankelijk van beschikbare openbare metadata en pagina-inhoud. De live werking van de uitgebreidere Microlink-selectors is nog niet in een gebruikersbrowser geverifieerd.
+
+## ConcertRadar uitbreiding november 2026
+
+### Mijn komende concerten
+Het nieuwe starttabblad toont alle toekomstige concerten met status **Kaarten gekocht**. Per concert staan datum, aanvang indien bekend, podium, plaats, eigen notitie en een route-link.
+
+### Beoordelingsinbox
+Het tabblad **Beoordelingsinbox** toont nieuwe kandidaatconcerten waarvoor je nog geen keuze hebt gemaakt. Met Interessant, Afwijzen of Kaarten gekocht verdwijnt het concert uit de inbox. Deze suggesties zijn niet automatisch bevestigd; de bronlink blijft beschikbaar.
+
+### Concertgeschiedenis
+Na de speeldatum kun je voor geboekte of eerder beoordeelde concerten scores geven van 1 t/m 10 voor stem en zang, songteksten, livekwaliteit en totale ervaring, plus een privénotitie. Gegevens worden lokaal opgeslagen en kunnen worden opgenomen in de optionele privésynchronisatie.
+
+### Kaart, exacte locaties en reistijden
+`data/venue-locations.json` bevat een kleine set **gecontroleerde podiumadressen** en alleen waar brongegevens beschikbaar waren, coördinaten. Op die posities staan de kaartmarkers bij de zaal; overige concerten blijven met een grijze marker bij het **plaatscentrum**. Gecontroleerde locaties: De Oosterpoort (Groningen), Hedon (Zwolle), Metropool (Hengelo). Andere adressen zonder gecontroleerde coördinaten worden alleen als adres gebruikt voor een routezoekopdracht.
+
+De routeknop biedt Google Maps voor actuele reistijden. Bij een gecontroleerde marker kan **Bereken rijafstand** een route-inschatting opvragen bij de openbare OSRM-demo vanaf **Klazienaveen (centrum)**. Deze demo biedt geen actuele fileinformatie, kan onbereikbaar zijn en is uitsluitend geschikt voor kleinschalig niet-commercieel gebruik. Het sturen van de routeaanvraag deelt de coördinaten en het IP-adres met de provider; er gebeurt geen massale automatische routering.
+
+### Veranderingen bij bestaande concerten
+Een aparte dagelijkse GitHub Actions-workflow `ConcertRadar controle van bekende concerten` leest maximaal 65 officiële publieke concertpagina's per run en zoekt naar sterke aanwijzingen voor veranderde datum, plaats, prijs en uitverkochte status. De uitkomsten komen in `data/changes.json` als **onbevestigde wijzigingsvoorstellen**. De catalogus wordt niet automatisch aangepast. Bij veel concerten (vooral homepage-links en dynamische sites) is controle niet mogelijk; geen melding is dus **geen garantie** dat gegevens ongewijzigd zijn. Deze workflow is nog niet in GitHub Actions uitgevoerd.
+
+### Synchronisatie
+De app bevat optionele Supabase-cloudsync. Die is nog **niet ingeschakeld**. Voor echte synchronisatie tussen Windows en Android moet de eigenaar éénmaal een privédatabase inrichten; zie [de instructies](docs/SYNCHRONISATIE.md). `data/cloud-config.json` staat standaard uit. Zonder configuratie blijven alle persoonlijke gegevens lokaal. Gegevens worden niet gepubliceerd op GitHub.
+
+### Back-up
+De JSON-export onder Updates & beheer bevat nu naast de concerten ook de volledige lijst met persoonlijke aanvullingen, concertstatussen, beoordelingen en instellingen. Voor terugzetten wordt het persoonlijke extra-overzicht overgenomen; oudere exports met `events` blijven geaccepteerd.
