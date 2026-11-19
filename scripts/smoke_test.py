@@ -35,4 +35,9 @@ assert "cloudPull" in source
 assert "function inboxMarkup" in source
 assert "function historyMarkup" in source
 assert "function dashboardMarkup" in source
+assert "function tasteResult" in source
+assert "function tasteMarkup" in source
+assert "KAARTEN GEKOCHT" in source
+assert "concert-booked" in html
+assert "taste-small" in html
 print("ConcertRadar smoke tests passed:",len(concerts),"catalog records")
