@@ -19,13 +19,17 @@ jobs:
           python-version: "3.12"
       - name: Lees gestructureerde eventgegevens uit officiële pagina's
         run: python scripts/extract_event_details.py
+      - name: Test automatische toelating zonder echte concertgegevens te veranderen
+        run: python -m unittest discover -s scripts -p 'test_promotion.py' -v
+      - name: Voeg alleen streng geverifieerde muziekoptredens toe
+        run: python scripts/promote_verified_concerts.py
       - name: Bouw gescheiden ontdekkingenoverzicht
         run: python scripts/build_discoveries.py
       - name: Bewaar onbevestigde kandidaten
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/event-review.json data/new-discoveries.json
+          git add data/event-review.json data/new-discoveries.json data/concerts.json data/promotion-report.json
           if ! git diff --cached --quiet; then
             git commit -m "Controlelijst gevonden concertinformatie"
             git pull --rebase
