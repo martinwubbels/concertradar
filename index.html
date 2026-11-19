@@ -485,7 +485,7 @@ const filtered=()=>all().filter(e=>(!state.onlyFuture||e.date>=today)
   &&(['all','map'].includes(state.tab)||(state.tab==='favorites'&&statusOf(e)==='interested')||(state.tab==='booked'&&isBooked(e))||(state.tab==='rejected'&&statusOf(e)==='rejected')||(state.tab==='discovery'&&true))
   &&(state.scope==='all'||scopeOf(e)===state.scope)
   &&(!state.city||e.city===state.city)
-  &&(state.tab!=='all'||travelInfo(e).within)
+  &&(state.tab!=='all'||statusOf(e)!==''||travelInfo(e).within)
   &&(!state.genre||e.genre.includes(state.genre))
   &&[e.name,e.city,e.venue,e.genre,e.match,e.reason].join(' ').toLowerCase().includes(state.search.toLowerCase())
 ).sort((a,b)=>state.sort==='personal'?tasteResult(b).score-tasteResult(a).score:state.sort==='quality'?b.quality-a.quality:state.sort==='value'?(b.value||0)-(a.value||0):a.date.localeCompare(b.date));
@@ -1049,7 +1049,7 @@ function noticeCandidates(){
  const opts=notifySettings();
  if(!opts.initialized)return [];
  const seen=new Set(opts.seen||[]),dismissed=new Set(opts.dismissed||[]);
- const newEvents=all().filter(e=>e.date>=today&&e.verification==='auto_verified_schema'&&tasteResult(e).score>=8&&statusOf(e)===''&& !seen.has(noticeKey(e))&&!dismissed.has(noticeKey(e)));
+ const newEvents=all().filter(e=>e.date>=today&&e.verification==='auto_verified_schema'&&(tasteResult(e).score>=8||tasteManualEffect(e).matched.some(w=>w.kind==='artiest'&&w.weight>0))&&statusOf(e)===''&& !seen.has(noticeKey(e))&&!dismissed.has(noticeKey(e)));
  const alerts=(sourceChecks.alerts||[]).filter(a=>a&&a.id&&isBooked(all().find(e=>e.id===a.id)||{id:a.id})&&!seen.has('alert:'+a.id+':'+a.kind+':'+a.fingerprint)&&!dismissed.has('alert:'+a.id+':'+a.kind+':'+a.fingerprint));
  return [
  ...alerts.map(a=>({id:'alert:'+a.id+':'+a.kind+':'+a.fingerprint,title:a.name||'Wijziging',text:'Gecontroleerde broninformatie kan afwijken: '+a.message,url:a.url||'',kind:'alert'})),
