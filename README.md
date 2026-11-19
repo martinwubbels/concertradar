@@ -185,3 +185,14 @@ De interactieve woordwolk wordt eenmalig aangevuld met 24 bekende voorkeuren uit
 **Bestaande keuzes worden niet overschreven**: per term en soort krijgt het eerder opgeslagen gewicht altijd voorrang. De versie-indicator `tasteSeedVersion: 1` verhindert dat een bewust verwijderd woord bij iedere herstart automatisch terugkeert. De eigen woorden staan in `settings.tasteWords` binnen de bestaande lokale opslag en worden via de optionele privésync opgeslagen. Bij een eerdere configuratie met 60 termen worden geen extra woorden opgedrongen.
 
 Ook voor deze woorden geldt: ze beïnvloeden de persoonlijke smaakscore alleen als beschikbare artiest-, genre- of beschrijvingsgegevens overeenkomen. De artiesten zijn gewichten voor aanbevelingen, niet automatisch een aankondiging van een toekomstig optreden.
+
+## De zes smaakfuncties (november 2026)
+
+1. **Muziek-DNA:** vijf schuiven (stem, teksten, eigenheid, instrumenten, live-uitstraling, van 0 tot 5), instelbaar onder Mijn muzieksmaak. Alleen in de concerttekst aanwezige kenmerken dragen bij. Het zijn geen echte stem- of songtekstanalyses.
+2. **Luistertest:** iedere masterlijstkaart heeft een knop Luistertest. Deze opent Spotify-zoekresultaten voor de artiest. Luister zelf naar drie nummers en kies Geweldig, Interessant of Niets voor mij. De app kan de gespeelde nummers niet verifiëren; de beoordeling is jouw eigen signaal. Het oordeel staat los van concertbezoek.
+3. **Afwijsreden:** bij Afwijzen kies je via een invoervenster een reden: muziek, afstand, prijs, datum, gezien of anders. Alleen muziek telt als negatief signaal voor de muzikale voorkeur; overige redenen niet. Bestaande afwijzingen zonder reden blijven neutraal.
+4. **Verrassingsradar:** een aparte tab met nog niet als bekend gemarkeerde artiesten met voldoende persoonlijke overeenkomst. Bekende favoriete, geboekte en afgewezen concerten worden uitgesloten.
+5. **Concerturgentie:** een apart overzicht met persoonlijke match en hoe dichtbij de concertdatum is. Als een concert geen directe optredenlink heeft of uitverkocht lijkt, staat dit duidelijk vermeld. Geen aannames over zaalcapaciteit, exclusiviteit of live ticketvoorraad; deze ontbrekende factoren worden expliciet genoemd. Dit is geen gegarandeerde beschikbaarheidscontrole.
+6. **Smaakontwikkeling:** een tab met de werkelijk opgeslagen concertreviews, chronologisch getoond, en gemiddelde cijfers voor stem, teksten, livekwaliteit en totale beleving. Geen verzonnen historische scores.
+
+De vijf DNA-waarden en de luisteroordelen worden in de bestaande persoonlijke instellingen bewaard en bij ingeschakelde privécloud gesynchroniseerd. De relevante wijzigingstijd bepaalt welke volledige set bij een conflict tussen apparaten voorgaat. Bestaande concerten, woordwolk en reviews blijven ongewijzigd. Nieuwe smaakberekeningen zijn heuristieken op beschikbare metadata en gekozen voorkeuren.
