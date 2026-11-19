@@ -196,3 +196,9 @@ Ook voor deze woorden geldt: ze beïnvloeden de persoonlijke smaakscore alleen a
 6. **Smaakontwikkeling:** een tab met de werkelijk opgeslagen concertreviews, chronologisch getoond, en gemiddelde cijfers voor stem, teksten, livekwaliteit en totale beleving. Geen verzonnen historische scores.
 
 De vijf DNA-waarden en de luisteroordelen worden in de bestaande persoonlijke instellingen bewaard en bij ingeschakelde privécloud gesynchroniseerd. De relevante wijzigingstijd bepaalt welke volledige set bij een conflict tussen apparaten voorgaat. Bestaande concerten, woordwolk en reviews blijven ongewijzigd. Nieuwe smaakberekeningen zijn heuristieken op beschikbare metadata en gekozen voorkeuren.
+
+## Unieke rollen voor masterlijst en ontdekkingen (november 2026)
+
+De vroegere tab **Smaakmatches** was slechts een filter op dezelfde masterlijst en is daarom verwijderd. De masterlijst blijft de volledige, doorzoekbare bron, met de bestaande sortering op persoonlijke smaakscore. De Verrassingsradar is nu een compacte, maximaal 8 artiesten tellende selectie van nog niet eerder beoordeelde of geboekte acts. Deze selectie vereist een specifieke concertlink, bruikbare muziekmetadata, een persoonlijke score van ten minste 7,6 en minstens één verklaarbaar positief signaal uit handmatige voorkeuren, muziek-DNA, eerder gewaardeerd genre of een expliciete artiestreferentie. De reden staat boven iedere suggestie.
+
+Historisch niet herbevestigde meldingen en automatisch gevonden titels zonder genre worden niet als sterke verrassingssuggestie gepresenteerd. Onzekere vondsten blijven bereikbaar via Beoordelingsinbox en Nieuw gevonden. De Verrassingsradar is een op criteria gefilterde deelverzameling van de masterlijst, geen zelfstandige ontdekkingsbron. Er zijn geen concerten verwijderd en geen bestaande keuzes of beoordelingen gewijzigd.
