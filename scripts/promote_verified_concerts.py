@@ -58,7 +58,7 @@ def official_page(url):
     return host in OFFICIAL_HOSTS and any(x in path for x in EVENT_PATHS) and len(path.strip("/").split("/"))>=2
 
 def slug_matches_title(name,url):
-    slug=normalized(urlsplit(url).path.split("/")[-1])
+    slug=normalized(urlsplit(url).path.rstrip("/").split("/")[-1])
     words=[x for x in normalized(name).split() if len(x)>=3 and x not in STOP]
     if not slug or not words:return False
     # Last path component must actually resemble the claimed act.
