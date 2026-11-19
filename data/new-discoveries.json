@@ -1,19 +1,7 @@
 {
-  "updated_at": "2026-11-19T14:44:16Z",
+  "updated_at": "2026-11-19T22:50:15.547976+00:00",
   "status": "suggestions_not_confirmed_or_ranked",
   "events": [
-    {
-      "id": "suggestion-2026-11-19-fleshcrawlavulsed",
-      "name": "Fleshcrawl + Avulsed",
-      "date": "2026-11-19",
-      "venue": "Saxion Stage, Enschede",
-      "city": "Enschede",
-      "source_venue": "Metropool",
-      "url": "https://metropool.nl/agenda/fleshcrawl-avulsed",
-      "price": null,
-      "availability_hint": null,
-      "review_required": true
-    },
     {
       "id": "suggestion-2026-11-19-noordnederlandsorkestenyoavlevanon",
       "name": "Noord Nederlands Orkest en Yoav Levanon",
@@ -58,7 +46,7 @@
       "city": "",
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/froukje-20-nov/",
-      "price": 40,
+      "price": 40.0,
       "availability_hint": "SoldOut",
       "review_required": true
     },
@@ -82,32 +70,8 @@
       "city": "",
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/pitou/",
-      "price": 21,
+      "price": 21.0,
       "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-21-dekift",
-      "name": "De Kift",
-      "date": "2026-11-21",
-      "venue": "Metropool Almelo",
-      "city": "Almelo",
-      "source_venue": "Metropool",
-      "url": "https://metropool.nl/agenda/de-kift",
-      "price": null,
-      "availability_hint": null,
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-21-frankmeijerkampvuuravondexperience",
-      "name": "Frank Meijer Kampvuuravond Experience",
-      "date": "2026-11-21",
-      "venue": "Bud Stage, Hengelo",
-      "city": "Hengelo",
-      "source_venue": "Metropool",
-      "url": "https://metropool.nl/agenda/frank-meijer-kampvuuravond-experience",
-      "price": null,
-      "availability_hint": null,
       "review_required": true
     },
     {
@@ -118,7 +82,7 @@
       "city": "",
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/froukje-21-nov/",
-      "price": 40,
+      "price": 40.0,
       "availability_hint": "SoldOut",
       "review_required": true
     },
@@ -147,54 +111,6 @@
       "review_required": true
     },
     {
-      "id": "suggestion-2026-11-21-noahderksen",
-      "name": "Noah Derksen",
-      "date": "2026-11-21",
-      "venue": "Vestzak, Enschede",
-      "city": "Enschede",
-      "source_venue": "Metropool",
-      "url": "https://metropool.nl/agenda/noah-derksen",
-      "price": null,
-      "availability_hint": null,
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-21-poprondeeyesoressemuta",
-      "name": "Popronde: Eyesores + Semuta",
-      "date": "2026-11-21",
-      "venue": "Jack Daniel&#x27;s Stage, Hengelo",
-      "city": "Hengelo",
-      "source_venue": "Metropool",
-      "url": "https://metropool.nl/agenda/popronde-eyesores-semuta",
-      "price": null,
-      "availability_hint": null,
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-21-spanishheat",
-      "name": "Spanish Heat",
-      "date": "2026-11-21",
-      "venue": "Saxion Stage, Enschede",
-      "city": "Enschede",
-      "source_venue": "Metropool",
-      "url": "https://metropool.nl/agenda/spanish-heat",
-      "price": null,
-      "availability_hint": null,
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-22-jazzrockcafemrfusion",
-      "name": "JazzRock Café - Mr. Fusion",
-      "date": "2026-11-22",
-      "venue": "Muziekcaf&#xE9;, Hengelo",
-      "city": "Hengelo",
-      "source_venue": "Metropool",
-      "url": "https://metropool.nl/agenda/jazzrock-cafe-mr-fusion",
-      "price": null,
-      "availability_hint": null,
-      "review_required": true
-    },
-    {
       "id": "suggestion-2026-11-22-triggerfinger",
       "name": "Triggerfinger",
       "date": "2026-11-22",
@@ -202,7 +118,7 @@
       "city": "",
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/triggerfinger-4/",
-      "price": 43,
+      "price": 43.0,
       "availability_hint": "InStock",
       "review_required": true
     },
@@ -226,7 +142,7 @@
       "city": "",
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/soweto-gospel-choir-3/",
-      "price": 44,
+      "price": 44.0,
       "availability_hint": "SoldOut",
       "review_required": true
     },
@@ -238,7 +154,7 @@
       "city": "",
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/k-otic/",
-      "price": 40,
+      "price": 40.0,
       "availability_hint": "InStock",
       "review_required": true
     },
@@ -250,7 +166,7 @@
       "city": "",
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/luka-bloom-3/",
-      "price": 35,
+      "price": 35.0,
       "availability_hint": "InStock",
       "review_required": true
     },

@@ -1,7 +1,290 @@
 {
-  "checked_at": null,
-  "description": "Nog geen dagelijkse controle uitgevoerd. Afwezigheid van resultaat betekent niet geannuleerd.",
-  "checked_count": 0,
-  "checks": {},
+  "checked_at": "2026-11-19T22:49:14.637708+00:00",
+  "description": "Read-only evidence, rotating checks; failures never imply cancellation",
+  "checked_count": 45,
+  "eligible_count": 45,
+  "checks": {
+    "my-darling-clementine-20261119": {
+      "state": "confirmed",
+      "date": "2026-11-19",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://www.spotgroningen.nl/programma/my-darling-clementine/",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "suggestion-2026-11-19-fleshcrawlavulsed": {
+      "state": "confirmed",
+      "date": "2026-11-19",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/fleshcrawl-avulsed",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "dawn-brothers-20261120": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "iron-jinn-temple-fang-20261120": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "trixie-whitley-20261120": {
+      "state": "confirmed",
+      "date": "2026-11-20",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/trixie-whitley",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "suggestion-2026-11-21-dekift": {
+      "state": "confirmed",
+      "date": "2026-11-21",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/de-kift",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "suggestion-2026-11-21-frankmeijerkampvuuravondexperience": {
+      "state": "confirmed",
+      "date": "2026-11-21",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/frank-meijer-kampvuuravond-experience",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "suggestion-2026-11-21-noahderksen": {
+      "state": "confirmed",
+      "date": "2026-11-21",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/noah-derksen",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "suggestion-2026-11-21-poprondeeyesoressemuta": {
+      "state": "confirmed",
+      "date": "2026-11-21",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/popronde-eyesores-semuta",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "suggestion-2026-11-21-spanishheat": {
+      "state": "confirmed",
+      "date": "2026-11-21",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/spanish-heat",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "bluesz-more-festival-20261122": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "suggestion-2026-11-22-jazzrockcafemrfusion": {
+      "state": "confirmed",
+      "date": "2026-11-22",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/jazzrock-cafe-mr-fusion",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "tom-mcrae-20261123": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "jp-den-tex-tineke-schoemaker-20261127": {
+      "state": "unavailable",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "reason": "TimeoutError"
+    },
+    "subterranean-street-society-esther-de-jong-20261128": {
+      "state": "confirmed",
+      "date": "2026-11-28",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://www.spotgroningen.nl/programma/subterranean-street-society-2/",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "the-veils-20261128": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "matthew-and-the-atlas-ak-patterson-20261201": {
+      "state": "confirmed",
+      "date": "2026-12-01",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://www.spotgroningen.nl/programma/matthew-and-the-atlas-3/",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "dawn-brothers-friends-the-last-waltz-20261204": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "geel-ran-over-rotzorg-20261210": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "dylan-leblanc-20261218": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "dewolff-full-moon-ritual-20270108": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "the-black-atlantic-20270120": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "noah-gundersen-20270123": {
+      "state": "confirmed",
+      "date": "2027-01-23",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/noah-gundersen",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "vanwyck-20270127": {
+      "state": "confirmed",
+      "date": "2027-01-27",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://www.spotgroningen.nl/programma/vanwyck-3/",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "vanderlinde-king-of-the-world-ruben-hoeke-20270129": {
+      "state": "confirmed",
+      "date": "2027-01-29",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://www.spotgroningen.nl/programma/vanderlinde-king-of-the-world-ruben-hoeke/",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "steve-wynn-20270131": {
+      "state": "confirmed",
+      "date": "2027-01-31",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://www.spotgroningen.nl/programma/steve-wynn/",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "wende-20270205": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "wende-20270206": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "jan-henk-de-groot-reinout-douma-tiepelzinneg-20270211": {
+      "state": "confirmed",
+      "date": "2027-02-11",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://www.spotgroningen.nl/programma/jan-henk-de-groot-reinout-douma/",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "josh-ritter-solo-20270217": {
+      "state": "confirmed",
+      "date": "2027-02-17",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://www.spotgroningen.nl/programma/josh-ritter/",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "tramhaus-20270219": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "jesper-lindell-20270220": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "jake-vaadeland-the-sturgeon-river-boys-20270223": {
+      "state": "confirmed",
+      "date": "2027-02-23",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://www.spotgroningen.nl/programma/jake-vaadeland/",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "jake-vaadeland-20270224": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "the-tibbs-20270306": {
+      "state": "confirmed",
+      "date": "2027-03-06",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/the-tibbs",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "truckfighters-20270307": {
+      "state": "confirmed",
+      "date": "2027-03-07",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/truckfighters",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "after-easter-20270403": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "daniel-norgren-20270417": {
+      "state": "confirmed",
+      "date": "2027-04-17",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://www.spotgroningen.nl/programma/daniel-norgren-2027/",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "felipe-baldomir-20270508": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "conor-mclain-20270520": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "mood-bored-20270521": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "rantanplan-20270522": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "bluefinger-festival-2027-20270919": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "davy-knowles-20270924": {
+      "state": "confirmed",
+      "date": "2027-09-24",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00",
+      "source_url": "https://metropool.nl/agenda/davy-knowles",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-19T22:49:14.637708+00:00"
+    },
+    "trockener-kecks-20271105": {
+      "state": "unavailable",
+      "reason": "no_unique_matching_event_schema",
+      "checked_at": "2026-11-19T22:49:14.637708+00:00"
+    }
+  },
   "alerts": []
 }

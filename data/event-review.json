@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-11-19T14:44:16.281270+00:00",
+  "generated_at": "2026-11-19T22:49:14.371289+00:00",
   "description": "Candidates only, not confirmed concerts or ticket status",
   "stats": {
     "checked": 100,
-    "structured_events": 205,
+    "structured_events": 312,
     "needs_review": 47,
     "failed": 2
   },
@@ -278,9 +278,9 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Trixie Whitley",
-      "date": "2026-11-20",
-      "venue": "Jack Daniel&#x27;s Stage, Hengelo",
+      "name": "Frank Meijer Kampvuuravond Experience",
+      "date": "2026-11-21",
+      "venue": "Bud Stage, Hengelo",
       "city": "Hengelo",
       "performer": "",
       "price": null,
@@ -289,8 +289,8 @@
       "event_type": [
         "TheaterEvent"
       ],
-      "schema_url": "https://metropool.nl/agenda/trixie-whitley",
-      "source_url": "https://metropool.nl/agenda/trixie-whitley",
+      "schema_url": "https://metropool.nl/agenda/frank-meijer-kampvuuravond-experience",
+      "source_url": "https://metropool.nl/agenda/frank-meijer-kampvuuravond-experience",
       "source_venue": "Metropool",
       "confidence": "review_schema",
       "review_required": true
@@ -389,9 +389,9 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Frank Meijer Kampvuuravond Experience",
+      "name": "Popronde: Eyesores &#x2B; Semuta",
       "date": "2026-11-21",
-      "venue": "Bud Stage, Hengelo",
+      "venue": "Jack Daniel&#x27;s Stage, Hengelo",
       "city": "Hengelo",
       "performer": "",
       "price": null,
@@ -400,8 +400,8 @@
       "event_type": [
         "TheaterEvent"
       ],
-      "schema_url": "https://metropool.nl/agenda/frank-meijer-kampvuuravond-experience",
-      "source_url": "https://metropool.nl/agenda/frank-meijer-kampvuuravond-experience",
+      "schema_url": "https://metropool.nl/agenda/popronde-eyesores-semuta",
+      "source_url": "https://metropool.nl/agenda/popronde-eyesores-semuta",
       "source_venue": "Metropool",
       "confidence": "review_schema",
       "review_required": true
@@ -464,10 +464,10 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Popronde: Eyesores &#x2B; Semuta",
+      "name": "De Kift",
       "date": "2026-11-21",
-      "venue": "Jack Daniel&#x27;s Stage, Hengelo",
-      "city": "Hengelo",
+      "venue": "Metropool Almelo",
+      "city": "Almelo",
       "performer": "",
       "price": null,
       "currency": null,
@@ -475,8 +475,8 @@
       "event_type": [
         "TheaterEvent"
       ],
-      "schema_url": "https://metropool.nl/agenda/popronde-eyesores-semuta",
-      "source_url": "https://metropool.nl/agenda/popronde-eyesores-semuta",
+      "schema_url": "https://metropool.nl/agenda/de-kift",
+      "source_url": "https://metropool.nl/agenda/de-kift",
       "source_venue": "Metropool",
       "confidence": "review_schema",
       "review_required": true
@@ -532,10 +532,10 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "De Kift",
+      "name": "Noah Derksen",
       "date": "2026-11-21",
-      "venue": "Metropool Almelo",
-      "city": "Almelo",
+      "venue": "Vestzak, Enschede",
+      "city": "Enschede",
       "performer": "",
       "price": null,
       "currency": null,
@@ -543,8 +543,8 @@
       "event_type": [
         "TheaterEvent"
       ],
-      "schema_url": "https://metropool.nl/agenda/de-kift",
-      "source_url": "https://metropool.nl/agenda/de-kift",
+      "schema_url": "https://metropool.nl/agenda/noah-derksen",
+      "source_url": "https://metropool.nl/agenda/noah-derksen",
       "source_venue": "Metropool",
       "confidence": "review_schema",
       "review_required": true
@@ -618,9 +618,9 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Noah Derksen",
+      "name": "Spanish Heat",
       "date": "2026-11-21",
-      "venue": "Vestzak, Enschede",
+      "venue": "Saxion Stage, Enschede",
       "city": "Enschede",
       "performer": "",
       "price": null,
@@ -629,26 +629,62 @@
       "event_type": [
         "TheaterEvent"
       ],
-      "schema_url": "https://metropool.nl/agenda/noah-derksen",
-      "source_url": "https://metropool.nl/agenda/noah-derksen",
+      "schema_url": "https://metropool.nl/agenda/spanish-heat",
+      "source_url": "https://metropool.nl/agenda/spanish-heat",
       "source_venue": "Metropool",
       "confidence": "review_schema",
       "review_required": true
     },
     {
-      "name": "Bouw een Hebocon battle-bot - NXT Lab (7+)",
-      "date": "2026-11-19",
+      "name": "Foto-expositie Verhalen van Verborgen Kracht - Tara van Meeteren",
+      "date": "2026-10-22",
       "venue": "",
       "city": "",
       "performer": "",
-      "price": 7.5,
-      "currency": "EUR",
-      "availability": "InStock",
+      "price": null,
+      "currency": null,
+      "availability": null,
       "event_type": [
         "TheaterEvent"
       ],
       "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bieb/agenda/bouw-een-hebocon-battle-bot",
+      "source_url": "https://denieuwekolk.nl/bieb/agenda/fotoexpositie-verhalen-van-verborgen-kracht-10050486",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Foto-expositie Verhalen van Verborgen Kracht - Tara van Meeteren",
+      "date": "2026-10-23",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bieb/agenda/fotoexpositie-verhalen-van-verborgen-kracht-10050486",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Foto-expositie Verhalen van Verborgen Kracht - Tara van Meeteren",
+      "date": "2026-10-24",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bieb/agenda/fotoexpositie-verhalen-van-verborgen-kracht-10050486",
       "source_venue": "DNK Assen",
       "confidence": "incomplete",
       "review_required": true
@@ -686,110 +722,6 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Spanish Heat",
-      "date": "2026-11-21",
-      "venue": "Saxion Stage, Enschede",
-      "city": "Enschede",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": "https://metropool.nl/agenda/spanish-heat",
-      "source_url": "https://metropool.nl/agenda/spanish-heat",
-      "source_venue": "Metropool",
-      "confidence": "review_schema",
-      "review_required": true
-    },
-    {
-      "name": "Carnaval",
-      "date": "2026-11-11",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/carnaval",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "name": "Carnaval",
-      "date": "2026-11-12",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/carnaval",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "name": "Carnaval",
-      "date": "2026-11-13",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/carnaval",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "source_url": "https://alteweberei.de/produktion/veteranen-in-der-weberei/",
-      "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Veteranen in der Weberei",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "International Student LiedDuo Competition",
-      "date": "2026-11-22",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "performer": "",
-      "price": 16.5,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "Event"
-      ],
-      "schema_url": "https://www.spotgroningen.nl/programma/international-student-liedduo-competition-2/",
-      "source_url": "https://www.spotgroningen.nl/programma/international-student-liedduo-competition-2/",
-      "source_venue": "SPOT Groningen",
-      "confidence": "review_schema",
-      "review_required": true
-    },
-    {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33126/the-bruceband-plays-best-of-springsteen-the-e-street-band",
-      "source_venue": "Hedon Zwolle",
-      "link_title": "vr 24 sep. 18:30 THE BRUCEBAND PLAYS BEST OF SPRINGSTEEN & THE E-STREET BAND",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
       "name": "JazzRock Caf&#xE9; - Mr. Fusion",
       "date": "2026-11-22",
       "venue": "Muziekcaf&#xE9;, Hengelo",
@@ -806,178 +738,6 @@
       "source_venue": "Metropool",
       "confidence": "review_schema",
       "review_required": true
-    },
-    {
-      "name": "Wen Er Maar Aan",
-      "date": "2026-10-08",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "name": "Wen Er Maar Aan",
-      "date": "2026-10-09",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "name": "Wen Er Maar Aan",
-      "date": "2026-10-09",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "source_url": "https://alteweberei.de/produktion/stadtaffen/",
-      "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Stadtaffen",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Triggerfinger",
-      "date": "2026-11-22",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "performer": "",
-      "price": 43.0,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "Event"
-      ],
-      "schema_url": "https://www.spotgroningen.nl/programma/triggerfinger-4/",
-      "source_url": "https://www.spotgroningen.nl/programma/triggerfinger-4/",
-      "source_venue": "SPOT Groningen",
-      "confidence": "review_schema",
-      "review_required": true
-    },
-    {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33124/stones-sessions",
-      "source_venue": "Hedon Zwolle",
-      "link_title": "do 22 apr. 18:30 STONES SESSIONS",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "I Play Rocky",
-      "date": "2026-11-19",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": 13.0,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "name": "I Play Rocky",
-      "date": "2026-11-20",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": 13.5,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "name": "I Play Rocky",
-      "date": "2026-11-21",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": 13.5,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "source_url": "https://alteweberei.de/produktion/the-fantastic-blues-brothers/",
-      "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "The Fantastic Blues Brothers",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Bert Visscher en het Noordpool Strijkkwartet",
-      "date": "2026-11-22",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "performer": "",
-      "price": 29.5,
-      "currency": "EUR",
-      "availability": "SoldOut",
-      "event_type": [
-        "Event"
-      ],
-      "schema_url": "https://www.spotgroningen.nl/programma/bert-visscher-en-het-noordpool-strijkkwartet-2/",
-      "source_url": "https://www.spotgroningen.nl/programma/bert-visscher-en-het-noordpool-strijkkwartet-2/",
-      "source_venue": "SPOT Groningen",
-      "confidence": "review_schema",
-      "review_required": true
-    },
-    {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33125/90s-now",
-      "source_venue": "Hedon Zwolle",
-      "link_title": "za 13 feb. 20:00 90'S NOW",
-      "review_required": true,
-      "reason": "no_music_event_schema"
     },
     {
       "name": "The Hunger Games: Sunrise on the Reaping",
@@ -1034,34 +794,120 @@
       "review_required": true
     },
     {
-      "source_url": "https://alteweberei.de/produktion/nordhorner-nacht-der-champions/",
+      "source_url": "https://alteweberei.de/produktion/veteranen-in-der-weberei/",
       "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Nordhorner Nacht der Champions",
+      "link_title": "Veteranen in der Weberei",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Combattimento",
-      "date": "2026-11-23",
+      "name": "International Student LiedDuo Competition",
+      "date": "2026-11-22",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
-      "price": 34.75,
+      "price": 16.5,
       "currency": "EUR",
       "availability": "InStock",
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/combattimento-2/",
-      "source_url": "https://www.spotgroningen.nl/programma/combattimento-2/",
+      "schema_url": "https://www.spotgroningen.nl/programma/international-student-liedduo-competition-2/",
+      "source_url": "https://www.spotgroningen.nl/programma/international-student-liedduo-competition-2/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
     },
     {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33123/maquina",
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33126/the-bruceband-plays-best-of-springsteen-the-e-street-band",
       "source_venue": "Hedon Zwolle",
-      "link_title": "vr 05 feb. 19:30 MAQUINA.",
+      "link_title": "vr 24 sep. 18:30 THE BRUCEBAND PLAYS BEST OF SPRINGSTEEN & THE E-STREET BAND",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Schrijfcafé - Ontmoet, schrijf en laat je inspireren",
+      "date": "2026-07-03",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bieb/agenda/schrijfcafe",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Schrijfcafé - Ontmoet, schrijf en laat je inspireren",
+      "date": "2026-07-10",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bieb/agenda/schrijfcafe",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Schrijfcafé - Ontmoet, schrijf en laat je inspireren",
+      "date": "2026-07-17",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bieb/agenda/schrijfcafe",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "source_url": "https://alteweberei.de/produktion/stadtaffen/",
+      "source_venue": "Alte Weberei Nordhorn",
+      "link_title": "Stadtaffen",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Triggerfinger",
+      "date": "2026-11-22",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "performer": "",
+      "price": 43.0,
+      "currency": "EUR",
+      "availability": "InStock",
+      "event_type": [
+        "Event"
+      ],
+      "schema_url": "https://www.spotgroningen.nl/programma/triggerfinger-4/",
+      "source_url": "https://www.spotgroningen.nl/programma/triggerfinger-4/",
+      "source_venue": "SPOT Groningen",
+      "confidence": "review_schema",
+      "review_required": true
+    },
+    {
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33124/stones-sessions",
+      "source_venue": "Hedon Zwolle",
+      "link_title": "do 22 apr. 18:30 STONES SESSIONS",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -1115,6 +961,178 @@
       ],
       "schema_url": null,
       "source_url": "https://denieuwekolk.nl/bios/agenda/ebenezer-a-christmas-carol",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "source_url": "https://alteweberei.de/produktion/the-fantastic-blues-brothers/",
+      "source_venue": "Alte Weberei Nordhorn",
+      "link_title": "The Fantastic Blues Brothers",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Bert Visscher en het Noordpool Strijkkwartet",
+      "date": "2026-11-22",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "performer": "",
+      "price": 29.5,
+      "currency": "EUR",
+      "availability": "SoldOut",
+      "event_type": [
+        "Event"
+      ],
+      "schema_url": "https://www.spotgroningen.nl/programma/bert-visscher-en-het-noordpool-strijkkwartet-2/",
+      "source_url": "https://www.spotgroningen.nl/programma/bert-visscher-en-het-noordpool-strijkkwartet-2/",
+      "source_venue": "SPOT Groningen",
+      "confidence": "review_schema",
+      "review_required": true
+    },
+    {
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33125/90s-now",
+      "source_venue": "Hedon Zwolle",
+      "link_title": "za 13 feb. 20:00 90'S NOW",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Wen Er Maar Aan",
+      "date": "2026-10-08",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Wen Er Maar Aan",
+      "date": "2026-10-09",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Wen Er Maar Aan",
+      "date": "2026-10-09",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "source_url": "https://alteweberei.de/produktion/nordhorner-nacht-der-champions/",
+      "source_venue": "Alte Weberei Nordhorn",
+      "link_title": "Nordhorner Nacht der Champions",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Combattimento",
+      "date": "2026-11-23",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "performer": "",
+      "price": 34.75,
+      "currency": "EUR",
+      "availability": "InStock",
+      "event_type": [
+        "Event"
+      ],
+      "schema_url": "https://www.spotgroningen.nl/programma/combattimento-2/",
+      "source_url": "https://www.spotgroningen.nl/programma/combattimento-2/",
+      "source_venue": "SPOT Groningen",
+      "confidence": "review_schema",
+      "review_required": true
+    },
+    {
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33123/maquina",
+      "source_venue": "Hedon Zwolle",
+      "link_title": "vr 05 feb. 19:30 MAQUINA.",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "De Club van Sinterklaas film: Paniek in het Pietendorp",
+      "date": "2026-10-01",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/de-club-van-sinterklaas-film-paniek-in-het-pietendorp",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "De Club van Sinterklaas film: Paniek in het Pietendorp",
+      "date": "2026-10-03",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/de-club-van-sinterklaas-film-paniek-in-het-pietendorp",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "De Club van Sinterklaas film: Paniek in het Pietendorp",
+      "date": "2026-10-04",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/de-club-van-sinterklaas-film-paniek-in-het-pietendorp",
       "source_venue": "DNK Assen",
       "confidence": "incomplete",
       "review_required": true
@@ -1152,7 +1170,7 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "How to Rob a Bank",
+      "name": "Laatbloeier",
       "date": "2026-11-12",
       "venue": "",
       "city": "",
@@ -1164,13 +1182,31 @@
         "TheaterEvent"
       ],
       "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
+      "source_url": "https://denieuwekolk.nl/bios/agenda/laatbloeier2",
       "source_venue": "DNK Assen",
       "confidence": "incomplete",
       "review_required": true
     },
     {
-      "name": "How to Rob a Bank",
+      "name": "Laatbloeier",
+      "date": "2026-11-12",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/laatbloeier2",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Laatbloeier",
       "date": "2026-11-13",
       "venue": "",
       "city": "",
@@ -1182,25 +1218,7 @@
         "TheaterEvent"
       ],
       "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "name": "How to Rob a Bank",
-      "date": "2026-11-14",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
+      "source_url": "https://denieuwekolk.nl/bios/agenda/laatbloeier2",
       "source_venue": "DNK Assen",
       "confidence": "incomplete",
       "review_required": true
@@ -1572,6 +1590,42 @@
       "link_title": "za 17 apr. 18:30 EDWIN EVERS BAND",
       "review_required": true,
       "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Wabi Sabi Theater i.s.m. HIIIT & Het Houten Huis - CONTRA (12+)",
+      "date": "2026-09-23",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/theater/agenda/wabi-sabi-theater-i-s-m-hiiit-het-houten-huis",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Wabi Sabi Theater i.s.m. HIIIT & Het Houten Huis - CONTRA (12+)",
+      "date": "2026-12-04",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": 24.5,
+      "currency": "EUR",
+      "availability": "InStock",
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/theater/agenda/wabi-sabi-theater-i-s-m-hiiit-het-houten-huis",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
     }
   ]
 }
