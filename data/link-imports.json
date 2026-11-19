@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-19",
+  "description": "Openbare, handmatig bij officiële podia gecontroleerde bronvermeldingen voor het aanvullen van een eigen concertformulier. Geen persoonlijke keuzes of kaartgegevens.",
+  "events": [
+    {
+      "sourceUrl": "https://metropool.nl/agenda/steve-n-seagulls",
+      "name": "Steve 'n' Seagulls",
+      "date": "2026-12-03",
+      "time": "21:30",
+      "venue": "Bud Stage",
+      "city": "Hengelo",
+      "genre": "Folk/Country",
+      "price": 28,
+      "currency": "EUR",
+      "price_note": "Voorverkoop; deurverkoop €31",
+      "support": "PK Keränen",
+      "source_name": "Metropool (officiële agenda, gecontroleerd 19-11-2026)",
+      "review_required": true,
+      "date_inferred": false
+    }
+  ]
+}
