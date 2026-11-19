@@ -141,3 +141,15 @@ De JSON-export onder Updates & beheer bevat nu naast de concerten ook de volledi
 De handmatig ingestelde startvoorkeur gaat uit naar Americana, country, roots, folk, soul en blues. Interessant en Kaarten gekocht zijn beperkt positieve signalen. Een afwijzing telt niet negatief: reistijd, geld of een agendaconflict kunnen de reden zijn. Lagere reviews kunnen de genrescore wel afzwakken. Een sorteeroptie toont de persoonlijke match. Ook nieuwe kandidaten krijgen een inschatting.
 
 De score wordt lokaal opnieuw berekend bij iedere keuze en beoordeling. Het is een transparante vuistregel op basis van genre en bestaande smaakmatches, geen Spotify- of audiomodel. Het systeem leest geen songteksten en weet niet waarom je iets afwijst. Bij weinig gegevens is de schatting onzeker. Cloudsync, indien geactiveerd, synchroniseert persoonlijke keuzes en beoordelingen en niet het berekende resultaat.
+
+## Concertlinks corrigeren (19 november 2026)
+
+Bij een audit van de 110 concerten bleken 98 links een algemene website of programma-ingang te zijn. Er zijn 26 links vervangen door specifieke pagina's uit de officiële podiumagenda's, met een passende artiest en datum. De overige 72 algemene links zijn gemarkeerd als `venue_or_generic`.
+
+De website mag een algemene theaterhomepage niet tonen als officiële concertpagina. In plaats daarvan biedt hij **Zoek optreden** aan: een gerichte Google-zoekopdracht met het oorspronkelijke podiumdomein, artiest, datum en plaats. Dit is geen bevestigde ticketlink. Bij het concert staat het label **Geen directe concertlink**.
+
+De 12 reeds specifieke links zijn voorlopig gemarkeerd als `event_page_unverified` en krijgen de tekst **Concertlink (controleren)** totdat ook hun inhoud en exacte optreden onafhankelijk zijn gecontroleerd.
+
+De dagelijkse agendaworkflow bouwt ook `data/link-review.json`. Dit zijn alleen voorstellen waarbij een artiest, datum en hetzelfde officiële domein overeenkomen. Het script past `data/concerts.json` bewust niet automatisch aan. Handmatige controle van de betreffende pagina is nodig.
+
+Als op een apparaat eerder een concertfoto handmatig is ingesteld, blijven die instellingen bewaard, maar neemt de actuele centrale catalogus voor datzelfde concert de voorrang bij de officiële URL. Dit voorkomt terugkeer van oude algemene links via lokale opslag.
