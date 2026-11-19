@@ -188,7 +188,7 @@ function tasteResult(e){
  const comparable=String(e.match||'').toLowerCase();
  if(likedArtists.some(x=>x.length>5&&comparable.includes(x)))learnedValue+=.35;
  const editorial=Number.isFinite(Number(e.quality))?Number(e.quality):7;
- const personal=Math.max(1,Math.min(10,editorial+baseline+Math.max(-2,Math.min(1.7,learnedValue))));
+ const personal=Math.max(1,Math.min(10,6.5+(editorial-7.5)*0.62+baseline+Math.max(-1.8,Math.min(2.0,learnedValue))));
  return {score:Math.round(personal*10)/10,signals:profile.examples,reason:reasons.slice(0,3).join(', '),source:profile.examples?'Persoonlijke inschatting':'Startprofiel'};
 }
 function tasteMarkup(){
