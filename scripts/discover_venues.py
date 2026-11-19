@@ -21,25 +21,26 @@ OUT = ROOT / "data/discovery-candidates.json"
 VENUES = [
     ("SPOT Groningen", "https://www.spotgroningen.nl/programma/"),
     ("VERA Groningen", "https://www.vera-groningen.nl/"),
-    ("Hedon Zwolle", "https://www.hedon-zwolle.nl/programma/"),
+    ("Hedon Zwolle", "https://www.hedon-zwolle.nl/"),
     ("Metropool", "https://metropool.nl/agenda/"),
     ("De Amer", "https://www.deamer.nl/"),
     ("d'Rentmeester", "https://www.drentmeester.nl/"),
     ("De Vegafabriek", "https://www.devegafabriek.nl/"),
     ("Podium34", "https://www.podium34.nl/"),
-    ("Klein Paradiso", "https://kleinparadiso.nl/"),
+    ("Klein Paradiso", "https://delibre.nl/klein-paradiso/"),
     ("Nijend24", "https://www.nijend24.nl/"),
     ("Podium Zuidhaege", "https://podiumzuidhaege.nl/"),
-    ("De Tamboer", "https://www.detamboer.nl/"),
+    ("De Tamboer", "https://detamboer.nl/programma"),
     ("ATLAS Theater", "https://www.atlastheater.nl/"),
     ("DNK Assen", "https://www.dnk.nl/"),
-    ("Alte Weberei Nordhorn", "https://alteweberei.de/veranstaltungen/"),
+    ("Alte Weberei Nordhorn", "https://alteweberei.de/programm/"),
     ("EmslandArena Lingen", "https://www.emslandarena.com/"),
-    ("Het Podium Hoogeveen", "https://www.hetpodium.nl/"),
+    ("Het Podium Hoogeveen", "https://detamboer.nl/"),
     ("Poppunt Drenthe", "https://poppuntdrenthe.nl/"),
 ]
 HEADERS = {"User-Agent": "ConcertRadar personal music calendar/1.0", "Accept": "text/html,application/xhtml+xml"}
 PATTERNS = ("/programma/", "/agenda/", "/events/", "/event/", "/voorstelling/", "/productie/", "/produktion/", "/veranstaltung/", "/concert/")
+NONMUSIC = re.compile(r"cabaret|musical|theaterweekend|dansvoorstelling|stand-up|comed(y|ie)|toneel|lezing|rondleiding|workshop|kindervoorstelling", re.I)
 EXCLUDE = re.compile(r"/(tickets?|login|contact|privacy|cookies|nieuws|news|over-ons|about|zoeken|search|account|winkelwagen)(/|$)", re.I)
 
 class Links(HTMLParser):
@@ -97,7 +98,7 @@ def collect(name, page):
         if clean in seen or clean==normalize(base):
             continue
         seen.add(clean)
-        out.append({"url":clean,"title":title,"venue":name,"discovery_source":page})
+        out.append({"url":clean,"title":title,"venue":name,"discovery_source":page,"review_priority":"low_nonmusic" if NONMUSIC.search(title) else "review"})
     return out[:250]
 
 def main():
