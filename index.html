@@ -94,7 +94,7 @@ async function loadPublishedData(){
       discoveriesUpdated=data.updated_at||'';
     }
     if(changesResponse.ok){const data=await changesResponse.json();changeAlerts=Array.isArray(data.alerts)?data.alerts:[];}
-    if(venuesResponse.ok){const data=await venuesResponse.json();venueLocations={...data.venues,origin:data.origin};}
+    if(venuesResponse.ok){const data=await venuesResponse.json();venueLocations={venues:data.venues||{},origin:data.origin||null};}
     if(sourceResponse.ok){const data=await sourceResponse.json();sourceChecks={checked_at:data.checked_at||null,checks:data.checks||{},alerts:Array.isArray(data.alerts)?data.alerts:[]};}
     initializeNotices();
     render();
@@ -1072,7 +1072,7 @@ function noticeMarkup(){
 function travelSettings(){
  const x=appSettings.travelLimits||{};
  const clamp=(v,fallback)=>Number.isFinite(Number(v))?Math.max(10,Math.min(750,Math.round(Number(v)))):fallback;
- return {regular:clamp(x.regular,90),special:clamp(x.special,200),enabled:x.enabled!==false};
+ return {regular:clamp(x.regular,90),special:clamp(x.special,200),enabled:x.enabled===true};
 }
 function distanceKm(e){
  const p=venuePoint(e);
@@ -1138,7 +1138,7 @@ function bindNewDashboard(){
  document.querySelectorAll('[data-artist-profile]').forEach(b=>b.onclick=()=>showArtistProfile(b.dataset.artistProfile));
  document.querySelectorAll('[data-dismiss-notice]').forEach(b=>b.onclick=()=>dismissNotice(b.dataset.dismissNotice));
  const travel=document.getElementById('travelForm');
- if(travel)travel.onsubmit=ev=>{ev.preventDefault();const regular=Number(document.getElementById('regularKm').value),special=Number(document.getElementById('specialKm').value);if(![regular,special].every(x=>Number.isInteger(x)&&x>=10&&x<=750)){alert('Gebruik hele kilometers tussen 10 en 750.');return;}appSettings.travelLimits={regular,special,enabled:document.getElementById('travelEnabled').checked};persist();render()};
+ if(travel)travel.onsubmit=ev=>{ev.preventDefault();const regular=Number(document.getElementById('regularKm').value),special=Number(document.getElementById('specialKm').value);if(![regular,special].every(x=>Number.isInteger(x)&&x>=10&&x<=750)){alert('Gebruik hele kilometers tussen 10 en 750.');return;}appSettings.travelLimits={regular,special,enabled:document.getElementById('travelEnabled').checked};appSettings.travelUpdatedAt=new Date().toISOString();persist();render()};
  const add=document.getElementById('addBusyDate');
  if(add)add.onclick=()=>{const d=document.getElementById('busyDate').value;if(!normalizeDate(d)){alert('Kies een geldige datum.');return;}saveBusyDates([...busyDates,d])};
  const clear=document.getElementById('clearBusyDates');
@@ -1296,7 +1296,12 @@ async function cloudPull(){
      const preferRemoteTaste=remoteTimestamp>localTimestamp;
      const preferRemoteDNA=(Date.parse(remoteSettings.musicDNAUpdatedAt||'')||0)>(Date.parse(appSettings.musicDNAUpdatedAt||'')||0);
      const preferRemoteListen=(Date.parse(remoteSettings.listeningUpdatedAt||'')||0)>(Date.parse(appSettings.listeningUpdatedAt||'')||0);
+     const preferRemoteTravel=(Date.parse(remoteSettings.travelUpdatedAt||'')||0)>(Date.parse(appSettings.travelUpdatedAt||'')||0);
+     const preferRemoteNotices=(Date.parse(remoteSettings.smartNotices?.updated_at||'')||0)>(Date.parse(appSettings.smartNotices?.updated_at||'')||0);
      appSettings={...remoteSettings,...appSettings,
+       travelLimits:preferRemoteTravel?remoteSettings.travelLimits:appSettings.travelLimits,
+       travelUpdatedAt:preferRemoteTravel?remoteSettings.travelUpdatedAt:appSettings.travelUpdatedAt,
+       smartNotices:preferRemoteNotices?remoteSettings.smartNotices:appSettings.smartNotices,
        tasteWords:preferRemoteTaste?remoteSettings.tasteWords:appSettings.tasteWords,
        tasteWordsUpdatedAt:preferRemoteTaste?remoteSettings.tasteWordsUpdatedAt:appSettings.tasteWordsUpdatedAt,
        musicDNA:preferRemoteDNA?remoteSettings.musicDNA:appSettings.musicDNA,
