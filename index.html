@@ -66,13 +66,14 @@ let catalogLoaded=false;
 async function loadPublishedData(){
   if(location.protocol==='file:')return;
   try{
-    const [eventsResponse,photosResponse,discoveriesResponse,changesResponse,venuesResponse,sourceResponse]=await Promise.all([
+    const [eventsResponse,photosResponse,discoveriesResponse,changesResponse,venuesResponse,sourceResponse,profilesResponse]=await Promise.all([
       fetch('./data/concerts.json',{cache:'no-store'}),
       fetch('./data/photos.json',{cache:'no-store'}),
       fetch('./data/new-discoveries.json',{cache:'no-store'}),
       fetch('./data/changes.json',{cache:'no-store'}),
       fetch('./data/venue-locations.json',{cache:'no-store'}),
-      fetch('./data/source-checks.json',{cache:'no-store'})
+      fetch('./data/source-checks.json',{cache:'no-store'}),
+      fetch('./data/artist-profiles.json',{cache:'no-store'})
     ]);
     if(eventsResponse.ok){
       const data=await eventsResponse.json();
@@ -96,6 +97,7 @@ async function loadPublishedData(){
     if(changesResponse.ok){const data=await changesResponse.json();changeAlerts=Array.isArray(data.alerts)?data.alerts:[];}
     if(venuesResponse.ok){const data=await venuesResponse.json();venueLocations={venues:data.venues||{},origin:data.origin||null};}
     if(sourceResponse.ok){const data=await sourceResponse.json();sourceChecks={checked_at:data.checked_at||null,checks:data.checks||{},alerts:Array.isArray(data.alerts)?data.alerts:[]};}
+    if(profilesResponse.ok){const data=await profilesResponse.json();curatedArtistProfiles=data.artists||{};}
     initializeNotices();
     render();
     startPhotoFetch();
@@ -996,6 +998,7 @@ const BUSY_KEY='concertradar-busy-dates-v1';
 let busyDates=[];
 try{const stored=JSON.parse(localStorage.getItem(BUSY_KEY)||'[]');busyDates=Array.isArray(stored)?stored.filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x)).slice(0,1000):[]}catch{}
 let sourceChecks={checked_at:null,checks:{},alerts:[]};
+let curatedArtistProfiles={};
 function sourceDetail(e){return sourceChecks.checks?.[e.id]||null}
 function sourceLabel(e){
  const check=sourceDetail(e);
@@ -1018,17 +1021,18 @@ function artistProfile(e){
  const sources=[...new Set(matches.filter(hasDirectConcertLink).map(x=>x.url))].slice(0,3);
  const own=tasteWords().filter(w=>w.kind==='artiest'&&key.includes(tasteNorm(w.term)));
  const explicitly=own.length?own.map(w=>w.term+' ('+(w.weight>0?'+':'')+w.weight+')'):[];
- return {name:artistTokens(e)[0],genres,notes,sources,own:explicitly,count:matches.length};
+ return {name:artistTokens(e)[0],genres,notes,sources,own:explicitly,count:matches.length,curated:curatedArtistProfiles[key]||null};
 }
 function artistProfileMarkup(e){
  const p=artistProfile(e);
  return '<div class="artist-profile"><h3>'+h(p.name)+'</h3>'+
- '<p class="muted">Profiel op basis van '+p.count+' bestaande concertvermelding(en). Geen externe biografie of audio-analyse.</p>'+
+ '<p class="muted">Profiel op basis van '+p.count+' bestaande concertvermelding(en). Aanvullende biografie alleen wanneer een bron is vermeld. Geen audio-analyse.</p>'+
  (p.genres.length?'<p><b>Vermelde stijlen:</b> '+h(p.genres.join(', '))+'</p>':'<p class="muted">Nog geen bevestigde genregegevens.</p>')+
  (p.own.length?'<p><b>Jouw referentie:</b> '+h(p.own.join(', '))+'</p>':'')+
+ (p.curated?'<h4>Bronvermeld artiestprofiel</h4>'+[['styles','Stijlen'],['voice','Stemgeluid'],['influences','Invloeden'],['lyrics','Songteksten'],['instrumentation','Instrumentatie']].map(([field,label])=>'<p><b>'+label+':</b> '+h(Array.isArray(p.curated[field])?p.curated[field].join(', '):p.curated[field]||'Nog niet betrouwbaar vastgesteld')+'</p>').join('')+'<p><b>Bronnen:</b> '+(p.curated.sources||[]).map((src,i)=>'<a class="btn" target="_blank" rel="noopener noreferrer" href="'+h(src.url)+'">'+h(src.label||'Bron '+(i+1))+'</a> ').join('')+'</p>':'')+
  (p.notes.length?'<h4>Wat er bij de concerten staat</h4><ul>'+p.notes.map(note=>'<li>'+h(note)+'</li>').join('')+'</ul>':'<p class="muted">Er is nog geen inhoudelijke concertbeschrijving beschikbaar.</p>')+
  (p.sources.length?'<p><b>Concertbronnen:</b> '+p.sources.map((url,i)=>'<a class="btn" target="_blank" rel="noopener noreferrer" href="'+h(url)+'">Bron '+(i+1)+'</a>').join(' ')+'</p>':'<p class="muted">Geen directe podiumbron beschikbaar.</p>')+
- '<p class="muted">Stemtype, tekstthema en invloeden blijven onbekend tenzij ze expliciet in de broninformatie staan.</p></div>';
+ '<p class="muted">Onbekende kenmerken worden niet aangevuld met aannames. Dit is geen audio- of songtekstanalyse.</p></div>';
 }
 function showArtistProfile(id){
  const e=all().find(x=>x.id===id);
