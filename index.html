@@ -721,7 +721,7 @@ async function cloudConnect(){
  }catch(e){cloudStatus='Cloud niet bereikbaar: '+String(e.message||e);cloudClient=null;return false}
 }
 async function cloudPull(){
- if(!cloudClient||!cloudUser||cloudPulling)return;
+ if(!cloudClient||!cloudUser||cloudPulling||cloudPushing)return;
  cloudPulling=true;
  try{
    const {data,error}=await cloudClient.from('concertradar_user_state').select('payload').eq('user_id',cloudUser.id).maybeSingle();
@@ -737,7 +737,7 @@ async function cloudPull(){
    cloudReady=true;
    cloudStatus='Verbonden en bijgewerkt om '+new Date().toLocaleTimeString('nl-NL');
    await cloudPush();
-   if(state.tab==='sync'||state.tab==='dashboard'||state.tab==='booked')render();
+   if(state.tab==='sync'||state.tab==='dashboard'||state.tab==='booked'||state.tab==='history'||state.tab==='calendar')render();
  }catch(e){cloudStatus='Cloudophalen mislukt, lokaal bewaard: '+String(e.message||e)}
  finally{cloudPulling=false}
 }
@@ -878,5 +878,8 @@ const monthBack=document.getElementById('monthBack');if(monthBack)monthBack.oncl
 const monthNext=document.getElementById('monthNext');if(monthNext)monthNext.onclick=()=>shiftMonth(1);
 const exportCalendar=document.getElementById('exportCalendar');
 if(exportCalendar)exportCalendar.onclick=()=>downloadText('ConcertRadar-mijn-agenda.ics',calendarIcs(),'text/calendar;charset=utf-8');}
-render();startPhotoFetch();loadPublishedData();if("serviceWorker" in navigator && location.protocol==="https:"){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(console.warn));}
+render();startPhotoFetch();loadPublishedData();
+window.addEventListener('focus',()=>{if(cloudReady&&!cloudPulling)cloudPull()});
+setInterval(()=>{if(cloudReady&&!cloudPulling&&document.visibilityState==='visible')cloudPull()},120000);
+if("serviceWorker" in navigator && location.protocol==="https:"){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(console.warn));}
 </script></body></html>
