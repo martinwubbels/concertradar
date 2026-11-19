@@ -96,3 +96,13 @@ Onder **Concert toevoegen** staat bovenaan **Link naar officiële concertpagina*
 Als de pagina een `Event` of `MusicEvent` bevat met datum, neemt de gebruiker de gevonden gegevens via **Overnemen** over: evenementnaam, datum, aanvang, zaal, plaats en eventueel prijs in EUR. De input wordt **niet** automatisch opgeslagen of gepubliceerd. Als alleen de paginatitel beschikbaar is, wordt uitsluitend die getoond; er worden geen ontbrekende tijden, zalen of prijzen gegokt. Controleer ieder veld vóór opslaan.
 
 **Privacy en beperkingen:** voer alleen een **publieke** evenementenlink in, nooit een persoonlijke boekingsbevestiging of link met toegangscode. Microlink ontvangt de link en kent voor gratis gebruik beperkingen (momenteel circa 25 verzoeken per dag zonder sleutel). Sommige podia blokkeren metadataextractie. Google-zoekresultaten worden niet automatisch uitgelezen; de afzonderlijke zoekfunctie blijft beschikbaar. De externe link en alle eigen concertgegevens blijven vervolgens in de browser opgeslagen. De functie is met gesimuleerde schema.org-gegevens gevalideerd, maar nog niet end-to-end vanaf de gebruikersbrowser getest.
+
+## Concertimport: Metropool met volledige gegevens
+
+De gebruiker meldde dat bij `https://metropool.nl/agenda/steve-n-seagulls` alleen de paginatitel werd gevonden. Metropool toont de datum, locatie, voorverkoopprijs en aanvang in zichtbare tekst die niet altijd als JSON-LD in Microlink beschikbaar is.
+
+De import probeert nu daarnaast `main` en `body` als tekst te lezen via Microlink en heeft een gerichte parser voor Metropool met onderscheid tussen **zaal open**, **voorprogramma** en **aanvang hoofdact**. Het jaar wordt uit een korte datum alleen afgeleid wanneer nodig; de app waarschuwt dan dat het jaartal gecontroleerd moet worden. Bij verschillende prijzen wordt voorverkoop gebruikt.
+
+Een beperkte openbare broncache `data/link-imports.json` bevat reeds afzonderlijk gecontroleerde eventgegevens om deze URL direct betrouwbaar te kunnen invullen. Voor Steve 'n' Seagulls: 3 december 2026, Bud Stage Hengelo, hoofdact 21:30, voorverkoop €28, PK Keränen als support, volgens de op 19 november 2026 geraadpleegde officiële Metropoolpagina. Bij elke wijziging op de bron moet deze cache apart geactualiseerd worden; het is geen live prijs- of aanvanggarantie.
+
+Andere sites zijn afhankelijk van beschikbare openbare metadata en pagina-inhoud. De live werking van de uitgebreidere Microlink-selectors is nog niet in een gebruikersbrowser geverifieerd.
