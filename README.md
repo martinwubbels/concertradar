@@ -177,3 +177,11 @@ De woordwolk beïnvloedt rechtstreeks de persoonlijke muzieksmaakscore. De besta
 **Cruciaal:** de berekening zoekt letterlijke overeenkomsten in bestaande concertmetadata: artiestnaam en smaakmatch voor artiesten, genre voor muziekstijlen, omschrijving en genre voor kenmerken. Een woord als 'sterke songteksten' heeft pas invloed als het in de omschrijving staat. Dit is geen audio-, lyrics- of Spotify-analyse. Andere onbekende optredens worden niet automatisch van muziekstijl voorzien.
 
 Woorden worden bewaard in de bestaande persoonlijke instellingen en meegenomen in de JSON-back-up. Bij ingeschakelde Supabase-sync worden woordwolkgegevens op basis van de wijzigingstijd samengevoegd; als je tegelijk op twee apparaten wijzigt, wint de laatst bewaarde volledige woordwolk. Maak voor de eerste synchronisatie een JSON-export.
+
+## Vooringevulde muzieksmaak (november 2026)
+
+De interactieve woordwolk wordt eenmalig aangevuld met 24 bekende voorkeuren uit eerdere concertbesprekingen. Uitgesproken favorieten Willow Avalon en Henry Wagons krijgen gewicht +2. Overige als positief beoordeelde bands en geïnteresseerde acts krijgen +1. Voorkeur voor americana, country, roots, bluegrass, folk, soul, blues en alternatieve rock, sterke teksten en onderscheidende stem. Er zijn geen negatieve voorkeuren ingevuld zonder expliciete afkeer.
+
+**Bestaande keuzes worden niet overschreven**: per term en soort krijgt het eerder opgeslagen gewicht altijd voorrang. De versie-indicator `tasteSeedVersion: 1` verhindert dat een bewust verwijderd woord bij iedere herstart automatisch terugkeert. De eigen woorden staan in `settings.tasteWords` binnen de bestaande lokale opslag en worden via de optionele privésync opgeslagen. Bij een eerdere configuratie met 60 termen worden geen extra woorden opgedrongen.
+
+Ook voor deze woorden geldt: ze beïnvloeden de persoonlijke smaakscore alleen als beschikbare artiest-, genre- of beschrijvingsgegevens overeenkomen. De artiesten zijn gewichten voor aanbevelingen, niet automatisch een aankondiging van een toekomstig optreden.
