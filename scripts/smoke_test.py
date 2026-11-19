@@ -39,6 +39,12 @@ assert "function historyMarkup" in source
 assert "function dashboardMarkup" in source
 assert "function tasteResult" in source
 assert "function tasteMarkup" in source
+assert "function tasteCloudMarkup" in source
+assert "function saveTasteWord" in source
+assert "function removeTasteWord" in source
+assert "function tasteManualEffect" in source
+assert "function bindTasteCloud" in source
+assert "tasteWordsUpdatedAt" in source
 assert "function hasDirectConcertLink" in source
 assert "function eventSearchUrl" in source
 assert "function concertLinkLabel" in source

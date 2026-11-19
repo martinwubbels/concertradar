@@ -167,3 +167,13 @@ Toegevoegde concerten krijgen **geen verzonnen kwaliteitsscore**: `quality` en `
 De workflow slaat elke dag een audit op in `data/promotion-report.json` met aantal toegevoegde en geweigerde kandidaten en redenen. Twijfelgevallen blijven in `data/new-discoveries.json` of `data/event-review.json`. De masterlijst wordt alleen gewijzigd wanneer er daadwerkelijk nieuwe, voldoende zekere shows gevonden zijn. Een dag zonder toevoegingen is normaal.
 
 De extractie onderzoekt maximaal 100 kandidaatpagina's per run en bereikt niet alle podia, en de pagina's kunnen metadata ontbreken of de bot blokkeren. Daarom is dit geen complete regionale concertagenda. De eerste geplande automatische run moet na publicatie nog plaatsvinden. De automatische codecontrole voert ook de promotietests uit.
+
+## Bewerkbare smaakwoordwolk (november 2026)
+
+Het tabblad **Mijn muzieksmaak** heeft een interactieve woordwolk. Zelf ingevoerde artiesten, muziekstijlen of kenmerken krijgen een gewicht: **heel graag (+2)**, **graag (+1)**, **liever niet (-1)** of **absoluut niet (-2)**. Woorden worden groter bij een sterker gewicht. Groen staat voor positief, oranje voor negatief. Klik op een woord om het gewicht aan te passen of het woord te verwijderen. Gebruik het formulier om zelf woorden toe te voegen; voorgestelde woorden zijn optioneel en worden niet automatisch opgeslagen. Maximaal 60 woorden.
+
+De woordwolk beïnvloedt rechtstreeks de persoonlijke muzieksmaakscore. De bestaande redactionele score, concertgegevens en persoonlijke beoordelingen veranderen niet. De impact van alle handmatig gekozen woorden samen is begrensd om onrealistische scores te voorkomen.
+
+**Cruciaal:** de berekening zoekt letterlijke overeenkomsten in bestaande concertmetadata: artiestnaam en smaakmatch voor artiesten, genre voor muziekstijlen, omschrijving en genre voor kenmerken. Een woord als 'sterke songteksten' heeft pas invloed als het in de omschrijving staat. Dit is geen audio-, lyrics- of Spotify-analyse. Andere onbekende optredens worden niet automatisch van muziekstijl voorzien.
+
+Woorden worden bewaard in de bestaande persoonlijke instellingen en meegenomen in de JSON-back-up. Bij ingeschakelde Supabase-sync worden woordwolkgegevens op basis van de wijzigingstijd samengevoegd; als je tegelijk op twee apparaten wijzigt, wint de laatst bewaarde volledige woordwolk. Maak voor de eerste synchronisatie een JSON-export.
