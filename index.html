@@ -115,7 +115,7 @@ const today=new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'})
 let state={tab:'dashboard',search:'',city:'',genre:'',sort:'date',onlyFuture:true,scope:'all',mapRange:'90',calendarMonth:today.slice(0,7),editingId:''};
 const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}};
 let saved=read();let extra=Array.isArray(saved.extra)?saved.extra:[];let flags=saved.flags||{};let assessments=saved.assessments||{};let appSettings=saved.settings||{};
-const all=()=>[...new Map([...seed,...nationalSeed,...liveEvents,...extra].map(e=>[e.id,e])).values()].filter(e=>!e.deleted);
+const all=()=>{const mapped=new Map([...seed,...nationalSeed,...liveEvents].map(e=>[e.id,e]));for(const e of extra){const prior=mapped.get(e.id);mapped.set(e.id,prior&&!e.personal&&!e.id?.startsWith('handmatig-')?{...prior,...e,url:prior.url,link_status:prior.link_status}:e)}return [...mapped.values()].filter(e=>!e.deleted)};
 const scopeOf=e=>e.scope||(['Amsterdam','Rotterdam','Utrecht','Eindhoven','Nijmegen','Arnhem','Keulen','Düsseldorf','Oberhausen','Münster','Hannover','Bremen'].includes(e.city)?'landelijk':'regionaal');
 function isGenericConcertUrl(url){
  if(typeof url!=='string'||!/^https:\/\//.test(url))return true;
