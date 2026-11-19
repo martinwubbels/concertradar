@@ -153,3 +153,17 @@ De 12 reeds specifieke links zijn voorlopig gemarkeerd als `event_page_unverifie
 De dagelijkse agendaworkflow bouwt ook `data/link-review.json`. Dit zijn alleen voorstellen waarbij een artiest, datum en hetzelfde officiële domein overeenkomen. Het script past `data/concerts.json` bewust niet automatisch aan. Handmatige controle van de betreffende pagina is nodig.
 
 Als op een apparaat eerder een concertfoto handmatig is ingesteld, blijven die instellingen bewaard, maar neemt de actuele centrale catalogus voor datzelfde concert de voorrang bij de officiële URL. Dit voorkomt terugkeer van oude algemene links via lokale opslag.
+
+## Dagelijkse automatische toevoegingen aan de masterlijst
+
+De bestaande workflow **ConcertRadar gegevens uit kandidaten** voert na de extractie `scripts/promote_verified_concerts.py` uit, test deze eerst en bouwt vervolgens opnieuw het onbevestigde ontdekkingenoverzicht.
+
+Een nieuw optreden wordt uitsluitend automatisch opgenomen wanneer: de bron een toegestane officiële concertpagina is (niet een homepage), de gestructureerde schema-URL exact bij die pagina hoort, datum/naam/zaal/plaats aanwezig zijn, de titel herkenbaar aansluit op de URL en de bron de show uitdrukkelijk als `MusicEvent` classificeert. **Uitzondering:** het muziekspecialistische podium Metropool gebruikt voor concerten `TheaterEvent`, daarom zijn die daar toegelaten. TheaterEvent van gemengde theaters of een algemeen `Event` wordt niet automatisch toegelaten. Expliciete cabaret-, film-, tribute- en andere niet-passende aanduidingen zijn uitgesloten.
+
+De tool controleert bestaande URL's, naam, datum en plaats op dubbelen. Een al bestaand concert wordt nooit door de automatische promotie overschreven. De nieuwe ID volgt het eerder gebruikte `suggestion-YYYY-MM-DD-artiest` formaat zodat bestaande interesse/afwijzingsstatussen van dezelfde vondst behouden blijven. Bij ID-conflict wordt het concert juist niet toegevoegd.
+
+Toegevoegde concerten krijgen **geen verzonnen kwaliteitsscore**: `quality` en `value` blijven null, `genre` wordt 'Muziek / nog niet ingedeeld'. Een eventueel bedrag is een bronvermelding in EUR en **geen live prijscontrole**. De melding `UITVERKOCHT` wordt alleen uit expliciete bronmetadata afgeleid en moet bij het podium worden gecontroleerd. Nieuwe items krijgen `verification: auto_verified_schema` en een broncontroledatum.
+
+De workflow slaat elke dag een audit op in `data/promotion-report.json` met aantal toegevoegde en geweigerde kandidaten en redenen. Twijfelgevallen blijven in `data/new-discoveries.json` of `data/event-review.json`. De masterlijst wordt alleen gewijzigd wanneer er daadwerkelijk nieuwe, voldoende zekere shows gevonden zijn. Een dag zonder toevoegingen is normaal.
+
+De extractie onderzoekt maximaal 100 kandidaatpagina's per run en bereikt niet alle podia, en de pagina's kunnen metadata ontbreken of de bot blokkeren. Daarom is dit geen complete regionale concertagenda. De eerste geplande automatische run moet na publicatie nog plaatsvinden. De automatische codecontrole voert ook de promotietests uit.

@@ -47,4 +47,5 @@ assert "Geen directe concertlink" in source
 assert "KAARTEN GEKOCHT" in source
 assert "concert-booked" in html
 assert "taste-small" in html
+subprocess.run(["python","-m","unittest","discover","-s","scripts","-p","test_promotion.py","-v"],cwd=ROOT,check=True)
 print("ConcertRadar smoke tests passed:",len(concerts),"catalog records")
