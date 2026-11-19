@@ -986,6 +986,163 @@ function newMarkup(){
 function ratingOf(e){return assessments[e.id]||null}
 function bookedConcerts(){return all().filter(e=>isBooked(e)&&e.date>=today).sort((a,b)=>a.date.localeCompare(b.date))}
 function pastConcerts(){return all().filter(e=>e.date<today&&(isBooked(e)||ratingOf(e))).sort((a,b)=>b.date.localeCompare(a.date))}
+
+/* ConcertRadar 2026: source-aware information, local notifications, travel and agenda. */
+const BUSY_KEY='concertradar-busy-dates-v1';
+let busyDates=[];
+try{const stored=JSON.parse(localStorage.getItem(BUSY_KEY)||'[]');busyDates=Array.isArray(stored)?stored.filter(x=>/^\d{4}-\d{2}-\d{2}$/.test(x)).slice(0,1000):[]}catch{}
+let sourceChecks={checked_at:null,checks:{},alerts:[]};
+function sourceDetail(e){return sourceChecks.checks?.[e.id]||null}
+function sourceLabel(e){
+ const check=sourceDetail(e);
+ if(check?.state==='confirmed')return 'Bron gecontroleerd '+String(check.checked_at||'').slice(0,10);
+ if(check?.state==='cancelled')return 'Annulering volgens officiële bron, controleer zelf';
+ if(check?.state==='changed')return 'Mogelijke wijziging, verifieer bij het podium';
+ if(check?.state==='unavailable')return 'Bron tijdelijk niet te controleren';
+ return e.verification==='auto_verified_schema'?'Brongegevens automatisch herkend':'Niet opnieuw gecontroleerd';
+}
+function sourceNeedsAttention(e){return ['cancelled','changed'].includes(sourceDetail(e)?.state)}
+function artistTokens(e){
+ const parts=String(e.name||'').split(/\s+(?:\+|support:|ft\.?|feat\.?)\s+/i);
+ return [parts[0].replace(/:\s*(?:intiem|solo|try.out).*$/i,'').trim()].filter(Boolean);
+}
+function artistProfile(e){
+ const key=tasteNorm(artistTokens(e)[0]||e.name);
+ const matches=all().filter(x=>tasteNorm(artistTokens(x)[0]||x.name)===key);
+ const genres=[...new Set(matches.flatMap(x=>tasteGenres(x)).filter(x=>x&&!/onbekend|nog niet ingedeeld/i.test(x)))].slice(0,6);
+ const notes=[...new Set(matches.map(x=>String(x.reason||'').trim()).filter(x=>x&&x!=='Eerdere radarvermelding.'&&x.length>22))].slice(0,3);
+ const sources=[...new Set(matches.filter(hasDirectConcertLink).map(x=>x.url))].slice(0,3);
+ const own=tasteWords().filter(w=>w.kind==='artiest'&&key.includes(tasteNorm(w.term)));
+ const explicitly=own.length?own.map(w=>w.term+' ('+(w.weight>0?'+':'')+w.weight+')'):[];
+ return {name:artistTokens(e)[0],genres,notes,sources,own:explicitly,count:matches.length};
+}
+function artistProfileMarkup(e){
+ const p=artistProfile(e);
+ return '<div class="artist-profile"><h3>'+h(p.name)+'</h3>'+
+ '<p class="muted">Profiel op basis van '+p.count+' bestaande concertvermelding(en). Geen externe biografie of audio-analyse.</p>'+
+ (p.genres.length?'<p><b>Vermelde stijlen:</b> '+h(p.genres.join(', '))+'</p>':'<p class="muted">Nog geen bevestigde genregegevens.</p>')+
+ (p.own.length?'<p><b>Jouw referentie:</b> '+h(p.own.join(', '))+'</p>':'')+
+ (p.notes.length?'<h4>Wat er bij de concerten staat</h4><ul>'+p.notes.map(note=>'<li>'+h(note)+'</li>').join('')+'</ul>':'<p class="muted">Er is nog geen inhoudelijke concertbeschrijving beschikbaar.</p>')+
+ (p.sources.length?'<p><b>Concertbronnen:</b> '+p.sources.map((url,i)=>'<a class="btn" target="_blank" rel="noopener noreferrer" href="'+h(url)+'">Bron '+(i+1)+'</a>').join(' ')+'</p>':'<p class="muted">Geen directe podiumbron beschikbaar.</p>')+
+ '<p class="muted">Stemtype, tekstthema en invloeden blijven onbekend tenzij ze expliciet in de broninformatie staan.</p></div>';
+}
+function showArtistProfile(id){
+ const e=all().find(x=>x.id===id);
+ if(!e)return;
+ const dialog=document.createElement('div');dialog.className='review-dialog-backdrop';
+ dialog.innerHTML='<div class="review-dialog artist-dialog">'+artistProfileMarkup(e)+'<button type="button" class="btn" data-close-profile>Sluiten</button></div>';
+ document.body.appendChild(dialog);
+ dialog.querySelector('[data-close-profile]').onclick=()=>dialog.remove();
+ dialog.onclick=ev=>{if(ev.target===dialog)dialog.remove()};
+}
+function notifySettings(){return appSettings.smartNotices||{initialized:false,seen:[],dismissed:[]}}
+function noticeKey(e){return 'concert:'+e.id}
+function noticeCandidates(){
+ const opts=notifySettings();
+ if(!opts.initialized)return [];
+ const seen=new Set(opts.seen||[]),dismissed=new Set(opts.dismissed||[]);
+ const newEvents=all().filter(e=>e.date>=today&&e.verification==='auto_verified_schema'&&tasteResult(e).score>=8&&statusOf(e)===''&& !seen.has(noticeKey(e))&&!dismissed.has(noticeKey(e)));
+ const alerts=(sourceChecks.alerts||[]).filter(a=>a&&a.id&&isBooked(all().find(e=>e.id===a.id)||{id:a.id})&&!seen.has('alert:'+a.id+':'+a.kind+':'+a.fingerprint)&&!dismissed.has('alert:'+a.id+':'+a.kind+':'+a.fingerprint));
+ return [
+ ...alerts.map(a=>({id:'alert:'+a.id+':'+a.kind+':'+a.fingerprint,title:a.name||'Wijziging',text:'Gecontroleerde broninformatie kan afwijken: '+a.message,url:a.url||'',kind:'alert'})),
+ ...newEvents.sort((a,b)=>tasteResult(b).score-tasteResult(a).score).slice(0,15).map(e=>({id:noticeKey(e),title:e.name,text:e.date+' · '+e.venue+' · smaak '+tasteResult(e).score.toFixed(1),url:concertLink(e),kind:'concert'}))
+ ].slice(0,20);
+}
+function initializeNotices(){
+ if(notifySettings().initialized)return;
+ const baseline=all().filter(e=>e.verification==='auto_verified_schema').map(noticeKey);
+ appSettings.smartNotices={initialized:true,seen:baseline.slice(-1500),dismissed:[],updated_at:new Date().toISOString()};
+ persist();
+}
+function dismissNotice(id){
+ const x=notifySettings();
+ appSettings.smartNotices={...x,seen:[...new Set([...(x.seen||[]),id])].slice(-1600),updated_at:new Date().toISOString()};
+ persist();render();
+}
+function noticeMarkup(){
+ const notices=noticeCandidates();
+ return '<section class="dash-panel"><h3>Nieuwe signalen <span class="notification-count">'+notices.length+'</span></h3>'+
+ '<p class="muted">Eenmalige meldingen, alleen bij nieuwe sterke matches of relevante bronwijzigingen van geboekte concerten. Geen pushberichten.</p>'+
+ (notices.length?notices.map(n=>'<article class="notice-item"><div><strong>'+h(n.title)+'</strong><div class="muted">'+h(n.text)+'</div></div><div class="toolbar"><a class="btn" href="'+h(n.url||'#')+'" target="_blank" rel="noopener noreferrer">Controleer</a><button class="btn" type="button" data-dismiss-notice="'+h(n.id)+'">Gelezen</button></div></article>').join(''):'<p class="muted">Geen nieuwe meldingen.</p>')+'</section>';
+}
+function travelSettings(){
+ const x=appSettings.travelLimits||{};
+ const clamp=(v,fallback)=>Number.isFinite(Number(v))?Math.max(10,Math.min(750,Math.round(Number(v)))):fallback;
+ return {regular:clamp(x.regular,90),special:clamp(x.special,200),enabled:x.enabled!==false};
+}
+function distanceKm(e){
+ const p=venuePoint(e);
+ const origin=venueLocations.origin;
+ if(!p||!origin||![p.lat,p.lng,origin.lat,origin.lng].every(Number.isFinite))return null;
+ const rad=x=>x*Math.PI/180;
+ const a=Math.sin(rad(p.lat-origin.lat)/2)**2+Math.cos(rad(origin.lat))*Math.cos(rad(p.lat))*Math.sin(rad(p.lng-origin.lng)/2)**2;
+ return Math.round(6371*2*Math.atan2(Math.sqrt(a),Math.sqrt(Math.max(0,1-a))));
+}
+function travelInfo(e){
+ const km=distanceKm(e),t=travelSettings();
+ const special=tasteResult(e).score>=9||tasteManualEffect(e).matched.some(w=>w.kind==='artiest'&&w.weight===2);
+ const limit=special?t.special:t.regular;
+ return {km,limit,special,within:!t.enabled||km==null||km<=limit};
+}
+function travelMarkup(){
+ const t=travelSettings();
+ return '<section class="dash-panel"><h3>Mijn reisgrenzen</h3><p class="muted">Hemelsbrede afstand vanaf het ingestelde vertrekpunt. Geen rijafstand of reistijd. Alleen bekende podium- of plaatscoördinaten tellen mee.</p>'+
+ '<form id="travelForm" class="travel-form"><label>Normaal (km)<input type="number" min="10" max="750" id="regularKm" value="'+t.regular+'"></label>'+
+ '<label>Voor topartiesten (km)<input type="number" min="10" max="750" id="specialKm" value="'+t.special+'"></label>'+
+ '<label><input type="checkbox" id="travelEnabled" '+(t.enabled?'checked':'')+'> Reisgrens als filter in Masterlijst</label>'+
+ '<button type="submit" class="btn primary">Reisgrenzen opslaan</button></form></section>';
+}
+function normalizeDate(d){return /^\d{4}-\d{2}-\d{2}$/.test(d)&&!Number.isNaN(Date.parse(d+'T12:00:00Z'))?d:null}
+function saveBusyDates(dates){busyDates=[...new Set(dates.map(normalizeDate).filter(Boolean))].sort().slice(0,1000);localStorage.setItem(BUSY_KEY,JSON.stringify(busyDates));render()}
+function parseCalendarDates(text){
+ // Only DTSTART dates, no titles or descriptions. Handles folded lines and both
+ // all-day and timed VEVENT starts. Calendar remains locally stored as dates.
+ const unfolded=String(text||'').replace(/\r?\n[ \t]/g,'');
+ const events=unfolded.split(/BEGIN:VEVENT/i).slice(1);
+ const dates=[];
+ for(const event of events.slice(0,1500)){
+   const m=event.match(/^DTSTART(?:;[^:\r\n]*)?:(\d{4})(\d{2})(\d{2})/im);
+   if(m){const d=normalizeDate(m[1]+'-'+m[2]+'-'+m[3]);if(d)dates.push(d)}
+ }
+ return [...new Set(dates)];
+}
+function agendaConflicts(){
+ const booked=all().filter(e=>e.date>=today&&isBooked(e));
+ const counts={};for(const e of booked)counts[e.date]=(counts[e.date]||0)+1;
+ const busy=new Set(busyDates);
+ return booked.filter(e=>counts[e.date]>1||busy.has(e.date)).map(e=>({e,reason:busy.has(e.date)?'Overlap met geïmporteerde of handmatig opgegeven agenda':'Meerdere geboekte concerten op dezelfde datum'}));
+}
+function calendarCheckMarkup(){
+ const conflicts=agendaConflicts();
+ return '<section class="dash-panel"><h3>Agenda en conflicten</h3>'+
+ '<p class="muted">Importeer een .ics-bestand om bezette datums te vergelijken. Alleen de datums worden lokaal op dit apparaat bewaard. Afspraaknamen en tijden worden niet opgeslagen. Vergelijking op datum, niet op exact tijdstip.</p>'+
+ '<div class="travel-form"><label>Drukke datum toevoegen<input type="date" id="busyDate"></label><button class="btn" type="button" id="addBusyDate">Datum toevoegen</button>'+
+ '<label>Agenda importeren (.ics)<input type="file" accept=".ics,text/calendar" id="icsInput"></label><button class="btn" type="button" id="clearBusyDates">Verwijder bezette datums ('+busyDates.length+')</button></div>'+
+ '<p class="muted">Export van jouw ConcertRadar-concerten blijft beschikbaar onder Mijn kalender.</p>'+
+ (conflicts.length?'<div class="notice">'+conflicts.map(({e,reason})=>'<p><b>'+h(e.date)+' · '+h(e.name)+'</b>: '+h(reason)+'</p>').join('')+'</div>':'<p class="muted">Geen datumconflicten gevonden bij je geboekte concerten.</p>')+'</section>';
+}
+function personalDashboardTop(){
+ const upcoming=all().filter(e=>e.date>=today&&isBooked(e)).sort((a,b)=>a.date.localeCompare(b.date))[0];
+ const best=all().filter(e=>e.date>=today&&statusOf(e)===''&&e.verification!=='historical_unverified').sort((a,b)=>tasteResult(b).score-tasteResult(a).score).slice(0,3);
+ return '<section class="dash-panel"><h2 class="sectiontitle">Mijn ConcertRadar</h2>'+
+ (upcoming?'<p><strong>Volgende concert:</strong> '+h(upcoming.name)+' · '+h(dt(upcoming.date))+' · '+h(upcoming.venue)+'</p>':'<p class="muted">Nog geen aankomend concert geboekt.</p>')+
+ '<h3>Drie beste nog niet gekozen matches</h3>'+
+ (best.length?'<div class="recommendation-strip">'+best.map(e=>'<div><b>'+h(e.name)+'</b><p class="muted">'+h(e.date)+' · '+tasteResult(e).score.toFixed(1)+'/10</p><button data-tab="all" class="btn" type="button">Bekijk masterlijst</button></div>').join('')+'</div>':'<p class="muted">Nog geen geschikte aanbevelingen.</p>')+
+ '</section>'+noticeMarkup()+calendarCheckMarkup();
+}
+function bindNewDashboard(){
+ document.querySelectorAll('[data-artist-profile]').forEach(b=>b.onclick=()=>showArtistProfile(b.dataset.artistProfile));
+ document.querySelectorAll('[data-dismiss-notice]').forEach(b=>b.onclick=()=>dismissNotice(b.dataset.dismissNotice));
+ const travel=document.getElementById('travelForm');
+ if(travel)travel.onsubmit=ev=>{ev.preventDefault();const regular=Number(document.getElementById('regularKm').value),special=Number(document.getElementById('specialKm').value);if(![regular,special].every(x=>Number.isInteger(x)&&x>=10&&x<=750)){alert('Gebruik hele kilometers tussen 10 en 750.');return;}appSettings.travelLimits={regular,special,enabled:document.getElementById('travelEnabled').checked};persist();render()};
+ const add=document.getElementById('addBusyDate');
+ if(add)add.onclick=()=>{const d=document.getElementById('busyDate').value;if(!normalizeDate(d)){alert('Kies een geldige datum.');return;}saveBusyDates([...busyDates,d])};
+ const clear=document.getElementById('clearBusyDates');
+ if(clear)clear.onclick=()=>{if(confirm('Alle lokaal opgeslagen bezette datums verwijderen?'))saveBusyDates([])};
+ const input=document.getElementById('icsInput');
+ if(input)input.onchange=async()=>{const file=input.files?.[0];if(!file)return;if(file.size>2_000_000){alert('Maximaal 2 MB.');return;}try{const dates=parseCalendarDates(await file.text());if(!dates.length){alert('Geen geschikte agenda-datums gevonden.');return;}saveBusyDates([...busyDates,...dates])}catch(e){alert('Agenda kon niet worden gelezen.')}};
+}
+
 function dashboardMarkup(){
  const list=bookedConcerts();
  const alerts=changeAlerts.filter(x=>list.some(e=>e.id===x.id||e.url===x.url)).slice(0,12);
