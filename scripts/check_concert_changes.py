@@ -6,6 +6,8 @@ Uses schema.org event data where available. Generic venue home pages are ignored
 """
 import json
 import sys
+import re
+import unicodedata
 import time
 from datetime import datetime, timezone
 from pathlib import Path
@@ -32,6 +34,14 @@ def is_event_link(url):
     except ValueError:
         return False
 
+def comparable_names(a,b):
+    def normalize(s):
+        txt=unicodedata.normalize("NFKD",str(s or "")).casefold()
+        return re.sub(r"[^a-z0-9]+"," ",txt).strip()
+    x,y=normalize(a),normalize(b)
+    if not x or not y:return False
+    return x==y or (min(len(x),len(y))>=7 and (x in y or y in x))
+
 def main():
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     today = datetime.now(timezone.utc).date().isoformat()
@@ -44,14 +54,20 @@ def main():
         stats["checked"] += 1
         try:
             found, error = read_page(e["url"])
-            # Matching on exact date first protects against unrelated "upcoming event" widgets.
-            same = [x for x in found if x.get("date")==e["date"] and x.get("name")]
-            if not same:
+            # Prefer title+date. If the source moved the concert, accept a different
+            # date only when the title still unmistakably refers to the same act.
+            same = [x for x in found if x.get("date")==e["date"] and comparable_names(x.get("name"),e["name"])]
+            moved = [x for x in found if comparable_names(x.get("name"),e["name"])]
+            if not same and not moved:
                 stats["unreadable"] += 1
                 continue
-            x = same[0]
+            x = (same or moved)[0]
             stats["matched"] += 1
             diffs = []
+            if x.get("date") and x["date"] != e["date"]:
+                diffs.append(f"Datum eerder {e['date']}, pagina {x['date']}")
+            if x.get("city") and e.get("city") and x["city"].casefold().strip() != e["city"].casefold().strip():
+                diffs.append(f"Plaats eerder {e['city']}, pagina {x['city']}")
             # A title may contain support acts; do not treat minor changes as cancellations.
             if e.get("price") is not None and x.get("price") is not None:
                 if x.get("currency") in (None, "EUR") and abs(float(e["price"])-float(x["price"])) > 0.01:
