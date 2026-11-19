@@ -15,7 +15,8 @@
       "priority": "VERLOPEN",
       "match": "The Black Keys",
       "reason": "Eerdere radarvermelding.",
-      "url": "https://www.spotgroningen.nl/"
+      "url": "https://www.spotgroningen.nl/",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "my-darling-clementine-20261119",
@@ -30,7 +31,8 @@
       "priority": "NU KOPEN",
       "match": "Willow Avalon, Lance Roark",
       "reason": "Countryduetten met verhalen en sterke stemmen.",
-      "url": "https://www.spotgroningen.nl/programma/my-darling-clementine/"
+      "url": "https://www.spotgroningen.nl/programma/my-darling-clementine/",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "popronde-zwolle-kram-wilson-a-20261119",
@@ -46,7 +48,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "dawn-brothers-20261120",
@@ -61,7 +64,8 @@
       "priority": "NU KOPEN",
       "match": "The Teskey Brothers, Henry Wagons",
       "reason": "Bijzondere samenwerking met gastmuzikanten.",
-      "url": "https://www.hedon-zwolle.nl/voorstelling/32854/50-years-last-waltz-met-dawn-brothers"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/32854/50-years-last-waltz-met-dawn-brothers",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "electric-six-katie-bitchcoin-20261120",
@@ -77,7 +81,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "iron-jinn-temple-fang-20261120",
@@ -92,8 +97,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/32980/iron-jinn-temple-fang",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "the-radar-station-20261120",
@@ -109,7 +116,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.deamer.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "trixie-whitley-20261120",
@@ -124,8 +132,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "url": "https://metropool.nl/agenda/trixie-whitley",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "julia-sabate-famke-20261121",
@@ -141,7 +151,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "the-horse-company-fiep-20261121",
@@ -157,7 +168,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "bluesz-more-festival-20261122",
@@ -172,8 +184,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/32921/bluesfestival-bluesz-more-2026",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "tom-mcrae-20261123",
@@ -188,7 +202,8 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "Damien Rice, Ane Brun",
       "reason": "Sterke liedjes in een bijzondere zaal.",
-      "url": "https://productiehuis.hedon-zwolle.nl/voorstelling/32887/tom-mcrae"
+      "url": "https://productiehuis.hedon-zwolle.nl/voorstelling/32887/tom-mcrae",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "lucky-fonz-iii-esther-de-jong-20261126",
@@ -204,7 +219,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "de-tamboer-blues-roots-festival-20261127",
@@ -220,7 +236,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.detamboer.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "jp-den-tex-tineke-schoemaker-20261127",
@@ -235,8 +252,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.spotgroningen.nl/programma/jp-den-tex-tineke-schoemaker/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "lucky-fonz-iii-esther-de-jong-20261127",
@@ -252,7 +271,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "simon-wells-pints-peat-20261127",
@@ -268,7 +288,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.drentmeester.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "jasper-schalks-20261128",
@@ -284,7 +305,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://kleinparadiso.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "kaat-van-stralen-camilo-donoso-20261128",
@@ -300,7 +322,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.vera-groningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "subterranean-street-society-esther-de-jong-20261128",
@@ -315,8 +338,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.a-theater.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.spotgroningen.nl/programma/subterranean-street-society-2/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "the-veils-20261128",
@@ -331,7 +356,8 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "Editors, Damien Rice",
       "reason": "Karaktervolle zang en donkere arrangementen.",
-      "url": "https://www.spotgroningen.nl/programma/the-veils-2/"
+      "url": "https://www.spotgroningen.nl/programma/the-veils-2/",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "matthew-and-the-atlas-ak-patterson-20261201",
@@ -346,8 +372,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.spotgroningen.nl/programma/matthew-and-the-atlas-3/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "dawn-brothers-friends-the-last-waltz-20261204",
@@ -362,8 +390,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.spotgroningen.nl/programma/dawn-brothers-friends-50-years-the-last-waltz/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "marieke-schenk-sabine-20261204",
@@ -379,7 +409,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.podium34.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "geel-ran-over-rotzorg-20261210",
@@ -394,8 +425,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33013/these-go-to-eleven",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "hans-hannemann-20261211",
@@ -410,7 +443,8 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "Rick Hilberts, Henry Wagons",
       "reason": "Bijzondere combinatie van streektaal en roots.",
-      "url": "https://www.drentmeester.nl/"
+      "url": "https://www.drentmeester.nl/",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "the-scratch-dug-20261211",
@@ -426,7 +460,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.vera-groningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "luwten-20261212",
@@ -442,7 +477,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.devegafabriek.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "dylan-leblanc-20261218",
@@ -457,7 +493,8 @@
       "priority": "NU KOPEN",
       "match": "Willow Avalon, Damien Rice",
       "reason": "Sterke teksten en sfeervolle americana.",
-      "url": "https://www.spotgroningen.nl/programma/dylan-leblanc-3/"
+      "url": "https://www.spotgroningen.nl/programma/dylan-leblanc-3/",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "tramhaus-20261218",
@@ -473,7 +510,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.vera-groningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "pluk-dan-geestdrift-20261219",
@@ -489,7 +527,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.podium34.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "tramhaus-20261219",
@@ -505,7 +544,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.vera-groningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "dewolff-full-moon-ritual-20270108",
@@ -520,8 +560,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.spotgroningen.nl/programma/dewolff-8/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "men-of-the-village-met-rick-hilberts-20270109",
@@ -537,7 +579,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.nijend24.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "bertolf-bluefinger-vol-2-20270116",
@@ -553,7 +596,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.deamer.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "noorderslag-2027-20270116",
@@ -569,7 +613,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://esns.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "ragazze-quartet-voces-intimae-20270117",
@@ -585,7 +630,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.drentmeester.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "the-black-atlantic-20270120",
@@ -600,8 +646,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/32919/the-black-atlantic",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "heideroosjes-20270122",
@@ -616,7 +664,8 @@
       "priority": "UITVERKOCHT",
       "match": "Green Day, Blink-182",
       "reason": "Uitverkocht volgens eerdere controle; check doorverkoop.",
-      "url": "https://www.heideroosjes.com/tour/"
+      "url": "https://www.heideroosjes.com/tour/",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "lefthand-freddy-20270122",
@@ -632,7 +681,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.drentmeester.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "the-steepwater-band-bloody-mama-20270122",
@@ -648,7 +698,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "noah-gundersen-20270123",
@@ -663,7 +714,9 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "Damien Rice, Ane Brun",
       "reason": "Intieme songs met een onderscheidende stem.",
-      "url": "https://metropool.nl/"
+      "url": "https://metropool.nl/agenda/noah-gundersen",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "the-fugitives-20270123",
@@ -679,7 +732,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.deamer.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "aj-plug-goodbye-to-the-fans-20270124",
@@ -695,7 +749,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.deamer.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "black-box-revelation-20270127",
@@ -711,7 +766,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.vera-groningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "vanwyck-20270127",
@@ -726,8 +782,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.spotgroningen.nl/programma/vanwyck-3/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "david-ramirez-20270128",
@@ -743,7 +801,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.deamer.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "jan-henk-de-groot-reinout-douma-tiepelzinneg-20270129",
@@ -759,7 +818,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.kielzog.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "vanderlinde-king-of-the-world-ruben-hoeke-20270129",
@@ -774,8 +834,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.spotgroningen.nl/programma/vanderlinde-king-of-the-world-ruben-hoeke/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "steve-wynn-20270131",
@@ -790,8 +852,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.spotgroningen.nl/programma/steve-wynn/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "wende-20270205",
@@ -806,8 +870,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33054/wende",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "bert-hadders-20270206",
@@ -823,7 +889,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.drentmeester.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "novastar-20270206",
@@ -838,7 +905,8 @@
       "priority": "GEBOEKT",
       "match": "Novastar",
       "reason": "Al geboekt.",
-      "url": "https://www.detamboer.nl/"
+      "url": "https://www.detamboer.nl/",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "wende-20270206",
@@ -853,8 +921,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33055/wende",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "blue-grass-boogiemen-pieternel-20270207",
@@ -870,7 +940,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.decactus.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "jan-henk-de-groot-reinout-douma-tiepelzinneg-20270211",
@@ -885,8 +956,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.spotgroningen.nl/programma/jan-henk-de-groot-reinout-douma/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "tape-toy-20270212",
@@ -902,7 +975,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "josh-ritter-solo-20270217",
@@ -917,8 +991,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.spotgroningen.nl/programma/josh-ritter/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "tramhaus-20270219",
@@ -933,8 +1009,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/32959/tramhaus",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "felix-maginn-20270220",
@@ -950,7 +1028,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.devegafabriek.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "jan-henk-de-groot-reinout-douma-tiepelzinneg-20270220",
@@ -966,7 +1045,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.dnk.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "jesper-lindell-20270220",
@@ -981,7 +1061,8 @@
       "priority": "NU KOPEN",
       "match": "The Teskey Brothers, Lance Roark",
       "reason": "Warme soul en southern rock in kleine zaal.",
-      "url": "https://www.spotgroningen.nl/events/takeroot/presents/"
+      "url": "https://www.spotgroningen.nl/events/takeroot/presents/",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "lee-rocker-liz-young-and-the-black-slacks-20270221",
@@ -997,7 +1078,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "jake-vaadeland-the-sturgeon-river-boys-20270223",
@@ -1012,8 +1094,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.spotgroningen.nl/programma/jake-vaadeland/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "jake-vaadeland-20270224",
@@ -1028,7 +1112,8 @@
       "priority": "KAN WACHTEN",
       "match": "Pert Near Sandstone, Muireann Bradley",
       "reason": "Alternatief voor de eerdere show in Groningen.",
-      "url": "https://www.hedon-zwolle.nl/voorstelling/33119/jake-vaadeland"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33119/jake-vaadeland",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "tommy-castro-the-painkillers-20270225",
@@ -1044,7 +1129,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "elles-bailey-20270306",
@@ -1060,7 +1146,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "roosbeef-20270306",
@@ -1076,7 +1163,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.devegafabriek.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "the-tibbs-20270306",
@@ -1091,7 +1179,8 @@
       "priority": "NU KOPEN",
       "match": "The Teskey Brothers, Nathaniel Rateliff",
       "reason": "Blazers, vintage soul en een krachtige stem.",
-      "url": "https://metropool.nl/agenda/the-tibbs"
+      "url": "https://metropool.nl/agenda/the-tibbs",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "yellofox-20270306",
@@ -1107,7 +1196,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.drentmeester.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "truckfighters-20270307",
@@ -1122,7 +1212,8 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "Queens of the Stone Age, Foo Fighters",
       "reason": "Fuzzgitaren en energieke liveband.",
-      "url": "https://metropool.nl/agenda/truckfighters"
+      "url": "https://metropool.nl/agenda/truckfighters",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "the-horse-company-20270312",
@@ -1138,7 +1229,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "bertolf-bluefinger-vol-2-20270313",
@@ -1154,7 +1246,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.atlastheater.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "alvin-youngblood-hart-20270315",
@@ -1170,7 +1263,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "moss-20270318",
@@ -1186,7 +1280,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "orange-skyline-intiem-20270318",
@@ -1202,7 +1297,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "pokey-lafarge-20270318",
@@ -1218,7 +1314,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "au-pairs-20270319",
@@ -1234,7 +1331,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "moss-try-out-20270320",
@@ -1250,7 +1348,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.devegafabriek.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "villagers-of-ioannina-city-20270326",
@@ -1266,7 +1365,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "after-easter-20270403",
@@ -1281,7 +1381,8 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "Novastar",
       "reason": "Jupiter Jones en regionale bands op twee podia.",
-      "url": "https://alteweberei.de/produktion/after-easter-festival/"
+      "url": "https://alteweberei.de/produktion/after-easter-festival/",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "cactus-lee-20270403",
@@ -1297,7 +1398,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.a-theater.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "kim-wilde-20270410",
@@ -1313,7 +1415,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "kim-wilde-20270414",
@@ -1329,7 +1432,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "daniel-norgren-20270417",
@@ -1344,7 +1448,8 @@
       "priority": "NU KOPEN",
       "match": "Henry Wagons, The White Buffalo, Damien Rice",
       "reason": "Eigenzinnige zang, organische blues en folk.",
-      "url": "https://www.spotgroningen.nl/programma/daniel-norgren-2027/"
+      "url": "https://www.spotgroningen.nl/programma/daniel-norgren-2027/",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "richard-thompson-20270423",
@@ -1359,7 +1464,8 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "Bruce Springsteen, The White Buffalo",
       "reason": "Invloedrijke gitarist en songwriter.",
-      "url": "https://metropool.nl/"
+      "url": "https://metropool.nl/",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "richard-thompson-20270424",
@@ -1376,7 +1482,8 @@
       "reason": "Landelijke optie, maar Hengelo op 23 april is waarschijnlijk handiger.",
       "url": "https://www.melkweg.nl/",
       "scope": "landelijk",
-      "spotify": "Richard Thompson"
+      "spotify": "Richard Thompson",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "felipe-baldomir-20270508",
@@ -1391,8 +1498,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33111/felipe-baldomir",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "johnny-delaware-20270508",
@@ -1408,7 +1517,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.a-theater.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "conor-mclain-20270520",
@@ -1423,8 +1533,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33106/conor-mclain",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "gang-of-four-20270520",
@@ -1440,7 +1552,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "de-broers-roo-20270521",
@@ -1456,7 +1569,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.drentmeester.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "mood-bored-20270521",
@@ -1471,8 +1585,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33052/mood-bored",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "rantanplan-20270522",
@@ -1487,8 +1603,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://alteweberei.de/",
-      "verification": "historical_unverified"
+      "url": "https://alteweberei.de/produktion/rantanplan/",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "greta-van-fleet-20270524",
@@ -1505,7 +1623,8 @@
       "reason": "Grote nationale show met Larkin Poe als sterke support. Eerder gemeld; controleer actuele details.",
       "url": "https://www.ziggodome.nl/",
       "scope": "landelijk",
-      "spotify": "Greta Van Fleet"
+      "spotify": "Greta Van Fleet",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "aj-plug-20270605",
@@ -1521,7 +1640,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.nijend24.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "tame-impala-20270607",
@@ -1538,7 +1658,8 @@
       "reason": "Bijzondere combinatie met Wet Leg; meerdere eerder gemelde data 7–9 juni.",
       "url": "https://www.ahoy.nl/",
       "scope": "landelijk",
-      "spotify": "Tame Impala"
+      "spotify": "Tame Impala",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "bettie-serveert-the-monroes-20270612",
@@ -1554,7 +1675,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "kingfishr-sons-of-the-east-tammo-band-20270617",
@@ -1570,7 +1692,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "noah-kahan-20270701",
@@ -1586,7 +1709,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "joe-bonamassa-20270706",
@@ -1602,7 +1726,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.emslandarena.com/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "bluefinger-festival-2027-20270919",
@@ -1617,8 +1742,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33056/bluefinger-festival-2027",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "sivert-h-yem-20270919",
@@ -1634,7 +1761,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "davy-knowles-20270924",
@@ -1649,7 +1777,8 @@
       "priority": "NU KOPEN",
       "match": "The Black Keys, Johnny Mullenax",
       "reason": "Rauwe gitaarblues en stevige rock.",
-      "url": "https://metropool.nl/agenda/davy-knowles"
+      "url": "https://metropool.nl/agenda/davy-knowles",
+      "link_status": "event_page_unverified"
     },
     {
       "id": "trockener-kecks-20271020",
@@ -1665,7 +1794,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "robert-jon-20271022",
@@ -1680,7 +1810,8 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "The Black Keys, Bruce Springsteen",
       "reason": "Southern rock en sterke liveband.",
-      "url": "https://www.spotgroningen.nl/"
+      "url": "https://www.spotgroningen.nl/",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "trockener-kecks-20271030",
@@ -1696,7 +1827,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://metropool.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "trockener-kecks-20271105",
@@ -1711,8 +1843,10 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
-      "url": "https://www.hedon-zwolle.nl/",
-      "verification": "historical_unverified"
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33082/trockener-kecks",
+      "verification": "historical_unverified",
+      "link_status": "event_page",
+      "link_source": "Official venue agenda"
     },
     {
       "id": "takeroot-2027-20271106",
@@ -1728,7 +1862,8 @@
       "match": "",
       "reason": "Eerder gemeld in ConcertRadar. Datum, ticketprijs en beschikbaarheid opnieuw controleren bij het podium.",
       "url": "https://www.spotgroningen.nl/",
-      "verification": "historical_unverified"
+      "verification": "historical_unverified",
+      "link_status": "venue_or_generic"
     },
     {
       "id": "the-dead-south-20271127",
@@ -1743,7 +1878,8 @@
       "priority": "IN DE GATEN HOUDEN",
       "match": "Pert Near Sandstone",
       "reason": "Bluegrass met een eigen geluid.",
-      "url": "https://www.spotgroningen.nl/"
+      "url": "https://www.spotgroningen.nl/",
+      "link_status": "venue_or_generic"
     }
   ]
 }
