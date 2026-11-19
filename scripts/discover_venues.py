@@ -58,7 +58,7 @@ class Links(HTMLParser):
             self.label.append(data)
     def handle_endtag(self, tag):
         if tag.lower()=="a" and self.current_url is not None:
-            self.links.append((self.current_url, re.sub(r"\\s+", " ", " ".join(self.label)).strip()[:130]))
+            self.links.append((self.current_url, re.sub(r"\s+", " ", " ".join(self.label)).strip()[:130]))
             self.current_url=None
             self.label=[]
 
@@ -118,7 +118,7 @@ def main():
             print(f"{name}: inaccessible ({error})")
     output={"generated_at":datetime.now(timezone.utc).isoformat(),"type":"unverified_links_not_events","venues":status,"candidates":list(candidates.values())[:600]}
     OUT.parent.mkdir(parents=True,exist_ok=True)
-    OUT.write_text(json.dumps(output,ensure_ascii=False,indent=2)+"\\n",encoding="utf-8")
+    OUT.write_text(json.dumps(output,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
     print(f"{len(output['candidates'])} links require manual verification before adding to masterlist")
 
 if __name__=="__main__":
