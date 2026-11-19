@@ -1,5 +1,85 @@
 {
   "schema_version": 1,
-  "updated_at": null,
-  "photos": {}
+  "updated_at": "2026-11-19T14:02:31.636610+00:00",
+  "photos": {
+    "daniel-norgren-20270417": {
+      "url": "https://www.spotgroningen.nl/wp-content/uploads/2026/10/Daniel_Norgren_max_2280.jpg",
+      "source_url": "https://www.spotgroningen.nl/programma/daniel-norgren-2027/",
+      "source_host": "www.spotgroningen.nl",
+      "title": "Daniel Norgren - Spot Groningen - SPOT Groningen",
+      "checked_at": "2026-11-19T14:02:14.664841+00:00"
+    },
+    "davy-knowles-20270924": {
+      "url": "https://metropool.nl/cache/davy-knowles.30148/davy-knowles-s1920x1080.jpg",
+      "source_url": "https://metropool.nl/agenda/davy-knowles",
+      "source_host": "metropool.nl",
+      "title": "Davy Knowles - Blues, rock en gitaarspel van wereldklasse",
+      "checked_at": "2026-11-19T14:02:15.514384+00:00"
+    },
+    "the-tibbs-20270306": {
+      "url": "https://metropool.nl/cache/the-tibbs.10164/the-tibbs-s1920x1080.jpg",
+      "source_url": "https://metropool.nl/agenda/the-tibbs",
+      "source_host": "metropool.nl",
+      "title": "The Tibbs - Soul, funk en rhythm-'n-blues met een flinke dosis energie",
+      "checked_at": "2026-11-19T14:02:16.286800+00:00"
+    },
+    "dawn-brothers-20261120": {
+      "url": "https://hedon-zwolle.nl/media/50-years-last-waltz-27-hessel-stuut-1920x1080.jpg",
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/32854/50-years-last-waltz-met-dawn-brothers",
+      "source_host": "www.hedon-zwolle.nl",
+      "title": "50 YEARS LAST WALTZ MET DAWN BROTHERS - Hedon Zwolle",
+      "checked_at": "2026-11-19T14:02:17.598004+00:00"
+    },
+    "my-darling-clementine-20261119": {
+      "url": "https://www.spotgroningen.nl/wp-content/uploads/2026/06/FN2P2995-Edit-Edit-2-1024x683.jpg",
+      "source_url": "https://www.spotgroningen.nl/programma/my-darling-clementine/",
+      "source_host": "www.spotgroningen.nl",
+      "title": "My Darling Clementine - Spot Groningen - SPOT Groningen",
+      "checked_at": "2026-11-19T14:02:18.992431+00:00"
+    },
+    "the-veils-20261128": {
+      "url": "https://www.spotgroningen.nl/wp-content/uploads/2026/02/resized_rgb_image.jpg",
+      "source_url": "https://www.spotgroningen.nl/programma/the-veils-2/",
+      "source_host": "www.spotgroningen.nl",
+      "title": "The Veils - Spot Groningen - SPOT Groningen",
+      "checked_at": "2026-11-19T14:02:23.268804+00:00"
+    },
+    "tom-mcrae-20261123": {
+      "url": "https://hedon-zwolle.nl/media/TomMcRae2026POSTERhi_res.png",
+      "source_url": "https://productiehuis.hedon-zwolle.nl/voorstelling/32887/tom-mcrae",
+      "source_host": "productiehuis.hedon-zwolle.nl",
+      "title": "TOM MCRAE - Hedon Zwolle",
+      "checked_at": "2026-11-19T14:02:24.648879+00:00"
+    },
+    "jake-vaadeland-20270224": {
+      "url": "https://hedon-zwolle.nl/media/JakeVaadeland_PhotoCredit_AvaWild_03.jpg",
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33119/jake-vaadeland",
+      "source_host": "www.hedon-zwolle.nl",
+      "title": "JAKE VAADELAND - Hedon Zwolle",
+      "checked_at": "2026-11-19T14:02:25.702231+00:00"
+    },
+    "truckfighters-20270307": {
+      "url": "https://metropool.nl/cache/truckfighters.29535/truckfighters-s1920x1080.jpg",
+      "source_url": "https://metropool.nl/agenda/truckfighters",
+      "source_host": "metropool.nl",
+      "title": "Truckfighters - Zweedse stonerrockers met een kenmerkende fuzzsound",
+      "checked_at": "2026-11-19T14:02:26.723588+00:00"
+    },
+    "dylan-leblanc-20261218": {
+      "url": "https://www.spotgroningen.nl/wp-content/uploads/2026/04/dylanleblanc-070.jpg",
+      "source_url": "https://www.spotgroningen.nl/programma/dylan-leblanc-3/",
+      "source_host": "www.spotgroningen.nl",
+      "title": "Dylan LeBlanc - Spot Groningen - SPOT Groningen",
+      "checked_at": "2026-11-19T14:02:29.811765+00:00"
+    },
+    "after-easter-20270403": {
+      "url": "https://alteweberei.de/wp-content/uploads/2026/08/AEFCoverReservix.png",
+      "source_url": "https://alteweberei.de/produktion/after-easter-festival/",
+      "source_host": "alteweberei.de",
+      "title": "After Easter Festival – Alte Weberei Nordhorn",
+      "checked_at": "2026-11-19T14:02:31.386309+00:00"
+    }
+  },
+  "checked": 12,
+  "found_this_run": 11
 }
