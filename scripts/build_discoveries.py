@@ -16,7 +16,8 @@ OUTPUT = ROOT / "data/new-discoveries.json"
 EXCLUDE = re.compile(
     r"\b(cabaret|musical|tribute|tributes|sings coldplay|rolling stones|theatercollege|"
     r"comed(y|ie)|stand.up|talkshow|kinder(show|theater)|juf braaksel|"
-    r"lezing|rondleiding|workshop|hotel 3|student liedduo competition)\b", re.I
+    r"lezing|rondleiding|workshop|hotel 3|student liedduo competition|"
+    r"bert visscher|claudia de breij)\b", re.I
 )
 
 def norm(s):
