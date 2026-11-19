@@ -88,4 +88,13 @@ profiles=json.loads((ROOT/"data/artist-profiles.json").read_text(encoding="utf-8
 assert "willow avalon" in profiles and "henry wagons" in profiles
 checks=json.loads((ROOT/"data/source-checks.json").read_text(encoding="utf-8"))
 assert "checks" in checks and "alerts" in checks
+assert "function googleCalendarEventUrl" in source
+assert "function outlookCalendarEventUrl" in source
+assert "function musicHistoryMarkup" in source
+assert "function listeningHistoryBoost" in source
+assert "function freshness(e)" in source
+assert "mobileTab" in source
+assert "compactCards" in source
+assert "function scoreDetails" in source
+subprocess.run(["node","scripts/test_v2.cjs"],cwd=ROOT,check=True)
 print("ConcertRadar smoke tests passed:",len(concerts),"catalog records")
