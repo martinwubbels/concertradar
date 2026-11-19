@@ -47,4 +47,25 @@ class MonitorTests(unittest.TestCase):
   out=build([past],{},lambda _:jsonld(),NOW)
   self.assertEqual(out["checked_count"],0)
 
+class RotationTests(unittest.TestCase):
+ def test_checks_rotate_across_runs(self):
+  from check_sources import MAX_PAGES
+  records=[{**CONCERT,"id":"concert-"+str(i),"url":"https://venue.example/programma/the-artist-"+str(i)+"/"} for i in range(MAX_PAGES+3)]
+  count=[]
+  def visit(url):
+   count.append(url)
+   return []
+  first=build(records,{},visit,NOW)
+  self.assertEqual(first["checked_count"],MAX_PAGES)
+  count.clear()
+  second=build(records,first,visit,"2026-11-20T22:00:00+00:00")
+  self.assertEqual(second["checked_count"],MAX_PAGES)
+  self.assertTrue(any(e["id"] not in {x["id"] for x in records[:MAX_PAGES]} for e in records if e["url"] in count))
+ def test_last_confirmation_survives_offline_failure(self):
+  prior={"checks":{CONCERT["id"]:{"state":"confirmed","checked_at":"2026-11-18T00:00:00+00:00","last_confirmed_at":"2026-11-18T00:00:00+00:00"}}}
+  def offline(_):raise TimeoutError("offline")
+  result=build([CONCERT],prior,offline,NOW)
+  self.assertEqual(result["checks"][CONCERT["id"]]["state"],"unavailable")
+  self.assertEqual(result["checks"][CONCERT["id"]]["last_confirmed_at"],"2026-11-18T00:00:00+00:00")
+
 if __name__=="__main__":unittest.main()

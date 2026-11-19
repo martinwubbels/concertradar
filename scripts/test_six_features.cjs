@@ -53,5 +53,5 @@ assert.equal(a.notifySettings().initialized,false);
 assert.deepEqual(a.noticeCandidates(),[],'No notifications before baseline');
 const profile=a.artistProfile({...nearby,name:'A',genre:'Americana',reason:'Unique roots show'});
 assert.equal(profile.name,'A');
-assert.equal(a.sourceLabel(nearby),'Niet opnieuw gecontroleerd');
+assert.equal(a.sourceLabel(nearby),'Niet recent gecontroleerd');
 console.log('Six-feature offline checks passed');
