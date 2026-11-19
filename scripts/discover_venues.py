@@ -41,6 +41,7 @@ VENUES = [
 HEADERS = {"User-Agent": "ConcertRadar personal music calendar/1.0", "Accept": "text/html,application/xhtml+xml"}
 PATTERNS = ("/programma/", "/agenda/", "/events/", "/event/", "/voorstelling/", "/productie/", "/produktion/", "/veranstaltung/", "/concert/")
 NONMUSIC = re.compile(r"cabaret|musical|theaterweekend|dansvoorstelling|stand-up|comed(y|ie)|toneel|lezing|rondleiding|workshop|kindervoorstelling", re.I)
+GENERIC = re.compile(r"/(verzameling|collectie|nieuws|categorie|category|page|tag|thema|abonnement|archief)(/|$)", re.I)
 EXCLUDE = re.compile(r"/(tickets?|login|contact|privacy|cookies|nieuws|news|over-ons|about|zoeken|search|account|winkelwagen)(/|$)", re.I)
 
 class Links(HTMLParser):
@@ -90,7 +91,7 @@ def collect(name, page):
         if parsed.scheme!="https" or EXCLUDE.search(parsed.path):
             continue
         path=parsed.path.lower()
-        if not any(p in path for p in PATTERNS):
+        if GENERIC.search(parsed.path) or not any(p in path for p in PATTERNS):
             continue
         if path.rstrip("/") in ("/agenda","/programma","/events","/event","/concert","/veranstaltungen"):
             continue
