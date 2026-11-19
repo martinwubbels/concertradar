@@ -26,6 +26,8 @@ concerts=json.loads((ROOT/"data/concerts.json").read_text(encoding="utf-8"))["ev
 assert len(concerts)==len({c["id"] for c in concerts})
 assert all(c["id"] and c["name"] and c["date"] and c["city"] for c in concerts)
 assert len(concerts)>=110
+assert all(c.get("link_status") in ("event_page","event_page_unverified","venue_or_generic") for c in concerts)
+assert sum(c["link_status"]=="event_page" for c in concerts)>=26
 venues=json.loads((ROOT/"data/venue-locations.json").read_text(encoding="utf-8"))
 assert all("address" in v for v in venues["venues"].values())
 cloud_config=json.loads((ROOT/"data/cloud-config.json").read_text(encoding="utf-8"))
@@ -37,6 +39,11 @@ assert "function historyMarkup" in source
 assert "function dashboardMarkup" in source
 assert "function tasteResult" in source
 assert "function tasteMarkup" in source
+assert "function hasDirectConcertLink" in source
+assert "function eventSearchUrl" in source
+assert "function concertLinkLabel" in source
+assert "link_status" in source
+assert "Geen directe concertlink" in source
 assert "KAARTEN GEKOCHT" in source
 assert "concert-booked" in html
 assert "taste-small" in html
