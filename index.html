@@ -712,7 +712,7 @@ function newMarkup(){
       '<button data-action="interested" data-id="'+h(e.id)+'" class="'+(statusOf(e)==='interested'?'selected':'')+'">Interessant</button>'+
       '<button data-action="rejected" data-id="'+h(e.id)+'" class="'+(statusOf(e)==='rejected'?'selected':'')+'">Afwijzen</button>'+
       '<button data-action="booked" data-id="'+h(e.id)+'" class="'+(statusOf(e)==='booked'?'selected':'')+'">Kaarten gekocht</button></div>'+
-      '<a class="btn" href="'+h(e.url)+'" target="_blank" rel="noopener noreferrer">Controleer officiële concertpagina</a></article>').join('')||
+      '<a class="btn" href="'+h(concertLink(e))+'" target="_blank" rel="noopener noreferrer">Controleer officiële concertpagina</a></article>').join('')||
       '<p class="empty">Nog geen nieuwe gecontroleerd gestructureerde kandidaten beschikbaar. De dagelijkse verwerking vult dit overzicht wanneer geschikte gegevens worden gevonden.</p>')+
     '</section>';
 }
@@ -731,7 +731,7 @@ function dashboardMarkup(){
  const date=dt(e.date);
  return '<article class="dash-card concert-booked"><div class="status-strip concert-booked">KAARTEN GEKOCHT</div><div class="review-small">'+h(date)+(e.time?' · '+h(e.time):'')+'</div><h3>'+h(e.name)+'</h3><div class="muted">'+h(e.venue)+' · '+h(e.city)+'</div>'+
  (e.note?'<p class="details">'+h(e.note)+'</p>':'')+
- '<div class="dashboard-buttons"><a class="btn" href="'+h(e.url)+'" target="_blank" rel="noopener noreferrer">Concertlink</a>'+
+ '<div class="dashboard-buttons"><a class="btn" href="'+h(concertLink(e))+'" target="_blank" rel="noopener noreferrer">'+h(concertLinkLabel(e))+'</a>'+
  '<a class="btn" href="https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(e.venue+', '+e.city)+'" target="_blank" rel="noopener noreferrer">Route</a>'+
  '<button data-review="'+h(e.id)+'" type="button">Notitie / beoordeling</button></div></article>';
  }).join('')||'<p class="empty">Je hebt nog geen komende concerten als Kaarten gekocht gemarkeerd.</p>')+'</section>';
@@ -747,7 +747,7 @@ function inboxMarkup(){
  '<section class="list">'+(list.map(e=>'<article class="discovery-card"><h3>'+h(e.name)+'</h3><p class="muted">'+h(e.date)+' · '+h(e.venue||e.source_venue)+' · '+h(e.city||'')+'</p>'+
  '<p class="taste-small">Persoonlijke smaakmatch: <strong>'+tasteResult(e).score.toFixed(1)+'/10</strong> ('+h(tasteResult(e).source)+')</p>'+
  '<div class="inbox-buttons">'+[['interested','Interessant'],['rejected','Afwijzen'],['booked','Kaarten gekocht']].map(([k,label])=>'<button data-action="'+k+'" data-id="'+h(e.id)+'">'+label+'</button>').join('')+
- '<a class="btn" href="'+h(e.url)+'" target="_blank" rel="noopener noreferrer">Officiële pagina</a></div></article>').join('')||
+ '<a class="btn" href="'+h(concertLink(e))+'" target="_blank" rel="noopener noreferrer">Officiële pagina</a></div></article>').join('')||
  '<p class="empty">Je hebt alle gevonden concerten beoordeeld.</p>')+'</section>';
 }
 function historyMarkup(){
@@ -965,7 +965,7 @@ if(manualForm){
        '<span class="tag">'+h(e.source_name||'ConcertRadar')+'</span> '+
        (e.review_required?'<span class="tag">Controle vereist</span>':'')+
        (e.price!=null?'<span class="tag">'+euro(e.price)+'</span>':'')+
-       (safeExternalUrl(e.url)?'<a href="'+h(e.url)+'" target="_blank" rel="noopener noreferrer">Bron bekijken</a>':'')+
+       (safeExternalUrl(e.url)?'<a href="'+h(concertLink(e))+'" target="_blank" rel="noopener noreferrer">Bron bekijken</a>':'')+
        '</div><button class="btn" type="button" data-use-match="'+i+'">Overnemen</button></div>').join('');
    matches.querySelectorAll('[data-use-match]').forEach(x=>x.onclick=()=>fillKnownConcert(manualForm,found[Number(x.dataset.useMatch)]));
  };
