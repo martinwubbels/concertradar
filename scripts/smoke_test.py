@@ -38,6 +38,11 @@ assert "function inboxMarkup" in source
 assert "function historyMarkup" in source
 assert "function dashboardMarkup" in source
 assert "function tasteResult" in source
+assert "function surpriseEvidence" in source
+assert "function surpriseIndex" in source
+assert "function specificMusicDiscovery" in source
+assert "Maximaal acht nog niet beoordeelde ontdekkingen" in source
+assert "[\'discovery\',\'Smaakmatches\']" not in source
 assert "function tasteMarkup" in source
 assert "function tasteCloudMarkup" in source
 assert "function preloadKnownTaste" in source
