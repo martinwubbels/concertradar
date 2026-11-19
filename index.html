@@ -77,13 +77,13 @@ const today=new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'})
 let state={tab:'dashboard',search:'',city:'',genre:'',sort:'date',onlyFuture:true,scope:'all',mapRange:'90',calendarMonth:today.slice(0,7),editingId:''};
 const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}};
 let saved=read();let extra=Array.isArray(saved.extra)?saved.extra:[];let flags=saved.flags||{};let assessments=saved.assessments||{};let appSettings=saved.settings||{};
-const all=()=>[...new Map([...seed,...nationalSeed,...liveEvents,...extra].map(e=>[e.id,e])).values()];
+const all=()=>[...new Map([...seed,...nationalSeed,...liveEvents,...extra].map(e=>[e.id,e])).values()].filter(e=>!e.deleted);
 const scopeOf=e=>e.scope||(['Amsterdam','Rotterdam','Utrecht','Eindhoven','Nijmegen','Arnhem','Keulen','Düsseldorf','Oberhausen','Münster','Hannover','Bremen'].includes(e.city)?'landelijk':'regionaal');
 const spotifyUrl=e=>'https://open.spotify.com/search/'+encodeURIComponent(e.spotify||e.name.split(' + ')[0].split(' & Friends')[0]);
 const h=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const euro=n=>n==null?'Prijs nog niet bekend':new Intl.NumberFormat('nl-NL',{style:'currency',currency:'EUR'}).format(n);
 const dt=s=>new Date(s+'T12:00:00').toLocaleDateString('nl-NL',{day:'numeric',month:'long',year:'numeric'});
-const persist=()=>{try{localStorage.setItem(KEY,JSON.stringify({flags,extra,assessments,settings:appSettings}))}catch(e){alert('Chrome blokkeert lokale opslag. Exporteer je gegevens via Updates & beheer.')}};
+const persist=()=>{try{localStorage.setItem(KEY,JSON.stringify({flags,extra,assessments,settings:appSettings}));if(cloudReady)scheduleCloudPush()}catch(e){alert('Chrome blokkeert lokale opslag. Exporteer je gegevens via Updates & beheer.')}};
 const statusOf=e=>{
   const f=flags[e.id]||{};
   if(Object.prototype.hasOwnProperty.call(f,'status'))return f.status;
@@ -101,7 +101,7 @@ const filtered=()=>all().filter(e=>(!state.onlyFuture||e.date>=today)
   &&[e.name,e.city,e.venue,e.genre,e.match,e.reason].join(' ').toLowerCase().includes(state.search.toLowerCase())
 ).sort((a,b)=>state.sort==='quality'?b.quality-a.quality:state.sort==='value'?(b.value||0)-(a.value||0):a.date.localeCompare(b.date));
 const el=document.querySelector('#app');
-function render(){const entries=all().filter(e=>e.date>=today);const cities=[...new Set(all().map(e=>e.city))].sort();const genres=['Blues','Americana','Soul','Rock','Folk','Punk','Singer-songwriter','Streektaal'];const list=filtered();el.innerHTML=`<main class="wrap"><header class="top"><div><div class="brand">Concert<span>Radar</span></div><div class="sub">Noord-Oost Nederland én landelijke topconcerten</div></div><div class="pill">GitHub Pages · gratis · ${catalogLoaded?liveEvents.length+' records geladen':'Ingebouwde startlijst'}</div></header>${catalogError?`<div class="notice" role="alert">${h(catalogError)} De ingebouwde startlijst wordt gebruikt.</div>`:""}<section class="hero"><h1>De beste concerten. Dichtbij én landelijk.</h1><p>Jouw concerten, persoonlijke smaakmatches, interesses en gekochte kaarten. De lijst blijft bewaard in deze browser. Ook landelijke topconcerten. Spotify-links werken direct; artiestenfoto’s worden automatisch opgezocht via Wikipedia. Internet is nodig voor het ophalen van foto’s. De centrale concertlijst wordt bij openen opgehaald. Nieuwe concerten verschijnen pas wanneer ze aan de centrale lijst zijn toegevoegd. Zelf een concert toevoegen kan via het tabblad Concert toevoegen.</p></section><div class="stats"><div class="stat"><strong>${entries.length}</strong><span>Toekomstige concerten</span></div><div class="stat"><strong>${all().filter(e=>statusOf(e)==='interested').length}</strong><span>Interessant</span></div><div class="stat"><strong>${all().filter(isBooked).length}</strong><span>Kaarten gekocht</span></div><div class="stat"><strong>${entries.filter(e=>e.quality>=9.5).length}</strong><span>Topmatches ≥ 9,5</span></div></div><nav class="nav">${[['dashboard','Mijn komende concerten'],['all','Masterlijst'],['inbox','Beoordelingsinbox'],['favorites','Interessant'],['booked','Kaarten gekocht'],['rejected','Afgewezen'],['history','Concertgeschiedenis'],['discovery','Smaakmatches'],['map','Kaart'],['calendar','Mijn kalender'],['add','Concert toevoegen'],['new','Nieuw gevonden'],['updates','Updates & beheer']].map(([k,v])=>`<button data-tab="${k}" class="${state.tab===k?'active':''}">${v}</button>`).join('')}</nav>${state.tab==='updates'?updates():state.tab==='dashboard'?dashboardMarkup():state.tab==='inbox'?inboxMarkup():state.tab==='history'?historyMarkup():state.tab==='map'?mapMarkup():state.tab==='calendar'?calendarMarkup():state.tab==='add'?personalAddMarkup():state.tab==='new'?newMarkup():`<div class="toolbar"><select id="scope"><option value="all" ${state.scope==='all'?'selected':''}>Heel Nederland + grensregio</option><option value="regionaal" ${state.scope==='regionaal'?'selected':''}>Regio Noord-Oost</option><option value="landelijk" ${state.scope==='landelijk'?'selected':''}>Landelijke toppers</option></select><input id="search" placeholder="Zoek artiest, locatie of genre" value="${h(state.search)}"><select id="city"><option value="">Alle plaatsen</option>${cities.map(c=>`<option ${state.city===c?'selected':''}>${h(c)}</option>`).join('')}</select><select id="genre"><option value="">Alle genres</option>${genres.map(g=>`<option ${state.genre===g?'selected':''}>${h(g)}</option>`).join('')}</select><select id="sort"><option value="date" ${state.sort==='date'?'selected':''}>Op datum</option><option value="quality" ${state.sort==='quality'?'selected':''}>Hoogste kwaliteit</option><option value="value" ${state.sort==='value'?'selected':''}>Beste waarde</option></select><label class="pill"><input type="checkbox" id="future" ${state.onlyFuture?'checked':''}> Alleen toekomstig</label></div><div class="sub" style="margin-bottom:12px">${list.length} resultaten · prijzen en verkoopstatus niet live gecontroleerd</div><section class="list">${list.map(card).join('')||'<div class="empty">Geen concerten gevonden. Pas de filters aan.</div>'}</section>`}<footer class="footer">ConcertRadar prototype · Startgegevens uit eerdere gesprekken · Controleer datum, prijs en beschikbaarheid altijd bij het officiële podium.</footer></main>`;bind();if(state.tab==='map')drawConcertMap();}
+function render(){const entries=all().filter(e=>e.date>=today);const cities=[...new Set(all().map(e=>e.city))].sort();const genres=['Blues','Americana','Soul','Rock','Folk','Punk','Singer-songwriter','Streektaal'];const list=filtered();el.innerHTML=`<main class="wrap"><header class="top"><div><div class="brand">Concert<span>Radar</span></div><div class="sub">Noord-Oost Nederland én landelijke topconcerten</div></div><div class="pill">GitHub Pages · gratis · ${catalogLoaded?liveEvents.length+' records geladen':'Ingebouwde startlijst'}</div></header>${catalogError?`<div class="notice" role="alert">${h(catalogError)} De ingebouwde startlijst wordt gebruikt.</div>`:""}<section class="hero"><h1>De beste concerten. Dichtbij én landelijk.</h1><p>Jouw concerten, persoonlijke smaakmatches, interesses en gekochte kaarten. De lijst blijft bewaard in deze browser. Ook landelijke topconcerten. Spotify-links werken direct; artiestenfoto’s worden automatisch opgezocht via Wikipedia. Internet is nodig voor het ophalen van foto’s. De centrale concertlijst wordt bij openen opgehaald. Nieuwe concerten verschijnen pas wanneer ze aan de centrale lijst zijn toegevoegd. Zelf een concert toevoegen kan via het tabblad Concert toevoegen.</p></section><div class="stats"><div class="stat"><strong>${entries.length}</strong><span>Toekomstige concerten</span></div><div class="stat"><strong>${all().filter(e=>statusOf(e)==='interested').length}</strong><span>Interessant</span></div><div class="stat"><strong>${all().filter(isBooked).length}</strong><span>Kaarten gekocht</span></div><div class="stat"><strong>${entries.filter(e=>e.quality>=9.5).length}</strong><span>Topmatches ≥ 9,5</span></div></div><nav class="nav">${[['dashboard','Mijn komende concerten'],['all','Masterlijst'],['inbox','Beoordelingsinbox'],['favorites','Interessant'],['booked','Kaarten gekocht'],['rejected','Afgewezen'],['history','Concertgeschiedenis'],['sync','Synchronisatie'],['discovery','Smaakmatches'],['map','Kaart'],['calendar','Mijn kalender'],['add','Concert toevoegen'],['new','Nieuw gevonden'],['updates','Updates & beheer']].map(([k,v])=>`<button data-tab="${k}" class="${state.tab===k?'active':''}">${v}</button>`).join('')}</nav>${state.tab==='updates'?updates():state.tab==='dashboard'?dashboardMarkup():state.tab==='inbox'?inboxMarkup():state.tab==='history'?historyMarkup():state.tab==='sync'?cloudMarkup():state.tab==='map'?mapMarkup():state.tab==='calendar'?calendarMarkup():state.tab==='add'?personalAddMarkup():state.tab==='new'?newMarkup():`<div class="toolbar"><select id="scope"><option value="all" ${state.scope==='all'?'selected':''}>Heel Nederland + grensregio</option><option value="regionaal" ${state.scope==='regionaal'?'selected':''}>Regio Noord-Oost</option><option value="landelijk" ${state.scope==='landelijk'?'selected':''}>Landelijke toppers</option></select><input id="search" placeholder="Zoek artiest, locatie of genre" value="${h(state.search)}"><select id="city"><option value="">Alle plaatsen</option>${cities.map(c=>`<option ${state.city===c?'selected':''}>${h(c)}</option>`).join('')}</select><select id="genre"><option value="">Alle genres</option>${genres.map(g=>`<option ${state.genre===g?'selected':''}>${h(g)}</option>`).join('')}</select><select id="sort"><option value="date" ${state.sort==='date'?'selected':''}>Op datum</option><option value="quality" ${state.sort==='quality'?'selected':''}>Hoogste kwaliteit</option><option value="value" ${state.sort==='value'?'selected':''}>Beste waarde</option></select><label class="pill"><input type="checkbox" id="future" ${state.onlyFuture?'checked':''}> Alleen toekomstig</label></div><div class="sub" style="margin-bottom:12px">${list.length} resultaten · prijzen en verkoopstatus niet live gecontroleerd</div><section class="list">${list.map(card).join('')||'<div class="empty">Geen concerten gevonden. Pas de filters aan.</div>'}</section>`}<footer class="footer">ConcertRadar prototype · Startgegevens uit eerdere gesprekken · Controleer datum, prijs en beschikbaarheid altijd bij het officiële podium.</footer></main>`;bind();if(state.tab==='map')drawConcertMap();}
 
 const CITY_COORDS={
   "Groningen":[53.2194,6.5665],"Assen":[52.9928,6.5622],"Emmen":[52.7858,6.8976],
@@ -221,7 +221,7 @@ function drawConcertMap(){
  setTimeout(()=>{if(leafletMap)leafletMap.invalidateSize()},100);
 }
 
-const personalConcerts=()=>extra.filter(e=>e.personal===true||e.id?.startsWith('handmatig-'));
+const personalConcerts=()=>extra.filter(e=>!e.deleted&&(e.personal===true||e.id?.startsWith('handmatig-')));
 function formatMonth(ym){
   const [y,m]=ym.split('-').map(Number);
   return new Date(y,m-1,1).toLocaleDateString('nl-NL',{month:'long',year:'numeric'});
@@ -661,14 +661,128 @@ function openReview(e){
 
 function card(e){let f=flags[e.id]||{};let day=new Date(e.date+'T12:00:00');let month=day.toLocaleDateString('nl-NL',{month:'short'});return `<article class="event"><div class="datebox"><strong>${day.getDate()}</strong><span>${month} ${day.getFullYear()}</span></div><div class="eventbody"><div class="artistpic" data-artist="${h(cleanArtist(e))}">${photoOf(e)?`<img src="${h(photoOf(e))}" alt="Foto van ${h(cleanArtist(e))}" loading="lazy" onerror="this.style.display='none'">`:'<span class="fallback">♫</span>'}</div><div class="eventcopy"><h3>${h(e.name)}</h3><div class="muted">${h(e.venue)} · ${h(e.city)}</div><div class="details">${h(e.reason)}${e.match?`<br><b>Match met:</b> ${h(e.match)}`:''}</div><div class="tags"><span class="tag">${h(e.genre)}</span><span class="tag">${euro(e.price)}</span><span class="tag ${e.priority==='NU KOPEN'?'high':''}">${h(e.priority)}</span>${e.verification==='historical_unverified'?'<span class="tag">Eerder gemeld · niet herbevestigd</span>':''}${isBooked(e)?'<span class="tag high">Kaarten gekocht</span>':''}${statusOf(e)==='interested'?'<span class="tag high">Interessant</span>':''}${statusOf(e)==='rejected'?'<span class="tag">Afgewezen</span>':''}<span class="tag">${e.personal?'Eigen concert':scopeOf(e)==='landelijk'?'Landelijke topper':'Regio'}</span></div></div></div><div class="actions"><div style="width:100%;text-align:right" class="small">Kwaliteit <span class="score">${e.quality.toFixed(1)}</span> · Waarde <span class="score">${e.value?.toFixed(1)||'n.b.'}</span></div><button data-action="image" data-id="${h(e.id)}">Foto wijzigen</button><button data-action="interested" data-id="${h(e.id)}" class="${statusOf(e)==='interested'?'selected':''}">${statusOf(e)==='interested'?'✓ Interessant':'Interessant'}</button><button data-action="rejected" data-id="${h(e.id)}" class="${statusOf(e)==='rejected'?'selected':''}">${statusOf(e)==='rejected'?'✓ Afgewezen':'Afwijzen'}</button><button data-action="booked" data-id="${h(e.id)}" class="${isBooked(e)?'selected':''}">${isBooked(e)?'✓ Kaarten gekocht':'Kaarten gekocht'}</button><a class="btn spotify" href="${h(spotifyUrl(e))}" target="_blank" rel="noopener noreferrer">♫ Spotify ↗</a><a class="btn" href="${h(e.url)}" target="_blank" rel="noopener noreferrer">${e.personal&&!e.sourceUrl?"Zoek zaaladres ↗":"Officiële site ↗"}</a></div></article>`;}
 function updates(){return `<h2 class="sectiontitle">Updates en gegevensbeheer</h2><div class="two"><div class="flow"><b>Nu beschikbaar</b><p>Concerten filteren, sorteren en markeren als interessant, afgewezen of kaarten gekocht. Alle keuzes worden lokaal opgeslagen.</p><button class="btn" id="export">Exporteer mijn lijst (JSON)</button> <button class="btn" id="importbtn">Importeer JSON</button><input type="file" id="import" accept="application/json" hidden><p class="muted">Bij voorkeur wordt een foto van de officiële concertpagina gebruikt. Als die ontbreekt worden artiestenfoto’s automatisch gezocht op Wikipedia. Dit werkt gratis met internet. Niet iedere artiest heeft een geschikte foto; dan verschijnt een neutraal symbool. Je kunt altijd zelf een foto-URL invullen. Spotify opent een zoekresultaat op artiestnaam; je hebt geen Spotify-API nodig.</p><p class="muted">Import ondersteunt een array met concerten of een object met een veld <code>events</code>. Bestaande ID's worden niet dubbel toegevoegd.</p></div><div class="flow"><b>Afbeeldingen</b><p>GitHub Actions controleert dagelijks de openbare afbeeldingen van de officiële concertlinks. Bij ontbrekende foto's wordt via Wikipedia gezocht. Afbeeldingen worden per artiest 30 dagen gecachet in Chrome. Een handmatige foto-URL heeft voorrang.</p><button class="btn" id="photosrefresh">Zoek afbeeldingen opnieuw</button><p class="muted">De bron van de foto is Wikipedia/Wikimedia; gebruik is afhankelijk van de licentie van de betreffende afbeelding.</p><b>Ontwerp automatische updates</b><p>De centrale catalogus staat in data/concerts.json. Een dagelijkse GitHub Action controleert foto's, niet de actuele concertagenda's. 1. Concertonderzoek levert bevestigde concerten.<br>2. Normalisatie maakt per optreden één vaste ID.<br>3. Database vergelijkt nieuwe en bestaande gegevens.<br>4. Website leest de actuele lijst.<br>5. Alleen nieuwe of gewijzigde optredens geven een melding.</p><p class="muted">Nog niet actief: online database, gebruikersaccount, automatische scan en notificaties.</p></div></div><h2 class="sectiontitle">Eigen concerten toevoegen</h2><p class="notice">Gebruik het tabblad Concert toevoegen. Je kunt daar direct aangeven dat je kaarten hebt gekocht.</p><button class="btn primary" data-tab="add">Concert toevoegen</button><p class="notice">Privacy: deze versie bewaart keuzes alleen in je huidige browser. Op een ander apparaat zie je ze niet automatisch. Exporteer je lijst als back-up.</p>`;}
-function bind(){document.querySelectorAll('[data-review]').forEach(b=>b.onclick=()=>{const e=all().find(x=>x.id===b.dataset.review);if(e)openReview(e)});const mapRange=document.getElementById('mapRange');if(mapRange)mapRange.onchange=e=>{state.mapRange=e.target.value;render()};const mapScope=document.getElementById('mapScope');if(mapScope)mapScope.onchange=e=>{state.scope=e.target.value;render()};let pr=document.getElementById('photosrefresh');if(pr)pr.onclick=()=>{photoCache={};savePhotoCache();photoFetchStarted=false;startPhotoFetch();alert('Zoeken naar afbeeldingen gestart. Dit kan even duren.')};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;if(state.tab==='add')state.editingId='';render()});document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{let id=b.dataset.id;flags[id]??={};let k=b.dataset.action;if(k==='image'){let current=all().find(e=>e.id===id);let url=prompt('Plak een directe HTTPS-link naar een artiestenfoto (JPG/PNG/WebP). Leeg maken verwijdert de foto.',current?.image||'');if(url===null)return;if(url&&!/^https:\/\//i.test(url)){alert('Gebruik een HTTPS-link.');return;}extra=[...extra.filter(e=>e.id!==id),{...current,image:url}];}else{
+
+let cloudClient=null,cloudUser=null,cloudReady=false,cloudConfigured=false,cloudStatus='Cloudsync is nog niet ingesteld.';
+let cloudPushTimer=null,cloudPulling=false,cloudPushing=false;
+function cloudMarkup(){
+ return '<h2 class="sectiontitle">Synchronisatie tussen apparaten</h2>'+
+ '<p class="notice">Optioneel: een eigen privédatabase. Je concerten blijven lokaal werken als je geen cloud koppelt. Persoonlijke gegevens komen nooit in de openbare GitHub-repository.</p>'+
+ '<div class="flow"><strong>Verbinding</strong><p class="muted">'+h(cloudStatus)+'</p>'+
+ (cloudUser?'<p>Aangemeld als '+h(cloudUser.email||'gebruiker')+'</p><div class="toolbar"><button class="btn primary" id="cloudNow">Nu synchroniseren</button><button class="btn" id="cloudLogout">Afmelden</button></div>':
+ '<label>E-mailadres<input type="email" id="cloudEmail" placeholder="jouw@emailadres.nl"></label><p><button class="btn primary" id="cloudLogin">Stuur aanmeldlink</button></p>')+
+ '<p class="muted">Gebruik hetzelfde e-mailadres op Android en Windows. Maak eerst een JSON-back-up. Cloudsync werkt pas nadat je het gratis databaseproject hebt ingesteld.</p>'+
+ '<p><a href="https://github.com/martinwubbels/concertradar/blob/main/docs/SYNCHRONISATIE.md" target="_blank" rel="noopener noreferrer">Handleiding voor veilige installatie</a></p></div>';
+}
+function cloudSnapshot(){return {flags,extra,assessments,settings:appSettings};}
+function mergeCloudEntries(local,remote){
+ const out={...(remote||{})};
+ for(const [id,value] of Object.entries(local||{})){
+   const prior=out[id];
+   const left=Date.parse(value?.updated_at||'')||0,right=Date.parse(prior?.updated_at||'')||0;
+   if(!prior||left>=right)out[id]=value;
+ }
+ return out;
+}
+function mergeCloudEvents(local,remote){
+ const out=new Map((Array.isArray(remote)?remote:[]).filter(x=>x?.id).map(x=>[x.id,x]));
+ for(const value of Array.isArray(local)?local:[]){
+   if(!value?.id)continue;
+   const prior=out.get(value.id);
+   if(!prior||(Date.parse(value.updated_at||'')||0)>=(Date.parse(prior.updated_at||'')||0))out.set(value.id,value);
+ }
+ return [...out.values()];
+}
+async function cloudConnect(){
+ if(cloudClient)return true;
+ try{
+   const resp=await fetch('./data/cloud-config.json',{cache:'no-store'});
+   if(!resp.ok)throw Error('Configuratie niet bereikbaar');
+   const config=await resp.json();
+   if(!config.enabled||!config.url||!config.anonKey){
+     cloudStatus='Nog niet geactiveerd. Volg de installatiehandleiding voor een eigen privédatabase.';
+     return false;
+   }
+   const origin=new URL(config.url);
+   if(origin.protocol!=='https:'||!origin.hostname.endsWith('.supabase.co'))throw Error('Ongeldig databaseadres');
+   const lib=await import('https://esm.sh/@supabase/supabase-js@2');
+   cloudClient=lib.createClient(config.url,config.anonKey,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
+   const {data,error}=await cloudClient.auth.getSession();
+   if(error)throw error;
+   cloudUser=data.session?.user||null;
+   cloudStatus=cloudUser?'Aangemeld. Cloudgegevens worden gecontroleerd.':'Database gereed. Meld je aan via e-mail.';
+   cloudClient.auth.onAuthStateChange((event,session)=>{
+      const before=cloudUser?.id;
+      cloudUser=session?.user||null;
+      if(cloudUser&&!cloudReady&&before!==cloudUser.id)setTimeout(()=>cloudPull(),0);
+      if(!cloudUser){cloudReady=false;cloudStatus='Afgemeld';if(state.tab==='sync')render();}
+   });
+   if(cloudUser)await cloudPull();
+   return true;
+ }catch(e){cloudStatus='Cloud niet bereikbaar: '+String(e.message||e);cloudClient=null;return false}
+}
+async function cloudPull(){
+ if(!cloudClient||!cloudUser||cloudPulling)return;
+ cloudPulling=true;
+ try{
+   const {data,error}=await cloudClient.from('concertradar_user_state').select('payload').eq('user_id',cloudUser.id).maybeSingle();
+   if(error)throw error;
+   if(data?.payload){
+     cloudReady=false;
+     flags=mergeCloudEntries(flags,data.payload.flags);
+     assessments=mergeCloudEntries(assessments,data.payload.assessments);
+     extra=mergeCloudEvents(extra,data.payload.extra);
+     appSettings={...(data.payload.settings||{}),...appSettings};
+     persist();
+   }
+   cloudReady=true;
+   cloudStatus='Verbonden en bijgewerkt om '+new Date().toLocaleTimeString('nl-NL');
+   await cloudPush();
+   if(state.tab==='sync'||state.tab==='dashboard'||state.tab==='booked')render();
+ }catch(e){cloudStatus='Cloudophalen mislukt, lokaal bewaard: '+String(e.message||e)}
+ finally{cloudPulling=false}
+}
+function scheduleCloudPush(){
+ if(!cloudReady||!cloudUser)return;
+ if(cloudPushTimer)clearTimeout(cloudPushTimer);
+ cloudPushTimer=setTimeout(()=>{cloudPushTimer=null;cloudPush()},1800);
+}
+async function cloudPush(){
+ if(!cloudReady||!cloudClient||!cloudUser||cloudPushing)return;
+ cloudPushing=true;
+ try{
+   const {error}=await cloudClient.from('concertradar_user_state').upsert({
+     user_id:cloudUser.id,payload:cloudSnapshot(),updated_at:new Date().toISOString()
+   },{onConflict:'user_id'});
+   if(error)throw error;
+   cloudStatus='In de privécloud opgeslagen om '+new Date().toLocaleTimeString('nl-NL');
+ }catch(e){cloudStatus='Upload mislukt. Lokale gegevens bewaard: '+String(e.message||e)}
+ finally{cloudPushing=false;if(state.tab==='sync')render()}
+}
+async function cloudLogin(){
+ const email=String(document.getElementById('cloudEmail')?.value||'').trim();
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){alert('Vul een geldig e-mailadres in.');return;}
+ if(!await cloudConnect()){render();return;}
+ const {error}=await cloudClient.auth.signInWithOtp({email,options:{emailRedirectTo:location.origin+location.pathname}});
+ cloudStatus=error?'Aanmelden mislukt: '+error.message:'Controleer je e-mail. Open de aanmeldlink op dit apparaat.';
+ render();
+}
+function wireCloud(){
+ document.getElementById('cloudLogin')?.addEventListener('click',cloudLogin);
+ document.getElementById('cloudNow')?.addEventListener('click',async()=>{await cloudPull();render();});
+ document.getElementById('cloudLogout')?.addEventListener('click',async()=>{
+   if(cloudClient)await cloudClient.auth.signOut();
+   cloudUser=null;cloudReady=false;cloudStatus='Afgemeld';render();
+ });
+}
+
+function bind(){wireCloud();document.querySelectorAll('[data-review]').forEach(b=>b.onclick=()=>{const e=all().find(x=>x.id===b.dataset.review);if(e)openReview(e)});const mapRange=document.getElementById('mapRange');if(mapRange)mapRange.onchange=e=>{state.mapRange=e.target.value;render()};const mapScope=document.getElementById('mapScope');if(mapScope)mapScope.onchange=e=>{state.scope=e.target.value;render()};let pr=document.getElementById('photosrefresh');if(pr)pr.onclick=()=>{photoCache={};savePhotoCache();photoFetchStarted=false;startPhotoFetch();alert('Zoeken naar afbeeldingen gestart. Dit kan even duren.')};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;if(state.tab==='add')state.editingId='';render()});document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{let id=b.dataset.id;flags[id]??={};let k=b.dataset.action;if(k==='image'){let current=all().find(e=>e.id===id);let url=prompt('Plak een directe HTTPS-link naar een artiestenfoto (JPG/PNG/WebP). Leeg maken verwijdert de foto.',current?.image||'');if(url===null)return;if(url&&!/^https:\/\//i.test(url)){alert('Gebruik een HTTPS-link.');return;}extra=[...extra.filter(e=>e.id!==id),{...current,image:url,updated_at:new Date().toISOString()}];}else{
  const choice=k==='favorite'?'interested':k;
  const event=all().find(e=>e.id===id)||discoveryEvents.find(e=>e.id===id)||{id};
  const next=statusOf(event)===choice?'':choice;
  flags[id].status=next;
  flags[id].favorite=next==='interested';
  flags[id].booked=next==='booked';flags[id].updated_at=new Date().toISOString();
-}persist();render()});for(let [id,key] of [['scope','scope'],['search','search'],['city','city'],['genre','genre'],['sort','sort']]){let input=document.getElementById(id);if(input)input.addEventListener(id==='search'?'input':'change',e=>{let pos=id==='search'?e.target.selectionStart:null;state[key]=e.target.value;render();if(id==='search'){let n=document.getElementById('search');n.focus();n.setSelectionRange(pos,pos)}})}let future=document.getElementById('future');if(future)future.onchange=e=>{state.onlyFuture=e.target.checked;render()};let exportBtn=document.getElementById('export');if(exportBtn)exportBtn.onclick=()=>{let blob=new Blob([JSON.stringify({events:all(),flags},null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='concertradar-export.json';a.click();URL.revokeObjectURL(a.href)};let imp=document.getElementById('import');let impbtn=document.getElementById('importbtn');if(impbtn)impbtn.onclick=()=>imp.click();if(imp)imp.onchange=async e=>{try{let obj=JSON.parse(await e.target.files[0].text());let arr=Array.isArray(obj)?obj:obj.events;if(!Array.isArray(arr))throw Error('Geen concertenlijst');let valid=arr.filter(x=>x&&typeof x.id==='string'&&typeof x.name==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&typeof x.url==='string'&&/^https:\/\//.test(x.url));extra=[...new Map([...extra,...valid].map(x=>[x.id,x])).values()];if(obj.flags&&typeof obj.flags==='object')flags={...flags,...obj.flags};persist();alert(`${valid.length} geldige concertrecords verwerkt`);render()}catch(err){alert('Import mislukt: '+err.message)}};let manualForm=document.getElementById('personalForm');
+}persist();render()});for(let [id,key] of [['scope','scope'],['search','search'],['city','city'],['genre','genre'],['sort','sort']]){let input=document.getElementById(id);if(input)input.addEventListener(id==='search'?'input':'change',e=>{let pos=id==='search'?e.target.selectionStart:null;state[key]=e.target.value;render();if(id==='search'){let n=document.getElementById('search');n.focus();n.setSelectionRange(pos,pos)}})}let future=document.getElementById('future');if(future)future.onchange=e=>{state.onlyFuture=e.target.checked;render()};let exportBtn=document.getElementById('export');if(exportBtn)exportBtn.onclick=()=>{let blob=new Blob([JSON.stringify({events:all(),extra,flags,assessments,settings:appSettings},null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='concertradar-export.json';a.click();URL.revokeObjectURL(a.href)};let imp=document.getElementById('import');let impbtn=document.getElementById('importbtn');if(impbtn)impbtn.onclick=()=>imp.click();if(imp)imp.onchange=async e=>{try{let obj=JSON.parse(await e.target.files[0].text());let arr=Array.isArray(obj)?obj:(Array.isArray(obj.extra)?obj.extra:obj.events);if(!Array.isArray(arr))throw Error('Geen concertenlijst');let valid=arr.filter(x=>x&&typeof x.id==='string'&&typeof x.name==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&typeof x.url==='string'&&/^https:\/\//.test(x.url));extra=[...new Map([...extra,...valid].map(x=>[x.id,x])).values()];if(obj.flags&&typeof obj.flags==='object')flags={...flags,...obj.flags};if(obj.assessments&&typeof obj.assessments==='object')assessments={...assessments,...obj.assessments};if(obj.settings&&typeof obj.settings==='object')appSettings={...appSettings,...obj.settings};persist();alert(`${valid.length} geldige concertrecords verwerkt`);render()}catch(err){alert('Import mislukt: '+err.message)}};let manualForm=document.getElementById('personalForm');
 if(manualForm){
  const importButton=document.getElementById('importConcertUrl');
  const box=document.getElementById('urlImportResults');
@@ -758,7 +872,7 @@ document.querySelectorAll('[data-edit]').forEach(btn=>btn.onclick=()=>{state.edi
 document.querySelectorAll('[data-delete]').forEach(btn=>btn.onclick=()=>{
  const id=btn.dataset.delete;const concert=extra.find(x=>x.id===id);
  if(!concert||!confirm('Concert "'+concert.name+'" verwijderen?'))return;
- extra=extra.filter(x=>x.id!==id);delete flags[id];if(state.editingId===id)state.editingId='';persist();render();
+ extra=extra.map(x=>x.id===id?{...x,deleted:true,updated_at:new Date().toISOString()}:x);delete flags[id];if(state.editingId===id)state.editingId='';persist();render();
 });
 const monthBack=document.getElementById('monthBack');if(monthBack)monthBack.onclick=()=>shiftMonth(-1);
 const monthNext=document.getElementById('monthNext');if(monthNext)monthNext.onclick=()=>shiftMonth(1);
