@@ -183,18 +183,6 @@
       "review_required": true
     },
     {
-      "id": "suggestion-2026-11-22-bertvisscherenhetnoordpoolstrijkkwartet",
-      "name": "Bert Visscher en het Noordpool Strijkkwartet",
-      "date": "2026-11-22",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/bert-visscher-en-het-noordpool-strijkkwartet-2/",
-      "price": 29.5,
-      "availability_hint": "SoldOut",
-      "review_required": true
-    },
-    {
       "id": "suggestion-2026-11-22-jazzrockcafemrfusion",
       "name": "JazzRock Café - Mr. Fusion",
       "date": "2026-11-22",
@@ -267,18 +255,6 @@
       "review_required": true
     },
     {
-      "id": "suggestion-2026-11-25-claudiadebreij",
-      "name": "Claudia de Breij",
-      "date": "2026-11-25",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/claudia-de-breij-16/",
-      "price": 35.5,
-      "availability_hint": "SoldOut",
-      "review_required": true
-    },
-    {
       "id": "suggestion-2026-11-25-myrtesiebinga",
       "name": "Myrte Siebinga",
       "date": "2026-11-25",
@@ -288,18 +264,6 @@
       "url": "https://www.spotgroningen.nl/programma/myrte-siebinga/",
       "price": 19.5,
       "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-26-claudiadebreij",
-      "name": "Claudia de Breij",
-      "date": "2026-11-26",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/claudia-de-breij-17/",
-      "price": 35.5,
-      "availability_hint": "SoldOut",
       "review_required": true
     },
     {
