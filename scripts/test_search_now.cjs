@@ -1,0 +1,23 @@
+// Offline tests of one-click search without any account secrets.
+const fs=require('fs'),assert=require('assert').strict;
+const html=fs.readFileSync('index.html','utf8');
+const js=html.split('<script>')[1].split('</script>')[0];
+const start=js.indexOf("const SEARCH_NOW_WORKFLOW="),end=js.indexOf("function render(){",start);
+assert(start>0&&end>start,'Search-now helpers must exist');
+const env='const today="2026-11-19";';
+const ui=new Function(env+js.slice(start,end)+'return {searchNowUrl,searchNowMarkup,bindSearchNow};')();
+const url=new URL(ui.searchNowUrl('Willow Avalon'));
+assert.equal(url.protocol,'https:');
+assert.equal(url.hostname,'www.google.com');
+const query=url.searchParams.get('q');
+assert(query.includes('Willow Avalon'));
+assert(query.includes('site:spotgroningen.nl'));
+assert(query.includes('site:hedon-zwolle.nl'));
+assert(query.includes('2026 OR 2027'));
+const alt=new URL(ui.searchNowUrl(''));
+assert(alt.searchParams.get('q').includes('americana country roots folk'));
+assert(ui.searchNowMarkup().includes('type="submit">Zoek nu</button>'));
+assert(ui.searchNowMarkup().includes('Volledige podiumscan via GitHub'));
+assert(ui.searchNowMarkup().includes('Run workflow'));
+assert(!js.includes('ghp_'),'Do not embed GitHub access tokens');
+console.log('ConcertRadar direct-search tests passed');
