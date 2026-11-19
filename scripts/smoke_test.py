@@ -40,6 +40,9 @@ assert "function dashboardMarkup" in source
 assert "function tasteResult" in source
 assert "function tasteMarkup" in source
 assert "function tasteCloudMarkup" in source
+assert "function preloadKnownTaste" in source
+assert "KNOWN_TASTE_V1" in source
+assert "preloadKnownTaste();render();" in source
 assert "function saveTasteWord" in source
 assert "function removeTasteWord" in source
 assert "function tasteManualEffect" in source
