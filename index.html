@@ -382,10 +382,10 @@ function parseMetropoolVisibleText(content,heading,sourceUrl){
  // Prefer the main act over door opening / support schedule.
  const timeMatch=text.match(/Aanvang\s+hoofdact\s*(\d{1,2}:\d{2})/i)
    ||text.match(/Aanvang\s+(?!voorprogramma)(\d{1,2}:\d{2})/i);
- const location=text.match(/Locatie\s+([^\n]{2,100}?)(?:\s{2,}|Genre\b|Tijdschema\b|Bekijk menukaart\b|Rijd samen\b|$)/i);
+ const location=text.match(/Locatie[ \t]+([^\n\r]{2,110})/i);
  let venue='',city='';
  if(location){
-   let part=location[1].trim();
+   let part=location[1].split(/\b(?:Genre|Tijdschema|Bekijk menukaart|Rijd samen|Tickets|Prijs)\b/i)[0].trim();
    part=part.replace(/\s+(?:Tickets|Prijs|Voorverkoop).*$/i,'');
    const m=part.match(/^(.{2,65}?),\s*(Hengelo|Enschede|Almelo)\b/i);
    if(m){venue=m[1].trim();city=m[2];}
@@ -397,8 +397,8 @@ function parseMetropoolVisibleText(content,heading,sourceUrl){
  if(!venue)venue='Metropool';
  const priceMatch=text.match(/Voorverkoop\s*€\s*(\d{1,4}(?:[,.]\d{1,2})?)/i);
  const price=priceMatch?Number(priceMatch[1].replace(',','.')):null;
- const genreMatch=text.match(/Genre\s+([^\n]{3,60}?)(?:\s{2,}|Bekijk menukaart|Tijdschema|$)/i);
- const genre=genreMatch?genreMatch[1].trim():'';
+ const genreMatch=text.match(/Genre[ \t]+([^\n\r]{3,60})/i);
+ const genre=genreMatch?genreMatch[1].split(/\b(?:Bekijk menukaart|Tijdschema|Locatie|Tickets)\b/i)[0].trim():'';
  if(!name&&!date)return null;
  return {name,date,time:timeMatch?.[1]||'',venue,city,price:Number.isFinite(price)?price:null,
    genre,sourceUrl,url:sourceUrl,source_name:'Metropool (concertpagina)',review_required:true,
