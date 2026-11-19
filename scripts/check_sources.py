@@ -19,7 +19,7 @@ from html.parser import HTMLParser
 ROOT=Path(__file__).resolve().parents[1]
 CATALOG=ROOT/"data/concerts.json"
 OUTPUT=ROOT/"data/source-checks.json"
-MAX_PAGES=35
+MAX_PAGES=50
 HEADERS={"User-Agent":"ConcertRadar/1.0 source verification (read-only)","Accept":"text/html"}
 EVENT_TYPES={"MusicEvent","Event","TheaterEvent","Festival"}
 
@@ -103,19 +103,27 @@ def build(concerts,previous,fetch,when):
     checks=dict(previous.get("checks") or {})
     alerts=[]
     future=[e for e in concerts if e.get("date","")>=when[:10] and e.get("link_status") in ("event_page","event_page_unverified") and is_direct(e.get("url",""))]
-    future.sort(key=lambda e:(e.get("date",""),e.get("id","")))
-    for e in future[:MAX_PAGES]:
+    # Least-recently checked events are monitored first, not the same fixed 35.
+    future.sort(key=lambda e:((checks.get(e["id"],{}).get("checked_at") or ""),e.get("date",""),e.get("id","")))
+    selected=future[:MAX_PAGES]
+    retained={a["id"]:a for a in previous.get("alerts",[]) if any(e.get("id")==a.get("id") for e in future)}
+    for e in selected:
         try:result=evaluate(e,fetch(e["url"]),when)
         except (urllib.error.URLError,OSError,TimeoutError,ValueError) as err:
             result={"state":"unavailable","checked_at":when,"reason":type(err).__name__}
+        prior=checks.get(e["id"],{})
+        if result["state"]=="confirmed":result["last_confirmed_at"]=when
+        elif prior.get("last_confirmed_at"):result["last_confirmed_at"]=prior["last_confirmed_at"]
         checks[e["id"]]=result
+        retained.pop(e["id"],None)
         if result["state"] in ("changed","cancelled"):
             fingerprint=result.get("date",e["date"])+":"+result["state"]
             alerts.append({"id":e["id"],"name":e["name"],"kind":result["state"],"fingerprint":fingerprint,
              "message":"Datum wijkt af van catalogus" if result["state"]=="changed" else "Expliciete annulering in eventdata",
              "url":e["url"],"checked_at":when})
-    return {"checked_at":when,"description":"Source evidence only; failure is not cancellation; max 35 source pages per run",
-            "checked_count":min(MAX_PAGES,len(future)),"checks":checks,"alerts":alerts}
+    alerts.extend(retained.values())
+    return {"checked_at":when,"description":"Read-only evidence, rotating checks; failures never imply cancellation",
+            "checked_count":len(selected),"eligible_count":len(future),"checks":checks,"alerts":alerts}
 
 def main():
     catalog=json.loads(CATALOG.read_text(encoding="utf-8"))
