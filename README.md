@@ -131,3 +131,13 @@ De app bevat optionele Supabase-cloudsync. Die is nog **niet ingeschakeld**. Voo
 
 ### Back-up
 De JSON-export onder Updates & beheer bevat nu naast de concerten ook de volledige lijst met persoonlijke aanvullingen, concertstatussen, beoordelingen en instellingen. Voor terugzetten wordt het persoonlijke extra-overzicht overgenomen; oudere exports met `events` blijven geaccepteerd.
+
+## Concertstatussen en persoonlijke muzieksmaak (november 2026)
+
+**Kleuren en labels**: Kaarten gekocht is goud met een dikke rand, banner en aparte knopkleur. Interessant is blauw. Afgewezen is grijs. Deze statussen zijn herkenbaar in masterlijst, dashboard, kaart en kalender. Op de kaart geeft goud aan dat op die locatie minstens één geboekt concert staat. De popup toont welk optreden het betreft. Tekstlabels blijven altijd zichtbaar.
+
+**Mijn muzieksmaak**: het nieuwe tabblad beschrijft de persoonlijke score. De bestaande redactionele kwaliteitsscores worden niet overschreven. Er komt een aparte Mijn smaak-score (1 tot 10), afgeleid van genres van interessante, geboekte en achteraf beoordeelde concerten. Een review telt sterker dan een boeking. Bij reviews wegen stem en zang en songteksten elk 32%, livekwaliteit 13% en totaalbeleving 23%.
+
+De handmatig ingestelde startvoorkeur gaat uit naar Americana, country, roots, folk, soul en blues. Interessant en Kaarten gekocht zijn beperkt positieve signalen. Een afwijzing telt niet negatief: reistijd, geld of een agendaconflict kunnen de reden zijn. Lagere reviews kunnen de genrescore wel afzwakken. Een sorteeroptie toont de persoonlijke match. Ook nieuwe kandidaten krijgen een inschatting.
+
+De score wordt lokaal opnieuw berekend bij iedere keuze en beoordeling. Het is een transparante vuistregel op basis van genre en bestaande smaakmatches, geen Spotify- of audiomodel. Het systeem leest geen songteksten en weet niet waarom je iets afwijst. Bij weinig gegevens is de schatting onzeker. Cloudsync, indien geactiveerd, synchroniseert persoonlijke keuzes en beoordelingen en niet het berekende resultaat.
