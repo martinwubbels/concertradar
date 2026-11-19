@@ -70,4 +70,22 @@ assert "urgencyMarkup" in source
 assert "tasteHistoryMarkup" in source
 assert "REJECT_REASONS" in source
 assert "function tasteResult" in source
+assert "function sourceDetail" in source
+assert "function artistProfile" in source
+assert "function personalDashboardTop" in source
+assert "function noticeCandidates" in source
+assert "function travelInfo" in source
+assert "function agendaConflicts" in source
+assert "function parseCalendarDates" in source
+assert "function bindNewDashboard" in source
+assert "data/source-checks.json" in source
+assert "data/artist-profiles.json" in source
+assert "Reisgrenzen" in source
+assert "Mijn startscherm" in source
+subprocess.run(["python","-m","unittest","discover","-s","scripts","-p","test_source_checks.py","-v"],cwd=ROOT,check=True)
+subprocess.run(["node","scripts/test_six_features.cjs"],cwd=ROOT,check=True)
+profiles=json.loads((ROOT/"data/artist-profiles.json").read_text(encoding="utf-8"))["artists"]
+assert "willow avalon" in profiles and "henry wagons" in profiles
+checks=json.loads((ROOT/"data/source-checks.json").read_text(encoding="utf-8"))
+assert "checks" in checks and "alerts" in checks
 print("ConcertRadar smoke tests passed:",len(concerts),"catalog records")
