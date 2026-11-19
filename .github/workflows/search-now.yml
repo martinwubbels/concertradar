@@ -1,0 +1,43 @@
+name: ConcertRadar handmatig volledige zoekactie
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: concertradar-full-discovery
+  cancel-in-progress: false
+jobs:
+  search_now:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Zoek nieuwe concertlinks bij officiële podia
+        run: python scripts/discover_venues.py
+      - name: Controleer en verzamel concertlinks
+        run: python scripts/review_concert_links.py
+      - name: Lees evenementgegevens van officiële pagina's
+        run: python scripts/extract_event_details.py
+      - name: Test veilige automatische opname
+        run: python -m unittest discover -s scripts -p 'test_promotion.py' -v
+      - name: Voeg uitsluitend verifieerbare concerten toe
+        run: python scripts/promote_verified_concerts.py
+      - name: Controleer bestaande concertlinks
+        run: python scripts/check_sources.py
+      - name: Bouw nieuwe ontdekkingenlijst
+        run: python scripts/build_discoveries.py
+      - name: Controleer resultaat en syntax
+        run: python scripts/smoke_test.py
+      - name: Publiceer gegevens uit deze zoekactie
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/discovery-candidates.json data/link-review.json data/event-review.json data/concerts.json data/promotion-report.json data/source-checks.json data/new-discoveries.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Handmatig gestarte volledige concertzoekactie"
+            git pull --rebase
+            git push
+          fi
