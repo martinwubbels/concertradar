@@ -77,3 +77,14 @@ De **Kaart** gebruikt plaatscentra als benaderende positie. Klik voor het echte 
 
 ### Concertgegevens opzoeken bij zelf toevoegen
 Gebruik **Zoek gegevens in ConcertRadar**. De app zoekt overeenkomsten op artiest en eventueel datum in de masterlijst en ontdekkingenfeed. Met **Overnemen** vul je de beschikbare velden in. Dit is geen live verificatie: bestaande concertgegevens en ontdekkingen kunnen onvolledig of verouderd zijn. Met **Zoek op internet** opent een gerichte webzoekopdracht; de gebruiker vult of controleert de resultaten zelf. De app leest vanwege CORS- en privacybeperkingen niet zelfstandig willekeurige concertwebsites of persoonlijke ticketmail.
+
+## Live concertgegevens automatisch opzoeken (november 2026)
+
+Onder **Concert toevoegen** staat **Zoek concert automatisch**. Met minstens drie letters van de artiestnaam raadpleegt de browser:
+1. de lokale ConcertRadar-masterlijst en het overzicht met kandidaten;
+2. de openbare [Gigora concert-API](https://gigora.live/developers);
+3. de openbare [StungEvents zoek-API](https://docs.stungevents.com/debug/default/index).
+
+De browser stuurt de ingevulde artiestnaam (en, waar ondersteund, datum/plaats) naar de externe dienst. De diensten vereisen volgens hun documentatie geen API-sleutel en bieden CORS. De gevonden shows worden alleen als **mogelijke overeenkomsten** getoond met bronvermelding. De gebruiker selecteert een resultaat met **Overnemen**; daarna worden datum, eventuele aanvang, podium, plaats, prijs en een concert/ticketlink in het formulier ingevuld voor zover de bron die aanbiedt. Onbekende velden worden niet verzonnen.
+
+**Beperkingen**: een zoekdienst heeft niet alle kleine podia, kan offline zijn en kan onjuiste of oude informatie leveren. Bij geen resultaten is de knop **Zoek via Google** beschikbaar. De app kan Google-zoekresultaten niet automatisch uitlezen zonder een aparte zoek-API. Controleer de officiële podiumsite vóór opslaan. De live aanvragen zijn alleen getest met voorbeeld-API-antwoorden; bereikbaarheid vanuit de gebruikersbrowser is nog niet bevestigd. Persoonlijke concerten worden nog steeds alleen lokaal opgeslagen.
