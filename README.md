@@ -62,3 +62,15 @@ Ook in **Nieuw gevonden** kun je een kandidaat markeren, zonder dat deze automat
 **Let op:** keuzes worden uitsluitend in de huidige browser opgeslagen. Ze synchroniseren **niet** automatisch tussen Android en Windows. Gebruik JSON-export/import als reservekopie en om keuzes over te zetten.
 
 De **Kaart** gebruikt plaatscentra als benaderende positie. Klik voor het echte adres via de zoeklink in de popup. Kaartmateriaal vereist internet.
+
+## Mijn concertplanner
+
+- Tab **Concert toevoegen**: voeg ook een optreden toe dat nog niet in de centrale lijst voorkomt.
+- Verplichte velden: artiest, datum, podium en plaats. Optioneel: aanvangstijd, genre, prijs, officiële link en eigen notitie.
+- Kies meteen **Kaarten gekocht**, **Interessant**, **Afgewezen** of geen keuze.
+- Eigen concerten zijn te wijzigen en te verwijderen. Bij wijzigen blijft de unieke ID behouden, zodat status en eerder opgeslagen gegevens niet verdwijnen.
+- Zelf toegevoegde concerten verschijnen in de gewone masterlijst, in de statusfilters en bij een bekende plaats ook in de kaartweergave. Een niet-herkende plaats wordt niet met een verzonnen marker aangegeven.
+- Tab **Mijn kalender**: maandweergave van alle concerten met status Interessant of Kaarten gekocht. De knop **Download mijn concertagenda (.ics)** exporteert deze concerten als dagafspraken, zonder verzonnen begintijden.
+- De kalender is bewust **niet live gekoppeld aan Google of Outlook**. Een .ics-export maakt een kopie; latere wijzigingen worden niet automatisch gesynchroniseerd.
+- Eigen concerten, notities en keuzes zijn **privé in de lokale browseropslag**. Windows en Android synchroniseren nog niet. Maak geregeld een JSON-export in **Updates & beheer** en importeer die desgewenst op een ander apparaat.
+- De eerdere handmatige invoer wordt herkend op ID's met `handmatig-`. Deze kan in het nieuwe tabblad worden bewerkt.
