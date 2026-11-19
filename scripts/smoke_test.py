@@ -57,4 +57,12 @@ assert "KAARTEN GEKOCHT" in source
 assert "concert-booked" in html
 assert "taste-small" in html
 subprocess.run(["python","-m","unittest","discover","-s","scripts","-p","test_promotion.py","-v"],cwd=ROOT,check=True)
+assert "musicDNAMarkup" in source
+assert "listeningMarkup" in source
+assert "bindTasteExtras" in source
+assert "surpriseMarkup" in source
+assert "urgencyMarkup" in source
+assert "tasteHistoryMarkup" in source
+assert "REJECT_REASONS" in source
+assert "function tasteResult" in source
 print("ConcertRadar smoke tests passed:",len(concerts),"catalog records")
