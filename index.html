@@ -456,7 +456,7 @@ function tasteMarkup(){
  '<div class="taste-panel"><strong>'+profile.examples+' relevante keuzes of beoordelingen</strong>'+
  '<p class="muted">Opbouw: startvoorkeur voor americana, country, roots, folk, soul en blues; daarna signalen uit Interessant, Kaarten gekocht en concertreviews.</p>'+
  (list.length?'<div class="tags">'+list.map(x=>'<span class="tag taste-genre">'+h(x.genre)+' ('+x.count+')</span>').join('')+'</div>':'<p class="muted">Je hebt nog weinig beoordeeld. Kies interessante concerten en geef na een optreden cijfers voor stem en teksten.</p>')+
- '<p class="muted">De score is een eenvoudige aanbevelingsschatting, geen Spotify-analyse of automatisch geleerd AI-model. Een boeking telt minder sterk dan een positieve beoordeling achteraf.</p></div>'+tasteCloudMarkup();
+ '<p class="muted">De score is een eenvoudige aanbevelingsschatting op basis van gegevens en jouw beoordelingen, geen Spotify- of audioanalyse. Een boeking telt minder sterk dan een positieve review.</p></div>'+musicDNAMarkup()+tasteCloudMarkup();
 }
 
 const filtered=()=>all().filter(e=>(!state.onlyFuture||e.date>=today)
@@ -1117,15 +1117,21 @@ async function cloudPull(){
      const localTimestamp=Date.parse(appSettings.tasteWordsUpdatedAt||'')||0;
      const remoteTimestamp=Date.parse(remoteSettings.tasteWordsUpdatedAt||'')||0;
      const preferRemoteTaste=remoteTimestamp>localTimestamp;
+     const preferRemoteDNA=(Date.parse(remoteSettings.musicDNAUpdatedAt||'')||0)>(Date.parse(appSettings.musicDNAUpdatedAt||'')||0);
+     const preferRemoteListen=(Date.parse(remoteSettings.listeningUpdatedAt||'')||0)>(Date.parse(appSettings.listeningUpdatedAt||'')||0);
      appSettings={...remoteSettings,...appSettings,
        tasteWords:preferRemoteTaste?remoteSettings.tasteWords:appSettings.tasteWords,
-       tasteWordsUpdatedAt:preferRemoteTaste?remoteSettings.tasteWordsUpdatedAt:appSettings.tasteWordsUpdatedAt};
+       tasteWordsUpdatedAt:preferRemoteTaste?remoteSettings.tasteWordsUpdatedAt:appSettings.tasteWordsUpdatedAt,
+       musicDNA:preferRemoteDNA?remoteSettings.musicDNA:appSettings.musicDNA,
+       musicDNAUpdatedAt:preferRemoteDNA?remoteSettings.musicDNAUpdatedAt:appSettings.musicDNAUpdatedAt,
+       listening:preferRemoteListen?remoteSettings.listening:appSettings.listening,
+       listeningUpdatedAt:preferRemoteListen?remoteSettings.listeningUpdatedAt:appSettings.listeningUpdatedAt};
      persist();
    }
    cloudReady=true;
    cloudStatus='Verbonden en bijgewerkt om '+new Date().toLocaleTimeString('nl-NL');
    await cloudPush();
-   if(state.tab==='sync'||state.tab==='dashboard'||state.tab==='booked'||state.tab==='history'||state.tab==='calendar'||state.tab==='taste')render();
+   if(state.tab==='sync'||state.tab==='dashboard'||state.tab==='booked'||state.tab==='history'||state.tab==='calendar'||state.tab==='taste'||state.tab==='surprise'||state.tab==='urgency'||state.tab==='trends')render();
  }catch(e){cloudStatus='Cloudophalen mislukt, lokaal bewaard: '+String(e.message||e)}
  finally{cloudPulling=false}
 }
