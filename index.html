@@ -212,9 +212,10 @@ function saveTasteWord(term,kind,weight){
  const previous=tasteWords().filter(w=>!(tasteNorm(w.term)===key&&w.kind===kind));
  if(previous.length>=60)return false;
  appSettings.tasteWords=[...previous,{term,kind,weight}].sort((a,b)=>a.kind.localeCompare(b.kind)||a.term.localeCompare(b.term,'nl'));
+ appSettings.tasteWordsUpdatedAt=new Date().toISOString();
  persist();return true;
 }
-function removeTasteWord(term,kind){appSettings.tasteWords=tasteWords().filter(w=>!(tasteNorm(w.term)===tasteNorm(term)&&w.kind===kind));persist()}
+function removeTasteWord(term,kind){appSettings.tasteWords=tasteWords().filter(w=>!(tasteNorm(w.term)===tasteNorm(term)&&w.kind===kind));appSettings.tasteWordsUpdatedAt=new Date().toISOString();persist()}
 function tasteWordMatched(event,word){
  const needle=tasteNorm(word.term);
  if(word.kind==='genre')return tasteGenres(event).some(g=>tasteNorm(g).includes(needle)||needle.includes(tasteNorm(g))&&tasteNorm(g).length>=3);
@@ -949,13 +950,19 @@ async function cloudPull(){
      flags=mergeCloudEntries(flags,data.payload.flags);
      assessments=mergeCloudEntries(assessments,data.payload.assessments);
      extra=mergeCloudEvents(extra,data.payload.extra);
-     appSettings={...(data.payload.settings||{}),...appSettings};
+     const remoteSettings=data.payload.settings||{};
+     const localTimestamp=Date.parse(appSettings.tasteWordsUpdatedAt||'')||0;
+     const remoteTimestamp=Date.parse(remoteSettings.tasteWordsUpdatedAt||'')||0;
+     const preferRemoteTaste=remoteTimestamp>localTimestamp;
+     appSettings={...remoteSettings,...appSettings,
+       tasteWords:preferRemoteTaste?remoteSettings.tasteWords:appSettings.tasteWords,
+       tasteWordsUpdatedAt:preferRemoteTaste?remoteSettings.tasteWordsUpdatedAt:appSettings.tasteWordsUpdatedAt};
      persist();
    }
    cloudReady=true;
    cloudStatus='Verbonden en bijgewerkt om '+new Date().toLocaleTimeString('nl-NL');
    await cloudPush();
-   if(state.tab==='sync'||state.tab==='dashboard'||state.tab==='booked'||state.tab==='history'||state.tab==='calendar')render();
+   if(state.tab==='sync'||state.tab==='dashboard'||state.tab==='booked'||state.tab==='history'||state.tab==='calendar'||state.tab==='taste')render();
  }catch(e){cloudStatus='Cloudophalen mislukt, lokaal bewaard: '+String(e.message||e)}
  finally{cloudPulling=false}
 }
