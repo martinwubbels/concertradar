@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "updated_at": "2026-11-19",
+  "disclaimer": "Alleen velden met expliciete bronsteun; ontbrekende velden blijven onbekend. Geen geautomatiseerde luister- of songtekstanalyse.",
+  "artists": {
+    "willow avalon": {
+      "name": "Willow Avalon",
+      "styles": [
+        "Country",
+        "Americana",
+        "Pop-invloeden"
+      ],
+      "voice": "Rokerig stemgeluid",
+      "influences": "Opgegroeid met gospel en country; biografische achtergrond noemt ook vintage rock en soul.",
+      "lyrics": "Persoonlijke, directe liedteksten en verhalende songwriting.",
+      "instrumentation": null,
+      "sources": [
+        {
+          "label": "Electric Feel, artiestenbiografie",
+          "url": "https://www.electricfeelent.com/clients/willow-avalon"
+        },
+        {
+          "label": "Grand Ole Opry, artiestenprofiel",
+          "url": "https://www.opry.com/artists/willow-avalon"
+        },
+        {
+          "label": "AllMusic, biografie",
+          "url": "https://www.allmusic.com/artist/willow-avalon-mn0004453671"
+        }
+      ]
+    },
+    "henry wagons": {
+      "name": "Henry Wagons",
+      "styles": [
+        "Outlaw country",
+        "Americana",
+        "Alt-folk",
+        "Rock"
+      ],
+      "voice": "Bariton",
+      "influences": "Outlaw country, rock-'n-roll en rootsmuziek.",
+      "lyrics": "Verhalende, eigenzinnige liedjes.",
+      "instrumentation": null,
+      "sources": [
+        {
+          "label": "Henry Wagons, officiële biografie",
+          "url": "https://www.wagonsmusic.com/about"
+        },
+        {
+          "label": "Concord Music Publishing",
+          "url": "https://concord.com/publishing-roster/henry-wagons/"
+        }
+      ]
+    },
+    "muireann bradley": {
+      "name": "Muireann Bradley",
+      "styles": [
+        "Countryblues",
+        "Ragtime",
+        "Folkblues"
+      ],
+      "voice": "Zangeres met een traditionele bluesbenadering; precieze stemclassificatie niet gedocumenteerd.",
+      "influences": "Vroege Amerikaanse blues en ragtime; onder meer Blind Blake en Mississippi John Hurt.",
+      "lyrics": null,
+      "instrumentation": "Akoestische fingerstylegitaar",
+      "sources": [
+        {
+          "label": "Red Light Management, artiestenprofiel",
+          "url": "https://redlightmanagement.com/artists/muireann-bradley/"
+        },
+        {
+          "label": "High Road Touring, biografie",
+          "url": "https://www.highroadtouring.com/artists/muireann-bradley/"
+        },
+        {
+          "label": "PRK DreamHaus, artiestenbiografie",
+          "url": "https://en.prk-dreamhaus.com/talent/muireann-bradley"
+        }
+      ]
+    }
+  }
+}
