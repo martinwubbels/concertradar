@@ -131,52 +131,94 @@ function mapEvents(){
 }
 function mapMarkup(){
   const list=mapEvents();
-  const located=list.filter(e=>CITY_COORDS[e.city]);
+  const located=list.filter(e=>venuePoint(e));
   return '<h2 class="sectiontitle">Concerten op de kaart</h2>'+
-    '<p class="notice">Kaartmarkers staan bij het <b>centrum van de plaats</b>, niet op het exacte adres van de zaal. Via de concertlink vind je de juiste locatie. De datumfilter geldt ook op de kaart.</p>'+
+    '<p class="notice">Waar een podiumadres en coördinaten zijn gecontroleerd, staat de marker op de zaal. Andere markers staan bij het plaatscentrum. Klik op een marker voor route en reisafstand.</p>'+
     '<div class="map-tools"><label class="pill">Periode <select id="mapRange">'+
     [['7','7 dagen'],['30','30 dagen'],['90','90 dagen'],['365','12 maanden'],['all','Alle toekomstige']].map(x=>'<option value="'+x[0]+'"'+(state.mapRange===x[0]?' selected':'')+'>'+x[1]+'</option>').join('')+
     '</select></label><label class="pill">Regio <select id="mapScope">'+
     [['all','Alle regio’s'],['regionaal','Noord-Oost'],['landelijk','Landelijke toppers']].map(x=>'<option value="'+x[0]+'"'+(state.scope===x[0]?' selected':'')+'>'+x[1]+'</option>').join('')+
     '</select></label></div>'+
-    '<div class="sub">'+located.length+' concerten op de kaart, in '+new Set(located.map(e=>e.city)).size+' plaatsen.</div>'+
+    '<div class="sub">'+located.length+' concerten op de kaart, waarvan '+located.filter(e=>venuePoint(e)?.exact).length+' met gecontroleerde podiumpositie.</div>'+
     '<div id="concert-map" class="map-panel" role="region" aria-label="Concertkaart"></div>'+
-    '<p class="map-note">Kaartgegevens: © OpenStreetMap-bijdragers. OpenStreetMap en Leaflet vereisen een internetverbinding. Plaatsen zonder bekende coördinaten verschijnen niet op de kaart.</p>';
+    '<p class="map-note">Kaart: OpenStreetMap / Leaflet. Rijafstand en reistijd: OSRM-demo, alleen op verzoek, zonder files. Gebruik Google Maps voor actuele verkeersdrukte. Plaatsen zonder coördinaten worden niet gemarkeerd.</p>';
+}
+
+function venueForConcert(e){
+ const options=Object.values(venueLocations.venues||{}).filter(v=>v.city===e.city);
+ const name=normalizeConcertText(e.venue);
+ return options.find(v=>v.names.some(n=>name.includes(normalizeConcertText(n))))||null;
+}
+function venuePoint(e){
+ const v=venueForConcert(e);
+ if(v&&Number.isFinite(v.lat)&&Number.isFinite(v.lng))return {lat:v.lat,lng:v.lng,label:v.address,exact:true};
+ const city=CITY_COORDS[e.city];
+ return city?{lat:city[0],lng:city[1],label:e.city+' (plaatscentrum)',exact:false}:null;
+}
+async function getRoadRoute(dest,element){
+ if(!dest||!dest.exact){element.textContent='Reistijd niet beschikbaar: exact podiumadres onbekend.';return;}
+ const origin=venueLocations.origin||{lat:52.7254,lng:6.9852};
+ element.textContent='Route berekenen...';
+ try{
+   const url='https://router.project-osrm.org/route/v1/driving/'+
+     [origin.lng,origin.lat].join(',')+';'+[dest.lng,dest.lat].join(',')+'?overview=false';
+   const response=await fetch(url,{mode:'cors',signal:AbortSignal.timeout(12000)});
+   if(!response.ok)throw Error('Routebron niet bereikbaar');
+   const data=await response.json();
+   const route=data.routes?.[0];
+   if(!route||!Number.isFinite(route.duration)||!Number.isFinite(route.distance))throw Error('Geen route gevonden');
+   element.textContent='Vanaf '+(origin.label||'Klazienaveen')+': circa '+Math.round(route.distance/1000)+' km en '+Math.round(route.duration/60)+' min rijden (route-inschatting, zonder verkeer).';
+ }catch(e){element.textContent='Routeberekening niet beschikbaar. Open Google Maps voor actuele reistijd.';}
 }
 function drawConcertMap(){
-  const el=document.getElementById('concert-map');
-  if(!el)return;
-  if(typeof L==='undefined'){
-    el.innerHTML='<div class="notice">De kaartbibliotheek kan niet worden geladen. Controleer je internetverbinding of probeer opnieuw.</div>';
-    return;
-  }
-  if(leafletMap){leafletMap.remove();leafletMap=null;}
-  leafletMap=L.map(el,{scrollWheelZoom:false});
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-    attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bijdragers',maxZoom:18
-  }).addTo(leafletMap);
-  const cityMap=new Map();
-  for(const e of mapEvents()){
-    if(!CITY_COORDS[e.city])continue;
-    if(!cityMap.has(e.city))cityMap.set(e.city,[]);
-    cityMap.get(e.city).push(e);
-  }
-  const bounds=[];
-  for(const [city,events] of cityMap){
-    const pos=CITY_COORDS[city];bounds.push(pos);
-    const eventRows=events.slice(0,22).map(e=>
-      '<div style="padding:5px 0;border-bottom:1px solid #e7eceb"><b>'+h(e.date)+'</b> · '+
-      '<a href="'+h(e.url)+'" target="_blank" rel="noopener noreferrer">'+h(e.name)+'</a>'+
-      '<div style="font-size:12px">'+h(e.venue)+' · <a href="https://www.google.com/maps/search/?api=1&amp;query='+encodeURIComponent(e.venue+' '+e.city)+'" target="_blank" rel="noopener noreferrer">Zoek zaaladres</a></div></div>').join('');
-    const popup='<div style="max-height:280px;overflow-y:auto"><strong>'+h(city)+'</strong> · '+events.length+
-      ' concert(en)<p style="margin:4px 0;font-size:12px">Marker: plaatscentrum</p>'+eventRows+
-      (events.length>22?'<p>En nog '+(events.length-22)+' concerten. Filter op periode voor een kortere lijst.</p>':'')+'</div>';
-    L.circleMarker(pos,{radius:Math.min(16,6+Math.sqrt(events.length)*2),color:'#20574b',fillColor:'#83d0b7',fillOpacity:0.85,weight:2})
-      .addTo(leafletMap).bindPopup(popup,{maxWidth:320});
-  }
-  if(bounds.length)leafletMap.fitBounds(bounds,{padding:[24,24],maxZoom:10});
-  else leafletMap.setView([52.85,6.7],8);
-  setTimeout(()=>{if(leafletMap)leafletMap.invalidateSize()},100);
+ const el=document.getElementById('concert-map');
+ if(!el)return;
+ if(typeof L==='undefined'){
+   el.innerHTML='<div class="notice">De kaartbibliotheek kan niet worden geladen. Controleer je internetverbinding.</div>';return;
+ }
+ if(leafletMap){leafletMap.remove();leafletMap=null;}
+ leafletMap=L.map(el,{scrollWheelZoom:false});
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+   attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>-bijdragers',maxZoom:18
+ }).addTo(leafletMap);
+ const groups=new Map();
+ for(const e of mapEvents()){
+   const p=venuePoint(e);if(!p)continue;
+   const key=p.lat.toFixed(5)+','+p.lng.toFixed(5);
+   if(!groups.has(key))groups.set(key,{point:p,events:[]});
+   groups.get(key).events.push(e);
+ }
+ const bounds=[];
+ for(const [key,group] of groups){
+   const p=group.point;bounds.push([p.lat,p.lng]);
+   const eventRows=group.events.slice(0,22).map(e=>
+     '<div style="padding:5px 0;border-bottom:1px solid #e7eceb"><b>'+h(e.date)+'</b> · '+
+     '<a href="'+h(e.url)+'" target="_blank" rel="noopener noreferrer">'+h(e.name)+'</a>'+
+     '<div style="font-size:12px">'+h(e.venue)+' · '+h(e.city)+'</div></div>').join('');
+   const first=group.events[0];
+   const exactVenue=venueForConcert(first);
+   const dest=exactVenue?.address||first.venue+', '+first.city;
+   const popup='<div style="max-height:290px;overflow-y:auto"><b>'+h(p.label)+'</b><p class="review-small">'+
+     (p.exact?'Geverifieerd podiumadres':'Marker is het plaatscentrum, niet de concertzaal')+'</p>'+
+     eventRows+(group.events.length>22?'<p>Plus '+(group.events.length-22)+' concerten.</p>':'')+
+     '<p><a href="https://www.google.com/maps/dir/?api=1&origin='+encodeURIComponent(venueLocations.origin?.label||'Klazienaveen, Nederland')+
+     '&destination='+encodeURIComponent(dest)+'" target="_blank" rel="noopener noreferrer">Route en actuele reistijd in Google Maps</a></p>'+
+     (p.exact?'<button class="btn" type="button" data-road-route="'+h(key)+'">Bereken rijafstand</button><div class="route-result" data-route-result="'+h(key)+'"></div>':'')+
+     '</div>';
+   L.circleMarker([p.lat,p.lng],{radius:Math.min(16,6+Math.sqrt(group.events.length)*2),
+     color:p.exact?'#20574b':'#5b7080',fillColor:p.exact?'#83d0b7':'#a7b7c4',fillOpacity:0.85,weight:2})
+     .addTo(leafletMap).bindPopup(popup,{maxWidth:330});
+ }
+ leafletMap.on('popupopen',e=>{
+   const node=e.popup.getElement();if(!node)return;
+   node.querySelectorAll('[data-road-route]').forEach(b=>b.onclick=()=>{
+     const point=groups.get(b.dataset.roadRoute)?.point;
+     const text=node.querySelector('[data-route-result]');if(text)getRoadRoute(point,text);
+   });
+ });
+ if(bounds.length)leafletMap.fitBounds(bounds,{padding:[24,24],maxZoom:10});
+ else leafletMap.setView([52.85,6.7],8);
+ setTimeout(()=>{if(leafletMap)leafletMap.invalidateSize()},100);
 }
 
 const personalConcerts=()=>extra.filter(e=>e.personal===true||e.id?.startsWith('handmatig-'));
