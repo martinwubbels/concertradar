@@ -204,6 +204,46 @@ const TASTE_SUGGESTIONS=[
  {term:'Tributebands',kind:'kenmerk'}
 ];
 function tasteNorm(s){return String(s||'').normalize('NFKD').toLocaleLowerCase('nl-NL').replace(/[\u0300-\u036f]/g,'').trim().replace(/\s+/g,' ')}
+/* Eenmalige voorinvulling op basis van eerder expliciet gedeelde voorkeuren.
+   Niet als afkeur opslaan als iets alleen niet gekozen is. Bestaande keuzes winnen. */
+const KNOWN_TASTE_V1=[
+ {term:'Willow Avalon',kind:'artiest',weight:2},
+ {term:'Henry Wagons',kind:'artiest',weight:2},
+ {term:'Lance Roark',kind:'artiest',weight:1},
+ {term:'Muireann Bradley',kind:'artiest',weight:1},
+ {term:'Josiah and the Bonnevilles',kind:'artiest',weight:1},
+ {term:'Pert Near Sandstone',kind:'artiest',weight:1},
+ {term:'Johnny Mullenax',kind:'artiest',weight:1},
+ {term:'Cave Canem',kind:'artiest',weight:1},
+ {term:'By Accident XL',kind:'artiest',weight:1},
+ {term:'Eli Paperboy Reed',kind:'artiest',weight:1},
+ {term:'Americana',kind:'genre',weight:2},
+ {term:'Country',kind:'genre',weight:2},
+ {term:'Roots',kind:'genre',weight:2},
+ {term:'Bluegrass',kind:'genre',weight:1},
+ {term:'Folk',kind:'genre',weight:1},
+ {term:'Soul',kind:'genre',weight:1},
+ {term:'Blues',kind:'genre',weight:1},
+ {term:'Alternatieve rock',kind:'genre',weight:1},
+ {term:'Sterke teksten',kind:'kenmerk',weight:2},
+ {term:'Karaktervolle stem',kind:'kenmerk',weight:2},
+ {term:'Verhalende teksten',kind:'kenmerk',weight:1},
+ {term:'Eigenzinnige liveartiesten',kind:'kenmerk',weight:1},
+ {term:'Virtuoos gitaarspel',kind:'kenmerk',weight:1},
+ {term:'Akoestische roots',kind:'kenmerk',weight:1}
+];
+function preloadKnownTaste(){
+ if(Number(appSettings.tasteSeedVersion)>=1)return false;
+ const words=Array.isArray(appSettings.tasteWords)?appSettings.tasteWords.filter(x=>x&&typeof x.term==='string'):[]; 
+ const keys=new Set(words.map(w=>w.kind+'|'+tasteNorm(w.term)));
+ const added=KNOWN_TASTE_V1.filter(w=>!keys.has(w.kind+'|'+tasteNorm(w.term)));
+ appSettings.tasteWords=[...words,...added].slice(0,60);
+ appSettings.tasteSeedVersion=1;
+ if(added.length)appSettings.tasteWordsUpdatedAt=new Date().toISOString();
+ persist();
+ return added.length>0;
+}
+
 function tasteWords(){return Array.isArray(appSettings.tasteWords)?appSettings.tasteWords.filter(w=>w&&typeof w.term==='string'&&['genre','artiest','kenmerk'].includes(w.kind)&&[-2,-1,1,2].includes(Number(w.weight))):[]}
 function saveTasteWord(term,kind,weight){
  term=String(term||'').replace(/[<>]/g,'').trim().replace(/\s+/g,' ').slice(0,55);
@@ -233,7 +273,7 @@ function tasteCloudMarkup(){
  const sizes={2:'taste-xl',1:'taste-lg','-1':'taste-md','-2':'taste-lg'};
  const suggestions=TASTE_SUGGESTIONS.filter(w=>!list.some(x=>x.kind===w.kind&&tasteNorm(x.term)===tasteNorm(w.term))).slice(0,12);
  return '<section class="taste-editor"><h3>Mijn persoonlijke woordwolk</h3>'+
- '<p class="muted">Voeg muziekstijlen, artiesten en kenmerken toe. Groen betekent voorkeur, oranje betekent liever niet. Grotere woorden tellen zwaarder mee. Klik op een woord om het gewicht aan te passen of te verwijderen.</p>'+
+ '<p class="muted">Vooringevuld vanuit je eerder genoemde favorieten en smaakkenmerken. Je eigen woorden en eerdere aanpassingen krijgen voorrang. Groen betekent voorkeur, oranje betekent liever niet. Klik om te wijzigen of verwijderen.</p>'+
  '<div class="taste-cloud" aria-label="Instelbare muzieksmaakwoorden">'+
  (list.length?list.map((w,i)=>'<button type="button" class="taste-cloud-word '+(w.weight>0?'taste-positive':'taste-negative')+' '+sizes[w.weight]+'" data-taste-edit="'+i+'" title="Klik om voorkeur aan te passen: '+h(w.kind)+' · '+Math.abs(w.weight)+'"><span>'+h(w.term)+'</span></button>').join(''):'<div class="empty">Nog geen persoonlijke woorden. Begin hieronder met een voorbeeld of voeg je eigen woord toe.</div>')+
  '</div><form id="tasteAddForm" class="taste-add-form">'+
@@ -1103,7 +1143,7 @@ const monthBack=document.getElementById('monthBack');if(monthBack)monthBack.oncl
 const monthNext=document.getElementById('monthNext');if(monthNext)monthNext.onclick=()=>shiftMonth(1);
 const exportCalendar=document.getElementById('exportCalendar');
 if(exportCalendar)exportCalendar.onclick=()=>downloadText('ConcertRadar-mijn-agenda.ics',calendarIcs(),'text/calendar;charset=utf-8');}
-render();startPhotoFetch();loadPublishedData();cloudConnect().then(()=>{if(state.tab==='sync')render()});
+preloadKnownTaste();render();startPhotoFetch();loadPublishedData();cloudConnect().then(()=>{if(state.tab==='sync')render()});
 window.addEventListener('focus',()=>{if(cloudReady&&!cloudPulling)cloudPull()});
 setInterval(()=>{if(cloudReady&&!cloudPulling&&document.visibilityState==='visible')cloudPull()},120000);
 if("serviceWorker" in navigator && location.protocol==="https:"){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(console.warn));}
