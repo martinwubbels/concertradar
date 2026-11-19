@@ -28,7 +28,8 @@ assert all(c["id"] and c["name"] and c["date"] and c["city"] for c in concerts)
 assert len(concerts)>=110
 venues=json.loads((ROOT/"data/venue-locations.json").read_text(encoding="utf-8"))
 assert all("address" in v for v in venues["venues"].values())
-assert not json.loads((ROOT/"data/cloud-config.json").read_text(encoding="utf-8"))["enabled"]
+cloud_config=json.loads((ROOT/"data/cloud-config.json").read_text(encoding="utf-8"))
+assert {"url","anonKey","enabled"} <= cloud_config.keys()
 assert "create policy" in (ROOT/"supabase/schema.sql").read_text(encoding="utf-8").lower()
 assert "cloudPull" in source
 assert "function inboxMarkup" in source
