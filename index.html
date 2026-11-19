@@ -221,14 +221,79 @@ function lookupConcerts(form){
   return dateMatch&&(n===name||n.includes(name)||name.includes(n))&&n.length>2;
  }).slice(0,12);
 }
+
+const safeExternalUrl=v=>typeof v==='string'&&/^https:\/\//i.test(v)?v:'';
+function timeInAmsterdam(iso){
+ const d=new Date(iso||'');if(Number.isNaN(d.getTime()))return {};
+ const parts=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Amsterdam',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(d);
+ const by=Object.fromEntries(parts.map(p=>[p.type,p.value]));
+ return {date:by.year+'-'+by.month+'-'+by.day,time:by.hour+':'+by.minute};
+}
+function normalizeExternalEvent(item,source){
+ if(!item||typeof item!=='object')return null;
+ const rawVenue=source==='Gigora'?item.venue:item.venue_name||item.venue;
+ const venue=typeof rawVenue==='string'?rawVenue:String(rawVenue?.name||'');
+ const location=typeof item.city==='string'?item.city:(item.city?.name||item.venue?.city||'');
+ const city=typeof location==='string'?location:'';
+ const title=String(item.headliner||item.artist_name||item.title||item.name||'').trim();
+ const when=timeInAmsterdam(source==='Gigora'?item.starts_at:item.start_utc||item.starts_at);
+ const date=when.date||String(item.date||'').slice(0,10);
+ if(!title||!venue||!date||!/^\d{4}-\d{2}-\d{2}$/.test(date))return null;
+ let price=null;
+ const rawPrice=source==='Gigora'?item.price_range?.min:item.price_min??item.price;
+ const currency=source==='Gigora'?item.price_range?.currency:item.currency;
+ if((currency==='EUR'||currency==='€')&&rawPrice!==undefined&&rawPrice!==null&&Number.isFinite(Number(rawPrice))&&Number(rawPrice)>=0)price=Number(rawPrice);
+ const url=safeExternalUrl(item.ticket_url)||safeExternalUrl(item.gigora_url)||safeExternalUrl(item.url);
+ return {name:title,date,time:when.time||'',venue,city,price,url,sourceUrl:url,source_name:source,review_required:true};
+}
+function matchesArtist(input,event){
+ const q=normalizeConcertText(input),n=normalizeConcertText(event.name);
+ if(q.length<3)return false;
+ return n===q||n.includes(q)||q.includes(n)||q.split(' ').every(w=>w.length<3||n.includes(w));
+}
+async function fetchLiveConcertMatches(form){
+ const artist=String(form.elements.name.value||'').trim();
+ const city=String(form.elements.city.value||'').trim();
+ const selectedDate=String(form.elements.date.value||'');
+ if(artist.length<3)return {items:[],failed:[]};
+ const gigora=new URL('https://gigora.live/api/ai/events');
+ gigora.searchParams.set('artist',artist);
+ gigora.searchParams.set('limit','40');
+ if(city)gigora.searchParams.set('city',city);
+ if(selectedDate){gigora.searchParams.set('from',selectedDate);gigora.searchParams.set('to',selectedDate)}
+ const stung=new URL('https://api.stungevents.com/search');
+ stung.searchParams.set('q',artist);
+ const sources=[['Gigora',gigora],['StungEvents',stung]];
+ const result=await Promise.all(sources.map(async ([source,url])=>{
+   try{
+     const r=await fetch(url.toString(),{mode:'cors',cache:'no-store',signal:AbortSignal.timeout(11000)});
+     if(!r.ok)throw Error('HTTP '+r.status);
+     const data=await r.json();
+     const records=Array.isArray(data.events)?data.events:[];
+     const items=records.slice(0,60).map(x=>normalizeExternalEvent(x,source)).filter(Boolean).filter(e=>
+       matchesArtist(artist,e)&&(!selectedDate||e.date===selectedDate)&&(!city||!e.city||normalizeConcertText(e.city).includes(normalizeConcertText(city))));
+     return {source,items};
+   }catch(e){return {source,items:[],error:String(e.message||e)}}
+ }));
+ return {items:result.flatMap(x=>x.items),failed:result.filter(x=>x.error).map(x=>x.source)};
+}
+function distinctMatches(events){
+ const found=new Map();
+ for(const e of events){
+   const k=normalizeConcertText(e.name)+'|'+e.date+'|'+normalizeConcertText(e.city)+'|'+normalizeConcertText(e.venue);
+   if(!found.has(k))found.set(k,e);
+ }
+ return [...found.values()].sort((a,b)=>a.date.localeCompare(b.date)).slice(0,25);
+}
+
 function fillKnownConcert(form,event){
  const field=(name,val)=>{if(form.elements[name]&&val!==undefined&&val!==null)form.elements[name].value=String(val)};
- field('name',event.name);field('date',event.date);field('venue',event.venue);field('city',event.city);
+ field('name',event.name);field('date',event.date);field('venue',event.venue);field('city',event.city);if(event.time)field('time',event.time);
  if(event.genre&&event.genre!=='Onbekend')field('genre',event.genre);
  if(event.price!==null&&event.price!==undefined)field('price',event.price);
  if(event.sourceUrl||event.url)field('url',event.sourceUrl||event.url);
  const box=document.getElementById('matchResults');
- if(box)box.innerHTML='<p class="notice">Gegevens overgenomen. Controleer ze bij het podium voordat je het concert opslaat. Dit is geen live ticketcontrole.</p>';
+ if(box)box.innerHTML='<p class="notice">Gegevens overgenomen uit een concertvermelding. Controleer datum, tijd, zaal, prijs en ticketlink bij het officiële podium vóór opslaan. Dit is geen garantie voor kaartbeschikbaarheid.</p>';
 }
 
 function personalAddMarkup(){
@@ -239,7 +304,7 @@ function personalAddMarkup(){
     '<p class="notice">Voor een concert dat nog niet in ConcertRadar staat. Vul artiest, datum, podium en plaats in. Je kunt meteen aangeven dat je kaarten hebt gekocht. Deze gegevens worden alleen in deze browser opgeslagen, niet openbaar op GitHub.</p>'+
     '<form id="personalForm" class="flow personal-form">'+
     '<label>Artiest of evenement<input required maxlength="130" name="name" placeholder="Bijvoorbeeld: Willow Avalon" value="'+val('name')+'"></label>'+
-    '<div class="toolbar"><button class="btn" type="button" id="findExisting">Zoek gegevens in ConcertRadar</button><button class="btn" type="button" id="searchOfficial">Zoek op internet</button></div><div id="matchResults" aria-live="polite"></div>'+
+    '<div class="toolbar"><button class="btn primary" type="button" id="findExisting">Zoek concert automatisch</button><button class="btn" type="button" id="searchOfficial">Zoek via Google</button></div><div class="muted">Zoekt in ConcertRadar en twee openbare concertdiensten. Je artiestnaam en eventuele plaats worden daarbij naar die diensten gestuurd. Geen account of API-sleutel nodig. Controleer de uitkomst vóór opslaan.</div><div id="matchResults" aria-live="polite"></div>'+
     '<div class="two"><label>Datum<input required type="date" name="date" value="'+val('date')+'"></label>'+
     '<label>Aanvang (optioneel)<input type="time" name="time" value="'+val('time')+'"></label></div>'+
     '<div class="two"><label>Podium<input required maxlength="150" name="venue" placeholder="Bijvoorbeeld: De Oosterpoort" value="'+val('venue')+'"></label>'+
@@ -320,12 +385,30 @@ function bind(){const mapRange=document.getElementById('mapRange');if(mapRange)m
 if(manualForm){
  const matches=document.getElementById('matchResults');
  const find=document.getElementById('findExisting');
- if(find)find.onclick=()=>{
-   const found=lookupConcerts(manualForm);
-   if(!found.length){matches.innerHTML='<p class="notice">Geen passende vermelding gevonden in de huidige masterlijst of ontdekkingen. Gebruik Zoek op internet of vul de gegevens handmatig in.</p>';return;}
-   matches.innerHTML='<p class="muted">'+found.length+' mogelijke overeenkomsten. Controleer datum, podium en bron:</p>'+
-      found.map((e,i)=>'<div class="lookup-row"><div><b>'+h(e.name)+'</b><div class="muted">'+h(e.date)+' · '+h(e.venue||e.source_venue)+' · '+h(e.city||'')+'</div>'+
-      (e.review_required?'<span class="tag">Nog niet bevestigd</span>':'')+'</div><button class="btn" type="button" data-use-match="'+i+'">Overnemen</button></div>').join('');
+ if(find)find.onclick=async ()=>{
+   const artist=String(manualForm.elements.name.value||'').trim();
+   if(artist.length<3){matches.innerHTML='<p class="notice">Vul eerst minimaal drie letters van de artiestnaam in.</p>';return}
+   find.disabled=true;find.textContent='Zoeken...';
+   matches.innerHTML='<p class="notice">Zoekt in de masterlijst en openbare concertagenda’s...</p>';
+   const local=lookupConcerts(manualForm).map(e=>({...e,source_name:e.review_required?'ConcertRadar (onbevestigd)':'ConcertRadar'}));
+   let external={items:[],failed:[]};
+   try{external=await fetchLiveConcertMatches(manualForm)}catch(e){external.failed=['Externe zoekdiensten']}
+   // Form may have been replaced during the async search.
+   if(!document.contains(manualForm))return;
+   find.disabled=false;find.textContent='Zoek concert automatisch';
+   const found=distinctMatches([...local,...external.items]);
+   if(!found.length){
+     matches.innerHTML='<p class="notice">Geen passende concerten gevonden. De zoekdiensten zijn niet volledig. Controleer het optreden via Zoek via Google of vul de gegevens zelf in.</p>';
+     return;
+   }
+   matches.innerHTML='<p class="muted">'+found.length+' mogelijke overeenkomsten. Klik op <b>Overnemen</b> om de velden te vullen. Externe resultaten zijn nog niet onafhankelijk gecontroleerd.</p>'+
+     (external.failed.length?'<p class="muted">Niet bereikbaar: '+h(external.failed.join(', '))+'. De overige resultaten blijven bruikbaar.</p>':'')+
+     found.map((e,i)=>'<div class="lookup-row"><div><b>'+h(e.name)+'</b><div class="muted">'+h(e.date)+(e.time?' · '+h(e.time):'')+' · '+h(e.venue||e.source_venue)+' · '+h(e.city||'')+'</div>'+
+       '<span class="tag">'+h(e.source_name||'ConcertRadar')+'</span> '+
+       (e.review_required?'<span class="tag">Controle vereist</span>':'')+
+       (e.price!=null?'<span class="tag">'+euro(e.price)+'</span>':'')+
+       (safeExternalUrl(e.url)?'<a href="'+h(e.url)+'" target="_blank" rel="noopener noreferrer">Bron bekijken</a>':'')+
+       '</div><button class="btn" type="button" data-use-match="'+i+'">Overnemen</button></div>').join('');
    matches.querySelectorAll('[data-use-match]').forEach(x=>x.onclick=()=>fillKnownConcert(manualForm,found[Number(x.dataset.useMatch)]));
  };
  const search=document.getElementById('searchOfficial');
