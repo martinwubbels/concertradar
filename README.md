@@ -44,3 +44,21 @@ De masterlijst is uitgebreid van 23 tot 110 vermeldingen uit eerdere concertrapp
 De workflow `ConcertRadar dagelijkse agenda-controle` controleert iedere ochtend enkele officiële regionale agenda's. De output staat in `data/discovery-candidates.json` en bestaat uit **onbevestigde potentiële links**. Deze gegevens worden niet automatisch aan de masterlijst toegevoegd. Eerst moeten datum, act, zaal, ticketprijs en officiële eventpagina worden gecontroleerd.
 
 Meer informatie: [Concertupdates en beperkingen](docs/CONCERT_UPDATES.md).
+
+## Nieuw: concertkaart en automatische ontdekkingen
+
+- **Kaart**: Open het tabblad `Kaart`. Filter op 7, 30 of 90 dagen, 12 maanden of alle toekomstige concerten. De markers tonen per plaats de concertdatums en officiële concertlinks. Vanuit de popup kun je het zaaladres opzoeken.
+- **Nauwkeurigheid**: Markeringen tonen bewust het **plaatscentrum**, niet een onbevestigd exact zaaladres. De kaart gebruikt Leaflet en OpenStreetMap via internet; de concertlijst zelf blijft ook zonder kaart zichtbaar.
+- **Nieuw gevonden**: Het tabblad toont automatisch geëxtraheerde mogelijke concerten uit `data/new-discoveries.json`. Deze zijn **onbevestigd** en staan niet in de officiële masterlijst. De tab geeft geen kwaliteits- of waardescore en claimt geen live beschikbaarheid.
+- **Dagelijkse workflow**: Na `extract_event_details.py` bouwt de workflow via `build_discoveries.py` de ontdekkingenfeed. Duplicaten op naam/datum en bekende officiële eventlinks worden uitgefilterd; overbodige cabaret- en tributevormen worden zo veel mogelijk geweerd. Niet alle bronpagina's bieden bruikbare gegevens. De controle vindt geen gegarandeerde 12-maandsdekking.
+- **Bronnen**: OpenStreetMap-tegels en Leaflet worden gratis geladen vanaf openbare providers. Deze providers ontvangen je IP-adres bij het tonen van de kaart.
+
+## Persoonlijke concertkeuzes
+
+In iedere concertkaart staan nu **Interessant**, **Afwijzen** en **Kaarten gekocht**. Er kan één status tegelijk actief zijn. Opnieuw aanklikken wist die keuze. De tabbladen **Interessant**, **Kaarten gekocht** en **Afgewezen** tonen de bijbehorende concerten. Afgewezen concerten verdwijnen uit de gewone lijst en kaart, maar blijven herstelbaar in het tabblad Afgewezen. De eerdere favorieten en boekingen worden als bestaande keuze gelezen.
+
+Ook in **Nieuw gevonden** kun je een kandidaat markeren, zonder dat deze automatisch als geverifieerd concert wordt gepubliceerd.
+
+**Let op:** keuzes worden uitsluitend in de huidige browser opgeslagen. Ze synchroniseren **niet** automatisch tussen Android en Windows. Gebruik JSON-export/import als reservekopie en om keuzes over te zetten.
+
+De **Kaart** gebruikt plaatscentra als benaderende positie. Klik voor het echte adres via de zoeklink in de popup. Kaartmateriaal vereist internet.
