@@ -97,4 +97,9 @@ assert "mobileTab" in source
 assert "compactCards" in source
 assert "function scoreDetails" in source
 subprocess.run(["node","scripts/test_v2.cjs"],cwd=ROOT,check=True)
+assert "function searchNowUrl" in source
+assert "function searchNowMarkup" in source
+assert "function bindSearchNow" in source
+assert "Volledige podiumscan via GitHub" in source
+subprocess.run(["node","scripts/test_search_now.cjs"],cwd=ROOT,check=True)
 print("ConcertRadar smoke tests passed:",len(concerts),"catalog records")
