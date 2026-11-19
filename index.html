@@ -296,6 +296,89 @@ function fillKnownConcert(form,event){
  if(box)box.innerHTML='<p class="notice">Gegevens overgenomen uit een concertvermelding. Controleer datum, tijd, zaal, prijs en ticketlink bij het officiële podium vóór opslaan. Dit is geen garantie voor kaartbeschikbaarheid.</p>';
 }
 
+
+function extractJsonLdEvents(node,result=[]){
+ if(Array.isArray(node)){node.forEach(x=>extractJsonLdEvents(x,result));return result;}
+ if(!node||typeof node!=='object')return result;
+ const types=(Array.isArray(node['@type'])?node['@type']:[node['@type']]).map(x=>String(x||'').split('/').pop());
+ if(types.some(t=>['MusicEvent','Event','Festival'].includes(t)))result.push(node);
+ if(node['@graph'])extractJsonLdEvents(node['@graph'],result);
+ return result;
+}
+function parseSchemaFromMicrolink(value){
+ const raw=Array.isArray(value)?value:[value];
+ const result=[];
+ for(const item of raw){
+   if(typeof item==='string'){
+     try{extractJsonLdEvents(JSON.parse(item),result)}catch(e){}
+   }else if(item&&typeof item==='object')extractJsonLdEvents(item,result);
+ }
+ return result;
+}
+function eventFromSchema(obj,sourceUrl){
+ const info=x=>{
+   if(!x)return '';
+   if(typeof x==='string')return x;
+   if(Array.isArray(x))return info(x[0]);
+   if(typeof x==='object')return String(x.name||'');
+   return '';
+ };
+ const name=info(obj.name)||info(obj.performer);
+ const rawDate=String(obj.startDate||'');
+ const date=/^\d{4}-\d{2}-\d{2}/.test(rawDate)?rawDate.slice(0,10):'';
+ let time='';
+ if(/T\d{2}:\d{2}/.test(rawDate)){
+   if(/[zZ]$|[+-]\d{2}:\d{2}$/.test(rawDate)){
+     const d=new Date(rawDate);
+     if(!Number.isNaN(d.getTime()))time=new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Amsterdam',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(d);
+   }else time=rawDate.slice(11,16);
+ }
+ const loc=Array.isArray(obj.location)?obj.location[0]:obj.location;
+ const venue=info(loc);
+ const address=loc&&typeof loc==='object'?loc.address:null;
+ const city=typeof address==='string'?'':String(address?.addressLocality||'');
+ const offers=Array.isArray(obj.offers)?obj.offers[0]:obj.offers;
+ let price=null;
+ const currency=offers?.priceCurrency;
+ const candidate=offers?.price??offers?.lowPrice;
+ if((currency==='EUR'||currency==='€')&&Number.isFinite(Number(candidate))&&candidate!==''&&candidate!=null&&Number(candidate)>=0)price=Number(candidate);
+ return {name,date,time,venue,city,price,sourceUrl,url:sourceUrl,source_name:'Officiële pagina (schema.org)',review_required:true};
+}
+async function importConcertFromUrl(url){
+ const parsed=new URL(url);
+ if(parsed.protocol!=='https:'||!parsed.hostname||parsed.username||parsed.password||!parsed.hostname.includes('.'))throw Error('Gebruik een geldige openbare HTTPS-link.');
+ if(['localhost','127.0.0.1','0.0.0.0'].includes(parsed.hostname)||parsed.hostname.endsWith('.local'))throw Error('Deze link is geen openbare concertpagina.');
+ if(/(?:^|[?&])(?:token|auth|access_token|ticket_id|order_id|booking|session|secret|key)=/i.test(parsed.search))throw Error('Verwijder persoonlijke parameters of gebruik de openbare evenementpagina.');
+ const canonical=parsed.origin+parsed.pathname+parsed.search;
+ const known=[...all(),...discoveryEvents].filter(e=>String(e.sourceUrl||e.url||'').replace(/\/$/,'')===canonical.replace(/\/$/,''));
+ if(known.length)return {candidates:known.map(e=>({...e,sourceUrl:canonical,url:canonical,source_name:'ConcertRadar',review_required:true})),metadataOnly:false};
+ const api=new URL('https://api.microlink.io/');
+ api.searchParams.set('url',canonical);
+ api.searchParams.set('data.structured.selectorAll','script[type="application/ld+json"]');
+ api.searchParams.set('data.structured.attr','text');
+ const response=await fetch(api.toString(),{mode:'cors',cache:'no-store',signal:AbortSignal.timeout(18000)});
+ if(!response.ok)throw Error('Metadatadienst reageert niet (HTTP '+response.status+').');
+ const body=await response.json();
+ if(body.status!=='success'||!body.data)throw Error('De pagina kon niet worden uitgelezen.');
+ const data=body.data;
+ const nodes=parseSchemaFromMicrolink(data.structured);
+ const candidates=nodes.map(node=>eventFromSchema(node,canonical)).filter(e=>e.name&&e.date);
+ if(candidates.length){
+   return {candidates:candidates.slice(0,8),metadataOnly:false};
+ }
+ const title=String(data.title||'').replace(/\s+[|\-–]\s+[^|\-–]+$/,'').trim();
+ return {candidates:[{name:title,date:'',venue:'',city:'',price:null,sourceUrl:canonical,url:canonical,source_name:'Alleen paginatitel, niet gecontroleerd',review_required:true}],metadataOnly:true};
+}
+function fillFromLinkedConcert(form,event){
+ const field=(name,val)=>{if(form.elements[name]&&val!==undefined&&val!==null&&val!=='')form.elements[name].value=String(val)};
+ field('name',event.name);field('date',event.date);field('time',event.time);
+ field('venue',event.venue);field('city',event.city);
+ if(event.price!==null&&event.price!==undefined)field('price',event.price);
+ field('url',event.sourceUrl);
+ const box=document.getElementById('urlImportResults');
+ if(box)box.innerHTML='<p class="notice">Beschikbare gegevens zijn ingevuld. Controleer ontbrekende velden, aanvangstijd en ticketprijs op de officiële concertpagina vóór opslaan.</p>';
+}
+
 function personalAddMarkup(){
   const editing=extra.find(e=>e.id===state.editingId);
   const val=(k)=>h(editing?.[k]??'');
@@ -303,7 +386,7 @@ function personalAddMarkup(){
   return '<h2 class="sectiontitle">'+(editing?'Concert aanpassen':'Zelf een concert toevoegen')+'</h2>'+
     '<p class="notice">Voor een concert dat nog niet in ConcertRadar staat. Vul artiest, datum, podium en plaats in. Je kunt meteen aangeven dat je kaarten hebt gekocht. Deze gegevens worden alleen in deze browser opgeslagen, niet openbaar op GitHub.</p>'+
     '<form id="personalForm" class="flow personal-form">'+
-    '<label>Artiest of evenement<input required maxlength="130" name="name" placeholder="Bijvoorbeeld: Willow Avalon" value="'+val('name')+'"></label>'+
+    '<label>Link naar officiële concertpagina<input type="url" name="url" placeholder="https://podium.nl/programma/concert..." value="'+(editing?.sourceUrl?h(editing.sourceUrl):'')+'"></label>'+'<div class="toolbar"><button class="btn primary" type="button" id="importConcertUrl">Haal gegevens op uit link</button></div><div class="muted">Gebruik een openbare concertpagina, geen persoonlijk ticket, boekingsbevestiging of link met toegangscode. ConcertRadar stuurt de link naar een externe metadatadienst om deze te lezen. Controleer de gevonden gegevens vóór opslaan.</div><div id="urlImportResults" aria-live="polite"></div>'+'<label>Artiest of evenement<input required maxlength="130" name="name" placeholder="Bijvoorbeeld: Willow Avalon" value="'+val('name')+'"></label>'+
     '<div class="toolbar"><button class="btn primary" type="button" id="findExisting">Zoek concert automatisch</button><button class="btn" type="button" id="searchOfficial">Zoek via Google</button></div><div class="muted">Zoekt in ConcertRadar en twee openbare concertdiensten. Je artiestnaam en eventuele plaats worden daarbij naar die diensten gestuurd. Geen account of API-sleutel nodig. Controleer de uitkomst vóór opslaan.</div><div id="matchResults" aria-live="polite"></div>'+
     '<div class="two"><label>Datum<input required type="date" name="date" value="'+val('date')+'"></label>'+
     '<label>Aanvang (optioneel)<input type="time" name="time" value="'+val('time')+'"></label></div>'+
@@ -312,7 +395,7 @@ function personalAddMarkup(){
     '<datalist id="knownCities">'+Object.keys(CITY_COORDS).sort().map(x=>'<option value="'+h(x)+'"></option>').join('')+'</datalist>'+
     '<div class="two"><label>Genre (optioneel)<input maxlength="80" name="genre" placeholder="Americana" value="'+val('genre')+'"></label>'+
     '<label>Kaartprijs (€), optioneel<input type="number" name="price" min="0" max="10000" step="0.01" value="'+(editing?.price!=null?h(editing.price):'')+'"></label></div>'+
-    '<label>Link naar concert of tickets (optioneel)<input type="url" name="url" placeholder="https://..." value="'+(editing?.sourceUrl?h(editing.sourceUrl):'')+'"></label>'+
+    
     '<label>Mijn keuze<select name="status">'+
     [['booked','Kaarten gekocht / ik ga'],['interested','Interessant'],['','Nog geen keuze'],['rejected','Afgewezen']].map(([k,l])=>
     '<option value="'+k+'"'+(editing?selected(k):(k==='booked'?' selected':''))+'>'+l+'</option>').join('')+'</select></label>'+
@@ -382,6 +465,30 @@ function bind(){const mapRange=document.getElementById('mapRange');if(mapRange)m
  flags[id].favorite=next==='interested';
  flags[id].booked=next==='booked';
 }persist();render()});for(let [id,key] of [['scope','scope'],['search','search'],['city','city'],['genre','genre'],['sort','sort']]){let input=document.getElementById(id);if(input)input.addEventListener(id==='search'?'input':'change',e=>{let pos=id==='search'?e.target.selectionStart:null;state[key]=e.target.value;render();if(id==='search'){let n=document.getElementById('search');n.focus();n.setSelectionRange(pos,pos)}})}let future=document.getElementById('future');if(future)future.onchange=e=>{state.onlyFuture=e.target.checked;render()};let exportBtn=document.getElementById('export');if(exportBtn)exportBtn.onclick=()=>{let blob=new Blob([JSON.stringify({events:all(),flags},null,2)],{type:'application/json'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='concertradar-export.json';a.click();URL.revokeObjectURL(a.href)};let imp=document.getElementById('import');let impbtn=document.getElementById('importbtn');if(impbtn)impbtn.onclick=()=>imp.click();if(imp)imp.onchange=async e=>{try{let obj=JSON.parse(await e.target.files[0].text());let arr=Array.isArray(obj)?obj:obj.events;if(!Array.isArray(arr))throw Error('Geen concertenlijst');let valid=arr.filter(x=>x&&typeof x.id==='string'&&typeof x.name==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(x.date)&&typeof x.url==='string'&&/^https:\/\//.test(x.url));extra=[...new Map([...extra,...valid].map(x=>[x.id,x])).values()];if(obj.flags&&typeof obj.flags==='object')flags={...flags,...obj.flags};persist();alert(`${valid.length} geldige concertrecords verwerkt`);render()}catch(err){alert('Import mislukt: '+err.message)}};let manualForm=document.getElementById('personalForm');
+if(manualForm){
+ const importButton=document.getElementById('importConcertUrl');
+ const box=document.getElementById('urlImportResults');
+ if(importButton)importButton.onclick=async()=>{
+   const link=String(manualForm.elements.url.value||'').trim();
+   if(!link){box.innerHTML='<p class="notice">Plak eerst een link naar de openbare concertpagina.</p>';return;}
+   importButton.disabled=true;importButton.textContent='Concertpagina lezen...';
+   box.innerHTML='<p class="notice">Concertpagina wordt uitgelezen via een externe metadatadienst.</p>';
+   try{
+     const result=await importConcertFromUrl(link);
+     if(!document.contains(manualForm))return;
+     if(!result.candidates.length)throw Error('Geen concertgegevens gevonden.');
+     box.innerHTML='<p class="muted">'+(result.metadataOnly?'Alleen de paginatitel is gevonden. Vul datum en zaal zelf in.':'Gevonden concertgegevens. Kies het juiste evenement om deze over te nemen.')+'</p>'+
+       result.candidates.map((e,i)=>'<div class="lookup-row"><div><b>'+h(e.name||'Onbekend concert')+'</b>'+
+       '<div class="muted">'+h(e.date||'Datum onbekend')+' · '+h(e.venue||'Podium onbekend')+' · '+h(e.city||'Plaats onbekend')+
+       (e.price!=null?' · '+euro(e.price):'')+'</div><span class="tag">'+h(e.source_name)+'</span></div>'+
+       '<button type="button" class="btn" data-import-choice="'+i+'">Overnemen</button></div>').join('');
+     box.querySelectorAll('[data-import-choice]').forEach(btn=>btn.onclick=()=>fillFromLinkedConcert(manualForm,result.candidates[Number(btn.dataset.importChoice)]));
+   }catch(e){
+     if(document.contains(manualForm))box.innerHTML='<p class="notice">Automatisch uitlezen niet gelukt: '+h(e.message)+'. Je kunt de link bewaren en de overige velden zelf invullen.</p>';
+   }finally{if(document.contains(manualForm)){importButton.disabled=false;importButton.textContent='Haal gegevens op uit link';}}
+ };
+}
+
 if(manualForm){
  const matches=document.getElementById('matchResults');
  const find=document.getElementById('findExisting');
