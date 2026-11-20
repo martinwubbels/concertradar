@@ -107,4 +107,23 @@ assert "function searchNowMarkup" in source
 assert "function bindSearchNow" in source
 assert "Volledige podiumscan via GitHub" in source
 subprocess.run(["node","scripts/test_search_now.cjs"],cwd=ROOT,check=True)
+# Concertkaarten v3: compacte inhoud en uitsluitend drie primaire acties.
+card_source=source.split("function card(e){",1)[1].split("function updates(){",1)[0]
+assert "event-card-v3" in card_source
+assert '"card-primary-actions"' in card_source
+assert card_source.count('data-action="interested"')==1
+assert card_source.count('data-action="booked"')==1
+assert card_source.count('data-action="rejected"')==1
+assert '"event-more"' in card_source
+assert "data-artist-profile" in card_source
+assert "data-listen-open" in card_source
+assert "googleCalendarEventUrl(e)" in card_source
+assert "outlookCalendarEventUrl(e)" in card_source
+assert "spotifyUrl(e)" in card_source
+assert "scoreDetails(e)" in card_source
+assert "photoOf(e)" in card_source
+assert ".event-card-v3 .artistpic" in html
+assert ".event-card-v3 .card-bottom" in html
+assert "grid-template-columns:54px 60px minmax(0,1fr)" in html
+assert "display:flex;flex-wrap:wrap" in html
 print("ConcertRadar smoke tests passed:",len(concerts),"catalog records")
