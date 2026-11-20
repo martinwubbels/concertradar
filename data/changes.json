@@ -1,6 +1,29 @@
 {
-  "generated_at": null,
+  "generated_at": "2026-11-20T17:12:36.969967+00:00",
   "type": "unverified_changes_only",
-  "stats": {},
-  "alerts": []
+  "description": "Candidates for manual verification. Absence is not confirmation of unchanged data.",
+  "stats": {
+    "checked": 44,
+    "matched": 20,
+    "unreadable": 24,
+    "mismatch": 2
+  },
+  "alerts": [
+    {
+      "id": "dylan-leblanc-20261218",
+      "name": "Dylan LeBlanc + Barbara Forstner",
+      "date": "2026-12-18",
+      "url": "https://www.spotgroningen.nl/programma/dylan-leblanc-3/",
+      "description": "Officiële metadata meldt uitverkocht",
+      "checked_at": "2026-11-20T17:12:03.886600+00:00"
+    },
+    {
+      "id": "dewolff-full-moon-ritual-20270108",
+      "name": "DeWolff: Full Moon Ritual",
+      "date": "2027-01-08",
+      "url": "https://www.spotgroningen.nl/programma/dewolff-8/",
+      "description": "Prijs eerder €28, pagina €49.0; Officiële metadata meldt uitverkocht",
+      "checked_at": "2026-11-20T17:12:04.788654+00:00"
+    }
+  ]
 }
