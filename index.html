@@ -1468,13 +1468,14 @@ function card(e){
      (e.match?'<p><strong>Vergelijkbaar met:</strong> '+h(e.match)+'</p>':'')+
      '<p><strong>Concertinformatie:</strong> '+h(source)+'</p>'+
      (!hasDirectConcertLink(e)?'<p class="card-warning"><strong>Geen directe concertlink.</strong> Controleer de podiumagenda voordat je kaarten koopt.</p>':'')+
-     '<p><strong>Ticketprijs:</strong> '+(e.price==null?'Niet bekend':'Bronprijs '+euro(e.price)+' (niet live gecontroleerd)')+
+     '<p><strong>Ticketprijs:</strong> '+(e.price==null?'Prijs onbekend':'Bronprijs (niet live): '+euro(e.price))+
      ' · <strong>Beschikbaarheid:</strong> niet live gecontroleerd</p>'+
      '<p><strong>Afstand:</strong> '+(travelInfo(e).km===null?'Onbekend':travelInfo(e).km+' km hemelsbreed')+
      ' · <strong>Urgentie:</strong> '+h(urgency(e).label)+'</p>'+
      (flags[e.id]?.rejectionReason?'<p><strong>Afwijsreden:</strong> '+h(REJECT_REASONS.find(x=>x[0]===flags[e.id].rejectionReason)?.[1]||'Anders')+'</p>':'')+
      '<div class="card-score-breakdown">'+scoreDetails(e)+'</div>'+
      '<div class="card-secondary-actions">'+
+      '<a class="btn" href="'+h(concertLink(e))+'" target="_blank" rel="noopener noreferrer">Check nu bij podium</a>'+ 
       '<a class="btn" href="'+h(concertLink(e))+'" target="_blank" rel="noopener noreferrer">'+h(concertLinkLabel(e))+'</a>'+
       '<button type="button" data-artist-profile="'+h(e.id)+'">Artiestprofiel</button>'+
       '<button type="button" data-listen-open="'+h(e.id)+'">Luistertest</button>'+
