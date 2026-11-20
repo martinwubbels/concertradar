@@ -110,11 +110,11 @@ subprocess.run(["node","scripts/test_search_now.cjs"],cwd=ROOT,check=True)
 # Concertkaarten v3: compacte inhoud en uitsluitend drie primaire acties.
 card_source=source.split("function card(e){",1)[1].split("function updates(){",1)[0]
 assert "event-card-v3" in card_source
-assert "class=\\\"card-primary-actions" in card_source
+assert '"card-primary-actions"' in card_source
 assert card_source.count('data-action="interested"')==1
 assert card_source.count('data-action="booked"')==1
 assert card_source.count('data-action="rejected"')==1
-assert "class=\\\"event-more" in card_source
+assert '"event-more"' in card_source
 assert "data-artist-profile" in card_source
 assert "data-listen-open" in card_source
 assert "googleCalendarEventUrl(e)" in card_source
