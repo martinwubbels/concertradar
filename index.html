@@ -1467,6 +1467,7 @@ function card(e){
      (e.reason?'<p>'+h(e.reason)+'</p>':'')+
      (e.match?'<p><strong>Vergelijkbaar met:</strong> '+h(e.match)+'</p>':'')+
      '<p><strong>Concertinformatie:</strong> '+h(source)+'</p>'+
+     (!hasDirectConcertLink(e)?'<p class="card-warning"><strong>Geen directe concertlink.</strong> Controleer de podiumagenda voordat je kaarten koopt.</p>':'')+
      '<p><strong>Ticketprijs:</strong> '+(e.price==null?'Niet bekend':'Bronprijs '+euro(e.price)+' (niet live gecontroleerd)')+
      ' · <strong>Beschikbaarheid:</strong> niet live gecontroleerd</p>'+
      '<p><strong>Afstand:</strong> '+(travelInfo(e).km===null?'Onbekend':travelInfo(e).km+' km hemelsbreed')+
