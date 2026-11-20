@@ -1,31 +1,7 @@
 {
-  "updated_at": "2026-11-19T22:50:15.547976+00:00",
+  "updated_at": "2026-11-20T07:54:51.914440+00:00",
   "status": "suggestions_not_confirmed_or_ranked",
   "events": [
-    {
-      "id": "suggestion-2026-11-19-noordnederlandsorkestenyoavlevanon",
-      "name": "Noord Nederlands Orkest en Yoav Levanon",
-      "date": "2026-11-19",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/noord-nederlands-orkest-223/",
-      "price": 44.5,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-19-thomasoliemanscorbakkerenbertvandenbrink",
-      "name": "Thomas Oliemans, Cor Bakker en Bert van den Brink",
-      "date": "2026-11-19",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/thomas-oliemans-cor-bakker-en-bert-van-den-brink/",
-      "price": 39.5,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
     {
       "id": "suggestion-2026-11-20-electricsix",
       "name": "Electric Six",
@@ -204,6 +180,66 @@
       "url": "https://www.spotgroningen.nl/programma/nederlands-kamerkoor-15/",
       "price": 38.5,
       "availability_hint": "SoldOut",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-11-26-noordnederlandsorkest",
+      "name": "Noord Nederlands Orkest",
+      "date": "2026-11-26",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/noord-nederlands-orkest-231/",
+      "price": 29.5,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-11-27-flemming",
+      "name": "Flemming",
+      "date": "2026-11-27",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/flemming-4/",
+      "price": 38.6,
+      "availability_hint": "SoldOut",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-11-27-hetnationaletheater",
+      "name": "Het Nationale Theater",
+      "date": "2026-11-27",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/het-nationale-theater-31/",
+      "price": 29.5,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-11-27-timebox",
+      "name": "Timebox",
+      "date": "2026-11-27",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/timebox/",
+      "price": 33.0,
+      "availability_hint": "SoldOut",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-11-29-thescene",
+      "name": "The Scene",
+      "date": "2026-11-29",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/the-scene/",
+      "price": 28.1,
+      "availability_hint": "InStock",
       "review_required": true
     }
   ]

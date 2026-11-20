@@ -1,56 +1,20 @@
 {
-  "generated_at": "2026-11-19T22:49:14.566314+00:00",
+  "generated_at": "2026-11-20T07:53:39.891103+00:00",
   "description": "Only strict official music event matches auto-added; all others remain separate.",
   "checked_records": 120,
-  "approved": 7,
+  "approved": 1,
   "skipped": {
-    "unconfirmed_schema": 90,
-    "missing_name_venue_or_city": 21,
+    "missing_name_venue_or_city": 24,
+    "unconfirmed_schema": 93,
     "nonmusic_keyword": 1,
     "already_in_masterlist": 1
   },
   "added": [
     {
-      "id": "suggestion-2026-11-19-fleshcrawlavulsed",
-      "name": "Fleshcrawl + Avulsed",
-      "date": "2026-11-19",
-      "url": "https://metropool.nl/agenda/fleshcrawl-avulsed"
-    },
-    {
-      "id": "suggestion-2026-11-21-frankmeijerkampvuuravondexperience",
-      "name": "Frank Meijer Kampvuuravond Experience",
-      "date": "2026-11-21",
-      "url": "https://metropool.nl/agenda/frank-meijer-kampvuuravond-experience"
-    },
-    {
-      "id": "suggestion-2026-11-21-poprondeeyesoressemuta",
-      "name": "Popronde: Eyesores + Semuta",
-      "date": "2026-11-21",
-      "url": "https://metropool.nl/agenda/popronde-eyesores-semuta"
-    },
-    {
-      "id": "suggestion-2026-11-21-dekift",
-      "name": "De Kift",
-      "date": "2026-11-21",
-      "url": "https://metropool.nl/agenda/de-kift"
-    },
-    {
-      "id": "suggestion-2026-11-21-noahderksen",
-      "name": "Noah Derksen",
-      "date": "2026-11-21",
-      "url": "https://metropool.nl/agenda/noah-derksen"
-    },
-    {
-      "id": "suggestion-2026-11-21-spanishheat",
-      "name": "Spanish Heat",
-      "date": "2026-11-21",
-      "url": "https://metropool.nl/agenda/spanish-heat"
-    },
-    {
-      "id": "suggestion-2026-11-22-jazzrockcafemrfusion",
-      "name": "JazzRock Café - Mr. Fusion",
+      "id": "suggestion-2026-11-22-jameswalshstarsailor",
+      "name": "James Walsh (Starsailor)",
       "date": "2026-11-22",
-      "url": "https://metropool.nl/agenda/jazzrock-cafe-mr-fusion"
+      "url": "https://metropool.nl/agenda/james-walsh-starsailor"
     }
   ]
 }

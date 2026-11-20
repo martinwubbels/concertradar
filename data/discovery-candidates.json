@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-19T22:47:36.174936+00:00",
+  "generated_at": "2026-11-20T07:51:34.285098+00:00",
   "type": "unverified_links_not_events",
   "venues": {
     "SPOT Groningen": {
@@ -12,7 +12,7 @@
     },
     "Hedon Zwolle": {
       "status": "ok",
-      "links_seen": 120
+      "links_seen": 118
     },
     "Metropool": {
       "status": "ok",
@@ -56,7 +56,7 @@
     },
     "DNK Assen": {
       "status": "ok",
-      "links_seen": 50
+      "links_seen": 49
     },
     "Alte Weberei Nordhorn": {
       "status": "ok",
@@ -76,34 +76,6 @@
     }
   },
   "candidates": [
-    {
-      "url": "https://www.spotgroningen.nl/programma/abonnement-nno/",
-      "title": "Abonnement Noord Nederlands Orkest Solisten Geniet met dit abonnement met concerten van het Noord Nederlands Orkest do 19 nov",
-      "venue": "SPOT Groningen",
-      "discovery_source": "https://www.spotgroningen.nl/programma/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://www.spotgroningen.nl/programma/noord-nederlands-orkest-223/",
-      "title": "Noord Nederlands Orkest en Yoav Levanon Rachmaninoff Paganini-rapsodie Een pianoconcert met steeds veranderende sfeer Wereldklasse",
-      "venue": "SPOT Groningen",
-      "discovery_source": "https://www.spotgroningen.nl/programma/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://www.spotgroningen.nl/programma/thomas-oliemans-cor-bakker-en-bert-van-den-brink/",
-      "title": "Thomas Oliemans, Cor Bakker en Bert van den Brink Van Brel tot Bennett Wereldberoemde nummers door bariton Thomas Oliemans en twee",
-      "venue": "SPOT Groningen",
-      "discovery_source": "https://www.spotgroningen.nl/programma/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://www.spotgroningen.nl/programma/groninger-studenten-cabaret-festival-23/",
-      "title": "Groninger Studenten Cabaret Festival Halve finale 40e GSCF Lachen en genieten van een avond vol aanstormend cabarettalent Laatste ",
-      "venue": "SPOT Groningen",
-      "discovery_source": "https://www.spotgroningen.nl/programma/",
-      "review_priority": "low_nonmusic"
-    },
     {
       "url": "https://www.spotgroningen.nl/programma/froukje-20-nov/",
       "title": "Froukje + support: Jaïr Faria Dansbare Nederlandse altpop Uitverkocht vr 20 nov",
@@ -1729,6 +1701,41 @@
       "review_priority": "review"
     },
     {
+      "url": "https://www.spotgroningen.nl/programma/wende-8/",
+      "title": "Wende Er Is Nog Tijd Beweegt al ruim twintig jaar tussen pop, chanson, theater en performance za 27 feb",
+      "venue": "SPOT Groningen",
+      "discovery_source": "https://www.spotgroningen.nl/programma/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://www.spotgroningen.nl/programma/roxeanne-hazes-5/",
+      "title": "Roxeanne Hazes ...Met Heimwee Dochter Dre komt met nieuw album en theatershow za 27 feb",
+      "venue": "SPOT Groningen",
+      "discovery_source": "https://www.spotgroningen.nl/programma/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://www.spotgroningen.nl/programma/prinses-christina-concours-2/",
+      "title": "Prinses Christina Concours Regiofinale Noord - Klassiek Concours 2027 Ontdek het klassieke talent van morgen zo 28 feb",
+      "venue": "SPOT Groningen",
+      "discovery_source": "https://www.spotgroningen.nl/programma/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://www.spotgroningen.nl/programma/jeroens-clan-3/",
+      "title": "Jeroens Clan JUK Muzikaal, slim, scherp, kwetsbaar en bovenal retegrappig zapcabaret ma 1 mrt",
+      "venue": "SPOT Groningen",
+      "discovery_source": "https://www.spotgroningen.nl/programma/",
+      "review_priority": "low_nonmusic"
+    },
+    {
+      "url": "https://www.spotgroningen.nl/programma/nachtwacht/",
+      "title": "Nachtwacht NITE, Club Guy & Roni, HIIIT, Het Muziek \"Nachtwacht grijpt vol naar je hart\" ★★★★★ de Volkskrant di 2 mrt",
+      "venue": "SPOT Groningen",
+      "discovery_source": "https://www.spotgroningen.nl/programma/",
+      "review_priority": "review"
+    },
+    {
       "url": "https://www.hedon-zwolle.nl/voorstelling/32817/tankstation-festival-2026",
       "title": "",
       "venue": "Hedon Zwolle",
@@ -1878,20 +1885,6 @@
     {
       "url": "https://www.hedon-zwolle.nl/voorstelling/33107/rnb-singalong-experience",
       "title": "vr 05 mrt. 19:00 RNB SINGALONG EXPERIENCE",
-      "venue": "Hedon Zwolle",
-      "discovery_source": "https://www.hedon-zwolle.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://www.hedon-zwolle.nl/voorstelling/33006/bente",
-      "title": "do 19 nov. do 19 nov. BENTE Uitverkocht TRY-OUT SHOW Uitverkocht",
-      "venue": "Hedon Zwolle",
-      "discovery_source": "https://www.hedon-zwolle.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://www.hedon-zwolle.nl/voorstelling/33110/popronde-2026",
-      "title": "do 19 nov. POPRONDE 2026",
       "venue": "Hedon Zwolle",
       "discovery_source": "https://www.hedon-zwolle.nl/",
       "review_priority": "review"
@@ -2471,13 +2464,6 @@
       "review_priority": "review"
     },
     {
-      "url": "https://metropool.nl/agenda/fleshcrawl-avulsed",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
       "url": "https://metropool.nl/agenda/niels-geusebroek-sings-coldplay",
       "title": "",
       "venue": "Metropool",
@@ -2492,42 +2478,7 @@
       "review_priority": "review"
     },
     {
-      "url": "https://metropool.nl/agenda/frank-meijer-kampvuuravond-experience",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://metropool.nl/agenda/popronde-eyesores-semuta",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://metropool.nl/agenda/de-kift",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://metropool.nl/agenda/noah-derksen",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://metropool.nl/agenda/spanish-heat",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://metropool.nl/agenda/jazzrock-cafe-mr-fusion",
+      "url": "https://metropool.nl/agenda/james-walsh-starsailor",
       "title": "",
       "venue": "Metropool",
       "discovery_source": "https://metropool.nl/agenda/",
@@ -2639,13 +2590,6 @@
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bieb/agenda/fotoexpositie-verhalen-van-verborgen-kracht-10050486",
-      "title": "Foto-expositie Verhalen van Verborgen Kracht",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
       "url": "https://denieuwekolk.nl/bios/agenda/the-hunger-games-sunrise-on-the-reaping",
       "title": "The Hunger Games: Sunrise on the Reaping",
       "venue": "DNK Assen",
@@ -2683,6 +2627,13 @@
     {
       "url": "https://denieuwekolk.nl/bios/agenda/laatbloeier2",
       "title": "Laatbloeier",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/carnaval",
+      "title": "Carnaval",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2816,13 +2767,6 @@
     {
       "url": "https://denieuwekolk.nl/bieb/agenda/recht-op-geluk-ook-als-je-rouwt",
       "title": "Recht op geluk, ook als je rouwt",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/carnaval",
-      "title": "Carnaval",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-19",
+  "updated_at": "2026-11-20",
   "events": [
     {
       "id": "early-james-20261116",
@@ -308,6 +308,26 @@
       "verification": "historical_unverified",
       "link_status": "event_page",
       "link_source": "Official venue agenda"
+    },
+    {
+      "name": "James Walsh (Starsailor)",
+      "date": "2026-11-22",
+      "venue": "Vestzak, Enschede",
+      "city": "Enschede",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/james-walsh-starsailor",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-20T07:53:39.888803+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-11-22-jameswalshstarsailor"
     },
     {
       "name": "JazzRock Café - Mr. Fusion",
