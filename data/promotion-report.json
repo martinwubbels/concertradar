@@ -1,20 +1,13 @@
 {
-  "generated_at": "2026-11-20T07:53:39.891103+00:00",
+  "generated_at": "2026-11-20T16:56:33.950509+00:00",
   "description": "Only strict official music event matches auto-added; all others remain separate.",
-  "checked_records": 120,
-  "approved": 1,
+  "checked_records": 122,
+  "approved": 0,
   "skipped": {
-    "missing_name_venue_or_city": 24,
-    "unconfirmed_schema": 93,
+    "unconfirmed_schema": 119,
     "nonmusic_keyword": 1,
+    "missing_name_venue_or_city": 1,
     "already_in_masterlist": 1
   },
-  "added": [
-    {
-      "id": "suggestion-2026-11-22-jameswalshstarsailor",
-      "name": "James Walsh (Starsailor)",
-      "date": "2026-11-22",
-      "url": "https://metropool.nl/agenda/james-walsh-starsailor"
-    }
-  ]
+  "added": []
 }
