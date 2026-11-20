@@ -60,6 +60,11 @@ assert "link_status" in source
 assert "Geen directe concertlink" in source
 assert "KAARTEN GEKOCHT" in source
 assert "concert-booked" in html
+# In compact mode, images must remain visible: do not regress the photo display.
+assert ".compact-event .artistpic{display:none}" not in html
+assert ".compact-event .artistpic{display:flex" in html
+assert "const photoOf=e=>" in source
+assert "officialPhotos[e.id]?.url" in source
 assert "taste-small" in html
 subprocess.run(["python","-m","unittest","discover","-s","scripts","-p","test_promotion.py","-v"],cwd=ROOT,check=True)
 assert "musicDNAMarkup" in source
