@@ -58,7 +58,7 @@ context.assessments.d={overall:8};
 const after=funcs.dashboardSuggestionEntries();
 assert(after.every(x=>!["a","b","c","d"].includes(x.event.id)),'Handled and reviewed shows disappear');
 context.catalog=[];
-context.discovery=[make("dis3","New Discovery",7.8,{genre:"",link_status:undefined})];
+context.discovery.splice(0,context.discovery.length,make("dis3","New Discovery",7.8,{genre:"",link_status:undefined}));
 context.status={};
 context.assessments={};
 assert.equal(funcs.dashboardSuggestionEntries()[0].event.id,"dis3");
