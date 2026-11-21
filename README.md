@@ -258,3 +258,9 @@ De selectie kiest eerst concerten met bruikbare genres en directe links, geeft r
 Na **Interessant** verschijnt het concert op de bestaande shortlist. Na **Afwijzen** verdwijnt het uit de suggesties. Dit gebeurt via dezelfde statusknoppen en gegevensopslag als in de masterlijst. Als je een nog niet centraal opgenomen podiumkandidaat beoordeelt, wordt deze uitsluitend in je persoonlijke lijst toegevoegd met de markering **candidate_unverified**, zodat Interessant, Gekocht en Afgewezen blijven werken. De publieke masterlijst wordt daardoor niet gewijzigd.
 
 De sectie heeft knoppen naar Masterlijst, Beoordelingsinbox en Verrassingsradar. Ze gebruikt geen nieuwe automatische taken, externe gebruikersgegevens of aparte opslag.
+
+## Bronstatus en scoreuitleg bij startschermtips (21 november 2026)
+
+Bij de maximaal zes tips onder **Nieuwe suggesties om te shortlisten** zie je nu direct de bronstatus en een uitklapbare uitleg **Waarom X/10?**. Die uitleg gebruikt dezelfde bestaande persoonlijke scoreberekening als de hoofdkaart en toont de afzonderlijke bijdragen. Dit is een inschatting uit beschrijvingen en opgeslagen voorkeuren, geen automatische analyse van stemmen of songteksten.
+
+Kandidaten uit **Nieuw gevonden** zijn expliciet gemarkeerd als **nog niet bevestigd**. Bij bekende catalogusconcerten toont het startscherm de laatst beschikbare broncontrole, inclusief de melding als gegevens niet recent zijn gecontroleerd. De app controleert de ticketvoorraad niet live en doet geen nieuwe netwerkverzoeken voor het tonen van deze uitleg. Bestaande concerten, concert-ID's en persoonlijke keuzes blijven ongewijzigd.
