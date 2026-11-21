@@ -1,30 +1,11 @@
 {
-  "generated_at": "2026-11-21T11:14:53.943545+00:00",
+  "generated_at": "2026-11-21T16:07:36.808677+00:00",
   "description": "Only strict official music event matches auto-added; all others remain separate.",
-  "checked_records": 120,
-  "approved": 3,
+  "checked_records": 117,
+  "approved": 0,
   "skipped": {
     "missing_name_venue_or_city": 24,
     "unconfirmed_schema": 93
   },
-  "added": [
-    {
-      "id": "suggestion-2026-11-25-metropoolmuziekquizhengelo",
-      "name": "Metropool Muziekquiz - Hengelo",
-      "date": "2026-11-25",
-      "url": "https://metropool.nl/agenda/metropool-muziekquiz-hengelo-25-nov"
-    },
-    {
-      "id": "suggestion-2026-11-25-metropoolmuziekquizenschede",
-      "name": "Metropool Muziekquiz - Enschede",
-      "date": "2026-11-25",
-      "url": "https://metropool.nl/agenda/metropool-muziekquiz-enschede-25-nov"
-    },
-    {
-      "id": "suggestion-2026-11-26-singit",
-      "name": "Sing it!",
-      "date": "2026-11-26",
-      "url": "https://metropool.nl/agenda/sing-it-26-nov"
-    }
-  ]
+  "added": []
 }
