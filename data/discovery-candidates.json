@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-21T11:13:21.956108+00:00",
+  "generated_at": "2026-11-21T14:56:16.029515+00:00",
   "type": "unverified_links_not_events",
   "venues": {
     "SPOT Groningen": {
@@ -2450,27 +2450,6 @@
       "review_priority": "review"
     },
     {
-      "url": "https://metropool.nl/agenda/metropool-muziekquiz-hengelo-25-nov",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://metropool.nl/agenda/metropool-muziekquiz-enschede-25-nov",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://metropool.nl/agenda/sing-it-26-nov",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
       "url": "https://www.drentmeester.nl/events/exile",
       "title": "Ticket(s)",
       "venue": "d'Rentmeester",
@@ -2569,43 +2548,8 @@
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bios/agenda/feestelijk-plezier-met-peppa-pig",
-      "title": "Feestelijk plezier met Peppa",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/het-vergeten-eiland",
-      "title": "Het Vergeten Eiland",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/de-grote-sinterklaasfilm-en-de-vliegende-pieten",
-      "title": "De Grote Sinterklaasfilm en de Vliegende Pieten",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/shaun-het-schaap-het-beest-op-de-boerderij",
-      "title": "Shaun het Schaap: Het Beest op de Boerderij",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/de-club-van-sinterklaas-film-paniek-in-het-pietendorp",
-      "title": "De Club van Sinterklaas film: Paniek in het Pietendorp",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/the-hunger-games-sunrise-on-the-reaping",
-      "title": "The Hunger Games: Sunrise on the Reaping",
+      "url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
+      "title": "I Play Rocky",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2618,8 +2562,22 @@
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/theater/agenda/sinterklaas-de-magische-wensveer",
-      "title": "Sinterklaas & de Magische Wensveer",
+      "url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
+      "title": "Wen Er Maar Aan",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/meet-the-parents-focker-in-law",
+      "title": "Meet the Parents: Focker In-Law",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/the-hunger-games-sunrise-on-the-reaping",
+      "title": "The Hunger Games: Sunrise on the Reaping",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2627,6 +2585,20 @@
     {
       "url": "https://denieuwekolk.nl/theater/agenda/merijn-scholten",
       "title": "Merijn Scholten",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
+      "title": "How to Rob a Bank",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/theater/agenda/sinterklaas-de-magische-wensveer",
+      "title": "Sinterklaas & de Magische Wensveer",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2765,50 +2737,8 @@
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bios/agenda/the-cycle-of-love",
-      "title": "The Cycle of Love",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/filmliga-yellow-letters",
-      "title": "Yellow Letters",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
       "url": "https://denieuwekolk.nl/bios/agenda/laatbloeier2",
       "title": "Laatbloeier",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
-      "title": "I Play Rocky",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
-      "title": "Wen Er Maar Aan",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/meet-the-parents-focker-in-law",
-      "title": "Meet the Parents: Focker In-Law",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
-      "title": "How to Rob a Bank",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2828,8 +2758,43 @@
       "review_priority": "review"
     },
     {
+      "url": "https://denieuwekolk.nl/bios/agenda/de-grote-sinterklaasfilm-en-de-vliegende-pieten",
+      "title": "De Grote Sinterklaasfilm en de Vliegende Pieten",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/de-club-van-sinterklaas-film-paniek-in-het-pietendorp",
+      "title": "De Club van Sinterklaas film: Paniek in het Pietendorp",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/filmliga-yellow-letters",
+      "title": "Yellow Letters",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
       "url": "https://denieuwekolk.nl/bios/agenda/dreumes-ochtend-feestelijk-plezier-met-peppa-pig",
       "title": "Feestelijk plezier met Peppa",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/shaun-het-schaap-het-beest-op-de-boerderij",
+      "title": "Shaun het Schaap: Het Beest op de Boerderij",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/het-vergeten-eiland",
+      "title": "Het Vergeten Eiland",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2849,6 +2814,13 @@
       "review_priority": "review"
     },
     {
+      "url": "https://denieuwekolk.nl/bios/agenda/the-cycle-of-love",
+      "title": "The Cycle of Love",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
       "url": "https://denieuwekolk.nl/bios/agenda/filmliga-the-beloved",
       "title": "The Beloved",
       "venue": "DNK Assen",
@@ -2858,6 +2830,13 @@
     {
       "url": "https://denieuwekolk.nl/bios/agenda/disneys-hexed-nl",
       "title": "Disney's Hexed NL",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/feestelijk-plezier-met-peppa-pig",
+      "title": "Feestelijk plezier met Peppa",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
