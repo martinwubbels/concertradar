@@ -17,6 +17,8 @@ const prefix=[
  'const tasteResult=e=>({score:e.score??6});',
  'const normalizeConcertText=v=>String(v||"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();',
  'const photoOf=e=>e.image||"";',
+ 'const sourceLabel=e=>"Bron nog niet recent gecontroleerd";',
+ 'const scoreDetails=e=>"<details>Waarom deze match?</details>";',
  'const cleanArtist=e=>e.name;',
  'const h=s=>String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;");',
  'const dt=s=>s;',
@@ -50,6 +52,9 @@ assert(markup.includes('Nieuwe suggesties om te shortlisten'));
 assert(markup.includes('data-action="interested"'));
 assert(markup.includes('data-action="rejected"'));
 assert(markup.includes('data-tab="inbox"'));
+assert(markup.includes('Bronstatus:'),'Every suggestion must display provenance');
+assert(markup.includes('Kandidaat; optreden nog niet bevestigd'),'Unconfirmed candidates need an explicit label');
+assert(markup.includes('Waarom deze match?'),'Match explanation is available');
 assert(markup.includes('data-tab="all"'));
 context.status.a="interested";
 context.status.b="rejected";
