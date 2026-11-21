@@ -1380,7 +1380,7 @@ function dashboardSuggestionEntries(){
    .map(suggestionIdentity)
  );
  const eligible=e=>e&&e.date>=today&&statusOf(e)===''&&!alreadyHandled.has(suggestionIdentity(e))
-  &&!sourceNeedsAttention(e)&&!['SoldOut','UITVERKOCHCHT'].includes(e.availability_hint||e.priority);
+  &&!sourceNeedsAttention(e)&&e.availability_hint!=='SoldOut'&&e.priority!=='UITVERKOCHT';
  const scoreCompare=(a,b)=>tasteResult(b).score-tasteResult(a).score||
   a.date.localeCompare(b.date)||a.name.localeCompare(b.name,'nl');
  const known=catalog.filter(e=>eligible(e)&&hasDirectConcertLink(e)&&
@@ -1392,13 +1392,14 @@ function dashboardSuggestionEntries(){
   .sort(scoreCompare);
  const fallback=catalog.filter(e=>eligible(e)&&hasDirectConcertLink(e))
   .sort((a,b)=>Number(a.verification==='historical_unverified')-Number(b.verification==='historical_unverified')||scoreCompare(a,b));
- const result=[],used=new Set();
+ const result=[],used=new Set(),usedArtists=new Set();
  const add=(items,n,kind)=>{
   for(const e of items){
    if(n<=0||result.length>=6)break;
    const identity=suggestionIdentity(e);
-   if(used.has(identity))continue;
-   used.add(identity);result.push({event:e,kind});n--;
+   const artist=normalizeConcertText(e.name);
+   if(used.has(identity)||usedArtists.has(artist))continue;
+   used.add(identity);usedArtists.add(artist);result.push({event:e,kind});n--;
   }
  };
  add(known,4,'catalog');
