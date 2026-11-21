@@ -36,8 +36,8 @@ context.catalog=[
  make("i","Artist India",9.9,{priority:"UITVERKOCHT"}),
  make("j","Artist Juliet",9.9,{changed:true})
 ];
-context.discovery=[make("dis1","New Candidate",6.5,{genre:"",link_status:undefined,verification:"review_schema"}),
- make("dis2","Artist Alpha",10.0,{link_status:undefined})];
+context.discovery.push(make("dis1","New Candidate",6.5,{genre:"",link_status:undefined,verification:"review_schema"}),
+ make("dis2","Artist Alpha",10.0,{link_status:undefined}));
 let initial=funcs.dashboardSuggestionEntries();
 assert(initial.length===6,'Only six suggestions, got '+initial.length);
 assert(new Set(initial.map(x=>x.event.name)).size===initial.length,'Do not show same artist twice');
