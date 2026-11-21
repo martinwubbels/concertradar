@@ -126,4 +126,9 @@ assert ".event-card-v3 .artistpic" in html
 assert ".event-card-v3 .card-bottom" in html
 assert "grid-template-columns:54px 60px minmax(0,1fr)" in html
 assert "display:flex;flex-wrap:wrap" in html
+assert "function dashboardSuggestionEntries" in source
+assert "function dashboardShortlistMarkup" in source
+assert "Nieuwe suggesties om te shortlisten" in source
+assert "candidate_unverified" in source
+subprocess.run(["node","scripts/test_home_shortlist.cjs"],cwd=ROOT,check=True)
 print("ConcertRadar smoke tests passed:",len(concerts),"catalog records")

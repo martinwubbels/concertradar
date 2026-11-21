@@ -248,3 +248,13 @@ De masterlijst, Verrassingsradar, Interessant, Kaarten gekocht en Afgewezen gebr
 De **Details**-sectie is standaard dicht. Via openklappen blijven de songbeschrijving, vergelijkbare artiesten, broncontrole, prijs, reisafstand, urgentie en de bestaande persoonlijke score-uitleg beschikbaar. Ook de functies Artiestprofiel, Luistertest, Spotify, concertlink, Google Agenda, Outlook en Foto wijzigen zijn behouden. Details hoeven geen nieuwe pagina te openen. Foto's blijven ook in de compacte stand zichtbaar.
 
 Bij smalle schermen worden datum, foto en artiestinformatie op de eerste rij getoond. De matchscore volgt eronder en de drie statusknoppen schalen en breken af waar nodig. Bij uitgebreid geopende Details mag het tekstvlak de volledige kaartbreedte gebruiken. De standaardverzameling van concerten en de persoonlijke instellingen zijn niet gewijzigd.
+
+## Nieuwe suggesties op Mijn startscherm (november 2026)
+
+Op het persoonlijke startscherm staat nu, direct na het eerstvolgende geboekte concert, een sectie **Nieuwe suggesties om te shortlisten**. Er staan maximaal zes nog niet beoordeelde toekomstige concerten, met artiest, datum, podium, plaats, indicatieve persoonlijke matchscore, herkomst en een directe knop **+ Interessant**. Afwijzen en de oorspronkelijke concertpagina zijn ook direct beschikbaar.
+
+De selectie kiest eerst concerten met bruikbare genres en directe links, geeft ruimte aan automatisch gevonden podiumconcerten en daarna aan overige nog onbeoordeelde kandidaten. Bestaande keuzes, reviews, afgelaste concerten of duidelijk uitverkochte evenementen worden niet aanbevolen. Dubbele artiesten worden binnen de selectie vermeden. Ook oudere, nog niet herbevestigde concerten kunnen als opvulling verschijnen, maar zijn expliciet gemarkeerd. **Een suggestie is geen claim dat het concert nieuw is aangekondigd of dat er nog kaarten zijn.**
+
+Na **Interessant** verschijnt het concert op de bestaande shortlist. Na **Afwijzen** verdwijnt het uit de suggesties. Dit gebeurt via dezelfde statusknoppen en gegevensopslag als in de masterlijst. Als je een nog niet centraal opgenomen podiumkandidaat beoordeelt, wordt deze uitsluitend in je persoonlijke lijst toegevoegd met de markering **candidate_unverified**, zodat Interessant, Gekocht en Afgewezen blijven werken. De publieke masterlijst wordt daardoor niet gewijzigd.
+
+De sectie heeft knoppen naar Masterlijst, Beoordelingsinbox en Verrassingsradar. Ze gebruikt geen nieuwe automatische taken, externe gebruikersgegevens of aparte opslag.
