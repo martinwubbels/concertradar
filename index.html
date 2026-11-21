@@ -138,6 +138,9 @@ body{background:#0b121b}
 .home-tip-info strong{display:block;font-size:15px;line-height:1.25;overflow-wrap:anywhere;color:#f0f5f7}
 .home-tip-location{font-size:12px;color:#c4d2d8;line-height:1.4;margin-top:4px}
 .home-tip-category{font-size:11px;color:#9fcabb;line-height:1.35;margin-top:5px}
+.home-tip-evidence{border-top:1px solid #365563;padding-top:8px;display:grid;gap:6px;color:#b4c9d0;font-size:11px;line-height:1.4}
+.home-tip-evidence .score-explanation{margin:0;font-size:12px}
+.home-tip-evidence .source-check{overflow-wrap:anywhere}
 .home-tip-score{color:#b7ebd7;text-align:right;white-space:nowrap;align-self:center}
 .home-tip-score b{font-size:25px;font-variant-numeric:tabular-nums}
 .home-tip-score small{font-size:11px;color:#a5c0b9}
@@ -1431,6 +1434,9 @@ function dashboardShortlistMarkup(){
         '<div class="home-tip-location">'+h(dt(e.date))+' · '+h(e.venue||e.source_venue||'Podium onbekend')+' · '+h(e.city||'')+'</div>'+
         '<div class="home-tip-category">'+h(dashboardSuggestionSource(e,kind))+'</div></div>'+
        '<div class="home-tip-score"><b>'+score.toFixed(1)+'</b><small>/10</small></div></div>'+
+      '<div class="home-tip-evidence"><span class="source-check">Bronstatus: '+
+        h(kind==='candidate'?'Kandidaat; optreden nog niet bevestigd':sourceLabel(e))+'</span>'+
+        scoreDetails(e)+'</div>'+
       '<div class="home-tip-actions">'+
        '<button type="button" data-action="interested" data-id="'+h(e.id)+'" class="home-shortlist-add">+ Interessant</button>'+
        '<button type="button" data-action="rejected" data-id="'+h(e.id)+'">Afwijzen</button>'+
