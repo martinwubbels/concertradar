@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-20",
+  "updated_at": "2026-11-21",
   "events": [
     {
       "id": "early-james-20261116",
@@ -366,6 +366,46 @@
       "link_status": "event_page_unverified"
     },
     {
+      "name": "Metropool Muziekquiz - Enschede",
+      "date": "2026-11-25",
+      "venue": "Muziekcafé, Enschede",
+      "city": "Enschede",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/metropool-muziekquiz-enschede-25-nov",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-21T11:14:53.939791+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-11-25-metropoolmuziekquizenschede"
+    },
+    {
+      "name": "Metropool Muziekquiz - Hengelo",
+      "date": "2026-11-25",
+      "venue": "Muziekcafé, Hengelo",
+      "city": "Hengelo",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/metropool-muziekquiz-hengelo-25-nov",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-21T11:14:53.938865+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-11-25-metropoolmuziekquizhengelo"
+    },
+    {
       "id": "lucky-fonz-iii-esther-de-jong-20261126",
       "name": "Lucky Fonz III + Esther de Jong",
       "date": "2026-11-26",
@@ -381,6 +421,26 @@
       "url": "https://www.hedon-zwolle.nl/",
       "verification": "historical_unverified",
       "link_status": "venue_or_generic"
+    },
+    {
+      "name": "Sing it!",
+      "date": "2026-11-26",
+      "venue": "Saxion Stage, Enschede",
+      "city": "Enschede",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/sing-it-26-nov",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-21T11:14:53.940265+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-11-26-singit"
     },
     {
       "id": "de-tamboer-blues-roots-festival-20261127",
