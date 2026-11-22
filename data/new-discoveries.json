@@ -1,43 +1,7 @@
 {
-  "updated_at": "2026-11-21T16:08:11.588283+00:00",
+  "updated_at": "2026-11-22T16:15:25.040808+00:00",
   "status": "suggestions_not_confirmed_or_ranked",
   "events": [
-    {
-      "id": "suggestion-2026-11-21-froukje",
-      "name": "Froukje",
-      "date": "2026-11-21",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/froukje-21-nov/",
-      "price": 40.0,
-      "availability_hint": "SoldOut",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-21-gotujim",
-      "name": "Gotu Jim",
-      "date": "2026-11-21",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/gotu-jim/",
-      "price": 23.5,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-21-isabelusher",
-      "name": "Isabèl Usher",
-      "date": "2026-11-21",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/isabel-usher/",
-      "price": 18.5,
-      "availability_hint": "SoldOut",
-      "review_required": true
-    },
     {
       "id": "suggestion-2026-11-22-triggerfinger",
       "name": "Triggerfinger",
@@ -228,6 +192,42 @@
       "url": "https://www.spotgroningen.nl/programma/david-linszen-2/",
       "price": 22.5,
       "availability_hint": "SoldOut",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-11-30-paradoxjazzorchestrafeatjamescarter",
+      "name": "Paradox Jazz Orchestra feat. James Carter",
+      "date": "2026-11-30",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/paradox-jazz-orchestra-feat-james-carter/",
+      "price": 24.0,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-01-nnonoordpoolorkest",
+      "name": "NNO &#038; Noordpool Orkest",
+      "date": "2026-12-01",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/nno-noordpool-orkest/",
+      "price": 29.5,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-01-theateroostpool",
+      "name": "Theater Oostpool",
+      "date": "2026-12-01",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/theater-oostpool-18/",
+      "price": 29.5,
+      "availability_hint": "InStock",
       "review_required": true
     }
   ]

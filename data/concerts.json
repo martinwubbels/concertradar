@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-21",
+  "updated_at": "2026-11-22",
   "events": [
     {
       "id": "early-james-20261116",
@@ -478,6 +478,26 @@
       "link_source": "Official venue agenda"
     },
     {
+      "name": "Kruidkoek & Joost Oomen",
+      "date": "2026-11-27",
+      "venue": "Jack Daniel's Stage, Hengelo",
+      "city": "Hengelo",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/kruidkoek-joost-oomen",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-22T16:14:34.598257+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-11-27-kruidkoekjoostoomen"
+    },
+    {
       "id": "lucky-fonz-iii-esther-de-jong-20261127",
       "name": "Lucky Fonz III + Esther de Jong",
       "date": "2026-11-27",
@@ -495,6 +515,26 @@
       "link_status": "venue_or_generic"
     },
     {
+      "name": "Palindroom Festival",
+      "date": "2026-11-27",
+      "venue": "Saxion Stage, Enschede",
+      "city": "Enschede",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/palindroom-festival",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-22T16:14:34.597649+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-11-27-palindroomfestival"
+    },
+    {
       "id": "simon-wells-pints-peat-20261127",
       "name": "Simon Wells: Pints & Peat",
       "date": "2026-11-27",
@@ -510,6 +550,26 @@
       "url": "https://www.drentmeester.nl/",
       "verification": "historical_unverified",
       "link_status": "venue_or_generic"
+    },
+    {
+      "name": "Snelle",
+      "date": "2026-11-27",
+      "venue": "Muziekcentrum, Enschede",
+      "city": "Enschede",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/snelle",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-22T16:14:34.598552+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-11-27-snelle"
     },
     {
       "id": "jasper-schalks-20261128",
