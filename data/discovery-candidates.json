@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-23T14:02:53.161440+00:00",
+  "generated_at": "2026-11-23T18:44:25.658512+00:00",
   "type": "unverified_links_not_events",
   "venues": {
     "SPOT Groningen": {
@@ -39,8 +39,8 @@
       "links_seen": 0
     },
     "Nijend24": {
-      "status": "failed",
-      "reason": "<urlopen error [Errno 101] Network is unreachable>"
+      "status": "ok",
+      "links_seen": 0
     },
     "Podium Zuidhaege": {
       "status": "ok",
@@ -56,11 +56,11 @@
     },
     "DNK Assen": {
       "status": "ok",
-      "links_seen": 41
+      "links_seen": 43
     },
     "Alte Weberei Nordhorn": {
       "status": "ok",
-      "links_seen": 30
+      "links_seen": 31
     },
     "EmslandArena Lingen": {
       "status": "ok",
@@ -2436,21 +2436,7 @@
       "review_priority": "review"
     },
     {
-      "url": "https://metropool.nl/agenda/no-barrier",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
       "url": "https://metropool.nl/agenda/feuerengel-a-tribute-to-rammstein-28-nov",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://metropool.nl/agenda/classic-rb-hiphop-28-nov",
       "title": "",
       "venue": "Metropool",
       "discovery_source": "https://metropool.nl/agenda/",
@@ -2562,22 +2548,8 @@
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bios/agenda/de-grote-sinterklaasfilm-en-de-vliegende-pieten",
-      "title": "De Grote Sinterklaasfilm en de Vliegende Pieten",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
-      "title": "Wen Er Maar Aan",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/the-cycle-of-love",
-      "title": "The Cycle of Love",
+      "url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
+      "title": "How to Rob a Bank",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2590,15 +2562,8 @@
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bios/agenda/ebenezer-a-christmas-carol",
-      "title": "Ebenezer: A Christmas Carol",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
-      "title": "I Play Rocky",
+      "url": "https://denieuwekolk.nl/bios/agenda/carnaval",
+      "title": "Carnaval",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2737,22 +2702,43 @@
       "review_priority": "review"
     },
     {
+      "url": "https://denieuwekolk.nl/bios/agenda/de-grote-sinterklaasfilm-en-de-vliegende-pieten",
+      "title": "De Grote Sinterklaasfilm en de Vliegende Pieten",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
+      "title": "Wen Er Maar Aan",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/the-cycle-of-love",
+      "title": "The Cycle of Love",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/ebenezer-a-christmas-carol",
+      "title": "Ebenezer: A Christmas Carol",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
+      "title": "I Play Rocky",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
       "url": "https://denieuwekolk.nl/bios/agenda/filmliga-the-beloved",
       "title": "The Beloved",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
-      "title": "How to Rob a Bank",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/carnaval",
-      "title": "Carnaval",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2779,15 +2765,29 @@
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bios/agenda/wicker",
-      "title": "Wicker",
+      "url": "https://denieuwekolk.nl/bios/agenda/meet-the-parents-focker-in-law",
+      "title": "Meet the Parents: Focker In-Law",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bios/agenda/filmliga-amarga-navidad",
-      "title": "Amarga Navidad",
+      "url": "https://denieuwekolk.nl/bios/agenda/disneys-hexed-ov",
+      "title": "Disney's Hexed OV",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/heart-of-the-beast",
+      "title": "Heart of the Beast (16 jr.)",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/shaun-het-schaap-het-beest-op-de-boerderij",
+      "title": "Shaun het Schaap: Het Beest op de Boerderij",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2900,6 +2900,13 @@
     {
       "url": "https://alteweberei.de/produktion/grafschafter-metalfest/",
       "title": "Grafschafter Metalfest",
+      "venue": "Alte Weberei Nordhorn",
+      "discovery_source": "https://alteweberei.de/programm/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://alteweberei.de/produktion/niklas-siepen-2/",
+      "title": "Niklas Siepen",
       "venue": "Alte Weberei Nordhorn",
       "discovery_source": "https://alteweberei.de/programm/",
       "review_priority": "review"
