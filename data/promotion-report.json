@@ -1,25 +1,12 @@
 {
-  "generated_at": "2026-11-23T14:05:08.889327+00:00",
+  "generated_at": "2026-11-23T20:07:45.711192+00:00",
   "description": "Only strict official music event matches auto-added; all others remain separate.",
-  "checked_records": 121,
-  "approved": 2,
+  "checked_records": 115,
+  "approved": 0,
   "skipped": {
     "missing_name_venue_or_city": 24,
-    "unconfirmed_schema": 93,
+    "unconfirmed_schema": 89,
     "nonmusic_keyword": 2
   },
-  "added": [
-    {
-      "id": "suggestion-2026-11-28-nobarrier",
-      "name": "No Barrier",
-      "date": "2026-11-28",
-      "url": "https://metropool.nl/agenda/no-barrier"
-    },
-    {
-      "id": "suggestion-2026-11-28-classicrbhiphop",
-      "name": "CLASSIC (R&B & Hiphop)",
-      "date": "2026-11-28",
-      "url": "https://metropool.nl/agenda/classic-rb-hiphop-28-nov"
-    }
-  ]
+  "added": []
 }
