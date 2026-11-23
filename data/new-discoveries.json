@@ -1,19 +1,7 @@
 {
-  "updated_at": "2026-11-22T16:15:25.040808+00:00",
+  "updated_at": "2026-11-23T14:06:07.967500+00:00",
   "status": "suggestions_not_confirmed_or_ranked",
   "events": [
-    {
-      "id": "suggestion-2026-11-22-triggerfinger",
-      "name": "Triggerfinger",
-      "date": "2026-11-22",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/triggerfinger-4/",
-      "price": 43.0,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
     {
       "id": "suggestion-2026-11-23-combattimento",
       "name": "Combattimento",
@@ -191,7 +179,7 @@
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/david-linszen-2/",
       "price": 22.5,
-      "availability_hint": "SoldOut",
+      "availability_hint": "InStock",
       "review_required": true
     },
     {
@@ -215,7 +203,7 @@
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/nno-noordpool-orkest/",
       "price": 29.5,
-      "availability_hint": "InStock",
+      "availability_hint": "SoldOut",
       "review_required": true
     },
     {
@@ -227,6 +215,30 @@
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/theater-oostpool-18/",
       "price": 29.5,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-02-jimmycarrlaughsfunny",
+      "name": "Jimmy Carr &#8211; Laughs funny",
+      "date": "2026-12-02",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/jimmy-carr-laughs-funny/",
+      "price": 74.6,
+      "availability_hint": "SoldOut",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-02-maaikeouboter",
+      "name": "Maaike Ouboter",
+      "date": "2026-12-02",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/maaike-ouboter-8/",
+      "price": 25.0,
       "availability_hint": "InStock",
       "review_required": true
     }

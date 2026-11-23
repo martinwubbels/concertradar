@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-22",
+  "updated_at": "2026-11-23",
   "events": [
     {
       "id": "early-james-20261116",
@@ -572,6 +572,26 @@
       "id": "suggestion-2026-11-27-snelle"
     },
     {
+      "name": "CLASSIC (R&B & Hiphop)",
+      "date": "2026-11-28",
+      "venue": "Bud Stage, Hengelo",
+      "city": "Hengelo",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/classic-rb-hiphop-28-nov",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-23T14:05:08.887615+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-11-28-classicrbhiphop"
+    },
+    {
       "id": "jasper-schalks-20261128",
       "name": "Jasper Schalks",
       "date": "2026-11-28",
@@ -604,6 +624,26 @@
       "url": "https://www.vera-groningen.nl/",
       "verification": "historical_unverified",
       "link_status": "venue_or_generic"
+    },
+    {
+      "name": "No Barrier",
+      "date": "2026-11-28",
+      "venue": "Saxion Stage, Enschede",
+      "city": "Enschede",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/no-barrier",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-23T14:05:08.886994+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-11-28-nobarrier"
     },
     {
       "id": "subterranean-street-society-esther-de-jong-20261128",

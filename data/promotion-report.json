@@ -1,31 +1,25 @@
 {
-  "generated_at": "2026-11-22T16:14:34.601968+00:00",
+  "generated_at": "2026-11-23T14:05:08.889327+00:00",
   "description": "Only strict official music event matches auto-added; all others remain separate.",
-  "checked_records": 117,
-  "approved": 3,
+  "checked_records": 121,
+  "approved": 2,
   "skipped": {
     "missing_name_venue_or_city": 24,
-    "unconfirmed_schema": 89,
-    "nonmusic_keyword": 1
+    "unconfirmed_schema": 93,
+    "nonmusic_keyword": 2
   },
   "added": [
     {
-      "id": "suggestion-2026-11-27-palindroomfestival",
-      "name": "Palindroom Festival",
-      "date": "2026-11-27",
-      "url": "https://metropool.nl/agenda/palindroom-festival"
+      "id": "suggestion-2026-11-28-nobarrier",
+      "name": "No Barrier",
+      "date": "2026-11-28",
+      "url": "https://metropool.nl/agenda/no-barrier"
     },
     {
-      "id": "suggestion-2026-11-27-kruidkoekjoostoomen",
-      "name": "Kruidkoek & Joost Oomen",
-      "date": "2026-11-27",
-      "url": "https://metropool.nl/agenda/kruidkoek-joost-oomen"
-    },
-    {
-      "id": "suggestion-2026-11-27-snelle",
-      "name": "Snelle",
-      "date": "2026-11-27",
-      "url": "https://metropool.nl/agenda/snelle"
+      "id": "suggestion-2026-11-28-classicrbhiphop",
+      "name": "CLASSIC (R&B & Hiphop)",
+      "date": "2026-11-28",
+      "url": "https://metropool.nl/agenda/classic-rb-hiphop-28-nov"
     }
   ]
 }
