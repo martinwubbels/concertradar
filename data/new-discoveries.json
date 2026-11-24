@@ -1,31 +1,7 @@
 {
-  "updated_at": "2026-11-23T20:08:30.323373+00:00",
+  "updated_at": "2026-11-24T19:30:52.182411+00:00",
   "status": "suggestions_not_confirmed_or_ranked",
   "events": [
-    {
-      "id": "suggestion-2026-11-23-combattimento",
-      "name": "Combattimento",
-      "date": "2026-11-23",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/combattimento-2/",
-      "price": 34.75,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-23-sowetogospelchoir",
-      "name": "Soweto Gospel Choir",
-      "date": "2026-11-23",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/soweto-gospel-choir-3/",
-      "price": 44.0,
-      "availability_hint": "SoldOut",
-      "review_required": true
-    },
     {
       "id": "suggestion-2026-11-24-kotic",
       "name": "K-OTIC",
@@ -239,6 +215,30 @@
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/maaike-ouboter-8/",
       "price": 25.0,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-03-haevn",
+      "name": "HAEVN",
+      "date": "2026-12-03",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/haevn-6-2/",
+      "price": 54.5,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-03-nederlandsblazersensembledudapaivacompany",
+      "name": "Nederlands Blazers Ensemble &#038; Duda Paiva Company",
+      "date": "2026-12-03",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/nederlands-blazers-ensemble-duda-paiva-company/",
+      "price": 37.5,
       "availability_hint": "InStock",
       "review_required": true
     }
