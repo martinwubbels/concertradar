@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-24T19:41:06.183137+00:00",
+  "generated_at": "2026-11-25T18:49:25.827420+00:00",
   "type": "unverified_changes_only",
   "description": "Candidates for manual verification. Absence is not confirmation of unchanged data.",
   "stats": {
@@ -15,7 +15,7 @@
       "date": "2026-12-18",
       "url": "https://www.spotgroningen.nl/programma/dylan-leblanc-3/",
       "description": "Officiële metadata meldt uitverkocht",
-      "checked_at": "2026-11-24T19:40:29.808128+00:00"
+      "checked_at": "2026-11-25T18:48:57.689866+00:00"
     },
     {
       "id": "dewolff-full-moon-ritual-20270108",
@@ -23,7 +23,7 @@
       "date": "2027-01-08",
       "url": "https://www.spotgroningen.nl/programma/dewolff-8/",
       "description": "Prijs eerder €28, pagina €49.0; Officiële metadata meldt uitverkocht",
-      "checked_at": "2026-11-24T19:40:30.996990+00:00"
+      "checked_at": "2026-11-25T18:48:58.667769+00:00"
     }
   ]
 }
