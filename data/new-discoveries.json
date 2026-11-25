@@ -1,31 +1,7 @@
 {
-  "updated_at": "2026-11-24T19:30:52.182411+00:00",
+  "updated_at": "2026-11-25T18:39:51.469107+00:00",
   "status": "suggestions_not_confirmed_or_ranked",
   "events": [
-    {
-      "id": "suggestion-2026-11-24-kotic",
-      "name": "K-OTIC",
-      "date": "2026-11-24",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/k-otic/",
-      "price": 40.0,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-24-lukabloom",
-      "name": "Luka Bloom",
-      "date": "2026-11-24",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/luka-bloom-3/",
-      "price": 35.0,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
     {
       "id": "suggestion-2026-11-25-myrtesiebinga",
       "name": "Myrte Siebinga",
@@ -96,18 +72,6 @@
       "url": "https://www.spotgroningen.nl/programma/het-nationale-theater-31/",
       "price": 29.5,
       "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-27-timebox",
-      "name": "Timebox",
-      "date": "2026-11-27",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/timebox/",
-      "price": 33.0,
-      "availability_hint": "SoldOut",
       "review_required": true
     },
     {
@@ -231,6 +195,18 @@
       "review_required": true
     },
     {
+      "id": "suggestion-2026-12-03-joristeepepresentsnyctg",
+      "name": "Joris Teepe presents: NYCTG",
+      "date": "2026-12-03",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/joris-teepe-presents-nyctg-37/",
+      "price": 16.0,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
       "id": "suggestion-2026-12-03-nederlandsblazersensembledudapaivacompany",
       "name": "Nederlands Blazers Ensemble &#038; Duda Paiva Company",
       "date": "2026-12-03",
@@ -239,6 +215,30 @@
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/nederlands-blazers-ensemble-duda-paiva-company/",
       "price": 37.5,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-03-nederlandsdanstheater1",
+      "name": "Nederlands Dans Theater 1",
+      "date": "2026-12-03",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/nederlands-dans-theater-1-5/",
+      "price": 41.5,
+      "availability_hint": "SoldOut",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-04-haevn",
+      "name": "HAEVN",
+      "date": "2026-12-04",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/haevn-6/",
+      "price": 54.5,
       "availability_hint": "InStock",
       "review_required": true
     }

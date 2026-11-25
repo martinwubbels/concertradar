@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-24T19:30:18.281956+00:00",
+  "generated_at": "2026-11-25T18:38:53.882362+00:00",
   "description": "Only strict official music event matches auto-added; all others remain separate.",
-  "checked_records": 117,
+  "checked_records": 121,
   "approved": 0,
   "skipped": {
     "missing_name_venue_or_city": 24,
-    "unconfirmed_schema": 91,
+    "unconfirmed_schema": 95,
     "nonmusic_keyword": 2
   },
   "added": []

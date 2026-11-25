@@ -1,27 +1,27 @@
 {
-  "generated_at": "2026-11-24T19:30:18.081937+00:00",
+  "generated_at": "2026-11-25T18:38:53.723463+00:00",
   "description": "Candidates only, not confirmed concerts or ticket status",
   "stats": {
     "checked": 100,
-    "structured_events": 197,
+    "structured_events": 346,
     "needs_review": 49,
     "failed": 2
   },
   "results": [
     {
-      "name": "K-OTIC",
-      "date": "2026-11-24",
+      "name": "Claudia de Breij",
+      "date": "2026-11-25",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
-      "price": 40.0,
+      "price": 35.5,
       "currency": "EUR",
-      "availability": "InStock",
+      "availability": "SoldOut",
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/k-otic/",
-      "source_url": "https://www.spotgroningen.nl/programma/k-otic/",
+      "schema_url": "https://www.spotgroningen.nl/programma/claudia-de-breij-16/",
+      "source_url": "https://www.spotgroningen.nl/programma/claudia-de-breij-16/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
@@ -108,27 +108,27 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Luka Bloom",
-      "date": "2026-11-24",
+      "name": "Myrte Siebinga",
+      "date": "2026-11-25",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
-      "price": 35.0,
+      "price": 19.5,
       "currency": "EUR",
       "availability": "InStock",
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/luka-bloom-3/",
-      "source_url": "https://www.spotgroningen.nl/programma/luka-bloom-3/",
+      "schema_url": "https://www.spotgroningen.nl/programma/myrte-siebinga/",
+      "source_url": "https://www.spotgroningen.nl/programma/myrte-siebinga/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
     },
     {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33131/ogene",
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33135/racoon",
       "source_venue": "Hedon Zwolle",
-      "link_title": "vr 26 mrt. 19:30 OGENE",
+      "link_title": "vr 09 apr. 18:30 RACOON",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -225,27 +225,27 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Claudia de Breij",
-      "date": "2026-11-25",
+      "name": "Dutch Classical Talent: Hadewych van Gent",
+      "date": "2026-11-26",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
-      "price": 35.5,
+      "price": 7.5,
       "currency": "EUR",
-      "availability": "SoldOut",
+      "availability": "InStock",
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/claudia-de-breij-16/",
-      "source_url": "https://www.spotgroningen.nl/programma/claudia-de-breij-16/",
+      "schema_url": "https://www.spotgroningen.nl/programma/dutch-classical-talent-hadewych-van-gent/",
+      "source_url": "https://www.spotgroningen.nl/programma/dutch-classical-talent-hadewych-van-gent/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
     },
     {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33138/beatbox-checkpoint",
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33131/ogene",
       "source_venue": "Hedon Zwolle",
-      "link_title": "di 24 nov. 19:30 BEATBOX CHECKPOINT",
+      "link_title": "vr 26 mrt. 19:30 OGENE",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -282,19 +282,19 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Myrte Siebinga",
-      "date": "2026-11-25",
+      "name": "Claudia de Breij",
+      "date": "2026-11-26",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
-      "price": 19.5,
+      "price": 35.5,
       "currency": "EUR",
-      "availability": "InStock",
+      "availability": "SoldOut",
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/myrte-siebinga/",
-      "source_url": "https://www.spotgroningen.nl/programma/myrte-siebinga/",
+      "schema_url": "https://www.spotgroningen.nl/programma/claudia-de-breij-17/",
+      "source_url": "https://www.spotgroningen.nl/programma/claudia-de-breij-17/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
@@ -375,19 +375,19 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Dutch Classical Talent: Hadewych van Gent",
+      "name": "Nederlands kamerkoor",
       "date": "2026-11-26",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
-      "price": 7.5,
+      "price": 38.5,
       "currency": "EUR",
-      "availability": "InStock",
+      "availability": "SoldOut",
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/dutch-classical-talent-hadewych-van-gent/",
-      "source_url": "https://www.spotgroningen.nl/programma/dutch-classical-talent-hadewych-van-gent/",
+      "schema_url": "https://www.spotgroningen.nl/programma/nederlands-kamerkoor-15/",
+      "source_url": "https://www.spotgroningen.nl/programma/nederlands-kamerkoor-15/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
@@ -425,19 +425,19 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Claudia de Breij",
+      "name": "Noord Nederlands Orkest",
       "date": "2026-11-26",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
-      "price": 35.5,
+      "price": 29.5,
       "currency": "EUR",
-      "availability": "SoldOut",
+      "availability": "InStock",
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/claudia-de-breij-17/",
-      "source_url": "https://www.spotgroningen.nl/programma/claudia-de-breij-17/",
+      "schema_url": "https://www.spotgroningen.nl/programma/noord-nederlands-orkest-231/",
+      "source_url": "https://www.spotgroningen.nl/programma/noord-nederlands-orkest-231/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
@@ -511,19 +511,19 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Nederlands kamerkoor",
-      "date": "2026-11-26",
+      "name": "Flemming",
+      "date": "2026-11-27",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
-      "price": 38.5,
+      "price": 38.6,
       "currency": "EUR",
       "availability": "SoldOut",
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/nederlands-kamerkoor-15/",
-      "source_url": "https://www.spotgroningen.nl/programma/nederlands-kamerkoor-15/",
+      "schema_url": "https://www.spotgroningen.nl/programma/flemming-4/",
+      "source_url": "https://www.spotgroningen.nl/programma/flemming-4/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
@@ -561,8 +561,8 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Noord Nederlands Orkest",
-      "date": "2026-11-26",
+      "name": "Het Nationale Theater",
+      "date": "2026-11-27",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
@@ -572,8 +572,8 @@
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/noord-nederlands-orkest-231/",
-      "source_url": "https://www.spotgroningen.nl/programma/noord-nederlands-orkest-231/",
+      "schema_url": "https://www.spotgroningen.nl/programma/het-nationale-theater-31/",
+      "source_url": "https://www.spotgroningen.nl/programma/het-nationale-theater-31/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
@@ -629,228 +629,6 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Flemming",
-      "date": "2026-11-27",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "performer": "",
-      "price": 38.6,
-      "currency": "EUR",
-      "availability": "SoldOut",
-      "event_type": [
-        "Event"
-      ],
-      "schema_url": "https://www.spotgroningen.nl/programma/flemming-4/",
-      "source_url": "https://www.spotgroningen.nl/programma/flemming-4/",
-      "source_venue": "SPOT Groningen",
-      "confidence": "review_schema",
-      "review_required": true
-    },
-    {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33121/sterke-koffie",
-      "source_venue": "Hedon Zwolle",
-      "link_title": "za 06 mrt. 19:00 STERKE KOFFIE",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "The Beloved - Filmliga",
-      "date": "2026-11-23",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/filmliga-the-beloved",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "name": "The Beloved - Filmliga",
-      "date": "2026-11-24",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": 13.0,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/filmliga-the-beloved",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "name": "The Beloved - Filmliga",
-      "date": "2026-11-28",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": 13.5,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/filmliga-the-beloved",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "source_url": "https://alteweberei.de/produktion/veteranen-in-der-weberei/",
-      "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Veteranen in der Weberei",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Het Nationale Theater",
-      "date": "2026-11-27",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "performer": "",
-      "price": 29.5,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "Event"
-      ],
-      "schema_url": "https://www.spotgroningen.nl/programma/het-nationale-theater-31/",
-      "source_url": "https://www.spotgroningen.nl/programma/het-nationale-theater-31/",
-      "source_venue": "SPOT Groningen",
-      "confidence": "review_schema",
-      "review_required": true
-    },
-    {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33126/the-bruceband-plays-best-of-springsteen-the-e-street-band",
-      "source_venue": "Hedon Zwolle",
-      "link_title": "vr 24 sep. 18:30 THE BRUCEBAND PLAYS BEST OF SPRINGSTEEN & THE E-STREET BAND",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "I Play Rocky",
-      "date": "2026-11-19",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "name": "I Play Rocky",
-      "date": "2026-11-20",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "name": "I Play Rocky",
-      "date": "2026-11-21",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": null,
-      "currency": null,
-      "availability": null,
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "source_url": "https://alteweberei.de/produktion/stadtaffen/",
-      "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Stadtaffen",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Timebox",
-      "date": "2026-11-27",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "performer": "",
-      "price": 33.0,
-      "currency": "EUR",
-      "availability": "SoldOut",
-      "event_type": [
-        "Event"
-      ],
-      "schema_url": "https://www.spotgroningen.nl/programma/timebox/",
-      "source_url": "https://www.spotgroningen.nl/programma/timebox/",
-      "source_venue": "SPOT Groningen",
-      "confidence": "review_schema",
-      "review_required": true
-    },
-    {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33124/stones-sessions",
-      "source_venue": "Hedon Zwolle",
-      "link_title": "do 22 apr. 18:30 STONES SESSIONS",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "INKT - Linda van Rijn",
-      "date": "2026-11-24",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": 12.5,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bieb/agenda/inkt-10046644",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "source_url": "https://alteweberei.de/produktion/the-fantastic-blues-brothers/",
-      "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "The Fantastic Blues Brothers",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
       "name": "The Scene",
       "date": "2026-11-29",
       "venue": "SPOT Groningen",
@@ -869,15 +647,15 @@
       "review_required": true
     },
     {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33125/90s-now",
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33121/sterke-koffie",
       "source_venue": "Hedon Zwolle",
-      "link_title": "za 13 feb. 20:00 90'S NOW",
+      "link_title": "za 06 mrt. 19:00 STERKE KOFFIE",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
     {
-      "name": "How to Rob a Bank",
-      "date": "2026-11-12",
+      "name": "Wen Er Maar Aan",
+      "date": "2026-10-08",
       "venue": "",
       "city": "",
       "performer": "",
@@ -888,14 +666,14 @@
         "TheaterEvent"
       ],
       "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
+      "source_url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
       "source_venue": "DNK Assen",
       "confidence": "incomplete",
       "review_required": true
     },
     {
-      "name": "How to Rob a Bank",
-      "date": "2026-11-13",
+      "name": "Wen Er Maar Aan",
+      "date": "2026-10-09",
       "venue": "",
       "city": "",
       "performer": "",
@@ -906,14 +684,14 @@
         "TheaterEvent"
       ],
       "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
+      "source_url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
       "source_venue": "DNK Assen",
       "confidence": "incomplete",
       "review_required": true
     },
     {
-      "name": "How to Rob a Bank",
-      "date": "2026-11-14",
+      "name": "Wen Er Maar Aan",
+      "date": "2026-10-09",
       "venue": "",
       "city": "",
       "performer": "",
@@ -924,15 +702,15 @@
         "TheaterEvent"
       ],
       "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
+      "source_url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
       "source_venue": "DNK Assen",
       "confidence": "incomplete",
       "review_required": true
     },
     {
-      "source_url": "https://alteweberei.de/produktion/nordhorner-nacht-der-champions/",
+      "source_url": "https://alteweberei.de/produktion/veteranen-in-der-weberei/",
       "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Nordhorner Nacht der Champions",
+      "link_title": "Veteranen in der Weberei",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -955,9 +733,9 @@
       "review_required": true
     },
     {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33123/maquina",
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33126/the-bruceband-plays-best-of-springsteen-the-e-street-band",
       "source_venue": "Hedon Zwolle",
-      "link_title": "vr 05 feb. 19:30 MAQUINA.",
+      "link_title": "vr 24 sep. 18:30 THE BRUCEBAND PLAYS BEST OF SPRINGSTEEN & THE E-STREET BAND",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -1016,9 +794,9 @@
       "review_required": true
     },
     {
-      "source_url": "https://alteweberei.de/produktion/nightwash/",
+      "source_url": "https://alteweberei.de/produktion/stadtaffen/",
       "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "NightWash",
+      "link_title": "Stadtaffen",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -1041,9 +819,353 @@
       "review_required": true
     },
     {
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33124/stones-sessions",
+      "source_venue": "Hedon Zwolle",
+      "link_title": "do 22 apr. 18:30 STONES SESSIONS",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Het Vlucht Voorwaarts Praathuis",
+      "date": "2026-01-14",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bieb/agenda/het-vlucht-voorwaarts-praathuis",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Het Vlucht Voorwaarts Praathuis",
+      "date": "2026-01-21",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bieb/agenda/het-vlucht-voorwaarts-praathuis",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Het Vlucht Voorwaarts Praathuis",
+      "date": "2026-01-28",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bieb/agenda/het-vlucht-voorwaarts-praathuis",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "source_url": "https://alteweberei.de/produktion/the-fantastic-blues-brothers/",
+      "source_venue": "Alte Weberei Nordhorn",
+      "link_title": "The Fantastic Blues Brothers",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "David Linszen",
+      "date": "2026-11-30",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "performer": "",
+      "price": 22.5,
+      "currency": "EUR",
+      "availability": "InStock",
+      "event_type": [
+        "Event"
+      ],
+      "schema_url": "https://www.spotgroningen.nl/programma/david-linszen-2/",
+      "source_url": "https://www.spotgroningen.nl/programma/david-linszen-2/",
+      "source_venue": "SPOT Groningen",
+      "confidence": "review_schema",
+      "review_required": true
+    },
+    {
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33125/90s-now",
+      "source_venue": "Hedon Zwolle",
+      "link_title": "za 13 feb. 20:00 90'S NOW",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "I Play Rocky",
+      "date": "2026-11-19",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "I Play Rocky",
+      "date": "2026-11-20",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "I Play Rocky",
+      "date": "2026-11-21",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "source_url": "https://alteweberei.de/produktion/nordhorner-nacht-der-champions/",
+      "source_venue": "Alte Weberei Nordhorn",
+      "link_title": "Nordhorner Nacht der Champions",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Paradox Jazz Orchestra feat. James Carter",
+      "date": "2026-11-30",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "performer": "",
+      "price": 24.0,
+      "currency": "EUR",
+      "availability": "InStock",
+      "event_type": [
+        "Event"
+      ],
+      "schema_url": "https://www.spotgroningen.nl/programma/paradox-jazz-orchestra-feat-james-carter/",
+      "source_url": "https://www.spotgroningen.nl/programma/paradox-jazz-orchestra-feat-james-carter/",
+      "source_venue": "SPOT Groningen",
+      "confidence": "review_schema",
+      "review_required": true
+    },
+    {
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33123/maquina",
+      "source_venue": "Hedon Zwolle",
+      "link_title": "vr 05 feb. 19:30 MAQUINA.",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Ebenezer: A Christmas Carol",
+      "date": "2026-11-12",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/ebenezer-a-christmas-carol",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Ebenezer: A Christmas Carol",
+      "date": "2026-11-12",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/ebenezer-a-christmas-carol",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "Ebenezer: A Christmas Carol",
+      "date": "2026-11-13",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/ebenezer-a-christmas-carol",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "source_url": "https://alteweberei.de/produktion/nightwash/",
+      "source_venue": "Alte Weberei Nordhorn",
+      "link_title": "NightWash",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "NNO &amp;#038; Noordpool Orkest",
+      "date": "2026-12-01",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "performer": "",
+      "price": 29.5,
+      "currency": "EUR",
+      "availability": "SoldOut",
+      "event_type": [
+        "Event"
+      ],
+      "schema_url": "https://www.spotgroningen.nl/programma/nno-noordpool-orkest/",
+      "source_url": "https://www.spotgroningen.nl/programma/nno-noordpool-orkest/",
+      "source_venue": "SPOT Groningen",
+      "confidence": "review_schema",
+      "review_required": true
+    },
+    {
       "source_url": "https://www.hedon-zwolle.nl/voorstelling/33122/lois-lane",
       "source_venue": "Hedon Zwolle",
       "link_title": "vr 26 feb. 19:30 LOÏS LANE",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "How to Rob a Bank",
+      "date": "2026-11-12",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "How to Rob a Bank",
+      "date": "2026-11-13",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "name": "How to Rob a Bank",
+      "date": "2026-11-14",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": null,
+      "currency": null,
+      "availability": null,
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "source_url": "https://alteweberei.de/produktion/sven-bensmann/",
+      "source_venue": "Alte Weberei Nordhorn",
+      "link_title": "Sven Bensmann",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Theater Oostpool",
+      "date": "2026-12-01",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "performer": "",
+      "price": 29.5,
+      "currency": "EUR",
+      "availability": "InStock",
+      "event_type": [
+        "Event"
+      ],
+      "schema_url": "https://www.spotgroningen.nl/programma/theater-oostpool-18/",
+      "source_url": "https://www.spotgroningen.nl/programma/theater-oostpool-18/",
+      "source_venue": "SPOT Groningen",
+      "confidence": "review_schema",
+      "review_required": true
+    },
+    {
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33117/kiioto",
+      "source_venue": "Hedon Zwolle",
+      "link_title": "zo 21 feb. 19:00 KIIŌTŌ",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -1084,34 +1206,34 @@
       "review_required": true
     },
     {
-      "source_url": "https://alteweberei.de/produktion/sven-bensmann/",
+      "source_url": "https://alteweberei.de/produktion/dizzy-disco/",
       "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Sven Bensmann",
+      "link_title": "Dizzy Disco",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
     {
-      "name": "David Linszen",
-      "date": "2026-11-30",
+      "name": "Jimmy Carr &amp;#8211; Laughs funny",
+      "date": "2026-12-02",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
-      "price": 22.5,
+      "price": 74.6,
       "currency": "EUR",
-      "availability": "InStock",
+      "availability": "SoldOut",
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/david-linszen-2/",
-      "source_url": "https://www.spotgroningen.nl/programma/david-linszen-2/",
+      "schema_url": "https://www.spotgroningen.nl/programma/jimmy-carr-laughs-funny/",
+      "source_url": "https://www.spotgroningen.nl/programma/jimmy-carr-laughs-funny/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
     },
     {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33117/kiioto",
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33118/world-of-dance-netherlands-regional-qualifier-2",
       "source_venue": "Hedon Zwolle",
-      "link_title": "zo 21 feb. 19:00 KIIŌTŌ",
+      "link_title": "zo 07 mrt. 10:00 WORLD OF DANCE NETHERLANDS - REGIONAL QUALIFIER 2",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -1134,34 +1256,34 @@
       "review_required": true
     },
     {
-      "source_url": "https://alteweberei.de/produktion/dizzy-disco/",
+      "source_url": "https://alteweberei.de/produktion/warm-hearts/",
       "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Dizzy Disco",
+      "link_title": "Warm Hearts",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Paradox Jazz Orchestra feat. James Carter",
-      "date": "2026-11-30",
+      "name": "Maaike Ouboter",
+      "date": "2026-12-02",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
-      "price": 24.0,
+      "price": 25.0,
       "currency": "EUR",
       "availability": "InStock",
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/paradox-jazz-orchestra-feat-james-carter/",
-      "source_url": "https://www.spotgroningen.nl/programma/paradox-jazz-orchestra-feat-james-carter/",
+      "schema_url": "https://www.spotgroningen.nl/programma/maaike-ouboter-8/",
+      "source_url": "https://www.spotgroningen.nl/programma/maaike-ouboter-8/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
     },
     {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33118/world-of-dance-netherlands-regional-qualifier-2",
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33115/vroegzat",
       "source_venue": "Hedon Zwolle",
-      "link_title": "zo 07 mrt. 10:00 WORLD OF DANCE NETHERLANDS - REGIONAL QUALIFIER 2",
+      "link_title": "vr 18 dec. 18:30 VROEGZAT",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -1184,34 +1306,34 @@
       "review_required": true
     },
     {
-      "source_url": "https://alteweberei.de/produktion/warm-hearts/",
+      "source_url": "https://alteweberei.de/produktion/grafschafter-metalfest/",
       "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Warm Hearts",
+      "link_title": "Grafschafter Metalfest",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
     {
-      "name": "NNO &amp;#038; Noordpool Orkest",
-      "date": "2026-12-01",
+      "name": "Jimmy Carr &amp;#8211; Laughs funny",
+      "date": "2026-12-02",
       "venue": "SPOT Groningen",
       "city": "",
       "performer": "",
-      "price": 29.5,
+      "price": 74.6,
       "currency": "EUR",
       "availability": "SoldOut",
       "event_type": [
         "Event"
       ],
-      "schema_url": "https://www.spotgroningen.nl/programma/nno-noordpool-orkest/",
-      "source_url": "https://www.spotgroningen.nl/programma/nno-noordpool-orkest/",
+      "schema_url": "https://www.spotgroningen.nl/programma/jimmy-carr-4/",
+      "source_url": "https://www.spotgroningen.nl/programma/jimmy-carr-4/",
       "source_venue": "SPOT Groningen",
       "confidence": "review_schema",
       "review_required": true
     },
     {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33115/vroegzat",
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33116/refreshed-orchestra-the-neptunes",
       "source_venue": "Hedon Zwolle",
-      "link_title": "vr 18 dec. 18:30 VROEGZAT",
+      "link_title": "zo 21 feb. 19:30 RE:FRESHED ORCHESTRA: THE NEPTUNES",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -1252,209 +1374,9 @@
       "review_required": true
     },
     {
-      "source_url": "https://alteweberei.de/produktion/grafschafter-metalfest/",
-      "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Grafschafter Metalfest",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Theater Oostpool",
-      "date": "2026-12-01",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "performer": "",
-      "price": 29.5,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "Event"
-      ],
-      "schema_url": "https://www.spotgroningen.nl/programma/theater-oostpool-18/",
-      "source_url": "https://www.spotgroningen.nl/programma/theater-oostpool-18/",
-      "source_venue": "SPOT Groningen",
-      "confidence": "review_schema",
-      "review_required": true
-    },
-    {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33116/refreshed-orchestra-the-neptunes",
-      "source_venue": "Hedon Zwolle",
-      "link_title": "zo 21 feb. 19:30 RE:FRESHED ORCHESTRA: THE NEPTUNES",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Kaaskop & Van Vleuten - Breekbare Mensen",
-      "date": "2026-12-04",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": 25.0,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/theater/agenda/kaaskop-van-vleuten",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
       "source_url": "https://alteweberei.de/produktion/niklas-siepen-2/",
       "source_venue": "Alte Weberei Nordhorn",
       "link_title": "Niklas Siepen",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Jimmy Carr &amp;#8211; Laughs funny",
-      "date": "2026-12-02",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "performer": "",
-      "price": 74.6,
-      "currency": "EUR",
-      "availability": "SoldOut",
-      "event_type": [
-        "Event"
-      ],
-      "schema_url": "https://www.spotgroningen.nl/programma/jimmy-carr-laughs-funny/",
-      "source_url": "https://www.spotgroningen.nl/programma/jimmy-carr-laughs-funny/",
-      "source_venue": "SPOT Groningen",
-      "confidence": "review_schema",
-      "review_required": true
-    },
-    {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33005/bente",
-      "source_venue": "Hedon Zwolle",
-      "link_title": "di 24 nov. di 24 nov. BENTE Uitverkocht TRY-OUT SHOW Uitverkocht",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Fay Claassen - Fay sings Barbra`s Christmas songs",
-      "date": "2026-12-06",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": 31.5,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/theater/agenda/fay-claassen",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "source_url": "https://alteweberei.de/produktion/sekt-and-the-city/",
-      "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Sekt and the City",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Maaike Ouboter",
-      "date": "2026-12-02",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "performer": "",
-      "price": 25.0,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "Event"
-      ],
-      "schema_url": "https://www.spotgroningen.nl/programma/maaike-ouboter-8/",
-      "source_url": "https://www.spotgroningen.nl/programma/maaike-ouboter-8/",
-      "source_venue": "SPOT Groningen",
-      "confidence": "review_schema",
-      "review_required": true
-    },
-    {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/32908/lucky-fonz-iii-extra-show",
-      "source_venue": "Hedon Zwolle",
-      "link_title": "do 26 nov. do 26 nov. LUCKY FONZ III - EXTRA SHOW Uitverkocht Uitverkocht",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Inleiding Scapino Ballet - La Mer",
-      "date": "2026-12-08",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": 5.0,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/theater/agenda/inleiding-scapino-ballet",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "source_url": "https://alteweberei.de/produktion/kleidertauschparty-11/",
-      "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Kleidertauschparty #11",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Jimmy Carr &amp;#8211; Laughs funny",
-      "date": "2026-12-02",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "performer": "",
-      "price": 74.6,
-      "currency": "EUR",
-      "availability": "SoldOut",
-      "event_type": [
-        "Event"
-      ],
-      "schema_url": "https://www.spotgroningen.nl/programma/jimmy-carr-4/",
-      "source_url": "https://www.spotgroningen.nl/programma/jimmy-carr-4/",
-      "source_venue": "SPOT Groningen",
-      "confidence": "review_schema",
-      "review_required": true
-    },
-    {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/32926/wies",
-      "source_venue": "Hedon Zwolle",
-      "link_title": "do 26 nov. WIES",
-      "review_required": true,
-      "reason": "no_music_event_schema"
-    },
-    {
-      "name": "Huub Stapel - Mannen komen van Mars, vrouwen van Venus",
-      "date": "2026-12-09",
-      "venue": "",
-      "city": "",
-      "performer": "",
-      "price": 17.5,
-      "currency": "EUR",
-      "availability": "InStock",
-      "event_type": [
-        "TheaterEvent"
-      ],
-      "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/theater/agenda/huub-stapel",
-      "source_venue": "DNK Assen",
-      "confidence": "incomplete",
-      "review_required": true
-    },
-    {
-      "source_url": "https://alteweberei.de/produktion/geheimer-act/",
-      "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Hi! Spencer",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -1477,34 +1399,34 @@
       "review_required": true
     },
     {
-      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33045/bezerkus-bingo",
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/32908/lucky-fonz-iii-extra-show",
       "source_venue": "Hedon Zwolle",
-      "link_title": "vr 27 nov. vr 27 nov. BEZERKUS BINGO GO BEZERKUS WITH US!",
+      "link_title": "do 26 nov. do 26 nov. LUCKY FONZ III - EXTRA SHOW Uitverkocht Uitverkocht",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
     {
-      "name": "Firma Frictie - I'll be your daddy",
-      "date": "2026-12-09",
+      "name": "Kaaskop & Van Vleuten - Breekbare Mensen",
+      "date": "2026-12-04",
       "venue": "",
       "city": "",
       "performer": "",
-      "price": 21.5,
+      "price": 25.0,
       "currency": "EUR",
       "availability": "InStock",
       "event_type": [
         "TheaterEvent"
       ],
       "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/theater/agenda/firma-frictie",
+      "source_url": "https://denieuwekolk.nl/theater/agenda/kaaskop-van-vleuten",
       "source_venue": "DNK Assen",
       "confidence": "incomplete",
       "review_required": true
     },
     {
-      "source_url": "https://alteweberei.de/produktion/tanzfieber/",
+      "source_url": "https://alteweberei.de/produktion/sekt-and-the-city/",
       "source_venue": "Alte Weberei Nordhorn",
-      "link_title": "Tanzfieber",
+      "link_title": "Sekt and the City",
       "review_required": true,
       "reason": "no_music_event_schema"
     },
@@ -1527,6 +1449,106 @@
       "review_required": true
     },
     {
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/32926/wies",
+      "source_venue": "Hedon Zwolle",
+      "link_title": "do 26 nov. WIES",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Fay Claassen - Fay sings Barbra`s Christmas songs",
+      "date": "2026-12-06",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": 31.5,
+      "currency": "EUR",
+      "availability": "InStock",
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/theater/agenda/fay-claassen",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "source_url": "https://alteweberei.de/produktion/kleidertauschparty-11/",
+      "source_venue": "Alte Weberei Nordhorn",
+      "link_title": "Kleidertauschparty #11",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Nederlands Dans Theater 1",
+      "date": "2026-12-03",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "performer": "",
+      "price": 41.5,
+      "currency": "EUR",
+      "availability": "SoldOut",
+      "event_type": [
+        "Event"
+      ],
+      "schema_url": "https://www.spotgroningen.nl/programma/nederlands-dans-theater-1-5/",
+      "source_url": "https://www.spotgroningen.nl/programma/nederlands-dans-theater-1-5/",
+      "source_venue": "SPOT Groningen",
+      "confidence": "review_schema",
+      "review_required": true
+    },
+    {
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/33045/bezerkus-bingo",
+      "source_venue": "Hedon Zwolle",
+      "link_title": "vr 27 nov. vr 27 nov. BEZERKUS BINGO GO BEZERKUS WITH US!",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Inleiding Scapino Ballet - La Mer",
+      "date": "2026-12-08",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": 5.0,
+      "currency": "EUR",
+      "availability": "InStock",
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/theater/agenda/inleiding-scapino-ballet",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "source_url": "https://alteweberei.de/produktion/geheimer-act/",
+      "source_venue": "Alte Weberei Nordhorn",
+      "link_title": "Hi! Spencer",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Joris Teepe presents: NYCTG",
+      "date": "2026-12-03",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "performer": "",
+      "price": 16.0,
+      "currency": "EUR",
+      "availability": "InStock",
+      "event_type": [
+        "Event"
+      ],
+      "schema_url": "https://www.spotgroningen.nl/programma/joris-teepe-presents-nyctg-37/",
+      "source_url": "https://www.spotgroningen.nl/programma/joris-teepe-presents-nyctg-37/",
+      "source_venue": "SPOT Groningen",
+      "confidence": "review_schema",
+      "review_required": true
+    },
+    {
       "source_url": "https://www.hedon-zwolle.nl/voorstelling/32733/lucky-fonz-iii",
       "source_venue": "Hedon Zwolle",
       "link_title": "vr 27 nov. LUCKY FONZ III Uitverkocht MUZIKANT EN TEKSTKUNSTENAAR Uitverkocht",
@@ -1534,19 +1556,69 @@
       "reason": "no_music_event_schema"
     },
     {
-      "name": "David Linszen - Striptease Van De Dood",
-      "date": "2026-12-12",
+      "name": "Huub Stapel - Mannen komen van Mars, vrouwen van Venus",
+      "date": "2026-12-09",
       "venue": "",
       "city": "",
       "performer": "",
-      "price": 22.0,
+      "price": 17.5,
       "currency": "EUR",
       "availability": "InStock",
       "event_type": [
         "TheaterEvent"
       ],
       "schema_url": null,
-      "source_url": "https://denieuwekolk.nl/theater/agenda/david-linszen",
+      "source_url": "https://denieuwekolk.nl/theater/agenda/huub-stapel",
+      "source_venue": "DNK Assen",
+      "confidence": "incomplete",
+      "review_required": true
+    },
+    {
+      "source_url": "https://alteweberei.de/produktion/tanzfieber/",
+      "source_venue": "Alte Weberei Nordhorn",
+      "link_title": "Tanzfieber",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "HAEVN",
+      "date": "2026-12-04",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "performer": "",
+      "price": 54.5,
+      "currency": "EUR",
+      "availability": "InStock",
+      "event_type": [
+        "Event"
+      ],
+      "schema_url": "https://www.spotgroningen.nl/programma/haevn-6/",
+      "source_url": "https://www.spotgroningen.nl/programma/haevn-6/",
+      "source_venue": "SPOT Groningen",
+      "confidence": "review_schema",
+      "review_required": true
+    },
+    {
+      "source_url": "https://www.hedon-zwolle.nl/voorstelling/32925/flemming",
+      "source_venue": "Hedon Zwolle",
+      "link_title": "za 28 nov. za 28 nov. FLEMMING Uitverkocht Uitverkocht",
+      "review_required": true,
+      "reason": "no_music_event_schema"
+    },
+    {
+      "name": "Firma Frictie - I'll be your daddy",
+      "date": "2026-12-09",
+      "venue": "",
+      "city": "",
+      "performer": "",
+      "price": 21.5,
+      "currency": "EUR",
+      "availability": "InStock",
+      "event_type": [
+        "TheaterEvent"
+      ],
+      "schema_url": null,
+      "source_url": "https://denieuwekolk.nl/theater/agenda/firma-frictie",
       "source_venue": "DNK Assen",
       "confidence": "incomplete",
       "review_required": true
