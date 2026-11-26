@@ -1,31 +1,7 @@
 {
-  "updated_at": "2026-11-25T18:39:51.469107+00:00",
+  "updated_at": "2026-11-26T18:23:56.540856+00:00",
   "status": "suggestions_not_confirmed_or_ranked",
   "events": [
-    {
-      "id": "suggestion-2026-11-25-myrtesiebinga",
-      "name": "Myrte Siebinga",
-      "date": "2026-11-25",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/myrte-siebinga/",
-      "price": 19.5,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-26-dutchclassicaltalenthadewychvangent",
-      "name": "Dutch Classical Talent: Hadewych van Gent",
-      "date": "2026-11-26",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/dutch-classical-talent-hadewych-van-gent/",
-      "price": 7.5,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
     {
       "id": "suggestion-2026-11-26-nederlandskamerkoor",
       "name": "Nederlands kamerkoor",
@@ -119,7 +95,7 @@
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/david-linszen-2/",
       "price": 22.5,
-      "availability_hint": "InStock",
+      "availability_hint": "SoldOut",
       "review_required": true
     },
     {
@@ -227,7 +203,7 @@
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/nederlands-dans-theater-1-5/",
       "price": 41.5,
-      "availability_hint": "SoldOut",
+      "availability_hint": "InStock",
       "review_required": true
     },
     {
@@ -239,6 +215,30 @@
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/haevn-6/",
       "price": 54.5,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-04-kelapamuda",
+      "name": "Kelapa Muda",
+      "date": "2026-12-04",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/kelapa-muda/",
+      "price": 22.5,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-05-gallowstreet",
+      "name": "Gallowstreet",
+      "date": "2026-12-05",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/gallowstreet-3/",
+      "price": 27.5,
       "availability_hint": "InStock",
       "review_required": true
     }

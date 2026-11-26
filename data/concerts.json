@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-23",
+  "updated_at": "2026-11-26",
   "events": [
     {
       "id": "early-james-20261116",
@@ -696,6 +696,46 @@
       "verification": "historical_unverified",
       "link_status": "event_page",
       "link_source": "Official venue agenda"
+    },
+    {
+      "name": "Monkeyjam",
+      "date": "2026-12-02",
+      "venue": "Muziekcafé, Enschede",
+      "city": "Enschede",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/monkeyjam-2-dec",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-26T18:23:24.180145+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-12-02-monkeyjam"
+    },
+    {
+      "name": "SBK Benefietconcert 2026",
+      "date": "2026-12-02",
+      "venue": "Saxion Stage, Enschede",
+      "city": "Enschede",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/sbk-benefietconcert-2026",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-26T18:23:24.181135+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-12-02-sbkbenefietconcert2026"
     },
     {
       "id": "dawn-brothers-friends-the-last-waltz-20261204",
