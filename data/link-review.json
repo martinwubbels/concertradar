@@ -1,6 +1,16 @@
 {
-  "generated_at": "2026-11-25T17:38:02.926056+00:00",
+  "generated_at": "2026-11-26T17:19:01.464489+00:00",
   "status": "suggestions_only_manual_confirmation_required",
-  "count": 0,
-  "suggestions": []
+  "count": 1,
+  "suggestions": [
+    {
+      "id": "elles-bailey-20270306",
+      "name": "Elles Bailey",
+      "date": "2027-03-06",
+      "current_url": "https://www.spotgroningen.nl/",
+      "url": "https://www.spotgroningen.nl/programma/elles-bailey/",
+      "evidence": "title_and_date_on_official_site",
+      "title": "Elles Bailey Een doorleefde combinatie van blues, soul en americana za 6 mrt"
+    }
+  ]
 }
