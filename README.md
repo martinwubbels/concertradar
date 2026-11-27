@@ -264,3 +264,16 @@ De sectie heeft knoppen naar Masterlijst, Beoordelingsinbox en Verrassingsradar.
 Bij de maximaal zes tips onder **Nieuwe suggesties om te shortlisten** zie je nu direct de bronstatus en een uitklapbare uitleg **Waarom X/10?**. Die uitleg gebruikt dezelfde bestaande persoonlijke scoreberekening als de hoofdkaart en toont de afzonderlijke bijdragen. Dit is een inschatting uit beschrijvingen en opgeslagen voorkeuren, geen automatische analyse van stemmen of songteksten.
 
 Kandidaten uit **Nieuw gevonden** zijn expliciet gemarkeerd als **nog niet bevestigd**. Bij bekende catalogusconcerten toont het startscherm de laatst beschikbare broncontrole, inclusief de melding als gegevens niet recent zijn gecontroleerd. De app controleert de ticketvoorraad niet live en doet geen nieuwe netwerkverzoeken voor het tonen van deze uitleg. Bestaande concerten, concert-ID's en persoonlijke keuzes blijven ongewijzigd.
+
+## Nieuw gevonden concerten en festivals (27 november 2026)
+
+Het tabblad **Nieuw & festivals** staat direct na Mijn startscherm, ook op mobiel. Op het startscherm staat een apart blok met een voorproefje van de laatste onbeoordeelde concertvondsten en aankomende festivals. De volledige pagina toont:
+
+- **Nieuwe concertvondsten** uit de automatische kandidatenfeed en automatisch opgenomen masterlijstconcerten. Bronstatus wordt expliciet vermeld. Dit zijn niet per definitie recente aankondigingen van het podium.
+- **Aankomende festivals** uit diezelfde feed en reeds bekende festivals uit de masterlijst. Een bestaand festival wordt niet ten onrechte als nieuwe ontdekking beschreven.
+- Filters op alles/concerten/festivals, alle keuzes/nog te beoordelen, en sortering op datum van opname of concertdatum.
+- Per kaart datum, podium, locatie voor zover bekend, laatste bronprijs indien beschikbaar, bronstatus en de bestaande Interessant, Afwijzen en Kaarten gekocht-acties. Dubbele vermeldingen en verlopen evenementen worden uit deze pagina gefilterd.
+
+De maker van de automatische kandidatenfeed bewaart voortaan `first_seen_at` en `last_seen_at`, en onderscheidt `event_kind=festival` of `concert`. Bestaande kandidaten zonder die datum gebruiken bij de eerstvolgende verwerking als overgangswaarde de eerdere verwerkingsdatum. De datum betekent **opgenomen in de radar**, niet dat het evenement toen is aangekondigd. De eerdere invoer blijft met dezelfde event-ID's behouden. Herhaalde scans maken geen nieuwe melding van een bestaand concert.
+
+De brongegevens zijn geen live ticketcontrole. In de huidige automatische dataset ontbreken sommige steden en podia. Festivalprogramma's worden niet automatisch gecontroleerd. De app claimt daarom geen volledige dekking en laat onbekende gegevens leeg. De bestaande automatische workflows blijven ongewijzigd; er is geen nieuwe geplande taak toegevoegd.
