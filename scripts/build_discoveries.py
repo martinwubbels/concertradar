@@ -13,6 +13,16 @@ REVIEW = ROOT / "data/event-review.json"
 CATALOG = ROOT / "data/concerts.json"
 OUTPUT = ROOT / "data/new-discoveries.json"
 
+# Only infer a missing city when the official programme has a single,
+# unambiguous venue city. This is not equivalent to event-level confirmation.
+VENUE_CITIES = {
+    "SPOT Groningen": "Groningen", "VERA Groningen": "Groningen",
+    "Simplon Groningen": "Groningen", "Hedon Zwolle": "Zwolle",
+    "Theater Meppen": "Meppen", "Alte Weberei Nordhorn": "Nordhorn",
+    "De Amer": "Amen", "De Tamboer": "Hoogeveen",
+    "ATLAS Theater": "Emmen", "DNK Assen": "Assen",
+}
+
 EXCLUDE = re.compile(
     r"\b(cabaret|musical|tribute|tributes|sings coldplay|rolling stones|theatercollege|"
     r"comed(y|ie)|stand.up|talkshow|kinder(show|theater)|juf braaksel|"
@@ -65,6 +75,9 @@ def build():
             continue
         seen.add(key)
         source_venue = str(raw.get("source_venue") or "")
+        parsed_city = html.unescape(str(raw.get("city") or "")).strip()
+        city = parsed_city or VENUE_CITIES.get(source_venue, "")
+        city_source = "official_page_schema" if parsed_city else ("venue_location" if city else "unknown")
         price = raw.get("price") if raw.get("currency") in ("EUR", "€") else None
         if not isinstance(price, (int, float)) or not 0 <= price <= 10000:
             price = None
@@ -77,8 +90,11 @@ def build():
             "first_seen_at": prior.get("first_seen_at") or (previous_cutoff if prior else now),
             "last_seen_at": now,
             "name": name, "date": day, "venue": venue,
-            "city": html.unescape(str(raw.get("city") or "")),
+            "city": city, "city_source": city_source,
             "source_venue": source_venue,
+            "schema_types": types,
+            "source_checked_at": review.get("generated_at") or now,
+            "verification": "candidate_unverified",
             "url": url, "price": price,
             "availability_hint": raw.get("availability"),
             "review_required": True,
