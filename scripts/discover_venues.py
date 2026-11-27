@@ -139,6 +139,7 @@ def main():
             }
             print(f"{name}: {len(found)} links; {len(new_links)} candidates")
         except (urllib.error.URLError, TimeoutError, OSError, ValueError) as error:
+            next_cursor[name] = int(cursor_by_venue.get(name, 0) or 0)
             status[name] = {
                 "status": "failed", "url": url, "checked_at": now,
                 "last_ok_at": previous_ok, "links_seen": 0,
