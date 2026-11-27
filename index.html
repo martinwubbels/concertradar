@@ -287,6 +287,7 @@ let changeAlerts=[];
 let venueLocations={};
 let discoveryEvents=[];
 let discoveriesUpdated='';
+let discoverySourceHealth={generated_at:'',venues:{},summary:{}};
 let officialPhotos={};
 let lastCatalogUpdate='';
 let catalogError='';
@@ -294,14 +295,15 @@ let catalogLoaded=false;
 async function loadPublishedData(){
   if(location.protocol==='file:')return;
   try{
-    const [eventsResponse,photosResponse,discoveriesResponse,changesResponse,venuesResponse,sourceResponse,profilesResponse]=await Promise.all([
+    const [eventsResponse,photosResponse,discoveriesResponse,changesResponse,venuesResponse,sourceResponse,profilesResponse,sourceHealthResponse]=await Promise.all([
       fetch('./data/concerts.json',{cache:'no-store'}),
       fetch('./data/photos.json',{cache:'no-store'}),
       fetch('./data/new-discoveries.json',{cache:'no-store'}),
       fetch('./data/changes.json',{cache:'no-store'}),
       fetch('./data/venue-locations.json',{cache:'no-store'}),
       fetch('./data/source-checks.json',{cache:'no-store'}),
-      fetch('./data/artist-profiles.json',{cache:'no-store'})
+      fetch('./data/artist-profiles.json',{cache:'no-store'}),
+      fetch('./data/discovery-candidates.json',{cache:'no-store'})
     ]);
     if(eventsResponse.ok){
       const data=await eventsResponse.json();
@@ -326,6 +328,7 @@ async function loadPublishedData(){
     if(venuesResponse.ok){const data=await venuesResponse.json();venueLocations={venues:data.venues||{},origin:data.origin||null};}
     if(sourceResponse.ok){const data=await sourceResponse.json();sourceChecks={checked_at:data.checked_at||null,checks:data.checks||{},alerts:Array.isArray(data.alerts)?data.alerts:[]};}
     if(profilesResponse.ok){const data=await profilesResponse.json();curatedArtistProfiles=data.artists||{};}
+    if(sourceHealthResponse.ok){const data=await sourceHealthResponse.json();discoverySourceHealth={generated_at:data.generated_at||'',venues:data.venues||{},summary:data.summary||{}};}
     initializeNotices();
     render();
     startPhotoFetch();
@@ -358,7 +361,7 @@ function startPhotoFetch(){
 }
 
 const today=new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
-let state={compactCards:true,tab:'dashboard',search:'',city:'',genre:'',sort:'date',onlyFuture:true,scope:'all',mapRange:'90',calendarMonth:today.slice(0,7),editingId:'',newKind:'all',newDecision:'all',newOrder:'found'};
+let state={compactCards:true,tab:'dashboard',search:'',city:'',genre:'',sort:'date',onlyFuture:true,scope:'all',mapRange:'90',calendarMonth:today.slice(0,7),editingId:'',newKind:'all',newDecision:'all',newOrder:'found',newQueueOnly:false};
 const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}};
 let saved=read();let extra=Array.isArray(saved.extra)?saved.extra:[];let flags=saved.flags||{};let assessments=saved.assessments||{};let appSettings=saved.settings||{};
 const all=()=>{const mapped=new Map([...seed,...nationalSeed,...liveEvents].map(e=>[e.id,e]));for(const e of extra){const prior=mapped.get(e.id);mapped.set(e.id,prior&&!e.personal&&!e.id?.startsWith('handmatig-')?{...prior,...e,url:prior.url,link_status:prior.link_status}:e)}return [...mapped.values()].filter(e=>!e.deleted)};
@@ -837,14 +840,14 @@ const NAV_PRIMARY=[
  ['shortlist','Mijn shortlist'],['favorites','Interessant'],['booked','Kaarten gekocht']
 ];
 const NAV_MORE=[
- ['Ontdekken',[
+ ['Overzicht',[
   ['all','Masterlijst'],['inbox','Beoordelingsinbox'],['rejected','Afgewezen'],
-  ['surprise','Verrassingsradar'],['urgency','Concerturgentie'],['map','Kaart']]],
- ['Mijn agenda',[
-  ['calendar','Mijn kalender'],['history','Concertgeschiedenis'],
-  ['add','Concert toevoegen'],['travel','Reisgrenzen']]],
- ['Instellingen',[
+  ['surprise','Verrassingsradar'],['urgency','Concerturgentie'],['map','Kaart'],
+  ['calendar','Mijn kalender'],['history','Concertgeschiedenis']]],
+ ['Persoonlijk',[
   ['taste','Mijn muzieksmaak'],['trends','Smaakontwikkeling'],
+  ['add','Concert toevoegen'],['travel','Reisgrenzen']]],
+ ['Beheer',[
   ['sync','Synchronisatie'],['updates','Backup en beheer']]]
 ];
 function navigationMarkup(){
@@ -1405,6 +1408,54 @@ function newEntrySource(item){
  if(item.origin==='saved')return 'Zelf toegevoegd · gegevens zelf controleren';
  return 'Bekend concert of festival uit masterlijst · actuele gegevens controleren';
 }
+
+/* Transparent source coverage and a human-reviewed path into the public catalog. */
+const MASTER_REVIEW_WORKFLOW='https://github.com/martinwubbels/concertradar/actions/workflows/review-candidate.yml';
+function candidateEvidence(e){
+ const types=Array.isArray(e.schema_types)?e.schema_types:[];
+ const kind=types.includes('MusicEvent')?'MusicEvent-gegevens':types.includes('Festival')?'Festivalschema':
+  types.includes('TheaterEvent')?'Algemeen theaterschema':'Algemeen evenementenschema';
+ const check=e.source_checked_at?String(e.source_checked_at).slice(0,10):'datum niet beschikbaar';
+ const city=e.city_source==='venue_location'?'Plaats afgeleid van de bekende podiumlocatie':'';
+ return kind+' · bron gelezen '+check+(city?' · '+city:'')+' · optreden nog niet inhoudelijk bevestigd';
+}
+function candidateProposalUrl(e){
+ if(!/^suggestion-\d{4}-\d{2}-\d{2}-[a-z0-9-]{2,80}$/.test(e.id||''))return MASTER_REVIEW_WORKFLOW;
+ const title='ConcertRadar: controleer '+String(e.name||'').slice(0,90);
+ const body='ConcertRadar-ID: '+e.id+'\n\nEvent: '+e.name+'\nDatum: '+e.date+
+   '\nPodium: '+(e.venue||e.source_venue||'onbekend')+
+   '\nBron: '+e.url+
+   '\n\nDit is een voorstel, geen bevestiging. Ik controleer de brongegevens via GitHub voordat iets in de publieke masterlijst komt. Bij twijfel blijft het evenement buiten de masterlijst.';
+ return 'https://github.com/martinwubbels/concertradar/issues/new?title='+
+    encodeURIComponent(title)+'&body='+encodeURIComponent(body);
+}
+function sourceCoverageMarkup(){
+ const data=discoverySourceHealth||{};
+ const entries=Object.entries(data.venues||{});
+ if(!entries.length)return '<p class="new-source-summary">Geen betrouwbare scanstatus beschikbaar. Een lege scan betekent niet dat er geen concerten zijn.</p>';
+ const ok=entries.filter(([,v])=>v.status==='ok').length;
+ const failed=entries.length-ok;
+ return '<details class="source-coverage"><summary>Broncontrole: '+ok+'/'+entries.length+
+  ' podia bereikbaar'+(failed?' · '+failed+' niet bereikbaar':'')+
+  (data.generated_at?' · '+h(data.generated_at.slice(0,10)):'')+'</summary>'+
+  '<p>Een bereikbare agenda betekent alleen dat links konden worden gelezen. Niet dat alle concerten gevonden of bevestigd zijn.</p>'+
+  '<div class="source-venues">'+entries.map(([name,v])=>
+   '<div class="source-venue"><strong>'+h(name)+'</strong><span>'+
+   (v.status==='ok'?'Bereikbaar · '+Number(v.links_seen||0)+' links':'Niet bereikbaar')+
+   (v.last_ok_at?' · laatst gelukt '+h(String(v.last_ok_at).slice(0,10)):'')+
+   (v.status==='failed'&&v.reason?' · '+h(String(v.reason).slice(0,100)):'')+
+   '</span>'+(v.url&&/^https:\/\//.test(v.url)?'<a href="'+h(v.url)+'" target="_blank" rel="noopener noreferrer">Podiumagenda</a>':'')+
+   '</div>').join('')+'</div></details>';
+}
+function reviewQueueIntro(){
+ const items=[...newOverviewData().concerts,...newOverviewData().festivals]
+  .filter(x=>x.origin==='candidate'&&statusOf(x.event)==='');
+ return '<section class="review-queue-banner"><div><h3>Beoordelingswachtrij</h3>'+
+  '<p><b>'+items.length+'</b> onbevestigde nieuwe kandidaten. Beoordeel ze persoonlijk of dien bij GitHub een voorstel voor de publieke masterlijst in. GitHub controleert de gegevens en maakt alleen bij voldoende bewijs een pullrequest. Die moet apart worden goedgekeurd.</p></div>'+
+  '<button type="button" class="btn" data-review-queue="toggle">'+
+   (state.newQueueOnly?'Alle vondsten tonen':'Toon alleen wachtrij')+'</button></section>';
+}
+
 function newEntryMarkup(item){
  const e=item.event, status=statusOf(e),festival=isFestivalEvent(e);
  const confirmedGenre=String(e.genre||'')&&!/onbekend|nog niet ingedeeld/i.test(String(e.genre||''));
@@ -1415,6 +1466,7 @@ function newEntryMarkup(item){
   '<h3>'+h(e.name)+'</h3>'+
   '<p class="new-event-where">'+h(dt(e.date))+' · '+h(e.venue||e.source_venue||'Podium onbekend')+
    (e.city?' · '+h(e.city):'')+'</p>'+
+  (item.origin==='candidate'?'<p class="new-evidence">'+h(candidateEvidence(e))+'</p>':'')+
   '<p class="new-event-meta">'+(item.seenAt?'Opgenomen in radar: '+h(String(item.seenAt).slice(0,10))+' · ':'')+
    (e.price==null?'Prijs niet bekend':'Bronprijs '+euro(e.price)+' (niet live)')+'</p>'+
   (showScore?'<p class="new-event-meta">Persoonlijke smaakindicatie: '+tasteResult(e).score.toFixed(1)+'/10</p>':
@@ -1427,7 +1479,8 @@ function newEntryMarkup(item){
    '<button type="button" data-action="rejected" data-id="'+h(e.id)+'" class="'+(status==='rejected'?'selected':'')+'">Afwijzen</button>'+
    '<button type="button" data-action="booked" data-id="'+h(e.id)+'" class="'+(status==='booked'?'selected':'')+'">Kaarten gekocht</button>'+
    '<a class="btn" href="'+h(concertLink(e))+'" target="_blank" rel="noopener noreferrer">'+
-     (hasDirectConcertLink(e)?'Controleer concertpagina':'Zoek bij podium')+'</a></div>'+
+     (hasDirectConcertLink(e)?'Controleer concertpagina':'Zoek bij podium')+'</a>'+
+   (item.origin==='candidate'?'<a class="btn review-proposal" href="'+h(candidateProposalUrl(e))+'" target="_blank" rel="noopener noreferrer">Voorstel voor masterlijst</a>':'')+'</div>'+
   '</article>';
 }
 function newDashboardMarkup(){
@@ -1475,7 +1528,8 @@ function shortlistMarkup(){
 
 function newMarkup(){
  const data=newOverviewData();
- const visible=items=>state.newDecision==='all'?items:items.filter(x=>statusOf(x.event)===(state.newDecision==='pending'?'':state.newDecision));
+ const visible=items=>items.filter(x=>(!state.newQueueOnly||(x.origin==='candidate'&&statusOf(x.event)===''))&&
+  (state.newDecision==='all'||statusOf(x.event)===(state.newDecision==='pending'?'':state.newDecision)));
  const concerts=visible(data.concerts),festivals=visible(data.festivals);
  const showConcerts=state.newKind!=='festival',showFestivals=state.newKind!=='concert';
  return '<section class="new-intro"><h2 class="sectiontitle">Nieuw gevonden concerten en festivals</h2>'+
@@ -1494,6 +1548,7 @@ function newMarkup(){
     '<option value="rejected"'+(state.newDecision==='rejected'?' selected':'')+'>Afgewezen</option></select></label>'+
    '<label>Sortering <select id="newOrder"><option value="found"'+(state.newOrder==='found'?' selected':'')+'>Recent opgenomen eerst</option>'+
     '<option value="event"'+(state.newOrder==='event'?' selected':'')+'>Concertdatum eerst</option></select></label></div></section>'+
+  sourceCoverageMarkup()+reviewQueueIntro()+
   (showConcerts?'<section class="new-overview-section"><h3>Nieuwe concertvondsten ('+concerts.length+')</h3>'+
    '<div class="new-events">'+(concerts.map(newEntryMarkup).join('')||
     '<p class="empty">Geen nieuwe concertvondsten in deze selectie. Bekijk ook de masterlijst.</p>')+'</div></section>':'')+
@@ -2060,7 +2115,7 @@ function wireCloud(){
  });
 }
 
-function bind(){bindSearchNow();document.querySelectorAll('[data-new-kind]').forEach(b=>b.onclick=()=>{state.newKind=b.dataset.newKind;render()});document.getElementById('newOrder')?.addEventListener('change',e=>{state.newOrder=e.target.value;render()});document.getElementById('newDecision')?.addEventListener('change',e=>{state.newDecision=e.target.value;render()});document.getElementById('checkAge')?.addEventListener('change',e=>{appSettings.checkMaxAgeDays=Number(e.target.value);persist();render()});bindMusicHistory();document.getElementById('mobileTab')?.addEventListener('change',e=>{state.tab=e.target.value;render()});document.getElementById('compactCards')?.addEventListener('change',e=>{state.compactCards=e.target.checked;render()});wireCloud();bindTasteCloud();bindTasteExtras();bindNewDashboard();document.querySelectorAll('[data-review]').forEach(b=>b.onclick=()=>{const e=all().find(x=>x.id===b.dataset.review);if(e)openReview(e)});const mapRange=document.getElementById('mapRange');if(mapRange)mapRange.onchange=e=>{state.mapRange=e.target.value;render()};const mapScope=document.getElementById('mapScope');if(mapScope)mapScope.onchange=e=>{state.scope=e.target.value;render()};let pr=document.getElementById('photosrefresh');if(pr)pr.onclick=()=>{photoCache={};savePhotoCache();photoFetchStarted=false;startPhotoFetch();alert('Zoeken naar afbeeldingen gestart. Dit kan even duren.')};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;if(state.tab==='add')state.editingId='';render()});document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{let id=b.dataset.id;flags[id]??={};let k=b.dataset.action;if(k==='rejected'&&statusOf(all().find(e=>e.id===id)||{id})!=='rejected'){
+function bind(){bindSearchNow();document.querySelectorAll('[data-review-queue]').forEach(b=>b.onclick=()=>{state.newQueueOnly=!state.newQueueOnly;if(state.newQueueOnly){state.newDecision='all';state.newKind='all';}render()});document.querySelectorAll('[data-new-kind]').forEach(b=>b.onclick=()=>{state.newKind=b.dataset.newKind;render()});document.getElementById('newOrder')?.addEventListener('change',e=>{state.newOrder=e.target.value;render()});document.getElementById('newDecision')?.addEventListener('change',e=>{state.newDecision=e.target.value;render()});document.getElementById('checkAge')?.addEventListener('change',e=>{appSettings.checkMaxAgeDays=Number(e.target.value);persist();render()});bindMusicHistory();document.getElementById('mobileTab')?.addEventListener('change',e=>{state.tab=e.target.value;render()});document.getElementById('compactCards')?.addEventListener('change',e=>{state.compactCards=e.target.checked;render()});wireCloud();bindTasteCloud();bindTasteExtras();bindNewDashboard();document.querySelectorAll('[data-review]').forEach(b=>b.onclick=()=>{const e=all().find(x=>x.id===b.dataset.review);if(e)openReview(e)});const mapRange=document.getElementById('mapRange');if(mapRange)mapRange.onchange=e=>{state.mapRange=e.target.value;render()};const mapScope=document.getElementById('mapScope');if(mapScope)mapScope.onchange=e=>{state.scope=e.target.value;render()};let pr=document.getElementById('photosrefresh');if(pr)pr.onclick=()=>{photoCache={};savePhotoCache();photoFetchStarted=false;startPhotoFetch();alert('Zoeken naar afbeeldingen gestart. Dit kan even duren.')};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;if(state.tab==='add')state.editingId='';render()});document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{let id=b.dataset.id;flags[id]??={};let k=b.dataset.action;if(k==='rejected'&&statusOf(all().find(e=>e.id===id)||{id})!=='rejected'){
  const answer=prompt('Waarom afwijzen? Kies: muziek, afstand, prijs, datum, gezien of anders. Alleen muziek beïnvloedt je smaak.','anders');
  if(answer===null)return;
  const reason=({muziek:'music',afstand:'distance',prijs:'price',datum:'date',gezien:'seen',anders:'other'})[answer.trim().toLowerCase()];
