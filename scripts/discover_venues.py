@@ -114,6 +114,8 @@ def main():
     except (OSError, ValueError):
         prior = {}
     older = prior.get("venues", {})
+    cursor_by_venue = prior.get("cursor_by_venue") or {}
+    next_cursor = {}
     now = datetime.now(timezone.utc).isoformat()
     by_venue = {}
     status = {}
@@ -122,7 +124,14 @@ def main():
         try:
             found = collect(name, url)
             new_links = [event for event in found if event["url"] not in urls]
-            by_venue[name] = new_links[:100]
+            if new_links:
+                offset = int(cursor_by_venue.get(name, 0) or 0) % len(new_links)
+                ordered = new_links[offset:] + new_links[:offset]
+                by_venue[name] = ordered[:100]
+                next_cursor[name] = (offset + len(by_venue[name])) % len(new_links)
+            else:
+                by_venue[name] = []
+                next_cursor[name] = 0
             status[name] = {
                 "status": "ok", "url": url, "checked_at": now,
                 "last_ok_at": now, "links_seen": len(found),
@@ -161,7 +170,7 @@ def main():
             "candidates": len(candidates),
             "policy": "Unverified venue links; not confirmations, tickets or a complete calendar",
         },
-        "venues": status, "candidates": candidates,
+        "venues": status, "cursor_by_venue": next_cursor, "candidates": candidates,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
