@@ -288,3 +288,20 @@ De brongegevens zijn geen live ticketcontrole. In de huidige automatische datase
 - In de **Beoordelingsinbox**, bij **Concert toevoegen** en in het uitklapmenu van de bestaande masterlijstkaarten kun je ook shortlisten.
 - Eén status per optreden: veranderen van Shortlist naar Interessant of Afwijzen vervangt de eerdere status. Opnieuw kiezen verwijdert de selectie. Bestaande keuzes, reviews en concert-ID's zijn niet aangepast.
 - Alles gebruikt de bestaande persoonlijke opslag, JSON-back-up en optionele synchronisatie. De centrale masterlijst wordt niet gewijzigd door je keuze. Er is geen nieuwe geplande taak aangemaakt.
+
+## Focusnavigatie en dashboard (27 november 2026)
+
+De navigatie heeft vijf direct bereikbare hoofdonderdelen: **Start**, **Nieuw & festivals**, **Mijn shortlist**, **Interessant** en **Kaarten gekocht**. De overige bestaande pagina's zijn niet verwijderd, maar staan gegroepeerd onder **Meer**: Ontdekken, Mijn agenda en Instellingen. Dit werkt op desktop en Android, zonder een tweede lijst van twintig mobiele tabbladen.
+
+Het startscherm bestaat uit vier overzichtsblokken:
+
+1. **Mijn volgende concerten**: de vijf eerstvolgende concerten met status **Kaarten gekocht** of **Shortlist**, met links naar alle boekingen, shortlist en kalender.
+2. **Nieuw gevonden concerten en festivals**: een compacte weergave van bestaande kandidaatvondsten, inclusief huidige statuskeuzes en bronvermelding.
+3. **Topmatches voor jou**: maximaal drie nog onbeoordeelde concerten met directe bronlink en bruikbare gegevens. De smaakscore blijft een inschatting, geen feitelijke audioanalyse.
+4. **Agenda en conflicten**: een samenvatting van bekende drukke datums en eventuele overlap. De bestaande agenda-import en het beheren van bezette datums zijn bereikbaar in een uitklapbaar blok. De vergelijking gebruikt alleen datums, geen tijden.
+
+**Nieuwe signalen** blijven beschikbaar als uitklapbaar vijfde blok. Het grote, dubbele overzicht van geboekte concerten staat voortaan onder **Kaarten gekocht** in plaats van ook volledig op Start. De uitgebreide internetzoekfunctie en de handmatige GitHub-podiumscan staan op **Nieuw & festivals**.
+
+De vier statussen **Shortlist**, **Interessant**, **Afwijzen** en **Kaarten gekocht** zijn op de hoofdkaarten direct zichtbaar. Statuskleuren zijn consistent in de app, maar elke status heeft ook een tekstlabel. Geen concert-ID's, opgeslagen keuzes, bestaande automatische controles of optionele cloudinstellingen zijn gewijzigd. Er zijn geen nieuwe geplande taken ingesteld.
+
+Een centraal goedkeuringsproces van ontdekkingskandidaten is **nog niet** gebouwd. Voor echte opname in de publieke masterlijst blijft gecontroleerde GitHub-verwerking nodig. Automatische e-mailherinneringen en continue cloudsynchronisatie zijn niet toegevoegd: daarvoor is aanvullende configuratie en gebruikersinstemming nodig.
