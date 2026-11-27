@@ -46,6 +46,7 @@ const pre=[
  'const dashboardSuggestionEntries=()=>[{kind:"catalog",event:{id:"tip",name:"Roots act",date:"2027-03-03",venue:"Testpodium",genre:"Americana",match:"Folk"}}];',
  'const hasDirectConcertLink=e=>true;',
  'const tasteResult=e=>({score:8.7});',
+ 'const scoreDetails=e=>"<details>Waarom deze score?</details>";',
  'const sourceLabel=e=>"Niet recent gecontroleerd";',
  'const concertLink=e=>"https://example.org/concert";',
  'const agendaConflicts=()=>ctx.alerts;',
@@ -69,6 +70,8 @@ assert(dashboard.includes('data-tab="calendar"'),'Calendar link');
 assert(dashboard.includes('Bezette datums en agenda-import beheren'),'Old agenda management stays accessible');
 assert(dashboard.includes('data-action="shortlisted"'),'Shortlist button on recommendation');
 assert(dashboard.includes('data-tab="surprise"'),'More recommendations accessible');
+assert(dashboard.includes('Hoogste huidige match'),'Best score highlighted');
+assert(dashboard.includes('Waarom deze score?'),'Score explanation present');
 assert(dashboard.includes('Nieuwe signalen (0)'),'Alerts remain in expandable panel');
 assert(src.includes('function dashboardMarkup(){return personalDashboardTop();}'),'No giant duplicate bookings list');
 assert(src.includes("state.tab==='new'?searchNowMarkup():''"),'Scanning tools reachable on discovery page');

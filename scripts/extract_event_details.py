@@ -90,7 +90,8 @@ def parsed_event(obj):
     status_raw = offers.get("availability", "") if isinstance(offers, dict) else ""
     status = str(status_raw).rsplit("/", 1)[-1] if status_raw else None
     return {"name": obj.get("name") or "", "date": date, "venue": venue, "city": city,
-            "performer": pick_name(obj.get("performer")), "price": price,
+            "performer": pick_name(obj.get("performer")),
+            "description": str(obj.get("description") or "")[:1200], "price": price,
             "currency": offers.get("priceCurrency") if isinstance(offers, dict) else None,
             "availability": status, "event_type": types, "schema_url": obj.get("url")}
 
@@ -123,13 +124,32 @@ def main():
     groups = {}
     for candidate in candidates:
         groups.setdefault(candidate.get("venue", "unknown"), []).append(candidate)
+    try:
+        previous = json.loads(OUT.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        previous = {}
+    previous_cursor = previous.get("cursor_by_venue") or {}
+    # Start where each venue's previous extraction left off. This avoids
+    # rereading the same first five events forever on large agenda pages.
+    totals = {name: len(items) for name, items in groups.items()}
+    for name, items in groups.items():
+        offset = int(previous_cursor.get(name, 0) or 0) % len(items)
+        groups[name] = items[offset:] + items[:offset]
+    selected_by_venue = {}
     selected = []
     while len(selected) < MAX_PAGES and any(groups.values()):
         for group in groups.values():
             if group and len(selected) < MAX_PAGES:
                 selected.append(group.pop(0))
+                name = selected[-1].get("venue", "unknown")
+                selected_by_venue[name] = selected_by_venue.get(name, 0) + 1
+    next_cursor = {
+        name: (int(previous_cursor.get(name, 0) or 0) + selected_by_venue.get(name, 0)) % size
+        for name, size in totals.items() if size
+    }
     results = []
-    stats = {"checked": 0, "structured_events": 0, "needs_review": 0, "failed": 0}
+    stats = {"checked": 0, "structured_events": 0, "needs_review": 0, "failed": 0,
+             "candidate_venues": len(totals), "selected_by_venue": selected_by_venue}
     for item in selected:
         url = item["url"]
         if url.rstrip("/") in known_urls:
@@ -155,7 +175,7 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps({"generated_at": datetime.now(timezone.utc).isoformat(),
        "description": "Candidates only, not confirmed concerts or ticket status",
-       "stats": stats, "results": results}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+       "stats": stats, "cursor_by_venue": next_cursor, "results": results}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(stats)
 
 if __name__ == "__main__":

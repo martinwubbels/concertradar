@@ -24,6 +24,7 @@ OFFICIAL_HOSTS={
     "metropool.nl","spotgroningen.nl","hedon-zwolle.nl","vera-groningen.nl",
     "drentmeester.nl","deamer.nl","alteweberei.de","emslandarena.com",
     "podium34.nl","nijend24.nl","atlastheater.nl","detamboer.nl",
+    "simplon.nl","meppen-theater.de",
     "dnk.nl","denieuwekolk.nl","devegafabriek.nl"
 }
 # Metropool uses TheaterEvent even for its gigs. Other venues need MusicEvent.

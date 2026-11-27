@@ -305,3 +305,29 @@ Het startscherm bestaat uit vier overzichtsblokken:
 De vier statussen **Shortlist**, **Interessant**, **Afwijzen** en **Kaarten gekocht** zijn op de hoofdkaarten direct zichtbaar. Statuskleuren zijn consistent in de app, maar elke status heeft ook een tekstlabel. Geen concert-ID's, opgeslagen keuzes, bestaande automatische controles of optionele cloudinstellingen zijn gewijzigd. Er zijn geen nieuwe geplande taken ingesteld.
 
 Een centraal goedkeuringsproces van ontdekkingskandidaten is **nog niet** gebouwd. Voor echte opname in de publieke masterlijst blijft gecontroleerde GitHub-verwerking nodig. Automatische e-mailherinneringen en continue cloudsynchronisatie zijn niet toegevoegd: daarvoor is aanvullende configuratie en gebruikersinstemming nodig.
+
+## Brontransparantie en veilige beoordelingswachtrij (27 november 2026)
+
+### Discovery
+
+- Twee extra, bij hun eigen website gecontroleerde officiële agenda's: **Simplon Groningen** (`https://simplon.nl/programma/`) en **Theater Meppen** (`https://www.meppen-theater.de/termine/liste/`). Dit zijn extra bronnen, geen garantie dat hun agenda steeds volledig uitleesbaar is.
+- De dagscan verdeelt nieuwe links om-en-om over podia. Bij grote agenda's schuift per scan ook het startpunt voor de eerste 100 links op. Een grote agenda kan de maximaal 600 linkkandidaten niet meer als eerste volzetten. Per bron worden status, laatste poging, laatste geslaagde scan en aantal gevonden links bijgehouden in `data/discovery-candidates.json`.
+- Bij metadata-extractie rouleren de beginposities per podium in `data/event-review.json` (`cursor_by_venue`). Daardoor blijven optredens onderaan lange agenda's niet elke dag buiten de scan. Een herordende agenda kan de selectie nog steeds beïnvloeden.
+- `data/new-discoveries.json` bevat per kandidaat het schema-type, de laatst gelezen metadata en de herkomst van de plaatsnaam. Als een plaats niet op de eventpagina staat, wordt die alleen bij ondubbelzinnige officiële podiumlocaties afgeleid. Dit blijft expliciet als *onbevestigde kandidaat* gemarkeerd.
+- In **Nieuw & festivals** laat het uitklapbare blok *Broncontrole* per podium zien wat er is gelukt en wat niet. Het geeft aan of broninformatie uit de laatst gepubliceerde scan komt. Alleen die scanstatus is controleerbaar; prijzen en ticketvoorraad zijn geen livegegevens.
+
+### Beoordelingswachtrij en veilig toelaten
+
+- **Toon alleen wachtrij** beperkt het scherm tot nog onbeoordeelde kandidaten. Shortlist, Interessant en Afwijzen blijven persoonlijke keuzes die nooit de publieke masterlijst wijzigen.
+- **Voorstel voor masterlijst** opent een **vooraf ingevuld GitHub-issue**. Je moet op GitHub aangemeld zijn en het issue zelf daadwerkelijk indienen. Dit is geen directe publicatie of bevestiging.
+- Het afzonderlijke workflowbestand `.github/workflows/review-candidate.yml` reageert alleen op een nieuw issue van de repository-eigenaar, of op een handmatig gestart `workflow_dispatch` met exact kandidaat-ID. Er is **geen** nieuw dagelijks of terugkerend schema aangemaakt.
+- Het script `scripts/review_candidate.py` zoekt de kandidaat in de gepubliceerde vondsten en het vers geëxtraheerde bronbestand (maximaal 48 uur oud), controleert exacte officiële URL, event-schema, artiest, datum, plaats, bestaande optredens en unieke event-ID. Streng bevestigde MusicEvent-vermeldingen en het toegestane Metropool-TheaterEvent kunnen door. **Algemene Events** mogen uitsluitend een expliciet onbevestigd PR-voorstel opleveren als het officiële schema zowel een uitvoerende artiest als een concrete muziekbeschrijving bevat. In zo'n PR staat duidelijk dat verdere menselijke controle nodig is. Dubbelzinnige en niet-onderbouwde optredens worden geweigerd.
+- Een geslaagd voorstel maakt na het uitvoeren van de bestaande smoke-tests een **pullrequest** met uitsluitend het nieuwe concert in `data/concerts.json`. Dat PR moet nog door de eigenaar worden bekeken en samengevoegd. Als GitHub Actions geen pullrequests mag openen, is daarvoor in de repository-instellingen toegang nodig; de workflow mag geen onzekere kandidaat direct naar `main` schrijven.
+- De testbestanden voor bronspreiding, rolwisseling, valideren van de PR en de UI draaien voortaan ook in de gewone codecontrole.
+
+### Dashboard en menu
+
+- **Meer** is ingedeeld in *Overzicht*, *Persoonlijk* en *Beheer*, zonder functies weg te halen.
+- De hoogste actuele topmatch heeft extra zichtbaarheid. In het startscherm staat per topmatch de bestaande uitsplitsing **Waarom X/10?**. Het gaat om metadata- en voorkeursscores, niet om analyse van opgenomen muziek of van songteksten.
+
+De bestaande voorkeurskeuzes, concert-ID's, lokale opslag, vrijwillige synchronisatie en geplande GitHub-scans blijven intact. Automatische publieksgerichte goedkeuring, gegarandeerde ticketvoorraad en realtime volledigheid van podiumagenda's worden niet geclaimd.

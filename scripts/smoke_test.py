@@ -133,5 +133,7 @@ assert "candidate_unverified" in source
 subprocess.run(["node","scripts/test_home_shortlist.cjs"],cwd=ROOT,check=True)
 subprocess.run(["node","scripts/test_new_overview.cjs"],cwd=ROOT,check=True)
 subprocess.run(["node","scripts/test_navigation_dashboard.cjs"],cwd=ROOT,check=True)
+subprocess.run(["python","-m","unittest","discover","-s","scripts","-p","test_discovery_coverage.py","-v"],cwd=ROOT,check=True)
+subprocess.run(["python","-m","unittest","discover","-s","scripts","-p","test_review_candidate.py","-v"],cwd=ROOT,check=True)
 subprocess.run(["python","-m","unittest","discover","-s","scripts","-p","test_discovery_feed.py","-v"],cwd=ROOT,check=True)
 print("ConcertRadar smoke tests passed:",len(concerts),"catalog records")

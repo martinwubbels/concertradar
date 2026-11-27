@@ -17,6 +17,7 @@ const prefix=[
  'const seed=ctx.seed,nationalSeed=ctx.nationalSeed,liveEvents=ctx.liveEvents;',
  'const discoveryEvents=ctx.discovery,discoveriesUpdated=ctx.updated;',
  'const state=ctx.state,all=()=>ctx.catalog;',
+ 'const discoverySourceHealth=ctx.health||{generated_at:"2026-11-27T09:00:00Z",venues:{"Test podium":{status:"ok",links_seen:5,url:"https://example.org/agenda"}}};',
  'const statusOf=e=>ctx.status[e.id]||"";',
  'const suggestionIdentity=e=>String(e.name||"").toLowerCase().replace(/[^a-z0-9]/g,"")+"|"+e.date;',
  'const h=x=>String(x??"").replace(/&/g,"&amp;").replace(/</g,"&lt;");',
@@ -26,7 +27,7 @@ const prefix=[
  'const hasDirectConcertLink=e=>Boolean(e.url);',
  'const concertLink=e=>e.url||"https://example.org/search";'
 ].join('\n');
-const fn=new Function('ctx',prefix+'\n'+script.slice(first,last)+'\nreturn {isFestivalEvent,newOverviewData,newDashboardMarkup,newMarkup,newEntryMarkup,shortlistMarkup};')(ctx);
+const fn=new Function('ctx',prefix+'\n'+script.slice(first,last)+'\nreturn {isFestivalEvent,newOverviewData,newDashboardMarkup,newMarkup,newEntryMarkup,shortlistMarkup,candidateProposalUrl};')(ctx);
 const e=(id,name,date,opts={})=>({id,name,date,venue:'Testpodium',city:'Groningen',genre:'Americana',url:'https://example.org/event/'+id,...opts});
 ctx.liveEvents.push(e('f','TakeRoot 2027','2027-11-06',{verification:'historical_unverified'}));
 ctx.catalog.push(...ctx.liveEvents,e('a','New Americana Show','2027-01-03',{verification:'auto_verified_schema',source_checked_at:'2026-11-27T08:00:00Z'}));
@@ -46,6 +47,13 @@ const markup=fn.newMarkup();
 assert(markup.includes('Nieuwe concertvondsten (2)'));
 assert(markup.includes('Aankomende festivals (2)'));
 assert(markup.includes('Kandidaat uit podiumagenda'));
+assert(markup.includes('Beoordelingswachtrij'));
+assert(markup.includes('Broncontrole: 1/1'));
+assert(markup.includes('Voorstel voor masterlijst'));
+assert(markup.includes('review-candidate.yml'),'Invalid sample ID does not trigger an issue');
+assert(fn.candidateProposalUrl({id:'suggestion-2027-04-04-freshcountryact',name:'Fresh Country Act',date:'2027-04-04',venue:'Podium',url:'https://example.org/event'})
+ .includes('/issues/new?'),'Valid candidate receives a prefilled GitHub review issue');
+assert(markup.includes('data-review-queue="toggle"'));
 assert(markup.includes('Bekend concert of festival uit masterlijst'));
 assert(markup.includes('data-action="shortlisted"'),'Shortlist button for concerts and festivals');
 assert(markup.includes('data-action="interested"'));
@@ -57,6 +65,9 @@ assert(markup.includes('tickets controleren'));
 assert(fn.newDashboardMarkup().includes('data-tab="new"'));
 assert(fn.newDashboardMarkup().includes('data-action="shortlisted"'),'Shortcut on start screen');
 assert(fn.newDashboardMarkup().includes('data-action="rejected"'),'Reject from start screen');
+ctx.state.newQueueOnly=true;
+assert(!fn.newMarkup().includes('Bekend concert of festival uit masterlijst'),'Queue contains candidates only');
+ctx.state.newQueueOnly=false;
 ctx.state.newDecision='pending';
 ctx.status.d='shortlisted';
 assert(!fn.newMarkup().includes('Fresh Country Act'),'Shortlisted show hidden by pending filter');
