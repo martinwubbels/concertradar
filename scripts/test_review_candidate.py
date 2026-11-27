@@ -53,6 +53,22 @@ class ProposalTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "missing_name_venue_or_city"):
             stage({"events": [bad]}, review, {"events": []}, ID, NOW)
 
+    def test_music_evidence_can_only_make_unverified_pr_proposal(self):
+        review = recent()
+        review["results"][0]["event_type"] = ["Event"]
+        review["results"][0]["performer"] = "Root Singer"
+        review["results"][0]["description"] = "Een live concert met country en americana."
+        updated, added = stage({"events": [CAND]}, review, {"events": []}, ID, NOW)
+        self.assertEqual(added["id"], ID)
+        record = updated["events"][0]
+        self.assertEqual(record["verification"], "manual_review_required")
+        self.assertEqual(record["priority"], "VOORSTEL · CONTROLEREN")
+        self.assertIsNone(record["availability_hint"])
+        self.assertIn("niet als MusicEvent bevestigd", record["reason"])
+        review["results"][0]["description"] = "Een toneelvoorstelling"
+        with self.assertRaisesRegex(ValueError, "Generic event lacks"):
+            stage({"events": [CAND]}, review, {"events": []}, ID, NOW)
+
     def test_outdated_or_ambiguous_or_generic_events_rejected(self):
         review = recent()
         review["generated_at"] = (NOW - timedelta(days=4)).isoformat()
@@ -64,7 +80,7 @@ class ProposalTests(unittest.TestCase):
             stage({"events": [CAND]}, review, {"events": []}, ID, NOW)
         review = recent()
         review["results"][0]["event_type"] = ["Event"]
-        with self.assertRaisesRegex(ValueError, "music_type_not_confirmed"):
+        with self.assertRaisesRegex(ValueError, "lacks performer"):
             stage({"events": [CAND]}, review, {"events": []}, ID, NOW)
         review = recent()
         review["results"][0]["schema_url"] = "https://simplon.nl/events/other/"
