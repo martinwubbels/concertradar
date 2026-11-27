@@ -37,7 +37,9 @@ class SourceCoverageTests(unittest.TestCase):
 
                 with patch.object(discover, "collect", side_effect=collect):
                     discover.main()
-                result = json.loads(discover.OUT.read_text(encoding="utf-8"))
+                    result = json.loads(discover.OUT.read_text(encoding="utf-8"))
+                    discover.main()
+                    next_result = json.loads(discover.OUT.read_text(encoding="utf-8"))
                 self.assertEqual(result["summary"]["venues_ok"], 2)
                 self.assertEqual(result["summary"]["venues_failed"], 1)
                 self.assertEqual(result["venues"]["Broken"]["last_ok_at"], "2026-11-21T11:00:00+00:00")
@@ -47,6 +49,8 @@ class SourceCoverageTests(unittest.TestCase):
                 self.assertEqual([x["venue"] for x in result["candidates"][:6]],
                                  ["Large", "Small", "Large", "Small", "Large", "Small"])
                 self.assertEqual(len(result["candidates"]), 103)
+                self.assertEqual(next_result["candidates"][0]["url"], "https://large.example/event/100")
+                self.assertEqual(next_result["venues"]["Broken"]["last_ok_at"], "2026-11-21T11:00:00+00:00")
                 self.assertEqual(len({x["url"] for x in result["candidates"]}), 103)
         finally:
             discover.CATALOG, discover.OUT, discover.VENUES = old
