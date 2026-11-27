@@ -21,6 +21,7 @@ CATALOG = ROOT / "data/concerts.json"
 ID = re.compile(r"^suggestion-\d{4}-\d{2}-\d{2}-[a-z0-9-]{2,80}$")
 ISSUE = re.compile(r"(?m)^ConcertRadar-ID:\s*(suggestion-\d{4}-\d{2}-\d{2}-[a-z0-9-]{2,80})\s*$")
 CITY_SOURCE = "venue_location"
+MUSIC_EVIDENCE = re.compile(r"\b(concert|muziek|music|live\s+music|liveband|band|singer|songwriter|zang|americana|country|folk|roots|bluegrass|blues|soul|rock)\b", re.I)
 
 
 def candidate_id(explicit="", issue_text=""):
@@ -61,16 +62,51 @@ def stage(candidates, review, catalog, selected_id, now):
     if not verified.get("city") and candidate.get("city_source") == CITY_SOURCE:
         verified["city"] = candidate.get("city", "")
     event, reason = eligible(verified, now.date())
-    if reason:
+    proposal = dict(verified)
+    provisional = False
+    if reason == "music_type_not_confirmed":
+        # Strict automatic admission already handles strong MusicEvent matches.
+        # A manually selected general Event can ONLY reach a PR if the official
+        # schema ALSO lists a performer AND an explicit musical description.
+        types = verified.get("event_type") or []
+        if not any(t in types for t in ("Event", "TheaterEvent")):
+            raise ValueError("No supported event schema")
+        if not str(verified.get("performer") or "").strip() or not MUSIC_EVIDENCE.search(
+            str(verified.get("description") or "")
+        ):
+            raise ValueError("Generic event lacks performer and independently described music")
+        # Temporarily re-check all other strict provenance/URL/date safeguards
+        # using MusicEvent only as an admission validation surrogate. Never
+        # save this substituted type or call the proposal verified.
+        proposal["event_type"] = ["MusicEvent"]
+        event, other_reason = eligible(proposal, now.date())
+        if other_reason:
+            raise ValueError("Unverified metadata: " + other_reason)
+        provisional = True
+    elif reason:
         raise ValueError("Not eligible for strict schema-verified admission: " + reason)
-    updated, stats = run(catalog, {"results": [verified]}, now.date())
+    updated, stats = run(catalog, {"results": [proposal]}, now.date())
     if stats["approved"] != 1:
         raise ValueError("Duplicate or invalid event: " + repr(stats["skipped"]))
     added = stats["added"][0]
     if added["id"] != selected_id:
         raise ValueError("Candidate ID differs from strict admission ID")
+    if provisional:
+        for record in updated.get("events", []):
+            if record.get("id") != selected_id:
+                continue
+            record["verification"] = "manual_review_required"
+            record["link_status"] = "event_page_unverified"
+            record["priority"] = "VOORSTEL · CONTROLEREN"
+            record["availability_hint"] = None
+            record["reason"] = (
+                "Alleen als menselijk beoordelingsvoorstel: de officiële pagina vermeldt "
+                "wel een uitvoerende artiest en muziek in de beschrijving, maar "
+                "het eventtype is niet als MusicEvent bevestigd. Controleer het "
+                "optreden en de actuele tickets vóór het PR wordt samengevoegd."
+            )
     # Staged records cannot silently acquire a fabricated genre, taste score or
-    # live ticket quote. Standard provenance remains explicit.
+    # live ticket quote. All admissions still require an actual PR merge.
     return updated, added
 
 
