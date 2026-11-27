@@ -90,7 +90,8 @@ def parsed_event(obj):
     status_raw = offers.get("availability", "") if isinstance(offers, dict) else ""
     status = str(status_raw).rsplit("/", 1)[-1] if status_raw else None
     return {"name": obj.get("name") or "", "date": date, "venue": venue, "city": city,
-            "performer": pick_name(obj.get("performer")), "price": price,
+            "performer": pick_name(obj.get("performer")),
+            "description": str(obj.get("description") or "")[:1200], "price": price,
             "currency": offers.get("priceCurrency") if isinstance(offers, dict) else None,
             "availability": status, "event_type": types, "schema_url": obj.get("url")}
 
