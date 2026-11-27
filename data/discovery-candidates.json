@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-26T17:19:01.234057+00:00",
+  "generated_at": "2026-11-27T16:58:32.971488+00:00",
   "type": "unverified_links_not_events",
   "venues": {
     "SPOT Groningen": {
@@ -56,11 +56,11 @@
     },
     "DNK Assen": {
       "status": "ok",
-      "links_seen": 45
+      "links_seen": 47
     },
     "Alte Weberei Nordhorn": {
       "status": "ok",
-      "links_seen": 33
+      "links_seen": 32
     },
     "EmslandArena Lingen": {
       "status": "ok",
@@ -76,34 +76,6 @@
     }
   },
   "candidates": [
-    {
-      "url": "https://www.spotgroningen.nl/programma/dutch-classical-talent-hadewych-van-gent/",
-      "title": "Dutch Classical Talent: Hadewych van Gent SPOT Lunchbreak Multitalent versmelt cello met zang Geannuleerd do 26 nov",
-      "venue": "SPOT Groningen",
-      "discovery_source": "https://www.spotgroningen.nl/programma/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://www.spotgroningen.nl/programma/claudia-de-breij-17/",
-      "title": "Claudia de Breij Oudejaarsconference 2026 Claudia de Breij is terug met de officiële Oudejaarsconference! Uitverkocht do 26 nov",
-      "venue": "SPOT Groningen",
-      "discovery_source": "https://www.spotgroningen.nl/programma/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://www.spotgroningen.nl/programma/nederlands-kamerkoor-15/",
-      "title": "Nederlands kamerkoor Vespers Rachmaninov Een van de mooiste koorwerken ooit geschreven Uitverkocht do 26 nov",
-      "venue": "SPOT Groningen",
-      "discovery_source": "https://www.spotgroningen.nl/programma/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://www.spotgroningen.nl/programma/noord-nederlands-orkest-231/",
-      "title": "Noord Nederlands Orkest Anime in Concert Iconische animatiemuziek met orkest, koor en sopraan do 26 nov",
-      "venue": "SPOT Groningen",
-      "discovery_source": "https://www.spotgroningen.nl/programma/",
-      "review_priority": "review"
-    },
     {
       "url": "https://www.spotgroningen.nl/programma/flemming-4/",
       "title": "Flemming + support: Jim Gardner Frisse, catchy Nederlandstalige pop Uitverkocht vr 27 nov",
@@ -267,7 +239,7 @@
     },
     {
       "url": "https://www.spotgroningen.nl/programma/mythos-ragnarok-3/",
-      "title": "Mythos: Ragnarok Comedy, chaos en de gevechten, samengesmolten tot een meesterwerk za 5 dec",
+      "title": "Mythos: Ragnarok Comedy, chaos en de gevechten, samengesmolten tot een meesterwerk Laatste kaarten za 5 dec",
       "venue": "SPOT Groningen",
       "discovery_source": "https://www.spotgroningen.nl/programma/",
       "review_priority": "low_nonmusic"
@@ -295,7 +267,7 @@
     },
     {
       "url": "https://www.spotgroningen.nl/programma/yentl-de-boer-4/",
-      "title": "Yentl & De Boer Rekhalzen Winnaars Poelifinario Kleinkunst Laatste kaarten Prijswinnend zo 6 dec",
+      "title": "Yentl & De Boer Rekhalzen Winnaars Poelifinario Kleinkunst Uitverkocht Prijswinnend zo 6 dec",
       "venue": "SPOT Groningen",
       "discovery_source": "https://www.spotgroningen.nl/programma/",
       "review_priority": "review"
@@ -400,7 +372,7 @@
     },
     {
       "url": "https://www.spotgroningen.nl/programma/thijs-boontjes-4/",
-      "title": "Thijs Boontjes Charmante volkszanger en charismatisch rockidool Uitverkocht vr 11 dec",
+      "title": "Thijs Boontjes + support: The Sunset Society Charmante volkszanger en charismatisch rockidool Uitverkocht vr 11 dec",
       "venue": "SPOT Groningen",
       "discovery_source": "https://www.spotgroningen.nl/programma/",
       "review_priority": "review"
@@ -554,7 +526,7 @@
     },
     {
       "url": "https://www.spotgroningen.nl/programma/timebox/",
-      "title": "Timebox Een ode aan Britse klassiekers uit de periode 1964-1974 Laatste kaarten do 17 dec",
+      "title": "Timebox Een ode aan Britse klassiekers uit de periode 1964-1974 do 17 dec",
       "venue": "SPOT Groningen",
       "discovery_source": "https://www.spotgroningen.nl/programma/",
       "review_priority": "review"
@@ -568,7 +540,7 @@
     },
     {
       "url": "https://www.spotgroningen.nl/programma/guido-weijers-6/",
-      "title": "Guido Weijers De oudejaarsconference 2026 Wat er ook gebeurt, humor is het medicijn Laatste kaarten vr 18 dec",
+      "title": "Guido Weijers De oudejaarsconference 2026 Wat er ook gebeurt, humor is het medicijn Uitverkocht vr 18 dec",
       "venue": "SPOT Groningen",
       "discovery_source": "https://www.spotgroningen.nl/programma/",
       "review_priority": "review"
@@ -673,7 +645,7 @@
     },
     {
       "url": "https://www.spotgroningen.nl/programma/k-pop-day/",
-      "title": "K-POP DAY Varia World x SPOT Groningen: K-POP meet up Muziek, merch, platen en ontmoeten in het teken van K-POP! Laatste kaarten z",
+      "title": "K-POP DAY Varia World x SPOT Groningen: K-POP meet up Muziek, merch, platen en ontmoeten in het teken van K-POP! zo 27 dec",
       "venue": "SPOT Groningen",
       "discovery_source": "https://www.spotgroningen.nl/programma/",
       "review_priority": "review"
@@ -750,7 +722,7 @@
     },
     {
       "url": "https://www.spotgroningen.nl/programma/the-dutch-queen-2/",
-      "title": "The Dutch Queen 50 jaar “Somebody to Love” Can anybody find me... Zing je mee? Laatste kaarten wo 30 dec",
+      "title": "The Dutch Queen 50 jaar “Somebody to Love” Can anybody find me... Zing je mee? wo 30 dec",
       "venue": "SPOT Groningen",
       "discovery_source": "https://www.spotgroningen.nl/programma/",
       "review_priority": "review"
@@ -939,7 +911,7 @@
     },
     {
       "url": "https://www.spotgroningen.nl/programma/nationaal-jeugdorkest/",
-      "title": "Nationaal Jeugdorkest Wintertournee met Liza Ferschtman Muziek van Britten, Sjostakovitsj en Prokofjev zo 24 jan",
+      "title": "Nationaal Jeugdorkest Wintertournee met Liza Ferschtman Muziek van Britten, Sjostakovitsj en Prokofjev Geannuleerd zo 24 jan",
       "venue": "SPOT Groningen",
       "discovery_source": "https://www.spotgroningen.nl/programma/",
       "review_priority": "review"
@@ -1282,7 +1254,7 @@
     },
     {
       "url": "https://www.spotgroningen.nl/programma/taylor-swift-fanparty/",
-      "title": "Taylor Swift Fanparty Jouw eigen Eras-avond in De Oosterpoort Net bevestigd za 13 feb",
+      "title": "Taylor Swift Fanparty Jouw eigen Eras-avond in De Oosterpoort za 13 feb",
       "venue": "SPOT Groningen",
       "discovery_source": "https://www.spotgroningen.nl/programma/",
       "review_priority": "review"
@@ -1736,8 +1708,50 @@
       "review_priority": "review"
     },
     {
+      "url": "https://www.spotgroningen.nl/programma/umi-05-2/",
+      "title": "Umi (0,5) Wonderland Collectief/Makiko ito Interactieve dans- en muziekervaring voor het allerjongste publiek zo 7 mrt",
+      "venue": "SPOT Groningen",
+      "discovery_source": "https://www.spotgroningen.nl/programma/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://www.spotgroningen.nl/programma/umi-05/",
+      "title": "Umi (0,5) Wonderland Collectief/Makiko ito Interactieve dans- en muziekervaring voor het allerjongste publiek zo 7 mrt",
+      "venue": "SPOT Groningen",
+      "discovery_source": "https://www.spotgroningen.nl/programma/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://www.spotgroningen.nl/programma/angelique-kidjo-metropole-orkest/",
+      "title": "Angélique Kidjo & Metropole Orkest Topzangeres en -orkest eren de grote stemmen van het Afrikaanse continent zo 7 mrt",
+      "venue": "SPOT Groningen",
+      "discovery_source": "https://www.spotgroningen.nl/programma/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://www.spotgroningen.nl/programma/jools-holland-2/",
+      "title": "Jools Holland Britse pianist, componist, bandleider en presentator zo 7 mrt",
+      "venue": "SPOT Groningen",
+      "discovery_source": "https://www.spotgroningen.nl/programma/",
+      "review_priority": "review"
+    },
+    {
       "url": "https://www.hedon-zwolle.nl/voorstelling/32817/tankstation-festival-2026",
       "title": "",
+      "venue": "Hedon Zwolle",
+      "discovery_source": "https://www.hedon-zwolle.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33132/bezerkus-bingo",
+      "title": "vr 04 jun. 18:00 BEZERKUS BINGO",
+      "venue": "Hedon Zwolle",
+      "discovery_source": "https://www.hedon-zwolle.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33136/racoon-extra-show",
+      "title": "do 08 apr. 18:30 RACOON - EXTRA SHOW",
       "venue": "Hedon Zwolle",
       "discovery_source": "https://www.hedon-zwolle.nl/",
       "review_priority": "review"
@@ -1752,13 +1766,6 @@
     {
       "url": "https://www.hedon-zwolle.nl/voorstelling/33139/davina-michelle",
       "title": "wo 24 mrt. 19:30 DAVINA MICHELLE",
-      "venue": "Hedon Zwolle",
-      "discovery_source": "https://www.hedon-zwolle.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://www.hedon-zwolle.nl/voorstelling/33135/racoon",
-      "title": "vr 09 apr. 18:30 RACOON",
       "venue": "Hedon Zwolle",
       "discovery_source": "https://www.hedon-zwolle.nl/",
       "review_priority": "review"
@@ -1862,29 +1869,8 @@
       "review_priority": "review"
     },
     {
-      "url": "https://www.hedon-zwolle.nl/voorstelling/33115/vroegzat",
-      "title": "vr 18 dec. 18:30 VROEGZAT",
-      "venue": "Hedon Zwolle",
-      "discovery_source": "https://www.hedon-zwolle.nl/",
-      "review_priority": "review"
-    },
-    {
       "url": "https://www.hedon-zwolle.nl/voorstelling/33116/refreshed-orchestra-the-neptunes",
       "title": "zo 21 feb. 19:30 RE:FRESHED ORCHESTRA: THE NEPTUNES",
-      "venue": "Hedon Zwolle",
-      "discovery_source": "https://www.hedon-zwolle.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://www.hedon-zwolle.nl/voorstelling/32908/lucky-fonz-iii-extra-show",
-      "title": "do 26 nov. do 26 nov. LUCKY FONZ III - EXTRA SHOW Uitverkocht Uitverkocht",
-      "venue": "Hedon Zwolle",
-      "discovery_source": "https://www.hedon-zwolle.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://www.hedon-zwolle.nl/voorstelling/32926/wies",
-      "title": "do 26 nov. WIES",
       "venue": "Hedon Zwolle",
       "discovery_source": "https://www.hedon-zwolle.nl/",
       "review_priority": "review"
@@ -2067,6 +2053,13 @@
     {
       "url": "https://www.hedon-zwolle.nl/voorstelling/33084/escah",
       "title": "do 17 dec. ESCA$H HEDON BEURS 2026 EINDSHOW",
+      "venue": "Hedon Zwolle",
+      "discovery_source": "https://www.hedon-zwolle.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33115/vroegzat",
+      "title": "vr 18 dec. vr 18 dec. VROEGZAT VROEG FEESTEN, LANG SLAPEN",
       "venue": "Hedon Zwolle",
       "discovery_source": "https://www.hedon-zwolle.nl/",
       "review_priority": "review"
@@ -2296,6 +2289,13 @@
       "review_priority": "review"
     },
     {
+      "url": "https://www.hedon-zwolle.nl/voorstelling/33135/racoon",
+      "title": "vr 9 apr. RACOON Uitverkocht Uitverkocht",
+      "venue": "Hedon Zwolle",
+      "discovery_source": "https://www.hedon-zwolle.nl/",
+      "review_priority": "review"
+    },
+    {
       "url": "https://www.hedon-zwolle.nl/voorstelling/32915/skroetfest-2027",
       "title": "za 10 apr. za 10 apr. SKROETFEST 2027 Uitverkocht Uitverkocht",
       "venue": "Hedon Zwolle",
@@ -2443,14 +2443,7 @@
       "review_priority": "review"
     },
     {
-      "url": "https://metropool.nl/agenda/monkeyjam-2-dec",
-      "title": "",
-      "venue": "Metropool",
-      "discovery_source": "https://metropool.nl/agenda/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://metropool.nl/agenda/sbk-benefietconcert-2026",
+      "url": "https://metropool.nl/agenda/steve-n-seagulls",
       "title": "",
       "venue": "Metropool",
       "discovery_source": "https://metropool.nl/agenda/",
@@ -2569,15 +2562,8 @@
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
-      "title": "Wen Er Maar Aan",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/disneys-hexed-ov",
-      "title": "Disney's Hexed OV",
+      "url": "https://denieuwekolk.nl/bios/agenda/laatbloeier2",
+      "title": "Laatbloeier",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2590,15 +2576,8 @@
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
-      "title": "I Play Rocky",
-      "venue": "DNK Assen",
-      "discovery_source": "https://www.dnk.nl/",
-      "review_priority": "review"
-    },
-    {
-      "url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
-      "title": "How to Rob a Bank",
+      "url": "https://denieuwekolk.nl/bios/agenda/wen-er-maar-aan",
+      "title": "Wen Er Maar Aan",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2616,6 +2595,13 @@
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/theater/agenda/aladdin-de-musical",
+      "title": "Aladdin De Musical",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "low_nonmusic"
     },
     {
       "url": "https://denieuwekolk.nl/theater/agenda/remko-vrijdag",
@@ -2744,22 +2730,22 @@
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bios/agenda/carnaval",
-      "title": "Carnaval",
+      "url": "https://denieuwekolk.nl/bios/agenda/disneys-hexed-ov",
+      "title": "Disney's Hexed OV",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bios/agenda/de-grote-sinterklaasfilm-en-de-vliegende-pieten",
-      "title": "De Grote Sinterklaasfilm en de Vliegende Pieten",
+      "url": "https://denieuwekolk.nl/bios/agenda/i-play-rocky",
+      "title": "I Play Rocky",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
     },
     {
-      "url": "https://denieuwekolk.nl/bios/agenda/laatbloeier2",
-      "title": "Laatbloeier",
+      "url": "https://denieuwekolk.nl/bios/agenda/how-to-rob-a-bank",
+      "title": "How to Rob a Bank",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2767,6 +2753,13 @@
     {
       "url": "https://denieuwekolk.nl/bios/agenda/het-vergeten-eiland",
       "title": "Het Vergeten Eiland",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/de-grote-sinterklaasfilm-en-de-vliegende-pieten",
+      "title": "De Grote Sinterklaasfilm en de Vliegende Pieten",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2781,6 +2774,13 @@
     {
       "url": "https://denieuwekolk.nl/bios/agenda/filmliga-the-beloved",
       "title": "The Beloved",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
+      "review_priority": "review"
+    },
+    {
+      "url": "https://denieuwekolk.nl/bios/agenda/carnaval",
+      "title": "Carnaval",
       "venue": "DNK Assen",
       "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
@@ -2821,10 +2821,10 @@
       "review_priority": "review"
     },
     {
-      "url": "https://alteweberei.de/produktion/sinfonic-rock-night-2026-6/",
-      "title": "Sinfonic Rock Night 2026",
-      "venue": "Alte Weberei Nordhorn",
-      "discovery_source": "https://alteweberei.de/programm/",
+      "url": "https://denieuwekolk.nl/bios/agenda/the-lord-of-the-rings-the-fellowship-of-the-ring-25th-anniversary",
+      "title": "LOTR: The Fellowship Of The Ring (25th Anniversary - Extended)",
+      "venue": "DNK Assen",
+      "discovery_source": "https://www.dnk.nl/",
       "review_priority": "review"
     },
     {
