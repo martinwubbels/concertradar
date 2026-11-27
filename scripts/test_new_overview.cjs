@@ -17,6 +17,7 @@ const prefix=[
  'const seed=ctx.seed,nationalSeed=ctx.nationalSeed,liveEvents=ctx.liveEvents;',
  'const discoveryEvents=ctx.discovery,discoveriesUpdated=ctx.updated;',
  'const state=ctx.state,all=()=>ctx.catalog;',
+ 'const discoverySourceHealth=ctx.health||{generated_at:"2026-11-27T09:00:00Z",venues:{"Test podium":{status:"ok",links_seen:5,url:"https://example.org/agenda"}}};',
  'const statusOf=e=>ctx.status[e.id]||"";',
  'const suggestionIdentity=e=>String(e.name||"").toLowerCase().replace(/[^a-z0-9]/g,"")+"|"+e.date;',
  'const h=x=>String(x??"").replace(/&/g,"&amp;").replace(/</g,"&lt;");',
@@ -46,6 +47,11 @@ const markup=fn.newMarkup();
 assert(markup.includes('Nieuwe concertvondsten (2)'));
 assert(markup.includes('Aankomende festivals (2)'));
 assert(markup.includes('Kandidaat uit podiumagenda'));
+assert(markup.includes('Beoordelingswachtrij'));
+assert(markup.includes('Broncontrole: 1/1'));
+assert(markup.includes('Voorstel voor masterlijst'));
+assert(markup.includes('https://github.com/martinwubbels/concertradar/issues/new?'));
+assert(markup.includes('data-review-queue="toggle"'));
 assert(markup.includes('Bekend concert of festival uit masterlijst'));
 assert(markup.includes('data-action="shortlisted"'),'Shortlist button for concerts and festivals');
 assert(markup.includes('data-action="interested"'));
@@ -57,6 +63,9 @@ assert(markup.includes('tickets controleren'));
 assert(fn.newDashboardMarkup().includes('data-tab="new"'));
 assert(fn.newDashboardMarkup().includes('data-action="shortlisted"'),'Shortcut on start screen');
 assert(fn.newDashboardMarkup().includes('data-action="rejected"'),'Reject from start screen');
+ctx.state.newQueueOnly=true;
+assert(!fn.newMarkup().includes('Bekend concert of festival uit masterlijst'),'Queue contains candidates only');
+ctx.state.newQueueOnly=false;
 ctx.state.newDecision='pending';
 ctx.status.d='shortlisted';
 assert(!fn.newMarkup().includes('Fresh Country Act'),'Shortlisted show hidden by pending filter');
