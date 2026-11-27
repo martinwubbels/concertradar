@@ -277,3 +277,14 @@ Het tabblad **Nieuw & festivals** staat direct na Mijn startscherm, ook op mobie
 De maker van de automatische kandidatenfeed bewaart voortaan `first_seen_at` en `last_seen_at`, en onderscheidt `event_kind=festival` of `concert`. Bestaande kandidaten zonder die datum gebruiken bij de eerstvolgende verwerking als overgangswaarde de eerdere verwerkingsdatum. De datum betekent **opgenomen in de radar**, niet dat het evenement toen is aangekondigd. De eerdere invoer blijft met dezelfde event-ID's behouden. Herhaalde scans maken geen nieuwe melding van een bestaand concert.
 
 De brongegevens zijn geen live ticketcontrole. In de huidige automatische dataset ontbreken sommige steden en podia. Festivalprogramma's worden niet automatisch gecontroleerd. De app claimt daarom geen volledige dekking en laat onbekende gegevens leeg. De bestaande automatische workflows blijven ongewijzigd; er is geen nieuwe geplande taak toegevoegd.
+
+## Afzonderlijke shortlist bij nieuwe concerten en festivals (27 november 2026)
+
+**Shortlist** is nu een aparte persoonlijke status naast **Interessant**, **Afwijzen** en **Kaarten gekocht**. Shortlist betekent alleen: bewaren om later te beoordelen. Interessant blijft een positief muzieksignaal; Shortlist telt niet mee als positieve smaakbeoordeling.
+
+- Op **Nieuw & festivals** staan alle vier de keuzeknoppen bij ieder concert en festival. De keuze wordt op de kaart getoond. Via het filter **Op mijn shortlist** zijn ze terug te vinden.
+- Direct op **Mijn startscherm** staan bij nieuwe vondsten de knoppen **Shortlist**, **Interessant** en **Afwijzen**. De aanbevolen muziektips hebben dezelfde opties.
+- **Mijn shortlist** is een eigen tabblad op desktop en Android. Geselecteerde kandidaten blijven daarin bestaan als de automatische scan ze later niet meer toont. Datum en bronstatus blijven controlepunten.
+- In de **Beoordelingsinbox**, bij **Concert toevoegen** en in het uitklapmenu van de bestaande masterlijstkaarten kun je ook shortlisten.
+- Eén status per optreden: veranderen van Shortlist naar Interessant of Afwijzen vervangt de eerdere status. Opnieuw kiezen verwijdert de selectie. Bestaande keuzes, reviews en concert-ID's zijn niet aangepast.
+- Alles gebruikt de bestaande persoonlijke opslag, JSON-back-up en optionele synchronisatie. De centrale masterlijst wordt niet gewijzigd door je keuze. Er is geen nieuwe geplande taak aangemaakt.
