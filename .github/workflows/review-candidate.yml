@@ -1,0 +1,63 @@
+name: ConcertRadar handmatige kandidaatcontrole
+on:
+  workflow_dispatch:
+    inputs:
+      candidate_id:
+        description: "Exacte ConcertRadar-ID uit Nieuw & festivals"
+        required: true
+        type: string
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: read
+
+concurrency:
+  group: concertradar-review-proposal-${{ github.event.issue.number || github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  review:
+    # Only the repository owner can initiate a proposal via issues. Workflow
+    # dispatch itself is restricted to people with repository write access.
+    if: github.event_name == 'workflow_dispatch' || (github.event.issue.user.login == github.repository_owner && contains(github.event.issue.body, 'ConcertRadar-ID:'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Controleer ID, officiële metadata, leeftijd en dubbelen
+        env:
+          REVIEW_INPUT: ${{ inputs.candidate_id || '' }}
+          REVIEW_BODY: ${{ github.event.issue.body || '' }}
+        run: |
+          python -m unittest discover -s scripts -p 'test_review_candidate.py' -v
+          python scripts/review_candidate.py
+      - name: Open afzonderlijk PR-voorstel in plaats van direct te publiceren
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number || '' }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          BRANCH="review/concert-${GITHUB_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$BRANCH"
+          git add data/concerts.json
+          git diff --cached --exit-code && { echo "Geen wijziging gemaakt"; exit 1; } || true
+          git commit -m "Voorstel: streng gecontroleerde concertkandidaat"
+          git push origin "$BRANCH"
+          BODY="Alleen een voorstel. Controleer in deze PR datum, artiest, podium en bron. Nog niet gepubliceerd in main."
+          if [ -n "$ISSUE_NUMBER" ]; then
+            BODY="$BODY Koppeling: #$ISSUE_NUMBER."
+          fi
+          gh pr create --repo "$REPO" --base main --head "$BRANCH" \
+            --title "ConcertRadar: controleer geselecteerde concertkandidaat" \
+            --body "$BODY"
