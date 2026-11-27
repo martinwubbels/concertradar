@@ -86,7 +86,7 @@ assert "function bindNewDashboard" in source
 assert "data/source-checks.json" in source
 assert "data/artist-profiles.json" in source
 assert "Reisgrenzen" in source
-assert "Mijn startscherm" in source
+assert "function navigationMarkup" in source and "['dashboard','Start']" in source
 subprocess.run(["python","-m","unittest","discover","-s","scripts","-p","test_source_checks.py","-v"],cwd=ROOT,check=True)
 subprocess.run(["node","scripts/test_six_features.cjs"],cwd=ROOT,check=True)
 profiles=json.loads((ROOT/"data/artist-profiles.json").read_text(encoding="utf-8"))["artists"]
