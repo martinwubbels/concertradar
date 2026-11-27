@@ -221,6 +221,56 @@ body{background:#0b121b}
 }
 @media(max-width:390px){.nav-more-menu{grid-template-columns:1fr}}
 
+
+/* Four focused daily panels; nested tools remain behind a disclosure. */
+.focus-dashboard{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.focus-dashboard>.focus-panel,.focus-dashboard>.new-dashboard{margin:0;padding:17px;background:#14252f;border:1px solid #41636a;border-radius:15px;min-width:0}
+.focus-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:12px}
+.focus-heading h2{font-size:20px;line-height:1.2;margin:0 0 5px}
+.focus-heading p{font-size:12px;color:#b4c9d0;margin:0}
+.focus-heading .btn{flex:0 0 auto;font-size:12px;padding:8px 10px}
+.focus-upcoming-row{display:grid;grid-template-columns:78px minmax(0,1fr) auto;gap:9px;align-items:center;padding:11px 0;border-bottom:1px solid #365563}
+.focus-upcoming-row strong{display:block;font-size:13px;overflow-wrap:anywhere}
+.focus-upcoming-row p,.focus-event-date{font-size:12px;color:#b4c9d0;margin:3px 0}
+.focus-status{font-size:11px;border:1px solid #648294;border-radius:7px;padding:4px 6px;max-width:102px;text-align:center}
+.focus-booked{border-color:#b28b48;color:#ffe1a3}
+.focus-shortlisted{border-color:#6fbbb0;color:#a8e7d8}
+.focus-links{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.focus-links .btn{font-size:12px}
+.focus-match{border-top:1px solid #365563;padding:10px 0}
+.focus-match-top{display:flex;gap:9px;justify-content:space-between;align-items:flex-start}
+.focus-match-top strong{font-size:14px}
+.focus-match-top p,.focus-match-reason,.focus-match-source{font-size:12px;color:#b4c9d0;margin:3px 0 5px;line-height:1.45}
+.focus-match-top b{font-size:21px;color:#b7ebd7;white-space:nowrap}
+.focus-match-top small{font-size:11px;font-weight:400}
+.focus-match-source{color:#92c7ba}
+.focus-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.focus-actions>button,.focus-actions>a{font-size:12px;padding:7px 9px;border-radius:8px}
+.focus-actions>button{cursor:pointer;background:#223744;color:#e2edf0;border:1px solid #516b7a}
+.focus-disclaimer{font-size:11px;color:#a5b8c5;line-height:1.45}
+.focus-conflict-list p{border-left:3px solid #cc9e66;padding:6px 9px;margin:6px 0;background:#20313b}
+.focus-conflict-list strong,.focus-conflict-list span{display:block;font-size:12px}
+.focus-conflict-list span{color:#b4c9d0;margin-top:3px}
+.focus-agenda-details{border:1px solid #446273;border-radius:10px;padding:10px;margin-top:14px}
+.focus-agenda-details>summary,.focus-signals>summary{cursor:pointer;color:#c5eadf;font-size:13px}
+.focus-agenda-details .dash-panel{margin-top:12px}
+.focus-signals{grid-column:1/-1;background:#14252f;border:1px solid #41636a;border-radius:13px;padding:14px}
+.focus-signals .dash-panel{margin-top:12px}
+.focus-dashboard .new-dashboard-columns{gap:8px}
+.focus-dashboard .new-dashboard-heading h3{font-size:20px}
+.focus-dashboard .new-dashboard-heading p{font-size:12px}
+.focus-dashboard .new-dashboard-item:last-child{border-bottom:0}
+.focus-dashboard [data-action="shortlisted"],.new-event-actions [data-action="shortlisted"],.home-tip-actions [data-action="shortlisted"]{border-color:#6fbbb0;color:#b3f2e3}
+.focus-dashboard [data-action="interested"],.new-event-actions [data-action="interested"],.home-tip-actions [data-action="interested"]{border-color:#598fc0;color:#c5e1fc}
+.focus-dashboard [data-action="rejected"],.new-event-actions [data-action="rejected"],.home-tip-actions [data-action="rejected"]{border-color:#647281;color:#d1d8dd}
+.new-event-actions [data-action="booked"]{border-color:#b28b48;color:#ffe1a3}
+.new-event-actions [data-action="shortlisted"].selected{background:#a1dccb;border-color:#a1dccb;color:#102a29}
+.new-event-actions [data-action="interested"].selected{background:#96c9f2;border-color:#96c9f2;color:#0d2636}
+.new-event-actions [data-action="rejected"].selected{background:#7c8792;border-color:#7c8792;color:#fff}
+.new-event-actions [data-action="booked"].selected{background:#f7c76a;border-color:#f7c76a;color:#271903}
+@media(max-width:900px){.focus-dashboard{grid-template-columns:1fr}}
+@media(max-width:600px){.focus-upcoming-row{grid-template-columns:68px minmax(0,1fr);gap:7px}.focus-status{grid-column:2;justify-self:start}.focus-dashboard>.focus-panel,.focus-dashboard>.new-dashboard{padding:13px}.focus-heading h2{font-size:18px}}
+
 </style><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script></head><body><div id="app"></div><script>const seed = [{"id": "daniel-norgren-20270417", "name": "Daniel Norgren", "date": "2027-04-17", "venue": "De Oosterpoort · Kleine Zaal", "city": "Groningen", "genre": "Blues / folk / soul", "price": 37, "quality": 9.8, "value": 9.2, "priority": "NU KOPEN", "match": "Henry Wagons, The White Buffalo, Damien Rice", "reason": "Eigenzinnige zang, organische blues en folk.", "url": "https://www.spotgroningen.nl/programma/daniel-norgren-2027/"}, {"id": "davy-knowles-20270924", "name": "Davy Knowles", "date": "2027-09-24", "venue": "Metropool", "city": "Almelo", "genre": "Bluesrock", "price": 24.5, "quality": 9.6, "value": 9.5, "priority": "NU KOPEN", "match": "The Black Keys, Johnny Mullenax", "reason": "Rauwe gitaarblues en stevige rock.", "url": "https://metropool.nl/agenda/davy-knowles"}, {"id": "the-tibbs-20270306", "name": "The Tibbs", "date": "2027-03-06", "venue": "Metropool", "city": "Almelo", "genre": "Vintage soul", "price": 20, "quality": 9.5, "value": 9.7, "priority": "NU KOPEN", "match": "The Teskey Brothers, Nathaniel Rateliff", "reason": "Blazers, vintage soul en een krachtige stem.", "url": "https://metropool.nl/agenda/the-tibbs"}, {"id": "novastar-20270206", "name": "Novastar", "date": "2027-02-06", "venue": "De Tamboer", "city": "Hoogeveen", "genre": "Indierock", "price": null, "quality": 9.6, "value": null, "priority": "GEBOEKT", "match": "Novastar", "reason": "Al geboekt.", "url": "https://www.detamboer.nl/"}, {"id": "dawn-brothers-20261120", "name": "Dawn Brothers & Friends: The Last Waltz", "date": "2026-11-20", "venue": "Theater De Spiegel", "city": "Zwolle", "genre": "Americana / roots / soul", "price": 37.5, "quality": 9.7, "value": 9.4, "priority": "NU KOPEN", "match": "The Teskey Brothers, Henry Wagons", "reason": "Bijzondere samenwerking met gastmuzikanten.", "url": "https://www.hedon-zwolle.nl/voorstelling/32854/50-years-last-waltz-met-dawn-brothers"}, {"id": "my-darling-clementine-20261119", "name": "My Darling Clementine", "date": "2026-11-19", "venue": "A-Theater", "city": "Groningen", "genre": "Country / americana", "price": 17.5, "quality": 9.3, "value": 9.7, "priority": "NU KOPEN", "match": "Willow Avalon, Lance Roark", "reason": "Countryduetten met verhalen en sterke stemmen.", "url": "https://www.spotgroningen.nl/programma/my-darling-clementine/"}, {"id": "jesper-lindell-20270220", "name": "Jesper Lindell & The Brunnsvick Sounds", "date": "2027-02-20", "venue": "De Oosterpoort · Binnenzaal", "city": "Groningen", "genre": "Soul / southern rock", "price": 18.5, "quality": 9.7, "value": 9.8, "priority": "NU KOPEN", "match": "The Teskey Brothers, Lance Roark", "reason": "Warme soul en southern rock in kleine zaal.", "url": "https://www.spotgroningen.nl/events/takeroot/presents/"}, {"id": "the-veils-20261128", "name": "The Veils + Anthonie Tonnon", "date": "2026-11-28", "venue": "De Oosterpoort · Kleine Zaal", "city": "Groningen", "genre": "Indierock / folk", "price": 31.5, "quality": 9.6, "value": 9, "priority": "IN DE GATEN HOUDEN", "match": "Editors, Damien Rice", "reason": "Karaktervolle zang en donkere arrangementen.", "url": "https://www.spotgroningen.nl/programma/the-veils-2/"}, {"id": "tom-mcrae-20261123", "name": "Tom McRae", "date": "2026-11-23", "venue": "Academiehuis Grote Kerk", "city": "Zwolle", "genre": "Singer-songwriter", "price": 28.5, "quality": 9.4, "value": 9.1, "priority": "IN DE GATEN HOUDEN", "match": "Damien Rice, Ane Brun", "reason": "Sterke liedjes in een bijzondere zaal.", "url": "https://productiehuis.hedon-zwolle.nl/voorstelling/32887/tom-mcrae"}, {"id": "jake-vaadeland-20270224", "name": "Jake Vaadeland", "date": "2027-02-24", "venue": "Hedon · Kleine Zaal", "city": "Zwolle", "genre": "Bluegrass / rockabilly", "price": 22.5, "quality": 9.2, "value": 9, "priority": "KAN WACHTEN", "match": "Pert Near Sandstone, Muireann Bradley", "reason": "Alternatief voor de eerdere show in Groningen.", "url": "https://www.hedon-zwolle.nl/voorstelling/33119/jake-vaadeland"}, {"id": "heideroosjes-20270122", "name": "Heideroosjes", "date": "2027-01-22", "venue": "Het Podium", "city": "Hoogeveen", "genre": "Punkrock", "price": null, "quality": 9.3, "value": null, "priority": "UITVERKOCHT", "match": "Green Day, Blink-182", "reason": "Uitverkocht volgens eerdere controle; check doorverkoop.", "url": "https://www.heideroosjes.com/tour/"}, {"id": "hans-hannemann-20261211", "name": "Hans Hannemann & Jan Henk de Groot", "date": "2026-12-11", "venue": "d’Rentmeester", "city": "Valthermond", "genre": "Groningstalige roots", "price": 19.5, "quality": 9.1, "value": 9.6, "priority": "IN DE GATEN HOUDEN", "match": "Rick Hilberts, Henry Wagons", "reason": "Bijzondere combinatie van streektaal en roots.", "url": "https://www.drentmeester.nl/"}, {"id": "truckfighters-20270307", "name": "Truckfighters", "date": "2027-03-07", "venue": "Metropool · Bud Stage", "city": "Hengelo", "genre": "Stonerrock", "price": 26.5, "quality": 9.4, "value": 9.1, "priority": "IN DE GATEN HOUDEN", "match": "Queens of the Stone Age, Foo Fighters", "reason": "Fuzzgitaren en energieke liveband.", "url": "https://metropool.nl/agenda/truckfighters"}, {"id": "dylan-leblanc-20261218", "name": "Dylan LeBlanc + Barbara Forstner", "date": "2026-12-18", "venue": "Lutherse Kerk", "city": "Groningen", "genre": "Americana / alt-country", "price": 23.5, "quality": 9.6, "value": 9.5, "priority": "NU KOPEN", "match": "Willow Avalon, Damien Rice", "reason": "Sterke teksten en sfeervolle americana.", "url": "https://www.spotgroningen.nl/programma/dylan-leblanc-3/"}, {"id": "early-james-20261116", "name": "Early James", "date": "2026-11-16", "venue": "De Oosterpoort · Binnenzaal", "city": "Groningen", "genre": "Blues / roots", "price": 18.5, "quality": 9.5, "value": 9.8, "priority": "VERLOPEN", "match": "The Black Keys", "reason": "Eerdere radarvermelding.", "url": "https://www.spotgroningen.nl/"}, {"id": "after-easter-20270403", "name": "After Easter Festival", "date": "2027-04-03", "venue": "Alte Weberei · Saal 1", "city": "Nordhorn", "genre": "Indie / rock / festival", "price": 28, "quality": 8.9, "value": 9.5, "priority": "IN DE GATEN HOUDEN", "match": "Novastar", "reason": "Jupiter Jones en regionale bands op twee podia.", "url": "https://alteweberei.de/produktion/after-easter-festival/"}, {"id": "richard-thompson-20270423", "name": "Richard Thompson", "date": "2027-04-23", "venue": "Metropool · Bud Stage", "city": "Hengelo", "genre": "Folkrock / gitaar", "price": 38.5, "quality": 9.7, "value": 9.2, "priority": "IN DE GATEN HOUDEN", "match": "Bruce Springsteen, The White Buffalo", "reason": "Invloedrijke gitarist en songwriter.", "url": "https://metropool.nl/"}, {"id": "noah-gundersen-20270123", "name": "Noah Gundersen", "date": "2027-01-23", "venue": "Metropool · Muziekcafé", "city": "Enschede", "genre": "Singer-songwriter", "price": 20, "quality": 9.7, "value": 9.6, "priority": "IN DE GATEN HOUDEN", "match": "Damien Rice, Ane Brun", "reason": "Intieme songs met een onderscheidende stem.", "url": "https://metropool.nl/"}, {"id": "robert-jon-20271022", "name": "Robert Jon & The Wreck", "date": "2027-10-22", "venue": "De Oosterpoort · Kleine Zaal", "city": "Groningen", "genre": "Southern rock", "price": null, "quality": 9.3, "value": null, "priority": "IN DE GATEN HOUDEN", "match": "The Black Keys, Bruce Springsteen", "reason": "Southern rock en sterke liveband.", "url": "https://www.spotgroningen.nl/"}, {"id": "the-dead-south-20271127", "name": "The Dead South", "date": "2027-11-27", "venue": "De Oosterpoort · Grote Zaal", "city": "Groningen", "genre": "Bluegrass / folk", "price": null, "quality": 9.5, "value": null, "priority": "IN DE GATEN HOUDEN", "match": "Pert Near Sandstone", "reason": "Bluegrass met een eigen geluid.", "url": "https://www.spotgroningen.nl/"}];
 const nationalSeed = [{"id": "greta-van-fleet-20270524", "name": "Greta Van Fleet + Larkin Poe", "date": "2027-05-24", "venue": "Ziggo Dome", "city": "Amsterdam", "genre": "Rock / bluesrock", "price": 43.76, "quality": 9.5, "value": 8.4, "priority": "IN DE GATEN HOUDEN", "match": "The Black Keys, Led Zeppelin, The Teskey Brothers", "reason": "Grote nationale show met Larkin Poe als sterke support. Eerder gemeld; controleer actuele details.", "url": "https://www.ziggodome.nl/", "scope": "landelijk", "spotify": "Greta Van Fleet"}, {"id": "tame-impala-20270607", "name": "Tame Impala + Wet Leg", "date": "2027-06-07", "venue": "Rotterdam Ahoy", "city": "Rotterdam", "genre": "Psychedelische pop / indierock", "price": 85.24, "quality": 9.5, "value": 7.8, "priority": "IN DE GATEN HOUDEN", "match": "Wet Leg, The War on Drugs", "reason": "Bijzondere combinatie met Wet Leg; meerdere eerder gemelde data 7–9 juni.", "url": "https://www.ahoy.nl/", "scope": "landelijk", "spotify": "Tame Impala"}, {"id": "richard-thompson-20270424", "name": "Richard Thompson", "date": "2027-04-24", "venue": "Melkweg", "city": "Amsterdam", "genre": "Folkrock / gitaar", "price": null, "quality": 9.5, "value": null, "priority": "IN DE GATEN HOUDEN", "match": "Muireann Bradley, Damien Rice", "reason": "Landelijke optie, maar Hengelo op 23 april is waarschijnlijk handiger.", "url": "https://www.melkweg.nl/", "scope": "landelijk", "spotify": "Richard Thompson"}];
 const KEY='concertradar-v1';
@@ -1673,11 +1723,76 @@ function dashboardShortlistMarkup(){
   '<button type="button" class="btn" data-tab="surprise">Verrassingsradar</button></div></section>';
 }
 
+
+/* Compact daily dashboard. Existing calendar, notifications, and full lists remain available. */
+function dashboardUpcomingMarkup(){
+ const upcoming=all().filter(e=>e.date>=today&&['booked','shortlisted'].includes(statusOf(e)))
+  .sort((a,b)=>a.date.localeCompare(b.date)||a.name.localeCompare(b.name,'nl'));
+ const row=e=>{
+  const booked=isBooked(e);
+  return '<div class="focus-upcoming-row">'+
+   '<span class="focus-event-date">'+h(dt(e.date))+'</span>'+
+   '<div><strong>'+h(e.name)+'</strong><p>'+h(e.venue||'Podium onbekend')+
+      (e.city?' · '+h(e.city):'')+'</p></div>'+
+   '<span class="focus-status '+(booked?'focus-booked':'focus-shortlisted')+'">'+
+      (booked?'Kaarten gekocht':'Shortlist')+'</span></div>';
+ };
+ return '<section class="focus-panel" aria-labelledby="focus-upcoming-title">'+
+  '<div class="focus-heading"><div><h2 id="focus-upcoming-title">Mijn volgende concerten</h2>'+
+   '<p>'+upcoming.filter(isBooked).length+' gekocht · '+upcoming.filter(e=>statusOf(e)==='shortlisted').length+' op shortlist</p></div>'+
+   '<button type="button" class="btn" data-tab="booked">Kaarten</button></div>'+
+  (upcoming.length?upcoming.slice(0,5).map(row).join(''):
+   '<p class="muted">Nog geen aankomende concerten met kaarten gekocht of op je shortlist.</p>')+
+  '<div class="focus-links"><button type="button" class="btn" data-tab="shortlist">Mijn shortlist</button>'+
+   '<button type="button" class="btn" data-tab="calendar">Mijn kalender</button></div></section>';
+}
+function dashboardTopMatchesMarkup(){
+ const tips=dashboardSuggestionEntries()
+  .filter(x=>x.kind!=='candidate'&&hasDirectConcertLink(x.event))
+  .slice(0,3);
+ return '<section class="focus-panel" aria-labelledby="focus-matches-title">'+
+  '<div class="focus-heading"><div><h2 id="focus-matches-title">Topmatches voor jou</h2>'+
+   '<p>Indicaties op basis van je voorkeuren en beschikbare beschrijvingen.</p></div>'+
+   '<button type="button" class="btn" data-tab="surprise">Meer tips</button></div>'+
+  (tips.map(({event:e})=>'<article class="focus-match">'+
+    '<div class="focus-match-top"><div><strong>'+h(e.name)+'</strong>'+
+     '<p>'+h(dt(e.date))+' · '+h(e.venue||'Podium onbekend')+'</p></div>'+
+     '<b>'+tasteResult(e).score.toFixed(1)+'<small>/10</small></b></div>'+
+    '<p class="focus-match-reason">'+h(e.genre||'Genre niet ingedeeld')+
+     (e.match?' · volgens beschrijving: '+h(e.match):'')+'</p>'+
+    '<p class="focus-match-source">'+h(sourceLabel(e))+'</p>'+
+    '<div class="focus-actions"><button type="button" data-action="shortlisted" data-id="'+h(e.id)+'">Shortlist</button>'+
+     '<button type="button" data-action="interested" data-id="'+h(e.id)+'">Interessant</button>'+
+     '<button type="button" data-action="rejected" data-id="'+h(e.id)+'">Afwijzen</button>'+
+     '<a class="btn" href="'+h(concertLink(e))+'" target="_blank" rel="noopener noreferrer">Bron</a></div>'+
+   '</article>').join('')||
+   '<p class="muted">Nog geen nieuwe, voldoende beschreven matches beschikbaar.</p>')+
+   '<p class="focus-disclaimer">De matchscore is geen beoordeling van een live-optreden.</p></section>';
+}
+function dashboardConflictMarkup(){
+ const conflicts=agendaConflicts();
+ return '<section class="focus-panel" aria-labelledby="focus-conflicts-title">'+
+  '<div class="focus-heading"><div><h2 id="focus-conflicts-title">Agenda en conflicten</h2>'+
+   '<p>'+conflicts.length+' mogelijk conflicterende boekingen · '+busyDates.length+
+    ' lokaal bekende bezette datums</p></div><button type="button" class="btn" data-tab="calendar">Kalender</button></div>'+
+  (conflicts.length?'<div class="focus-conflict-list">'+conflicts.slice(0,4).map(({e,reason})=>
+   '<p><strong>'+h(dt(e.date))+' · '+h(e.name)+'</strong><span>'+h(reason)+'</span></p>').join('')+'</div>':
+    '<p class="muted">Geen datumconflicten gevonden bij je geboekte concerten.</p>')+
+  '<p class="focus-disclaimer">De controle vergelijkt datums en geen begintijden.</p>'+
+  '<details class="focus-agenda-details"><summary>Bezette datums en agenda-import beheren</summary>'+
+   calendarCheckMarkup()+'</details></section>';
+}
+function dashboardSignalsMarkup(){
+ const count=noticeCandidates().length;
+ return '<details class="focus-signals"><summary>Nieuwe signalen ('+count+')</summary>'+
+   noticeMarkup()+'</details>';
+}
+
 function personalDashboardTop(){
- const upcoming=all().filter(e=>e.date>=today&&isBooked(e)).sort((a,b)=>a.date.localeCompare(b.date))[0];
- return '<section class="dash-panel"><h2 class="sectiontitle">Mijn ConcertRadar</h2>'+
- (upcoming?'<p><strong>Volgende concert:</strong> '+h(upcoming.name)+' · '+h(dt(upcoming.date))+' · '+h(upcoming.venue)+'</p>':'<p class="muted">Nog geen aankomend concert geboekt.</p>')+
- '</section>'+newDashboardMarkup()+dashboardShortlistMarkup()+noticeMarkup()+calendarCheckMarkup();
+ return '<div class="focus-dashboard">'+
+  dashboardUpcomingMarkup()+newDashboardMarkup()+
+  dashboardTopMatchesMarkup()+dashboardConflictMarkup()+
+  dashboardSignalsMarkup()+'</div>';
 }
 function bindNewDashboard(){
  document.querySelectorAll('[data-artist-profile]').forEach(b=>b.onclick=()=>showArtistProfile(b.dataset.artistProfile));
@@ -1692,23 +1807,8 @@ function bindNewDashboard(){
  if(input)input.onchange=async()=>{const file=input.files?.[0];if(!file)return;if(file.size>2_000_000){alert('Maximaal 2 MB.');return;}try{const dates=parseCalendarDates(await file.text());if(!dates.length){alert('Geen geschikte agenda-datums gevonden.');return;}saveBusyDates([...busyDates,...dates])}catch(e){alert('Agenda kon niet worden gelezen.')}};
 }
 
-function dashboardMarkup(){
- const list=bookedConcerts();
- const alerts=changeAlerts.filter(x=>list.some(e=>e.id===x.id||e.url===x.url)).slice(0,12);
- return personalDashboardTop()+'<h2 class="sectiontitle">Mijn komende concerten</h2>'+
- '<p class="notice">'+list.length+' concerten waarvoor je kaarten hebt gekocht. Dit overzicht bevat ook de concerten die je zelf hebt toegevoegd. <strong>Goud betekent: kaarten gekocht.</strong></p>'+
- (alerts.length?'<h3 class="sectiontitle">Wijzigingen om te controleren</h3><section class="list">'+alerts.map(a=>'<div class="notice"><b>'+h(a.name||'Concert')+'</b> · '+h(a.description||'Gegevens wijken mogelijk af')+' <a href="'+h(a.url)+'" target="_blank" rel="noopener noreferrer">Controleer bron</a></div>').join('')+'</section>':'')+
- '<section class="dashboard-grid">'+(list.map(e=>{
- const date=dt(e.date);
- return '<article class="dash-card concert-booked"><div class="status-strip concert-booked">KAARTEN GEKOCHT</div><div class="review-small">'+h(date)+(e.time?' · '+h(e.time):'')+'</div><h3>'+h(e.name)+'</h3><div class="muted">'+h(e.venue)+' · '+h(e.city)+'</div>'+
- (e.note?'<p class="details">'+h(e.note)+'</p>':'')+
- '<div class="dashboard-buttons"><a class="btn" href="'+h(concertLink(e))+'" target="_blank" rel="noopener noreferrer">'+h(concertLinkLabel(e))+'</a>'+
- '<a class="btn" href="'+h(googleCalendarEventUrl(e))+'" target="_blank" rel="noopener noreferrer">Google Agenda</a>'+
- '<a class="btn" href="'+h(outlookCalendarEventUrl(e))+'" target="_blank" rel="noopener noreferrer">Outlook</a>'+
- '<a class="btn" href="https://www.google.com/maps/dir/?api=1&destination='+encodeURIComponent(e.venue+', '+e.city)+'" target="_blank" rel="noopener noreferrer">Route</a>'+
- '<button data-review="'+h(e.id)+'" type="button">Notitie / beoordeling</button></div></article>';
- }).join('')||'<p class="empty">Je hebt nog geen komende concerten als Kaarten gekocht gemarkeerd.</p>')+'</section>';
-}
+function dashboardMarkup(){return personalDashboardTop();}
+
 function pendingDiscoveries(){
  const known=new Set(all().map(e=>normalizeConcertText(e.name)+'|'+e.date));
  return discoveryEvents.filter(e=>e.date>=today&&!known.has(normalizeConcertText(e.name)+'|'+e.date)&&!['shortlisted','interested','rejected','booked'].includes(statusOf(e))).sort((a,b)=>a.date.localeCompare(b.date));
