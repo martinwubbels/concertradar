@@ -27,7 +27,7 @@ const prefix=[
  'const hasDirectConcertLink=e=>Boolean(e.url);',
  'const concertLink=e=>e.url||"https://example.org/search";'
 ].join('\n');
-const fn=new Function('ctx',prefix+'\n'+script.slice(first,last)+'\nreturn {isFestivalEvent,newOverviewData,newDashboardMarkup,newMarkup,newEntryMarkup,shortlistMarkup};')(ctx);
+const fn=new Function('ctx',prefix+'\n'+script.slice(first,last)+'\nreturn {isFestivalEvent,newOverviewData,newDashboardMarkup,newMarkup,newEntryMarkup,shortlistMarkup,candidateProposalUrl};')(ctx);
 const e=(id,name,date,opts={})=>({id,name,date,venue:'Testpodium',city:'Groningen',genre:'Americana',url:'https://example.org/event/'+id,...opts});
 ctx.liveEvents.push(e('f','TakeRoot 2027','2027-11-06',{verification:'historical_unverified'}));
 ctx.catalog.push(...ctx.liveEvents,e('a','New Americana Show','2027-01-03',{verification:'auto_verified_schema',source_checked_at:'2026-11-27T08:00:00Z'}));
@@ -50,7 +50,9 @@ assert(markup.includes('Kandidaat uit podiumagenda'));
 assert(markup.includes('Beoordelingswachtrij'));
 assert(markup.includes('Broncontrole: 1/1'));
 assert(markup.includes('Voorstel voor masterlijst'));
-assert(markup.includes('https://github.com/martinwubbels/concertradar/issues/new?'));
+assert(markup.includes('review-candidate.yml'),'Invalid sample ID does not trigger an issue');
+assert(fn.candidateProposalUrl({id:'suggestion-2027-04-04-freshcountryact',name:'Fresh Country Act',date:'2027-04-04',venue:'Podium',url:'https://example.org/event'})
+ .includes('/issues/new?'),'Valid candidate receives a prefilled GitHub review issue');
 assert(markup.includes('data-review-queue="toggle"'));
 assert(markup.includes('Bekend concert of festival uit masterlijst'));
 assert(markup.includes('data-action="shortlisted"'),'Shortlist button for concerts and festivals');
