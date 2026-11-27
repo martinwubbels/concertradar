@@ -21,6 +21,7 @@ OUT = ROOT / "data/discovery-candidates.json"
 VENUES = [
     ("SPOT Groningen", "https://www.spotgroningen.nl/programma/"),
     ("VERA Groningen", "https://www.vera-groningen.nl/"),
+    ("Simplon Groningen", "https://simplon.nl/programma/"),
     ("Hedon Zwolle", "https://www.hedon-zwolle.nl/"),
     ("Metropool", "https://metropool.nl/agenda/"),
     ("De Amer", "https://www.deamer.nl/"),
@@ -35,11 +36,12 @@ VENUES = [
     ("DNK Assen", "https://www.dnk.nl/"),
     ("Alte Weberei Nordhorn", "https://alteweberei.de/programm/"),
     ("EmslandArena Lingen", "https://www.emslandarena.com/"),
+    ("Theater Meppen", "https://www.meppen-theater.de/termine/liste/"),
     ("Het Podium Hoogeveen", "https://detamboer.nl/"),
     ("Poppunt Drenthe", "https://poppuntdrenthe.nl/"),
 ]
 HEADERS = {"User-Agent": "ConcertRadar personal music calendar/1.0", "Accept": "text/html,application/xhtml+xml"}
-PATTERNS = ("/programma/", "/agenda/", "/events/", "/event/", "/voorstelling/", "/productie/", "/produktion/", "/veranstaltung/", "/concert/")
+PATTERNS = ("/programma/", "/agenda/", "/events/", "/event/", "/voorstelling/", "/productie/", "/produktion/", "/veranstaltung/", "/termin/", "/concert/")
 NONMUSIC = re.compile(r"cabaret|musical|theaterweekend|dansvoorstelling|stand-up|comed(y|ie)|toneel|lezing|rondleiding|workshop|kindervoorstelling", re.I)
 GENERIC = re.compile(r"/(verzameling|collectie|nieuws|categorie|category|page|tag|thema|abonnement|archief)(/|$)", re.I)
 EXCLUDE = re.compile(r"/(tickets?|login|contact|privacy|cookies|nieuws|news|over-ons|about|zoeken|search|account|winkelwagen)(/|$)", re.I)
@@ -103,25 +105,67 @@ def collect(name, page):
     return out[:250]
 
 def main():
-    original=json.loads(CATALOG.read_text(encoding="utf-8"))
-    urls={normalize(e.get("url","")) for e in original.get("events",[]) if e.get("url","").startswith("https://")}
-    candidates={}
-    status={}
-    for name,url in VENUES:
+    original = json.loads(CATALOG.read_text(encoding="utf-8"))
+    urls = {normalize(e.get("url", "")) for e in original.get("events", [])
+            if str(e.get("url", "")).startswith("https://")}
+    # Retain the last successful check when a venue is temporarily inaccessible.
+    try:
+        prior = json.loads(OUT.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        prior = {}
+    older = prior.get("venues", {})
+    now = datetime.now(timezone.utc).isoformat()
+    by_venue = {}
+    status = {}
+    for name, url in VENUES:
+        previous_ok = (older.get(name) or {}).get("last_ok_at")
         try:
-            found=collect(name,url)
-            status[name]={"status":"ok","links_seen":len(found)}
-            for event in found:
-                if event["url"] not in urls:
-                    candidates[event["url"]]=event
-            print(f"{name}: {len(found)} possible links")
-        except (urllib.error.URLError,TimeoutError,OSError,ValueError) as error:
-            status[name]={"status":"failed","reason":str(error)[:160]}
+            found = collect(name, url)
+            new_links = [event for event in found if event["url"] not in urls]
+            by_venue[name] = new_links[:100]
+            status[name] = {
+                "status": "ok", "url": url, "checked_at": now,
+                "last_ok_at": now, "links_seen": len(found),
+                "candidate_links": len(new_links),
+            }
+            print(f"{name}: {len(found)} links; {len(new_links)} candidates")
+        except (urllib.error.URLError, TimeoutError, OSError, ValueError) as error:
+            status[name] = {
+                "status": "failed", "url": url, "checked_at": now,
+                "last_ok_at": previous_ok, "links_seen": 0,
+                "candidate_links": 0, "reason": str(error)[:160],
+            }
             print(f"{name}: inaccessible ({error})")
-    output={"generated_at":datetime.now(timezone.utc).isoformat(),"type":"unverified_links_not_events","venues":status,"candidates":list(candidates.values())[:600]}
-    OUT.parent.mkdir(parents=True,exist_ok=True)
-    OUT.write_text(json.dumps(output,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-    print(f"{len(output['candidates'])} links require manual verification before adding to masterlist")
+    # Round robin. One large agenda must not displace smaller venues from the
+    # published candidate feed (previously capped at 600 in venue order).
+    candidates = []
+    used = set()
+    while len(candidates) < 600 and any(by_venue.values()):
+        for name, _ in VENUES:
+            group = by_venue.get(name, [])
+            if not group:
+                continue
+            item = group.pop(0)
+            if item["url"] in used:
+                continue
+            used.add(item["url"])
+            candidates.append(item)
+            if len(candidates) >= 600:
+                break
+    output = {
+        "generated_at": now, "type": "unverified_links_not_events",
+        "summary": {
+            "venues_total": len(VENUES),
+            "venues_ok": sum(v["status"] == "ok" for v in status.values()),
+            "venues_failed": sum(v["status"] == "failed" for v in status.values()),
+            "candidates": len(candidates),
+            "policy": "Unverified venue links; not confirmations, tickets or a complete calendar",
+        },
+        "venues": status, "candidates": candidates,
+    }
+    OUT.parent.mkdir(parents=True, exist_ok=True)
+    OUT.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"{len(candidates)} unverified links; no masterlist changes")
 
 if __name__=="__main__":
     main()
