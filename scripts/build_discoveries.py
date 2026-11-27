@@ -17,7 +17,7 @@ EXCLUDE = re.compile(
     r"\b(cabaret|musical|tribute|tributes|sings coldplay|rolling stones|theatercollege|"
     r"comed(y|ie)|stand.up|talkshow|kinder(show|theater)|juf braaksel|"
     r"lezing|rondleiding|workshop|hotel 3|student liedduo competition|"
-    r"bert visscher|claudia de breij)\b", re.I
+    r"bert visscher|claudia de breij|het nationale theater|theater oostpool|nederlands dans theater|jimmy carr|david linszen)\b", re.I
 )
 
 def norm(s):
@@ -36,6 +36,14 @@ def build():
     seen = set()
     found = []
     today = date.today().isoformat()
+    now = datetime.now(timezone.utc).isoformat()
+    try:
+        previous = json.loads(OUTPUT.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        previous = {}
+    previous_by_id = {e["id"]: e for e in previous.get("events", []) if e.get("id")}
+    # Existing feed entries were known no later than its last generation.
+    previous_cutoff = previous.get("updated_at") or now
     for raw in review.get("results", []):
         if raw.get("confidence") != "review_schema":
             continue
@@ -60,8 +68,14 @@ def build():
         price = raw.get("price") if raw.get("currency") in ("EUR", "€") else None
         if not isinstance(price, (int, float)) or not 0 <= price <= 10000:
             price = None
+        event_id = "suggestion-" + day + "-" + re.sub(r"[^a-z0-9]+", "-", norm(name))[:48]
+        prior = previous_by_id.get(event_id, {})
+        festival = "Festival" in types or bool(re.search(r"\bfestival\b|\bpopronde\b|\bnoorderslag\b|\btakeroot\b|\bbuspop\b", name, re.I))
         found.append({
-            "id": "suggestion-" + day + "-" + re.sub(r"[^a-z0-9]+", "-", norm(name))[:48],
+            "id": event_id,
+            "event_kind": "festival" if festival else "concert",
+            "first_seen_at": prior.get("first_seen_at") or (previous_cutoff if prior else now),
+            "last_seen_at": now,
             "name": name, "date": day, "venue": venue,
             "city": html.unescape(str(raw.get("city") or "")),
             "source_venue": source_venue,
@@ -71,7 +85,7 @@ def build():
         })
     found.sort(key=lambda e: (e["date"], e["name"]))
     output = {
-        "updated_at": datetime.now(timezone.utc).isoformat(),
+        "updated_at": now,
         "status": "suggestions_not_confirmed_or_ranked",
         "events": found[:150],
     }

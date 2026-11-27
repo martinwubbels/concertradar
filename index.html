@@ -122,6 +122,43 @@ body{background:#0b121b}
  .event-card-v3 .event-more{margin-left:0}
 }
 
+
+/* Distinct discoveries and festival visibility on mobile and desktop. */
+.new-dashboard,.new-intro{margin:14px 0 18px;padding:17px;border-radius:15px;background:#14252f;border:1px solid #41636a}
+.new-dashboard-heading{display:flex;justify-content:space-between;align-items:start;gap:12px}
+.new-dashboard h3{margin:0 0 5px;font-size:20px}
+.new-dashboard-heading p,.new-disclaimer,.new-scanned{font-size:12px;color:#b4c9d0;margin:6px 0}
+.new-dashboard-columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:12px 0}
+.new-dashboard-columns>div{background:#1b303a;padding:12px;border:1px solid #365563;border-radius:10px;min-width:0}
+.new-dashboard-columns strong{font-size:14px}
+.new-dashboard-item{display:flex;flex-direction:column;gap:3px;padding:8px 0;border-bottom:1px solid #365563}
+.new-dashboard-item b{font-size:13px;overflow-wrap:anywhere}
+.new-dashboard-item span{font-size:12px;color:#b4c9d0}
+.new-intro p{line-height:1.55;color:#b4c9d0}
+.new-overview-counts{display:flex;flex-wrap:wrap;gap:12px;margin:15px 0}
+.new-overview-counts>div{flex:1 1 155px;border:1px solid #365563;border-radius:10px;padding:11px;background:#1b303a;display:flex;flex-direction:column;gap:3px}
+.new-overview-counts b{font-size:24px;color:#b7ebd7}
+.new-overview-counts span{font-size:12px;color:#b4c9d0}
+.new-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
+.new-controls>div{display:flex;flex-wrap:wrap;gap:6px}
+.new-controls button,.new-event-actions button{border:1px solid #516b7a;border-radius:8px;background:#223744;color:#e2edf0;padding:8px 10px;font-size:12px;cursor:pointer}
+.new-controls button.selected,.new-event-actions button.selected{background:#a1dccb;color:#102a29;border-color:#a1dccb}
+.new-controls label{font-size:12px;display:flex;flex-direction:column;gap:4px;color:#b4c9d0}
+.new-controls select{max-width:230px;border:1px solid #516b7a;border-radius:8px;background:#223744;color:#e2edf0;padding:7px}
+.new-overview-section{margin:22px 0}
+.new-overview-section h3{font-size:19px;margin:0 0 12px}
+.new-events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.new-event-card{border:1px solid #365563;border-radius:12px;padding:14px;background:#1a303a;min-width:0}
+.new-event-card h3{font-size:17px;margin:11px 0 6px;overflow-wrap:anywhere}
+.new-event-top{display:flex;align-items:start;gap:9px;flex-wrap:wrap}
+.new-type{border:1px solid #6caa9d;border-radius:7px;padding:3px 7px;font-size:11px;color:#b7ebd7}
+.new-source{font-size:11px;color:#a6bac4;line-height:1.4}
+.new-event-where{font-size:13px;color:#e2edf0}
+.new-event-meta,.new-status{font-size:12px;line-height:1.5;color:#bacbd2}
+.new-event-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.new-event-actions a.btn{font-size:12px}
+@media(max-width:760px){.new-events,.new-dashboard-columns{grid-template-columns:1fr}.new-dashboard-heading{flex-direction:column}.new-dashboard-heading .btn{width:100%;text-align:center}.new-controls select{max-width:100%}}
+
 /* Immediately actionable, opt-in shortlists on the personal start page. */
 .home-shortlist{margin:14px 0 18px;padding:17px;background:#14252f;border:1px solid #41636a;border-radius:16px}
 .home-shortlist-header{display:flex;align-items:start;justify-content:space-between;gap:15px;margin-bottom:14px}
@@ -230,7 +267,7 @@ function startPhotoFetch(){
 }
 
 const today=new Date().toLocaleDateString('sv-SE',{timeZone:'Europe/Amsterdam'});
-let state={compactCards:true,tab:'dashboard',search:'',city:'',genre:'',sort:'date',onlyFuture:true,scope:'all',mapRange:'90',calendarMonth:today.slice(0,7),editingId:''};
+let state={compactCards:true,tab:'dashboard',search:'',city:'',genre:'',sort:'date',onlyFuture:true,scope:'all',mapRange:'90',calendarMonth:today.slice(0,7),editingId:'',newKind:'all',newDecision:'all',newOrder:'found'};
 const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}};
 let saved=read();let extra=Array.isArray(saved.extra)?saved.extra:[];let flags=saved.flags||{};let assessments=saved.assessments||{};let appSettings=saved.settings||{};
 const all=()=>{const mapped=new Map([...seed,...nationalSeed,...liveEvents].map(e=>[e.id,e]));for(const e of extra){const prior=mapped.get(e.id);mapped.set(e.id,prior&&!e.personal&&!e.id?.startsWith('handmatig-')?{...prior,...e,url:prior.url,link_status:prior.link_status}:e)}return [...mapped.values()].filter(e=>!e.deleted)};
@@ -702,7 +739,7 @@ function bindSearchNow(){
  if(refresh)refresh.onclick=async()=>{refresh.disabled=true;refresh.textContent='Verversen...';await loadPublishedData();};
 }
 
-function render(){if(state.tab==='discovery')state.tab='surprise';const entries=all().filter(e=>e.date>=today);const cities=[...new Set(all().map(e=>e.city))].sort();const genres=['Blues','Americana','Soul','Rock','Folk','Punk','Singer-songwriter','Streektaal'];const list=filtered();el.innerHTML=`<main class="wrap"><header class="top"><div><div class="brand">Concert<span>Radar</span></div><div class="sub">Noord-Oost Nederland én landelijke topconcerten</div></div><div class="pill">GitHub Pages · gratis · ${catalogLoaded?liveEvents.length+' records geladen':'Ingebouwde startlijst'}</div></header>${catalogError?`<div class="notice" role="alert">${h(catalogError)} De ingebouwde startlijst wordt gebruikt.</div>`:""}<section class="hero"><h1>De beste concerten. Dichtbij én landelijk.</h1><p>Alle concerten staan in de masterlijst. De Verrassingsradar toont alleen een korte, onderbouwde selectie. Daarnaast zie je je interesses en gekochte kaarten. De lijst blijft bewaard in deze browser. Ook landelijke topconcerten. Spotify-links werken direct; artiestenfoto’s worden automatisch opgezocht via Wikipedia. Internet is nodig voor het ophalen van foto’s. De centrale concertlijst wordt bij openen opgehaald. Nieuwe concerten verschijnen pas wanneer ze aan de centrale lijst zijn toegevoegd. Zelf een concert toevoegen kan via het tabblad Concert toevoegen.</p></section>${searchNowMarkup()}<div class="stats"><div class="stat"><strong>${entries.length}</strong><span>Toekomstige concerten</span></div><div class="stat"><strong>${all().filter(e=>statusOf(e)==='interested').length}</strong><span>Interessant</span></div><div class="stat"><strong>${all().filter(isBooked).length}</strong><span>Kaarten gekocht</span></div><div class="stat"><strong>${entries.filter(e=>e.quality>=9.5).length}</strong><span>Topmatches ≥ 9,5</span></div></div><nav class="nav">${[['dashboard','Mijn startscherm'],['all','Masterlijst'],['inbox','Beoordelingsinbox'],['favorites','Interessant'],['booked','Kaarten gekocht'],['rejected','Afgewezen'],['history','Concertgeschiedenis'],['taste','Mijn muzieksmaak'],['travel','Reisgrenzen'],['surprise','Verrassingsradar'],['urgency','Concerturgentie'],['trends','Smaakontwikkeling'],['sync','Synchronisatie'],['map','Kaart'],['calendar','Mijn kalender'],['add','Concert toevoegen'],['new','Nieuw gevonden'],['updates','Updates & beheer']].map(([k,v])=>`<button data-tab="${k}" class="${state.tab===k?'active':''}">${v}</button>`).join('')}</nav><select id="mobileTab" aria-label="Kies overzicht" class="mobile-navigation"><option value="dashboard" ${state.tab==='dashboard'?'selected':''}>Mijn startscherm</option><option value="all" ${state.tab==='all'?'selected':''}>Masterlijst</option><option value="surprise" ${state.tab==='surprise'?'selected':''}>Verrassingsradar</option><option value="favorites" ${state.tab==='favorites'?'selected':''}>Interessant</option><option value="booked" ${state.tab==='booked'?'selected':''}>Kaarten gekocht</option><option value="inbox" ${state.tab==='inbox'?'selected':''}>Beoordelingsinbox</option><option value="taste" ${state.tab==='taste'?'selected':''}>Mijn muzieksmaak</option><option value="travel" ${state.tab==='travel'?'selected':''}>Reisgrenzen</option><option value="urgency" ${state.tab==='urgency'?'selected':''}>Concerturgentie</option><option value="calendar" ${state.tab==='calendar'?'selected':''}>Mijn kalender</option><option value="history" ${state.tab==='history'?'selected':''}>Concertgeschiedenis</option><option value="trends" ${state.tab==='trends'?'selected':''}>Smaakontwikkeling</option><option value="map" ${state.tab==='map'?'selected':''}>Kaart</option><option value="new" ${state.tab==='new'?'selected':''}>Nieuw gevonden</option><option value="sync" ${state.tab==='sync'?'selected':''}>Synchronisatie</option><option value="add" ${state.tab==='add'?'selected':''}>Concert toevoegen</option><option value="rejected" ${state.tab==='rejected'?'selected':''}>Afgewezen</option><option value="updates" ${state.tab==='updates'?'selected':''}>Updates & beheer</option></select>${state.tab==='updates'?updates():state.tab==='dashboard'?dashboardMarkup():state.tab==='inbox'?inboxMarkup():state.tab==='history'?historyMarkup():state.tab==='taste'?tasteMarkup():state.tab==='travel'?travelMarkup():state.tab==='surprise'?surpriseMarkup():state.tab==='urgency'?urgencyMarkup():state.tab==='trends'?tasteHistoryMarkup():state.tab==='sync'?cloudMarkup():state.tab==='map'?mapMarkup():state.tab==='calendar'?calendarMarkup():state.tab==='add'?personalAddMarkup():state.tab==='new'?newMarkup():`<div class="toolbar"><select id="scope"><option value="all" ${state.scope==='all'?'selected':''}>Heel Nederland + grensregio</option><option value="regionaal" ${state.scope==='regionaal'?'selected':''}>Regio Noord-Oost</option><option value="landelijk" ${state.scope==='landelijk'?'selected':''}>Landelijke toppers</option></select><input id="search" placeholder="Zoek artiest, locatie of genre" value="${h(state.search)}"><select id="city"><option value="">Alle plaatsen</option>${cities.map(c=>`<option ${state.city===c?'selected':''}>${h(c)}</option>`).join('')}</select><select id="genre"><option value="">Alle genres</option>${genres.map(g=>`<option ${state.genre===g?'selected':''}>${h(g)}</option>`).join('')}</select><select id="sort"><option value="date" ${state.sort==='date'?'selected':''}>Op datum</option><option value="personal" ${state.sort==='personal'?'selected':''}>Mijn beste smaakmatch</option><option value="quality" ${state.sort==='quality'?'selected':''}>Hoogste kwaliteit</option><option value="value" ${state.sort==='value'?'selected':''}>Beste waarde</option></select><label class="pill"><input type="checkbox" id="future" ${state.onlyFuture?'checked':''}> Alleen toekomstig</label></div><label class="check-age">Bron ouder dan <select id="checkAge"><option value="7" ${Number(appSettings.checkMaxAgeDays||14)===7?'selected':''}>7 dagen</option><option value="14" ${Number(appSettings.checkMaxAgeDays||14)===14?'selected':''}>14 dagen</option><option value="30" ${Number(appSettings.checkMaxAgeDays||14)===30?'selected':''}>30 dagen</option></select></label><label class="compact-toggle"><input id="compactCards" type="checkbox" ${state.compactCards?'checked':''}> Compacte kaarten</label><div class="sub" style="margin-bottom:12px">${list.length} resultaten · prijzen en verkoopstatus niet live gecontroleerd</div><div class="legend-line" aria-label="Concertstatussen"><span class="legend-item legend-booked">Kaarten gekocht</span><span class="legend-item legend-interested">Interessant</span><span class="legend-item legend-normal">Nog geen keuze</span></div><section class="list">${list.map(card).join('')||'<div class="empty">Geen concerten gevonden. Pas de filters aan.</div>'}</section>`}<footer class="footer">ConcertRadar prototype · Startgegevens uit eerdere gesprekken · Controleer datum, prijs en beschikbaarheid altijd bij het officiële podium.</footer></main>`;bind();if(state.tab==='map')drawConcertMap();}
+function render(){if(state.tab==='discovery')state.tab='surprise';const entries=all().filter(e=>e.date>=today);const cities=[...new Set(all().map(e=>e.city))].sort();const genres=['Blues','Americana','Soul','Rock','Folk','Punk','Singer-songwriter','Streektaal'];const list=filtered();el.innerHTML=`<main class="wrap"><header class="top"><div><div class="brand">Concert<span>Radar</span></div><div class="sub">Noord-Oost Nederland én landelijke topconcerten</div></div><div class="pill">GitHub Pages · gratis · ${catalogLoaded?liveEvents.length+' records geladen':'Ingebouwde startlijst'}</div></header>${catalogError?`<div class="notice" role="alert">${h(catalogError)} De ingebouwde startlijst wordt gebruikt.</div>`:""}<section class="hero"><h1>De beste concerten. Dichtbij én landelijk.</h1><p>Alle concerten staan in de masterlijst. Het tabblad Nieuw & festivals toont automatische vondsten apart van de bekende aankomende festivals. Daarnaast zie je je interesses en gekochte kaarten. De lijst blijft bewaard in deze browser. Ook landelijke topconcerten. Spotify-links werken direct; artiestenfoto’s worden automatisch opgezocht via Wikipedia. Internet is nodig voor het ophalen van foto’s. De centrale concertlijst wordt bij openen opgehaald. Nieuwe concerten verschijnen pas wanneer ze aan de centrale lijst zijn toegevoegd. Zelf een concert toevoegen kan via het tabblad Concert toevoegen.</p></section>${searchNowMarkup()}<div class="stats"><div class="stat"><strong>${entries.length}</strong><span>Toekomstige concerten</span></div><div class="stat"><strong>${all().filter(e=>statusOf(e)==='interested').length}</strong><span>Interessant</span></div><div class="stat"><strong>${all().filter(isBooked).length}</strong><span>Kaarten gekocht</span></div><div class="stat"><strong>${entries.filter(e=>e.quality>=9.5).length}</strong><span>Topmatches ≥ 9,5</span></div></div><nav class="nav">${[['dashboard','Mijn startscherm'],['new','Nieuw & festivals'],['all','Masterlijst'],['inbox','Beoordelingsinbox'],['favorites','Interessant'],['booked','Kaarten gekocht'],['rejected','Afgewezen'],['history','Concertgeschiedenis'],['taste','Mijn muzieksmaak'],['travel','Reisgrenzen'],['surprise','Verrassingsradar'],['urgency','Concerturgentie'],['trends','Smaakontwikkeling'],['sync','Synchronisatie'],['map','Kaart'],['calendar','Mijn kalender'],['add','Concert toevoegen'],['updates','Updates & beheer']].map(([k,v])=>`<button data-tab="${k}" class="${state.tab===k?'active':''}">${v}</button>`).join('')}</nav><select id="mobileTab" aria-label="Kies overzicht" class="mobile-navigation"><option value="dashboard" ${state.tab==='dashboard'?'selected':''}>Mijn startscherm</option><option value="new" ${state.tab==='new'?'selected':''}>Nieuw & festivals</option><option value="all" ${state.tab==='all'?'selected':''}>Masterlijst</option><option value="surprise" ${state.tab==='surprise'?'selected':''}>Verrassingsradar</option><option value="favorites" ${state.tab==='favorites'?'selected':''}>Interessant</option><option value="booked" ${state.tab==='booked'?'selected':''}>Kaarten gekocht</option><option value="inbox" ${state.tab==='inbox'?'selected':''}>Beoordelingsinbox</option><option value="taste" ${state.tab==='taste'?'selected':''}>Mijn muzieksmaak</option><option value="travel" ${state.tab==='travel'?'selected':''}>Reisgrenzen</option><option value="urgency" ${state.tab==='urgency'?'selected':''}>Concerturgentie</option><option value="calendar" ${state.tab==='calendar'?'selected':''}>Mijn kalender</option><option value="history" ${state.tab==='history'?'selected':''}>Concertgeschiedenis</option><option value="trends" ${state.tab==='trends'?'selected':''}>Smaakontwikkeling</option><option value="map" ${state.tab==='map'?'selected':''}>Kaart</option><option value="sync" ${state.tab==='sync'?'selected':''}>Synchronisatie</option><option value="add" ${state.tab==='add'?'selected':''}>Concert toevoegen</option><option value="rejected" ${state.tab==='rejected'?'selected':''}>Afgewezen</option><option value="updates" ${state.tab==='updates'?'selected':''}>Updates & beheer</option></select>${state.tab==='updates'?updates():state.tab==='dashboard'?dashboardMarkup():state.tab==='inbox'?inboxMarkup():state.tab==='history'?historyMarkup():state.tab==='taste'?tasteMarkup():state.tab==='travel'?travelMarkup():state.tab==='surprise'?surpriseMarkup():state.tab==='urgency'?urgencyMarkup():state.tab==='trends'?tasteHistoryMarkup():state.tab==='sync'?cloudMarkup():state.tab==='map'?mapMarkup():state.tab==='calendar'?calendarMarkup():state.tab==='add'?personalAddMarkup():state.tab==='new'?newMarkup():`<div class="toolbar"><select id="scope"><option value="all" ${state.scope==='all'?'selected':''}>Heel Nederland + grensregio</option><option value="regionaal" ${state.scope==='regionaal'?'selected':''}>Regio Noord-Oost</option><option value="landelijk" ${state.scope==='landelijk'?'selected':''}>Landelijke toppers</option></select><input id="search" placeholder="Zoek artiest, locatie of genre" value="${h(state.search)}"><select id="city"><option value="">Alle plaatsen</option>${cities.map(c=>`<option ${state.city===c?'selected':''}>${h(c)}</option>`).join('')}</select><select id="genre"><option value="">Alle genres</option>${genres.map(g=>`<option ${state.genre===g?'selected':''}>${h(g)}</option>`).join('')}</select><select id="sort"><option value="date" ${state.sort==='date'?'selected':''}>Op datum</option><option value="personal" ${state.sort==='personal'?'selected':''}>Mijn beste smaakmatch</option><option value="quality" ${state.sort==='quality'?'selected':''}>Hoogste kwaliteit</option><option value="value" ${state.sort==='value'?'selected':''}>Beste waarde</option></select><label class="pill"><input type="checkbox" id="future" ${state.onlyFuture?'checked':''}> Alleen toekomstig</label></div><label class="check-age">Bron ouder dan <select id="checkAge"><option value="7" ${Number(appSettings.checkMaxAgeDays||14)===7?'selected':''}>7 dagen</option><option value="14" ${Number(appSettings.checkMaxAgeDays||14)===14?'selected':''}>14 dagen</option><option value="30" ${Number(appSettings.checkMaxAgeDays||14)===30?'selected':''}>30 dagen</option></select></label><label class="compact-toggle"><input id="compactCards" type="checkbox" ${state.compactCards?'checked':''}> Compacte kaarten</label><div class="sub" style="margin-bottom:12px">${list.length} resultaten · prijzen en verkoopstatus niet live gecontroleerd</div><div class="legend-line" aria-label="Concertstatussen"><span class="legend-item legend-booked">Kaarten gekocht</span><span class="legend-item legend-interested">Interessant</span><span class="legend-item legend-normal">Nog geen keuze</span></div><section class="list">${list.map(card).join('')||'<div class="empty">Geen concerten gevonden. Pas de filters aan.</div>'}</section>`}<footer class="footer">ConcertRadar prototype · Startgegevens uit eerdere gesprekken · Controleer datum, prijs en beschikbaarheid altijd bij het officiële podium.</footer></main>`;bind();if(state.tab==='map')drawConcertMap();}
 
 const CITY_COORDS={
   "Groningen":[53.2194,6.5665],"Assen":[52.9928,6.5622],"Emmen":[52.7858,6.8976],
@@ -1202,25 +1239,110 @@ function downloadText(filename,content,mime){
   setTimeout(()=>URL.revokeObjectURL(url),1000);
 }
 
-function newMarkup(){
-  const known=new Set(all().map(e=>(e.name||'').toLowerCase()+'|'+e.date));
-  const list=discoveryEvents.filter(e=>!known.has((e.name||'').toLowerCase()+'|'+e.date) && e.date>=today);
-  return '<h2 class="sectiontitle">Nieuw gevonden, nog te beoordelen</h2>'+
-    '<p class="notice">Deze vondsten komen automatisch uit officiële evenementpagina’s. Ze zijn nog <b>niet inhoudelijk gecontroleerd</b> of op jouw smaak beoordeeld. Ticketprijzen en voorraad zijn indicaties uit de bron en kunnen veranderd zijn. Ze staan niet in je definitieve masterlijst.</p>'+
-    '<div class="sub" style="margin:12px 0">'+list.length+' kandidaten'+(discoveriesUpdated?' · laatste verwerking '+h(discoveriesUpdated.slice(0,10)):' · de eerste verwerking moet nog draaien')+'</div>'+
-    '<section class="discovery-list">'+(list.map(e=>
-      '<article class="discovery-card '+concertTheme(e)+'"><h3>'+h(e.name)+'</h3>'+
-      '<p class="muted">'+h(e.date)+' · '+h(e.venue||e.source_venue)+' · '+h(e.city||e.source_venue)+'</p>'+
-      '<p class="taste-small">Mijn smaak: <strong>'+tasteResult(e).score.toFixed(1)+'/10</strong> · indicatie, concert nog niet geverifieerd</p>'+
-      '<p>Prijs: '+(e.price==null?'nog niet vastgesteld':euro(e.price))+' · <b>Te controleren</b> · '+(statusOf(e)==='rejected'?'Afgewezen':statusOf(e)==='interested'?'Interessant':statusOf(e)==='booked'?'Kaarten gekocht':'Nog geen keuze')+'</p>'+
-      '<div class="actions" style="max-width:none;justify-content:flex-start;margin-bottom:10px">'+
-      '<button data-action="interested" data-id="'+h(e.id)+'" class="'+(statusOf(e)==='interested'?'selected':'')+'">Interessant</button>'+
-      '<button data-action="rejected" data-id="'+h(e.id)+'" class="'+(statusOf(e)==='rejected'?'selected':'')+'">Afwijzen</button>'+
-      '<button data-action="booked" data-id="'+h(e.id)+'" class="'+(statusOf(e)==='booked'?'selected':'')+'">Kaarten gekocht</button></div>'+
-      '<a class="btn" href="'+h(concertLink(e))+'" target="_blank" rel="noopener noreferrer">Controleer officiële concertpagina</a></article>').join('')||
-      '<p class="empty">Nog geen nieuwe gecontroleerd gestructureerde kandidaten beschikbaar. De dagelijkse verwerking vult dit overzicht wanneer geschikte gegevens worden gevonden.</p>')+
-    '</section>';
+
+/* One overview for recently scanned events and already known future festivals.
+   Unverified discoveries are never advertised as confirmed concerts. */
+function isFestivalEvent(e){
+ const title=String(e.name||'').toLowerCase(), genre=String(e.genre||'').toLowerCase();
+ return e.event_kind==='festival'||(Array.isArray(e.event_type)&&e.event_type.includes('Festival'))||
+  /\bfestival\b|\bpopronde\b|\bnoorderslag\b|\btakeroot\b|\bbuspop\b|\besns\b/i.test(title)||
+  /\bfestival\b/i.test(genre);
 }
+function newOverviewData(){
+ const master=[...seed,...nationalSeed,...liveEvents];
+ const masterKeys=new Set(master.map(suggestionIdentity));
+ const seen=new Set(),concerts=[],festivals=[];
+ const add=(e,origin)=>{
+  if(!e||!e.id||!e.name||!e.date||e.date<today)return;
+  const key=suggestionIdentity(e);
+  if(seen.has(key)||(origin==='candidate'&&masterKeys.has(key)))return;
+  seen.add(key);
+  const item={event:e,origin,seenAt:e.first_seen_at||e.source_checked_at||''};
+  (isFestivalEvent(e)?festivals:concerts).push(item);
+ };
+ all().filter(e=>e.verification==='auto_verified_schema').forEach(e=>add(e,'catalog'));
+ discoveryEvents.forEach(e=>add(e,'candidate'));
+ all().filter(isFestivalEvent).forEach(e=>add(e,'known'));
+ const sorter=(a,b)=>state.newOrder==='event'
+  ?a.event.date.localeCompare(b.event.date)||a.event.name.localeCompare(b.event.name,'nl')
+  :String(b.seenAt).localeCompare(String(a.seenAt))||a.event.date.localeCompare(b.event.date);
+ concerts.sort(sorter);festivals.sort(sorter);
+ return {concerts,festivals};
+}
+function newEntrySource(item){
+ if(item.origin==='candidate')return 'Kandidaat uit podiumagenda · nog niet bevestigd';
+ if(item.origin==='catalog')return 'Automatisch in masterlijst gezet · inhoud en tickets controleren';
+ return 'Bekend festival uit masterlijst · actuele gegevens controleren';
+}
+function newEntryMarkup(item){
+ const e=item.event, status=statusOf(e),festival=isFestivalEvent(e);
+ const confirmedGenre=String(e.genre||'')&&!/onbekend|nog niet ingedeeld/i.test(String(e.genre||''));
+ const showScore=!festival&&confirmedGenre&&item.origin!=='candidate';
+ return '<article class="new-event-card">'+
+  '<div class="new-event-top"><span class="new-type">'+(festival?'Festival':'Concert')+'</span>'+
+   '<span class="new-source">'+h(newEntrySource(item))+'</span></div>'+
+  '<h3>'+h(e.name)+'</h3>'+
+  '<p class="new-event-where">'+h(dt(e.date))+' · '+h(e.venue||e.source_venue||'Podium onbekend')+
+   (e.city?' · '+h(e.city):'')+'</p>'+
+  '<p class="new-event-meta">'+(item.seenAt?'Opgenomen in radar: '+h(String(item.seenAt).slice(0,10))+' · ':'')+
+   (e.price==null?'Prijs niet bekend':'Bronprijs '+euro(e.price)+' (niet live)')+'</p>'+
+  (showScore?'<p class="new-event-meta">Persoonlijke smaakindicatie: '+tasteResult(e).score.toFixed(1)+'/10</p>':
+   '<p class="new-event-meta">Smaak of festivalprogramma nog niet inhoudelijk beoordeeld</p>')+
+  (e.availability_hint==='SoldOut'?'<p class="new-event-meta">Bron meldde uitverkocht; huidige beschikbaarheid onbekend</p>':'')+
+  '<p class="new-status">Keuze: '+h(status==='interested'?'Interessant':status==='booked'?'Kaarten gekocht':status==='rejected'?'Afgewezen':'Nog niet beoordeeld')+'</p>'+
+  '<div class="new-event-actions">'+
+   '<button type="button" data-action="interested" data-id="'+h(e.id)+'" class="'+(status==='interested'?'selected':'')+'">Interessant</button>'+
+   '<button type="button" data-action="rejected" data-id="'+h(e.id)+'" class="'+(status==='rejected'?'selected':'')+'">Afwijzen</button>'+
+   '<button type="button" data-action="booked" data-id="'+h(e.id)+'" class="'+(status==='booked'?'selected':'')+'">Kaarten gekocht</button>'+
+   '<a class="btn" href="'+h(concertLink(e))+'" target="_blank" rel="noopener noreferrer">'+
+     (hasDirectConcertLink(e)?'Controleer concertpagina':'Zoek bij podium')+'</a></div>'+
+  '</article>';
+}
+function newDashboardMarkup(){
+ const data=newOverviewData();
+ const concerts=data.concerts.filter(x=>statusOf(x.event)==='').slice(0,2);
+ const festivals=data.festivals.slice(0,2);
+ const mini=item=>'<div class="new-dashboard-item"><b>'+h(item.event.name)+'</b>'+
+  '<span>'+h(dt(item.event.date))+' · '+h(item.event.city||item.event.venue||'Locatie onbekend')+
+   ' · '+(item.origin==='candidate'?'Onbevestigde vondst':item.origin==='known'?'Eerder bekend':'Automatisch toegevoegd')+'</span></div>';
+ return '<section class="new-dashboard" aria-labelledby="new-dashboard-title">'+
+  '<div class="new-dashboard-heading"><div><h3 id="new-dashboard-title">Nieuw gevonden concerten en festivals</h3>'+
+   '<p>'+data.concerts.length+' concertvondsten · '+data.festivals.length+' aankomende festivals op de radar'+
+   (discoveriesUpdated?' · scan '+h(discoveriesUpdated.slice(0,10)):'')+'</p></div>'+
+   '<button type="button" class="btn" data-tab="new">Bekijk overzicht</button></div>'+
+  '<div class="new-dashboard-columns"><div><strong>Concerten</strong>'+
+    (concerts.map(mini).join('')||'<p class="muted">Geen nieuwe onbeoordeelde concerten.</p>')+
+   '</div><div><strong>Festivals</strong>'+
+    (festivals.map(mini).join('')||'<p class="muted">Geen aankomende festivals in de huidige gegevens.</p>')+
+   '</div></div>'+
+  '<p class="new-disclaimer">Vondsten zijn geen bevestiging van programma, prijs of kaartvoorraad.</p></section>';
+}
+function newMarkup(){
+ const data=newOverviewData();
+ const visible=items=>state.newDecision==='pending'?items.filter(x=>statusOf(x.event)===''):items;
+ const concerts=visible(data.concerts),festivals=visible(data.festivals);
+ const showConcerts=state.newKind!=='festival',showFestivals=state.newKind!=='concert';
+ return '<section class="new-intro"><h2 class="sectiontitle">Nieuw gevonden concerten en festivals</h2>'+
+  '<p>Concerten komen uit de automatische podiumscan. Festivals omvatten ook eerder bekende aankomende festivals uit de masterlijst. Kandidaten zijn niet inhoudelijk bevestigd. Controleer altijd de officiële bron.</p>'+
+  '<div class="new-overview-counts"><div><b>'+data.concerts.length+'</b><span>automatisch gevonden concerten</span></div>'+
+   '<div><b>'+data.festivals.length+'</b><span>festivals op de radar</span></div></div>'+
+  '<p class="new-scanned">'+(discoveriesUpdated?'Laatste kandidaatverwerking: '+h(discoveriesUpdated.slice(0,10)):'Kandidaatverwerking nog niet beschikbaar')+
+   ' · Dit is geen volledige dekking van alle podia.</p>'+
+  '<div class="new-controls"><div role="group" aria-label="Soort evenement">'+
+   [['all','Alles'],['concert','Concerten'],['festival','Festivals']].map(([value,label])=>
+    '<button type="button" data-new-kind="'+value+'" aria-pressed="'+(state.newKind===value)+'" class="'+(state.newKind===value?'selected':'')+'">'+label+'</button>').join('')+
+   '</div><label>Keuze <select id="newDecision"><option value="all"'+(state.newDecision==='all'?' selected':'')+'>Alle, ook beoordeeld</option>'+
+    '<option value="pending"'+(state.newDecision==='pending'?' selected':'')+'>Nog te beoordelen</option></select></label>'+
+   '<label>Sortering <select id="newOrder"><option value="found"'+(state.newOrder==='found'?' selected':'')+'>Recent opgenomen eerst</option>'+
+    '<option value="event"'+(state.newOrder==='event'?' selected':'')+'>Concertdatum eerst</option></select></label></div></section>'+
+  (showConcerts?'<section class="new-overview-section"><h3>Nieuwe concertvondsten ('+concerts.length+')</h3>'+
+   '<div class="new-events">'+(concerts.map(newEntryMarkup).join('')||
+    '<p class="empty">Geen nieuwe concertvondsten in deze selectie. Bekijk ook de masterlijst.</p>')+'</div></section>':'')+
+  (showFestivals?'<section class="new-overview-section"><h3>Aankomende festivals ('+festivals.length+')</h3>'+
+   '<div class="new-events">'+(festivals.map(newEntryMarkup).join('')||
+    '<p class="empty">Nog geen festivals in deze selectie. Dit betekent niet dat er geen festivals gepland staan.</p>')+'</div></section>':'');
+}
+
 
 
 function ratingOf(e){return assessments[e.id]||null}
@@ -1453,7 +1575,7 @@ function personalDashboardTop(){
  const upcoming=all().filter(e=>e.date>=today&&isBooked(e)).sort((a,b)=>a.date.localeCompare(b.date))[0];
  return '<section class="dash-panel"><h2 class="sectiontitle">Mijn ConcertRadar</h2>'+
  (upcoming?'<p><strong>Volgende concert:</strong> '+h(upcoming.name)+' · '+h(dt(upcoming.date))+' · '+h(upcoming.venue)+'</p>':'<p class="muted">Nog geen aankomend concert geboekt.</p>')+
- '</section>'+dashboardShortlistMarkup()+noticeMarkup()+calendarCheckMarkup();
+ '</section>'+newDashboardMarkup()+dashboardShortlistMarkup()+noticeMarkup()+calendarCheckMarkup();
 }
 function bindNewDashboard(){
  document.querySelectorAll('[data-artist-profile]').forEach(b=>b.onclick=()=>showArtistProfile(b.dataset.artistProfile));
@@ -1727,7 +1849,7 @@ function wireCloud(){
  });
 }
 
-function bind(){bindSearchNow();document.getElementById('checkAge')?.addEventListener('change',e=>{appSettings.checkMaxAgeDays=Number(e.target.value);persist();render()});bindMusicHistory();document.getElementById('mobileTab')?.addEventListener('change',e=>{state.tab=e.target.value;render()});document.getElementById('compactCards')?.addEventListener('change',e=>{state.compactCards=e.target.checked;render()});wireCloud();bindTasteCloud();bindTasteExtras();bindNewDashboard();document.querySelectorAll('[data-review]').forEach(b=>b.onclick=()=>{const e=all().find(x=>x.id===b.dataset.review);if(e)openReview(e)});const mapRange=document.getElementById('mapRange');if(mapRange)mapRange.onchange=e=>{state.mapRange=e.target.value;render()};const mapScope=document.getElementById('mapScope');if(mapScope)mapScope.onchange=e=>{state.scope=e.target.value;render()};let pr=document.getElementById('photosrefresh');if(pr)pr.onclick=()=>{photoCache={};savePhotoCache();photoFetchStarted=false;startPhotoFetch();alert('Zoeken naar afbeeldingen gestart. Dit kan even duren.')};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;if(state.tab==='add')state.editingId='';render()});document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{let id=b.dataset.id;flags[id]??={};let k=b.dataset.action;if(k==='rejected'&&statusOf(all().find(e=>e.id===id)||{id})!=='rejected'){
+function bind(){bindSearchNow();document.querySelectorAll('[data-new-kind]').forEach(b=>b.onclick=()=>{state.newKind=b.dataset.newKind;render()});document.getElementById('newOrder')?.addEventListener('change',e=>{state.newOrder=e.target.value;render()});document.getElementById('newDecision')?.addEventListener('change',e=>{state.newDecision=e.target.value;render()});document.getElementById('checkAge')?.addEventListener('change',e=>{appSettings.checkMaxAgeDays=Number(e.target.value);persist();render()});bindMusicHistory();document.getElementById('mobileTab')?.addEventListener('change',e=>{state.tab=e.target.value;render()});document.getElementById('compactCards')?.addEventListener('change',e=>{state.compactCards=e.target.checked;render()});wireCloud();bindTasteCloud();bindTasteExtras();bindNewDashboard();document.querySelectorAll('[data-review]').forEach(b=>b.onclick=()=>{const e=all().find(x=>x.id===b.dataset.review);if(e)openReview(e)});const mapRange=document.getElementById('mapRange');if(mapRange)mapRange.onchange=e=>{state.mapRange=e.target.value;render()};const mapScope=document.getElementById('mapScope');if(mapScope)mapScope.onchange=e=>{state.scope=e.target.value;render()};let pr=document.getElementById('photosrefresh');if(pr)pr.onclick=()=>{photoCache={};savePhotoCache();photoFetchStarted=false;startPhotoFetch();alert('Zoeken naar afbeeldingen gestart. Dit kan even duren.')};document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{state.tab=b.dataset.tab;if(state.tab==='add')state.editingId='';render()});document.querySelectorAll('[data-action]').forEach(b=>b.onclick=()=>{let id=b.dataset.id;flags[id]??={};let k=b.dataset.action;if(k==='rejected'&&statusOf(all().find(e=>e.id===id)||{id})!=='rejected'){
  const answer=prompt('Waarom afwijzen? Kies: muziek, afstand, prijs, datum, gezien of anders. Alleen muziek beïnvloedt je smaak.','anders');
  if(answer===null)return;
  const reason=({muziek:'music',afstand:'distance',prijs:'price',datum:'date',gezien:'seen',anders:'other'})[answer.trim().toLowerCase()];
