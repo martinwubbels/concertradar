@@ -69,7 +69,7 @@ ctx.state.newKind='festival';
 assert(!fn.newMarkup().includes('Nieuwe concertvondsten ('),'Festival-only filter');
 ctx.state.newOrder='event';
 assert.equal(fn.newOverviewData().concerts[0].event.id,'a','Date sort works');
-assert(script.includes("newDashboardMarkup()+dashboardShortlistMarkup()"),'Dashboard includes overview');
+assert(script.includes("dashboardUpcomingMarkup()+newDashboardMarkup()"),'Focused dashboard still includes discoveries');
 assert(script.includes("state.tab==='shortlist'?shortlistMarkup()"),'Shortlist tab is wired');
 assert(html.includes('data-action="shortlisted"'),'Shortlist action available on event card');
 assert(html.includes('Nieuw & festivals'),'Easy-to-find navigation');
