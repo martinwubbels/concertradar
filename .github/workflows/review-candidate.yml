@@ -39,6 +39,7 @@ jobs:
         run: |
           python -m unittest discover -s scripts -p 'test_review_candidate.py' -v
           python scripts/review_candidate.py
+          python scripts/smoke_test.py
       - name: Open afzonderlijk PR-voorstel in plaats van direct te publiceren
         env:
           GH_TOKEN: ${{ github.token }}
