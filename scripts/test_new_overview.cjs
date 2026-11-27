@@ -46,7 +46,7 @@ const markup=fn.newMarkup();
 assert(markup.includes('Nieuwe concertvondsten (2)'));
 assert(markup.includes('Aankomende festivals (2)'));
 assert(markup.includes('Kandidaat uit podiumagenda'));
-assert(markup.includes('Bekend festival uit masterlijst'));
+assert(markup.includes('Bekend concert of festival uit masterlijst'));
 assert(markup.includes('data-action="shortlisted"'),'Shortlist button for concerts and festivals');
 assert(markup.includes('data-action="interested"'));
 assert(markup.includes('data-action="rejected"'));
