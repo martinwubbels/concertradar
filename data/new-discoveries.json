@@ -1,33 +1,12 @@
 {
-  "updated_at": "2026-11-26T18:23:56.540856+00:00",
+  "updated_at": "2026-11-27T18:08:01.304134+00:00",
   "status": "suggestions_not_confirmed_or_ranked",
   "events": [
     {
-      "id": "suggestion-2026-11-26-nederlandskamerkoor",
-      "name": "Nederlands kamerkoor",
-      "date": "2026-11-26",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/nederlands-kamerkoor-15/",
-      "price": 38.5,
-      "availability_hint": "SoldOut",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-26-noordnederlandsorkest",
-      "name": "Noord Nederlands Orkest",
-      "date": "2026-11-26",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/noord-nederlands-orkest-231/",
-      "price": 29.5,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
       "id": "suggestion-2026-11-27-flemming",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "Flemming",
       "date": "2026-11-27",
       "venue": "SPOT Groningen",
@@ -39,19 +18,10 @@
       "review_required": true
     },
     {
-      "id": "suggestion-2026-11-27-hetnationaletheater",
-      "name": "Het Nationale Theater",
-      "date": "2026-11-27",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/het-nationale-theater-31/",
-      "price": 29.5,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
       "id": "suggestion-2026-11-29-joejackson",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "Joe Jackson",
       "date": "2026-11-29",
       "venue": "SPOT Groningen",
@@ -64,6 +34,9 @@
     },
     {
       "id": "suggestion-2026-11-29-thescene",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "The Scene",
       "date": "2026-11-29",
       "venue": "SPOT Groningen",
@@ -76,6 +49,9 @@
     },
     {
       "id": "suggestion-2026-11-29-waylon",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "Waylon",
       "date": "2026-11-29",
       "venue": "SPOT Groningen",
@@ -83,23 +59,14 @@
       "source_venue": "SPOT Groningen",
       "url": "https://www.spotgroningen.nl/programma/waylon-8/",
       "price": 39.5,
-      "availability_hint": "SoldOut",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-11-30-davidlinszen",
-      "name": "David Linszen",
-      "date": "2026-11-30",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/david-linszen-2/",
-      "price": 22.5,
-      "availability_hint": "SoldOut",
+      "availability_hint": "InStock",
       "review_required": true
     },
     {
       "id": "suggestion-2026-11-30-paradoxjazzorchestrafeatjamescarter",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "Paradox Jazz Orchestra feat. James Carter",
       "date": "2026-11-30",
       "venue": "SPOT Groningen",
@@ -112,6 +79,9 @@
     },
     {
       "id": "suggestion-2026-12-01-nnonoordpoolorkest",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "NNO &#038; Noordpool Orkest",
       "date": "2026-12-01",
       "venue": "SPOT Groningen",
@@ -123,31 +93,10 @@
       "review_required": true
     },
     {
-      "id": "suggestion-2026-12-01-theateroostpool",
-      "name": "Theater Oostpool",
-      "date": "2026-12-01",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/theater-oostpool-18/",
-      "price": 29.5,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
-      "id": "suggestion-2026-12-02-jimmycarrlaughsfunny",
-      "name": "Jimmy Carr &#8211; Laughs funny",
-      "date": "2026-12-02",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/jimmy-carr-laughs-funny/",
-      "price": 74.6,
-      "availability_hint": "SoldOut",
-      "review_required": true
-    },
-    {
       "id": "suggestion-2026-12-02-maaikeouboter",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "Maaike Ouboter",
       "date": "2026-12-02",
       "venue": "SPOT Groningen",
@@ -160,6 +109,9 @@
     },
     {
       "id": "suggestion-2026-12-03-haevn",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "HAEVN",
       "date": "2026-12-03",
       "venue": "SPOT Groningen",
@@ -172,6 +124,9 @@
     },
     {
       "id": "suggestion-2026-12-03-joristeepepresentsnyctg",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "Joris Teepe presents: NYCTG",
       "date": "2026-12-03",
       "venue": "SPOT Groningen",
@@ -184,6 +139,9 @@
     },
     {
       "id": "suggestion-2026-12-03-nederlandsblazersensembledudapaivacompany",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "Nederlands Blazers Ensemble &#038; Duda Paiva Company",
       "date": "2026-12-03",
       "venue": "SPOT Groningen",
@@ -195,19 +153,10 @@
       "review_required": true
     },
     {
-      "id": "suggestion-2026-12-03-nederlandsdanstheater1",
-      "name": "Nederlands Dans Theater 1",
-      "date": "2026-12-03",
-      "venue": "SPOT Groningen",
-      "city": "",
-      "source_venue": "SPOT Groningen",
-      "url": "https://www.spotgroningen.nl/programma/nederlands-dans-theater-1-5/",
-      "price": 41.5,
-      "availability_hint": "InStock",
-      "review_required": true
-    },
-    {
       "id": "suggestion-2026-12-04-haevn",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "HAEVN",
       "date": "2026-12-04",
       "venue": "SPOT Groningen",
@@ -220,6 +169,9 @@
     },
     {
       "id": "suggestion-2026-12-04-kelapamuda",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "Kelapa Muda",
       "date": "2026-12-04",
       "venue": "SPOT Groningen",
@@ -231,7 +183,25 @@
       "review_required": true
     },
     {
+      "id": "suggestion-2026-12-05-emonightmainland",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-27T18:08:01.304134+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
+      "name": "Emo Night Mainland",
+      "date": "2026-12-05",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/emo-night-mainland-6/",
+      "price": 16.0,
+      "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
       "id": "suggestion-2026-12-05-gallowstreet",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-26T18:23:56.540856+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
       "name": "Gallowstreet",
       "date": "2026-12-05",
       "venue": "SPOT Groningen",
@@ -240,6 +210,51 @@
       "url": "https://www.spotgroningen.nl/programma/gallowstreet-3/",
       "price": 27.5,
       "availability_hint": "InStock",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-05-kingfishr",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-27T18:08:01.304134+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
+      "name": "Kingfishr",
+      "date": "2026-12-05",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/kingfishr-2/",
+      "price": 40.0,
+      "availability_hint": "SoldOut",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-06-kingfishr",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-27T18:08:01.304134+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
+      "name": "Kingfishr",
+      "date": "2026-12-06",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/kingfishr-3/",
+      "price": 40.0,
+      "availability_hint": "SoldOut",
+      "review_required": true
+    },
+    {
+      "id": "suggestion-2026-12-06-yentldeboer",
+      "event_kind": "concert",
+      "first_seen_at": "2026-11-27T18:08:01.304134+00:00",
+      "last_seen_at": "2026-11-27T18:08:01.304134+00:00",
+      "name": "Yentl &#038; De Boer",
+      "date": "2026-12-06",
+      "venue": "SPOT Groningen",
+      "city": "",
+      "source_venue": "SPOT Groningen",
+      "url": "https://www.spotgroningen.nl/programma/yentl-de-boer-3/",
+      "price": 29.5,
+      "availability_hint": "SoldOut",
       "review_required": true
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-26T18:23:24.259898+00:00",
+  "checked_at": "2026-11-27T18:07:30.020559+00:00",
   "description": "Read-only evidence, rotating checks; failures never imply cancellation",
   "checked_count": 40,
   "eligible_count": 40,
@@ -98,194 +98,194 @@
     "jp-den-tex-tineke-schoemaker-20261127": {
       "state": "confirmed",
       "date": "2026-11-27",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://www.spotgroningen.nl/programma/jp-den-tex-tineke-schoemaker/",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "subterranean-street-society-esther-de-jong-20261128": {
       "state": "confirmed",
       "date": "2026-11-28",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://www.spotgroningen.nl/programma/subterranean-street-society-2/",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "the-veils-20261128": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "matthew-and-the-atlas-ak-patterson-20261201": {
       "state": "confirmed",
       "date": "2026-12-01",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://www.spotgroningen.nl/programma/matthew-and-the-atlas-3/",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "dawn-brothers-friends-the-last-waltz-20261204": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "geel-ran-over-rotzorg-20261210": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "dylan-leblanc-20261218": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "dewolff-full-moon-ritual-20270108": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "the-black-atlantic-20270120": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "noah-gundersen-20270123": {
       "state": "confirmed",
       "date": "2027-01-23",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://metropool.nl/agenda/noah-gundersen",
       "event_status": "EventScheduled",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "vanwyck-20270127": {
       "state": "confirmed",
       "date": "2027-01-27",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://www.spotgroningen.nl/programma/vanwyck-3/",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "vanderlinde-king-of-the-world-ruben-hoeke-20270129": {
       "state": "confirmed",
       "date": "2027-01-29",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://www.spotgroningen.nl/programma/vanderlinde-king-of-the-world-ruben-hoeke/",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "steve-wynn-20270131": {
       "state": "confirmed",
       "date": "2027-01-31",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://www.spotgroningen.nl/programma/steve-wynn/",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "wende-20270205": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "wende-20270206": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "jan-henk-de-groot-reinout-douma-tiepelzinneg-20270211": {
       "state": "confirmed",
       "date": "2027-02-11",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://www.spotgroningen.nl/programma/jan-henk-de-groot-reinout-douma/",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "josh-ritter-solo-20270217": {
       "state": "confirmed",
       "date": "2027-02-17",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://www.spotgroningen.nl/programma/josh-ritter/",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "tramhaus-20270219": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "jesper-lindell-20270220": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "jake-vaadeland-the-sturgeon-river-boys-20270223": {
       "state": "confirmed",
       "date": "2027-02-23",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://www.spotgroningen.nl/programma/jake-vaadeland/",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "jake-vaadeland-20270224": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "the-tibbs-20270306": {
       "state": "confirmed",
       "date": "2027-03-06",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://metropool.nl/agenda/the-tibbs",
       "event_status": "EventScheduled",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "truckfighters-20270307": {
       "state": "confirmed",
       "date": "2027-03-07",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://metropool.nl/agenda/truckfighters",
       "event_status": "EventScheduled",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "after-easter-20270403": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "daniel-norgren-20270417": {
       "state": "confirmed",
       "date": "2027-04-17",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://www.spotgroningen.nl/programma/daniel-norgren-2027/",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "felipe-baldomir-20270508": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "conor-mclain-20270520": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "mood-bored-20270521": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "rantanplan-20270522": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "bluefinger-festival-2027-20270919": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "davy-knowles-20270924": {
       "state": "confirmed",
       "date": "2027-09-24",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://metropool.nl/agenda/davy-knowles",
       "event_status": "EventScheduled",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "trockener-kecks-20271105": {
       "state": "unavailable",
       "reason": "no_unique_matching_event_schema",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00"
+      "checked_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "suggestion-2026-11-22-jameswalshstarsailor": {
       "state": "confirmed",
@@ -322,58 +322,66 @@
     "suggestion-2026-11-27-kruidkoekjoostoomen": {
       "state": "confirmed",
       "date": "2026-11-27",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://metropool.nl/agenda/kruidkoek-joost-oomen",
       "event_status": "EventScheduled",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "suggestion-2026-11-27-palindroomfestival": {
       "state": "confirmed",
       "date": "2026-11-27",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://metropool.nl/agenda/palindroom-festival",
       "event_status": "EventScheduled",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "suggestion-2026-11-27-snelle": {
       "state": "confirmed",
       "date": "2026-11-27",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://metropool.nl/agenda/snelle",
       "event_status": "EventScheduled",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "suggestion-2026-11-28-classicrbhiphop": {
       "state": "confirmed",
       "date": "2026-11-28",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://metropool.nl/agenda/classic-rb-hiphop-28-nov",
       "event_status": "EventScheduled",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "suggestion-2026-11-28-nobarrier": {
       "state": "confirmed",
       "date": "2026-11-28",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://metropool.nl/agenda/no-barrier",
       "event_status": "EventScheduled",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "suggestion-2026-12-02-monkeyjam": {
       "state": "confirmed",
       "date": "2026-12-02",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://metropool.nl/agenda/monkeyjam-2-dec",
       "event_status": "EventScheduled",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     },
     "suggestion-2026-12-02-sbkbenefietconcert2026": {
       "state": "confirmed",
       "date": "2026-12-02",
-      "checked_at": "2026-11-26T18:23:24.259898+00:00",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
       "source_url": "https://metropool.nl/agenda/sbk-benefietconcert-2026",
       "event_status": "EventScheduled",
-      "last_confirmed_at": "2026-11-26T18:23:24.259898+00:00"
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
+    },
+    "suggestion-2026-12-03-stevenseagulls": {
+      "state": "confirmed",
+      "date": "2026-12-03",
+      "checked_at": "2026-11-27T18:07:30.020559+00:00",
+      "source_url": "https://metropool.nl/agenda/steve-n-seagulls",
+      "event_status": "EventScheduled",
+      "last_confirmed_at": "2026-11-27T18:07:30.020559+00:00"
     }
   },
   "alerts": []

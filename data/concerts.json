@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-11-26",
+  "updated_at": "2026-11-27",
   "events": [
     {
       "id": "early-james-20261116",
@@ -736,6 +736,26 @@
       "source_checked_at": "2026-11-26T18:23:24.181135+00:00",
       "source_venue": "Metropool",
       "id": "suggestion-2026-12-02-sbkbenefietconcert2026"
+    },
+    {
+      "name": "Steve 'n' Seagulls",
+      "date": "2026-12-03",
+      "venue": "Bud Stage, Hengelo",
+      "city": "Hengelo",
+      "genre": "Muziek / nog niet ingedeeld",
+      "price": null,
+      "quality": null,
+      "value": null,
+      "priority": "NIEUW · CONTROLEREN",
+      "match": "",
+      "reason": "Automatisch overgenomen van de officiële concertpagina. Muziekstijl, beoordeling, prijs en beschikbaarheid zelf controleren.",
+      "url": "https://metropool.nl/agenda/steve-n-seagulls",
+      "link_status": "event_page",
+      "verification": "auto_verified_schema",
+      "availability_hint": null,
+      "source_checked_at": "2026-11-27T18:07:29.931166+00:00",
+      "source_venue": "Metropool",
+      "id": "suggestion-2026-12-03-stevenseagulls"
     },
     {
       "id": "dawn-brothers-friends-the-last-waltz-20261204",

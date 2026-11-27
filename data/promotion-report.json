@@ -1,25 +1,19 @@
 {
-  "generated_at": "2026-11-26T18:23:24.184611+00:00",
+  "generated_at": "2026-11-27T18:07:29.951982+00:00",
   "description": "Only strict official music event matches auto-added; all others remain separate.",
-  "checked_records": 121,
-  "approved": 2,
+  "checked_records": 117,
+  "approved": 1,
   "skipped": {
-    "unconfirmed_schema": 94,
-    "nonmusic_keyword": 2,
-    "missing_name_venue_or_city": 23
+    "missing_name_venue_or_city": 24,
+    "unconfirmed_schema": 90,
+    "nonmusic_keyword": 2
   },
   "added": [
     {
-      "id": "suggestion-2026-12-02-monkeyjam",
-      "name": "Monkeyjam",
-      "date": "2026-12-02",
-      "url": "https://metropool.nl/agenda/monkeyjam-2-dec"
-    },
-    {
-      "id": "suggestion-2026-12-02-sbkbenefietconcert2026",
-      "name": "SBK Benefietconcert 2026",
-      "date": "2026-12-02",
-      "url": "https://metropool.nl/agenda/sbk-benefietconcert-2026"
+      "id": "suggestion-2026-12-03-stevenseagulls",
+      "name": "Steve 'n' Seagulls",
+      "date": "2026-12-03",
+      "url": "https://metropool.nl/agenda/steve-n-seagulls"
     }
   ]
 }
