@@ -1277,7 +1277,8 @@ function newOverviewData(){
 function newEntrySource(item){
  if(item.origin==='candidate')return 'Kandidaat uit podiumagenda · nog niet bevestigd';
  if(item.origin==='catalog')return 'Automatisch in masterlijst gezet · inhoud en tickets controleren';
- return 'Bekend festival uit masterlijst · actuele gegevens controleren';
+ if(item.origin==='saved')return 'Zelf toegevoegd · gegevens zelf controleren';
+ return 'Bekend concert of festival uit masterlijst · actuele gegevens controleren';
 }
 function newEntryMarkup(item){
  const e=item.event, status=statusOf(e),festival=isFestivalEvent(e);
@@ -1335,7 +1336,8 @@ function shortlistMarkup(){
   if(seen.has(key))continue;
   seen.add(key);
   entries.push({event:e,origin:e.verification==='auto_verified_schema'?'catalog':
-   e.verification==='historical_unverified'?'known':'candidate',
+   e.verification==='candidate_unverified'?'candidate':
+   e.personal||e.id.startsWith('handmatig-')?'saved':'known',
    seenAt:e.first_seen_at||e.source_checked_at||''});
  }
  entries.sort((a,b)=>a.event.date.localeCompare(b.event.date)||a.event.name.localeCompare(b.event.name,'nl'));
