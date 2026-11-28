@@ -1,19 +1,38 @@
 {
-  "generated_at": "2026-11-27T18:07:29.951982+00:00",
+  "generated_at": "2026-11-28T16:49:44.751389+00:00",
   "description": "Only strict official music event matches auto-added; all others remain separate.",
-  "checked_records": 117,
-  "approved": 1,
+  "checked_records": 118,
+  "approved": 4,
   "skipped": {
-    "missing_name_venue_or_city": 24,
-    "unconfirmed_schema": 90,
-    "nonmusic_keyword": 2
+    "unconfirmed_schema": 84,
+    "nonmusic_keyword": 1,
+    "missing_name_venue_or_city": 15,
+    "not_approved_specific_event_url": 14
   },
   "added": [
     {
-      "id": "suggestion-2026-12-03-stevenseagulls",
-      "name": "Steve 'n' Seagulls",
-      "date": "2026-12-03",
-      "url": "https://metropool.nl/agenda/steve-n-seagulls"
+      "id": "suggestion-2026-12-04-qmusictheparty4uurfout",
+      "name": "QMusic The Party - 4 uur Fout",
+      "date": "2026-12-04",
+      "url": "https://metropool.nl/agenda/qmusic-the-party-4-uur-fout"
+    },
+    {
+      "id": "suggestion-2026-12-04-thedirtydaddies",
+      "name": "The Dirty Daddies",
+      "date": "2026-12-04",
+      "url": "https://metropool.nl/agenda/the-dirty-daddies-4-dec"
+    },
+    {
+      "id": "suggestion-2026-12-04-90sloves00s",
+      "name": "90's loves 00's",
+      "date": "2026-12-04",
+      "url": "https://metropool.nl/agenda/90s-loves-00s-4-dec"
+    },
+    {
+      "id": "suggestion-2026-12-04-roundaboutseprelease",
+      "name": "Roundabouts - EP release",
+      "date": "2026-12-04",
+      "url": "https://metropool.nl/agenda/roundabouts-ep-release"
     }
   ]
 }
